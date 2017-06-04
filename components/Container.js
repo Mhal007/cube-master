@@ -1,13 +1,8 @@
 import React       from 'react';
 import {Component} from 'react';
-import keydown     from 'react-keydown';
-
 import Main         from './Main.js';
 import {Algorithms} from '../collections/algorithms.js';
 
-const KEYS = [ 'space', 'shift', 'ctrl'];
-
-@ keydown (KEYS)
 export default class Container extends Component {
     constructor (props) {
         super(props);
@@ -20,13 +15,6 @@ export default class Container extends Component {
 
         this.onChangeAlgorithm = this.onChangeAlgorithm.bind(this);
     }
-    /*
-    @keydown( 'enter' ) // or specify `which` code directly, in this case 13
-    submit( event ) {
-        // do something, or not, with the keydown event, maybe event.preventDefault()
-        console.log('a');
-    }
-    */
 
     componentDidMount () {
         Meteor.subscribe('algorithms', {
@@ -58,16 +46,21 @@ export default class Container extends Component {
         })
     }
 
+    onSpace () {
+        console.log('space');
+    }
+
     render () {
         const {
             onChangeAlgorithm,
+            onSpace,
             state: {
                 currentAlgorithm
             }
         } = this;
 
         return (
-            <div className="container">
+            <div className="container" onKeyDown={onSpace}>
                 <header>
                     h
                 </header>
