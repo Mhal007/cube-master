@@ -3,6 +3,8 @@ import {Component} from 'react';
 import Main         from './Main.js';
 import {Algorithms} from '../collections/algorithms.js';
 
+let blocked = false;
+
 export default class Container extends Component {
     constructor (props) {
         super(props);
@@ -10,10 +12,13 @@ export default class Container extends Component {
         this.state = {
             algorithms: [],
             currentAlgorithm: {},
-            currentAlgorithmId: 0
+            currentAlgorithmId: 0,
+            isShowedSolution: false
         };
 
         this.onChangeAlgorithm = this.onChangeAlgorithm.bind(this);
+        this.onKeyDown         = this.onKeyDown.bind(this);
+        this.onKeyUp           = this.onKeyUp.bind(this);
     }
 
     componentDidMount () {
@@ -25,16 +30,9 @@ export default class Container extends Component {
                 })
             },
         });
-    }
 
-    componentWillReceiveProps({keydown}) {
-        console.log(keydown);
-
-        console.log('z');
-        if (keydown.event) {
-            console.log(keydown.event);
-            console.log(keydown.event.which);
-        }
+        document.body.addEventListener('keydown', e => this.onKeyDown(e));
+        document.body.addEventListener('keyup'  , e => this.onKeyUp  (e));
     }
 
     onChangeAlgorithm () {
@@ -46,21 +44,37 @@ export default class Container extends Component {
         })
     }
 
-    onSpace () {
-        console.log('space');
+    onKeyDown (event) {
+        if (event.key === 'Shift' && !blocked) {
+            this.setState({isShowedSolution: true});
+            blocked = true;
+        }
+    }
+
+    onKeyUp (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            console.log('Next');
+        } else if (event.key === 'Shift') {
+            this.setState({isShowedSolution: false});
+            blocked = false;
+        } else if (event.key === 'Control') {
+            this.setState({isShowedSolution: !this.state.isShowedSolution});
+        } else if (event.key === 'Backspace' || event.key === 'Delete') {
+            console.log('Delete time');
+        }
     }
 
     render () {
         const {
             onChangeAlgorithm,
-            onSpace,
+            onKeyDown,
             state: {
                 currentAlgorithm
             }
         } = this;
 
         return (
-            <div className="container" onKeyDown={onSpace}>
+            <div className="container">
                 <header>
                     h
                 </header>

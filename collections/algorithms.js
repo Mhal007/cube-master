@@ -14,8 +14,20 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    'algorithms.insert'(text) {
-        check(text, String);
+    'algorithms.insert'({
+        category,
+        image,
+        ref,
+        scramble,
+        solution,
+        type
+    }) {
+        check(category, String);
+        check(image   , String);
+        check(ref     , Number);
+        check(scramble, String);
+        check(solution, String);
+        check(type    , String);
 
         // Make sure the user is logged in before inserting a algorithm
        /* if (! Meteor.userId()) {
@@ -24,8 +36,12 @@ Meteor.methods({
 
         Algorithms.insert({
             createdAt: new Date(),
-            scramble: "D B' R L' F",
-            image: "default"
+            category,
+            image,
+            ref,
+            scramble,
+            solution,
+            type
         });
     },
     'algorithms.search'(text) {
