@@ -8,7 +8,6 @@ if (Meteor.isServer) {
     // This code only runs on the server
     // Only publish algorithms that are public or belong to the current user
     Meteor.publish('algorithms', function algorithmsPublication() {
-        console.log(Algorithms.find().fetch());
         return Algorithms.find();
     });
 }
