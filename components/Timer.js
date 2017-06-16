@@ -4,8 +4,8 @@ import React     from 'react';
 
 const Timer = ({
     isVisibleSolution,
-    timerCurrentValue,
-    solution
+    solution,
+    timerCurrentValue
 }) =>
     <section className="timer">
         {moment(timerCurrentValue).format('mm:ss:SSS')}

@@ -1,9 +1,10 @@
 import React       from 'react';
 import {Component} from 'react';
+import {Loader}    from 'semantic-ui-react'
 import {Segment}   from 'semantic-ui-react'
 
-import Learning from './Learning.js';
 import MenuTop  from './MenuTop.js';
+import Results  from './Results.js';
 import Training from './Training.js';
 
 export default class Container extends Component {
@@ -11,21 +12,24 @@ export default class Container extends Component {
         super(props);
 
         this.state = {
-            currentTab: 'learning'
+            currentTab:      'training',
+            isVisibleLoader: true
         };
 
-        this.onChangeTab = this.onChangeTab.bind(this);
+        this.onChangeTab  = this.onChangeTab.bind(this);
     }
 
-    onChangeTab (e, {name}) {
-        this.setState({currentTab: name});
-    }
+    onChangeTab    = (e, {name}) => this.setState({currentTab:      name});
+    onToggleLoader = (newValue)  => this.setState({isVisibleLoader: newValue});
 
     render () {
         const {
             onChangeTab,
+            onToggleLoader,
+
             state: {
                 currentTab,
+                isVisibleLoader,
             }
         } = this;
 
@@ -38,30 +42,21 @@ export default class Container extends Component {
                     />
                 </header>
 
-                <main>
-                    {currentTab === 'learning' && (
-                        <Segment.Group horizontal>
-                            <Segment>
-                            </Segment>
-                            <Segment textAlign='center'>
-                                <Learning />
-                            </Segment>
-                            <Segment>
-                            </Segment>
-                        </Segment.Group>
-                    )}
-                    {currentTab === 'training' && (
-                        <Segment.Group horizontal>
-                            <Segment>
-                            </Segment>
-                            <Segment textAlign='center'>
-                                <Training />
-                            </Segment>
-                            <Segment>
-                            </Segment>
-                        </Segment.Group>
-                    )}
-                </main>
+                <Segment>
+                    {isVisibleLoader && <Loader content='Loading' />}
+
+                    <main>
+                        {(currentTab === 'training' || currentTab === 'tests') && (
+                            <Training
+                                onToggleLoader = {onToggleLoader}
+                                tests          = {currentTab === 'tests'}
+                            />
+                        )}
+                        {currentTab === 'results'  && (
+                            <Results />
+                        )}
+                    </main>
+                </Segment>
 
                 <footer>
                 </footer>
