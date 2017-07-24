@@ -1,4 +1,4 @@
-const createAlgorithms = () => {
+export const createAlgorithms = () => {
     const algorithms = [{
         category: 'OLL',
         image: 'oll_1.png',

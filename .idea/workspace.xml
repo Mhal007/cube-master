@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99cc4f93-4f6b-40bf-919f-f24a3e37e086" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/AlgorithmsCreation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/cube-master.iml" afterPath="$PROJECT_DIR$/.idea/cube-master.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/release" afterPath="$PROJECT_DIR$/.meteor/release" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/alg-creation-backup.js" afterPath="$PROJECT_DIR$/server/alg-creation-backup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/AlgorithmsCreation.js" afterPath="$PROJECT_DIR$/server/AlgorithmsCreation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/main.js" afterPath="$PROJECT_DIR$/server/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -75,8 +67,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -87,8 +79,8 @@
       <file leaf-file-name="AlgorithmsCreation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/AlgorithmsCreation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="988">
-              <caret line="387" column="24" lean-forward="true" selection-start-line="387" selection-start-column="24" selection-end-line="387" selection-end-column="24" />
+            <state relative-caret-position="430">
+              <caret line="386" column="8" lean-forward="true" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -291,7 +283,28 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cube-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cube-master" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cube-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cube-master" type="462c0819:PsiDirectoryNode" />
+              <item name="newcubemasterdump" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cube-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cube-master" type="462c0819:PsiDirectoryNode" />
+              <item name="newcubemasterdump" type="462c0819:PsiDirectoryNode" />
+              <item name="meteor" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
@@ -421,12 +434,12 @@
       <workItem from="1496913109663" duration="57000" />
       <workItem from="1497556834942" duration="14172000" />
       <workItem from="1500932108681" duration="1934000" />
-      <workItem from="1500935892165" duration="237000" />
+      <workItem from="1500935892165" duration="1195000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50625000" />
+    <option name="totallyTimeSpent" value="51583000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -811,16 +824,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/AlgorithmsCreation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="387" column="24" lean-forward="true" selection-start-line="387" selection-start-column="24" selection-end-line="387" selection-end-column="24" />
+        <state relative-caret-position="430">
+          <caret line="386" column="8" lean-forward="true" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="5" column="59" lean-forward="false" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
