@@ -30,7 +30,7 @@ const TrainingMain = ({
         </Segment>
         <Segment>
             <button
-                onClick={onChangeAlgorithm}
+                onClick={() => onChangeAlgorithm()}
             >
                 Random new alg
             </button>
@@ -46,3 +46,23 @@ TrainingMain.propTypes = {
 };
 
 export default TrainingMain;
+
+
+// TODO Blindfolded + 1/2 + scrambler
+// TODO DNF option
+// TODO 3x3x3 working + scrambler
+// TODO mobile view
+// TODO new averages
+// TODO +x/-x to average (green/red)
+// TODO list of activated OLLs/PLLs
+// TODO responsive view (UWHD)
+// TODO menu with buttons for: accept, +2, random new, delete
+
+
+// TODO DONE
+// TODO Averages fix
+// TODO Averages display form change
+// TODO 0s => No records
+// TODO Random first alg
+// TODO button for random fix
+// TODO prepare PLL algs + oncategorychange fixes + onalgorithmchange fix

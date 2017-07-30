@@ -45,6 +45,7 @@ class Training extends Component {
         this.countAverages       = this.countAverages.bind(this);
         this.getCurrentAlgorithm = this.getCurrentAlgorithm.bind(this);
         this.onChangeAlgorithm   = this.onChangeAlgorithm.bind(this);
+        this.onChangeCategory    = this.onChangeCategory.bind(this);
         this.onGoToNextStatus    = this.onGoToNextStatus.bind(this);
         this.onKeyDown           = this.onKeyDown.bind(this);
         this.onKeyUp             = this.onKeyUp.bind(this);
@@ -52,9 +53,9 @@ class Training extends Component {
         this.updateTimerTime     = this.updateTimerTime.bind(this);
     }
 
-    countAverages ({results = Results.find({category: this.state.currentCategory, real: {$in: this.props.tests ? [null, false] : [true]}}).fetch() || [], algId = 0, newTime}) {
-        const currentAlg = results[algId] && [                                ].concat(results.filter(alg => alg.ref      === results[algId].ref     ) || []) || [];
-        const currentCat = results[algId] && (newTime ? [{time: newTime}] : []).concat(results.filter(alg => alg.category === results[algId].category) || []) || [];
+    countAverages ({currentCategory, results = Results.find({category: currentCategory || this.state.currentCategory, real: {$in: this.props.debugging ? [null, false] : [true]}}).fetch() || [], algRef = 1}) {
+        const currentAlg = results.filter(alg => alg.ref === algRef);
+        const currentCat = results;
 
         let sumAlg = 0;
         let sumCat = 0;
@@ -64,8 +65,8 @@ class Training extends Component {
 
         this.setState({
             results,
-            currentAlgorithmAvg: sumAlg / currentAlg.length || 0,
-            currentCategoryAvg:  sumCat / currentCat.length || 0
+            currentAlgorithmAvg: sumAlg / currentAlg.length / 1000.0 || 0,
+            currentCategoryAvg:  sumCat / currentCat.length / 1000.0 || 0
         });
     }
 
@@ -75,14 +76,15 @@ class Training extends Component {
             onReady: () => {
                 const algorithms = Algorithms.find({category: this.state.currentCategory}).fetch();
 
-                this.setState({algorithms, currentAlgorithm: algorithms && algorithms[0] || {}});
+                this.setState({algorithms});
+                this.onChangeAlgorithm();
             },
         });
 
         Meteor.subscribe('results', {
             onError: () => {console.log("Error occured:", arguments)},
             onReady: () => {
-                const results = Results.find({category: this.state.currentCategory, real: {$in: this.props.tests ? [null, false] : [true]}}).fetch();
+                const results = Results.find({category: this.state.currentCategory, real: {$in: this.props.debugging ? [null, false] : [true]}}).fetch();
                 this.countAverages({results});
 
                 this.props.onToggleLoader(false);
@@ -99,10 +101,24 @@ class Training extends Component {
     }
 
     componentWillReceiveProps (newProps) {
-        if (this.props.tests !== newProps.tests) {
-            const results = Results.find({category: this.state.currentCategory, real: {$in: newProps.tests ? [null, false] : [true]}}).fetch();
+        if (this.props.debugging !== newProps.debugging) {
+            const results = Results.find({category: this.state.currentCategory, real: {$in: newProps.debugging ? [null, false] : [true]}}).fetch();
             this.countAverages({results});
         }
+    }
+
+    onChangeAlgorithm ({algorithms, currentAlgorithmId, currentCategory} = this.state) {
+        this.onReset();
+
+        let newId = Math.floor(Math.random() * algorithms.length);
+        while (newId === currentAlgorithmId) {
+            newId = Math.floor(Math.random() * algorithms.length);
+        }
+
+        const newAlgorithm = algorithms[newId];
+
+        this.setState({currentAlgorithm: newAlgorithm, currentAlgorithmId: newAlgorithm._id});
+        this.countAverages({algRef: newAlgorithm.ref, currentCategory});
     }
 
     onChangeCategory = (e, {name}) => {
@@ -113,11 +129,11 @@ class Training extends Component {
 
         this.setState({
             algorithms,
-            currentAlgorithm: algorithms && algorithms[0] || {},
             currentCategory: name,
             results
         });
 
+        this.onChangeAlgorithm({algorithms, currentCategory: name});
         this.props.onToggleLoader(false);
     };
 
@@ -126,7 +142,9 @@ class Training extends Component {
     onKeyDown (event) {
         const blocked = this.state.blocked;
 
-        if (event.key === 'Shift' && !blocked.shift) {
+        if (event.key === 'r') {
+            this.onChangeAlgorithm();
+        } else if (event.key === 'Shift' && !blocked.shift) {
             this.setState({
                 blocked: {...blocked, shift: true},
                 isVisibleSolution: true
@@ -161,23 +179,9 @@ class Training extends Component {
             this.setState({blocked: {...blocked, control: false}, isVisibleSolution: !isVisibleSolution});
         }
         else if (event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Escape') {
-            this.onReset();
+            this.onChangeAlgorithm();
             this.setState({blocked: {...blocked, delete:  false}});
         }
-    }
-
-    onChangeAlgorithm ({newTime}) {
-        if (this.state.timerStatus !== 'timer-off' && this.state.timerStatus !== 'resetted') {
-            return;
-        }
-
-        let newId = Math.floor(Math.random() * this.state.algorithms.length);
-        while (newId === this.state.currentAlgorithmId) {
-            newId = Math.floor(Math.random() * this.state.algorithms.length);
-        }
-
-        this.setState({currentAlgorithm: this.state.algorithms[newId], currentAlgorithmId: newId});
-        this.countAverages({algId: newId, newTime});
     }
 
     onGoToNextStatus (upOrDown) {
@@ -198,25 +202,16 @@ class Training extends Component {
             /* Save time */
             Meteor.call('results.insert', Object.assign(this.getCurrentAlgorithm(), {
                 time: this.state.timerCurrentValue,
-                real: !this.props.tests
+                real: !this.props.debugging
             }));
-            this.onChangeAlgorithm({newTime: this.state.timerCurrentValue});
-
+            this.onChangeAlgorithm();
             this.setState({timerStatus: 'resetted', timerCurrentValue: 0});
         }
     }
 
     onReset () {
-        const {timerStatus} = this.state;
-
-        if (timerStatus === 'timer-on') {
-            clearInterval(this.timer);
-            this.setState({timerStatus: 'resetted', timerCurrentValue: 0});
-        } else if (timerStatus === 'timer-off') {
-            clearInterval(this.timer);
-            this.onChangeAlgorithm({});
-            this.setState({timerStatus: 'resetted', timerCurrentValue: 0});
-        }
+        clearInterval(this.timer);
+        this.setState({timerStatus: 'resetted', timerCurrentValue: 0});
     }
 
     updateTimerTime () {
@@ -259,12 +254,12 @@ class Training extends Component {
                     <Segment>
                         Average for this algorithm:
                         <br />
-                        {Math.round(currentAlgorithmAvg * 100) / 100}
+                        {currentAlgorithmAvg ? `${Math.round(currentAlgorithmAvg * 1000) / 1000}s` : 'No records'}
 
                         <br /><br />
                         Average for all {this.state.currentCategory} algorithms:
                         <br />
-                        {Math.round(currentCategoryAvg * 100) / 100}
+                        {currentCategoryAvg ? `${Math.round(currentCategoryAvg * 1000) / 1000}s` : 'No records'}
                     </Segment>
                 </Grid.Column>
             </Grid>
@@ -274,7 +269,7 @@ class Training extends Component {
 
 Training.propTypes = {
     onToggleLoader: PropTypes .func .isRequired,
-    tests:          PropTypes .bool .isRequired
+    debugging:      PropTypes .bool .isRequired
 };
 
 export default Training;

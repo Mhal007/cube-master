@@ -289,7 +289,7 @@ export const OLL = [{
     category: 'OLL',
     image: 'oll_42.png',
     ref: 42,
-    scramble: "L F2R' F' RF' L'",
+    scramble: "L F2 R' F' R F' L' U2",
     solution: "LFR' FRF2L'",
     type: "Letter 'S'"
 }, {
@@ -398,152 +398,152 @@ export const OLL = [{
     solution: "(RUR' U') r (R' URU' r')",
     type: "Letter 'H'"
 }];
-/*
+
 export const PLL = [{
     category: 'PLL',
     image: 'pll_1.png',
     ref: 1,
-    scramble: "RU2 R' U' RUR' U' RU' R' U'",
-    solution: "RU2 R' U' RUR' U' RU' R'",
+    scramble: "x' (U L' U R2 U') (L U R2 U2)",
+    solution: "x' (R' D R') U2 (R D' R' U2 R2)",
     type: 'A'
 }, {
     category: 'PLL',
     image: 'pll_2.png',
     ref: 2,
-    scramble: "RU2 R2 U' R2U' R2U2R",
-    solution: "(RU2 R2 U') (R2U') (R2U2R)",
+    scramble: "x' (U' R U' L2U) (R' U' L2 U2)",
+    solution: "x' (L D' L) U2 (L' D L) U2 L2",
     type: 'A'
 }, {
     category: 'PLL',
     image: 'pll_3.png',
     ref: 3,
-    scramble: "x' (RUR' DRU' R' D' F)",
-    solution: "x' (RU' R' DRUR' D')",
-    type: 'cross'
+    scramble: "x' (R U' R' D R U R' D') (R U R' D R U' R' D')",
+    solution: "x' (R U' R' D R U R' D') (R U R' D R U' R' D')",
+    type: 'E'
 }, {
     category: 'PLL',
     image: 'pll_4.png',
     ref: 4,
-    scramble: "RU2RDR' U2RD' R2 U2",
-    solution: "R2D' RU2R'DRU2R",
-    type: 'cross'
+    scramble: "(R' URU' R2) y' (R' U' RU) (BRB' R' B2U')",
+    solution: "(R' URU' R2) y' (R' U' RU) (BRB' R' B2U')",
+    type: 'E'
 }, {
     category: 'PLL',
     image: 'pll_5.png',
     ref: 5,
-    scramble: "x' (RU' R' DRUR' D')",
-    solution: "x' (RUR' DRU' R' D')",
-    type: 'cross'
+    scramble: "(M2 U') (M2 U2) (M2 U') M2",
+    solution: "(M2 U') (M2 U2) (M2 U') M2",
+    type: 'H'
 }, {
     category: 'PLL',
     image: 'pll_6.png',
     ref: 6,
-    scramble: "RUR' URU2R' U",
-    solution: "L' U' LU' L' U2L",
-    type: 'cross'
+    scramble: "(R' UR' U') (R' U') (R' U R U R2)",
+    solution: "(R2 U') (R' U' RU) (R U R U' R)",
+    type: 'U'
 }, {
     category: 'PLL',
     image: 'pll_7.png',
     ref: 7,
-    scramble: "L' U' LU' L' U2LU'",
-    solution: "RUR' URU2R'",
-    type: 'cross'
+    scramble: "(R2 U') (R' U' RU) (R U R U' R)",
+    solution: "(R' UR' U') (R' U') (R' U R U R2)",
+    type: 'U'
 }, {
     category: 'PLL',
     image: 'pll_8.png',
     ref: 8,
-    scramble: "FR' F' RUR2B' R' BU' R'",
-    solution: "(RU2R2FR) (F' U2R' FRF')",
-    type: 'dot'
+    scramble: "L U' R' UL' U2 R U' R' U2 R x2",
+    solution: "B2 (R' U' R) B2 (L' D L' D') L2",
+    type: 'J'
 }, {
     category: 'PLL',
     image: 'pll_9.png',
     ref: 9,
-    scramble: "FR' F' RU2FR' F' RU' RU' R' U2",
-    solution: "LF' L' FU2FU' RU' R' F'",
-    type: 'dot'
+    scramble: "(R' U L U' R) (U2 L' U L U2 L') x2",
+    solution: "B2 (L U L') B2 (R D' R D) R2",
+    type: 'J'
 }, {
     category: 'PLL',
     image: 'pll_10.png',
     ref: 10,
-    scramble: "FR' F' RU2R d' RU' R' F' U'",
-    solution: "(RU2R2FRF' U2) M' URU' L'",
-    type: 'dot'
+    scramble: "(R U R' U') (R' F R2 U') (R' U' R U R' F')",
+    solution: "(R U R' U') (R' F R2 U') (R' U' R U R' F')",
+    type: 'T'
 }, {
     category: 'PLL',
     image: 'pll_11.png',
     ref: 11,
-    scramble: "RU2R2FRF' U2R' FRF' U2",
-    solution: "(FRUR' U' F') (fRUR' U' f')",
-    type: 'dot'
+    scramble: "(L' U L' U') y'(R' F') (R2 U' R' U R' F R F) y",
+    solution: "(L' U L' U') y'(R' F') (R2 U' R' U R' F R F)",
+    type: 'V'
 }, {
     category: 'PLL',
     image: 'pll_12.png',
     ref: 12,
-    scramble: "R' F' U2F2URU' R' F' U2R",
-    solution: "R' U2FRUR' U' F2U2FR",
-    type: 'dot'
+    scramble: "(L U2 L' U2) (L F' L' U' LU) (L F L2 U)",
+    solution: "(L U2 L' U2) (L F' L' U' LU) (L F L2 U)",
+    type: 'R'
 }, {
     category: 'PLL',
     image: 'pll_13.png',
     ref: 13,
-    scramble: "MU' LF2L' U' RU' R2 r",
-    solution: "MUR' F2RUL' U L2 l'",
-    type: 'dot'
+    scramble: "(R' U2 R U2) (R' F R U R' U') (R' F' R2 U')",
+    solution: "(R' U2 R U2) (R' F R U R' U') (R' F' R2 U')",
+    type: 'R'
 }, {
     category: 'PLL',
     image: 'pll_14.png',
     ref: 14,
-    scramble: "MUR' F2RUL' U L2 l'",
-    solution: "MU' LF2L' U' RU' R2 r",
-    type: 'dot'
+    scramble: "(L U L' B2) z' (R' U L' U' L) (U' R B2) z",
+    solution: "z x' (U2 r' U R' U R U' r U2) y (L F' L') x",
+    type: 'G'
 }, {
     category: 'PLL',
     image: 'pll_15.png',
     ref: 15,
-    scramble: "(MUMUMUMU) (M' UM' UM' UM' U)",
-    solution: "M (URUR' U') M2 (U RU' r')",
-    type: 'dot'
+    scramble: "(R' U' R B2) z (L U' R U R') (U r' U2) z' x",
+    solution: "z' x' (U2 l U' LU' L' U l' U2) y' (R' F R) x",
+    type: 'G'
 }, {
     category: 'PLL',
     image: 'pll_16.png',
     ref: 16,
-    scramble: "(R' FRUR' U') (F' UR)",
-    solution: "R' U' FURU' R' F' R",
-    type: "Letter 'P'"
+    scramble: "z' (U2 l U' LU' L' U l' U2) y' (R' F R) x",
+    solution: "(R' U' R B2) z (L U' R U R') (U r' U2) z' x",
+    type: 'G'
 }, {
     category: 'PLL',
     image: 'pll_17.png',
     ref: 17,
-    scramble: "(L F' L' U' L U) (F U' L')",
-    solution: "LUF' U' L' ULFL'",
-    type: "Letter 'P'"
+    scramble: "z (U2 r' U R' U R U' r U2) y (L F' L') x",
+    solution: "(L U L' B2) z' (R' U L' U' L) (U' R B2) z",
+    type: 'G'
 }, {
     category: 'PLL',
     image: 'pll_18.png',
     ref: 18,
-    scramble: "F (RUR' U') F'",
-    solution: "FURU' R' F'",
-    type: "Letter 'P'"
+    scramble: "(U R' U' R U') (R U R U' R' U) (R U R2 U' R' U)",
+    solution: "(U R' U' R U') (R U R U' R' U) (R U R2 U' R' U)",
+    type: "Z"
 }, {
     category: 'PLL',
     image: 'pll_19.png',
     ref: 19,
-    scramble: "F' (L' U' LU) F",
-    solution: "F' U' L' ULF",
-    type: "Letter 'P'"
+    scramble: "L U' R U2 L' U R') (L U' R U2 L' U R') U'",
+    solution: "L U' R U2 L' U R') (L U' R U2 L' U R') U'",
+    type: "N"
 }, {
     category: 'PLL',
     image: 'pll_20.png',
     ref: 20,
-    scramble: "B' RBR' U' R' U' RUR' URU2",
-    solution: "(L' U' LU' L' U) (LULF' L' F)",
-    type: "Letter 'W'"
+    scramble: "(R' UL' U2 R U' L) (R' UL' U2 R U' L) U",
+    solution: "(R' UL' U2 R U' L) (R' UL' U2 R U' L) U",
+    type: "N"
 }, {
     category: 'PLL',
     image: 'pll_21.png',
     ref: 21,
-    scramble: "FR' F' RURUR' U' RU' R'",
-    solution: "(RUR' URU') (R' U' R' FRF')",
-    type: "Letter 'W'"
-}];*/
+    scramble: "(F R U' R' U' R U R' F') (R U R' U') (R' F R F')",
+    solution: "(F R U' R' U' R U R' F') (R U R' U') (R' F R F')",
+    type: "Y"
+}];

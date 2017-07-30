@@ -46,10 +46,10 @@ export default class Container extends Component {
                     {isVisibleLoader && <Loader content='Loading' />}
 
                     <main>
-                        {(currentTab === 'training' || currentTab === 'tests') && (
+                        {(currentTab === 'training' || currentTab === 'debugging') && (
                             <Training
                                 onToggleLoader = {onToggleLoader}
-                                tests          = {currentTab === 'tests'}
+                                debugging      = {currentTab === 'debugging'}
                             />
                         )}
                         {currentTab === 'results'  && (

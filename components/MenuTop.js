@@ -7,23 +7,23 @@ const MenuTop = ({
     onChangeTab
 }) =>
     <Menu inverted icon='labeled'>
-        <Menu.Item active={currentTab === 'home'}     color="green"  name="home"     onClick={onChangeTab}>
+        <Menu.Item active={currentTab === 'home'}     color="green"   name="home"      onClick={onChangeTab}>
             <Icon name='home' />
             Home
         </Menu.Item>
-        <Menu.Item active={currentTab === 'training'} color="blue"   name="training" onClick={onChangeTab}>
+        <Menu.Item active={currentTab === 'training'}  color="blue"   name="training"  onClick={onChangeTab}>
             <Icon name='book' />
             Training
         </Menu.Item>
-        <Menu.Item active={currentTab === 'tests'}    color="brown"  name="tests"    onClick={onChangeTab}>
+        <Menu.Item active={currentTab === 'debugging'} color="brown"  name="debugging" onClick={onChangeTab}>
             <Icon name='pencil' />
-            Tests
+            Debugging
         </Menu.Item>
-        <Menu.Item active={currentTab === 'results'}  color="orange" name="results"  onClick={onChangeTab}>
+        <Menu.Item active={currentTab === 'results'}   color="orange" name="results"   onClick={onChangeTab}>
             <Icon name='lightning' />
             Results
         </Menu.Item>
-        <Menu.Item active={currentTab === 'about'}    color="teal"   name="about"    onClick={onChangeTab}>
+        <Menu.Item active={currentTab === 'about'}     color="teal"   name="about"     onClick={onChangeTab}>
             <Icon name='idea' />
             About
         </Menu.Item>
