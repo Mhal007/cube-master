@@ -299,16 +299,16 @@ export const OLL = [{
     category: 'OLL',
     image: 'oll_38.png',
     ref: 38,
-    scramble: "R' F' LF' L' F2R",
-    solution: "R' F2LFL' FR",
+    scramble: "R' F' LF' L' F2R U2",
+    solution: "r' U2RUR'U r",
     type: "Square"
 }, {
     active: true,
     category: 'OLL',
     image: 'oll_39.png',
     ref: 39,
-    scramble: "LFR' FRF2L'",
-    solution: "L F2R' F' RF' L'",
+    scramble: "LFR' FRF2L' U2",
+    solution: "l U2L'U'LU' l'",
     type: "Square"
 }, {
     active: true,
@@ -332,15 +332,15 @@ export const OLL = [{
     image: 'oll_42.png',
     ref: 42,
     scramble: "L F2 R' F' R F' L' U2",
-    solution: "LFR' FRF2L'",
+    solution: "l UL'ULU2 l'",
     type: "Letter 'S'"
 }, {
     active: true,
     category: 'OLL',
     image: 'oll_43.png',
     ref: 43,
-    scramble: "R' F2LFL' FR",
-    solution: "R' F' LF' L' F2R",
+    scramble: "R' F2LFL' FR U2",
+    solution: "r' U'RU'R'U2 r",
     type: "Letter 'S'"
 }, {
     active: true,

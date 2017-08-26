@@ -156,25 +156,29 @@ class Training extends Component {
     };
 
     onKeyDown (event) {
-        event.preventDefault();
         const blocked = this.state.blocked;
 
         if (event.key === 'r') {
+            event.preventDefault();
             this.onChangeAlgorithm();
         } else if (event.key === 'Shift' && !blocked.shift) {
+            event.preventDefault();
             this.setState({
                 blocked: {...blocked, shift: true},
                 isVisibleSolution: true
             });
         }
         else if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {
+            event.preventDefault();
             this.onGoToNextStatus('down');
             this.setState({blocked: {...blocked, space:   true}});
         }
         else if (event.key === 'Control' && !blocked.control) {
+            event.preventDefault();
             this.setState({blocked: {...blocked, control: true}});
         }
         else if ((event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Escape') && !blocked.delete) {
+            event.preventDefault();
             this.setState({blocked: {...blocked, delete:  true}});
         }
     }
