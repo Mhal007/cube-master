@@ -347,16 +347,16 @@ export const OLL = [{
     category: 'OLL',
     image: 'oll_44.png',
     ref: 44,
-    scramble: "MU' RU2R' U' RU' R2rU2",
-    solution: "R' L2FL' FLF2L' FL' R",
+    scramble: "MU' RU2R' U' RU' R2rU",
+    solution: "F'L'U'LUF U FRUR'U'F'",
     type: "Letter 'S'"
 }, {
     active: true,
     category: 'OLL',
     image: 'oll_45.png',
     ref: 45,
-    scramble: "M' UR' U2RUR' UR2 r'",
-    solution: "LR2F' RF' R' F2RF' L' R",
+    scramble: "M' UR' U2RUR' UR2 r' U",
+    solution: "FRUR'U'F' U FRUR'U'F'",
     type: "Letter 'S'"
 }, {
     active: true,
