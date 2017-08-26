@@ -1,4 +1,5 @@
 export const OLL = [{
+    active: true,
     category: 'OLL',
     image: 'oll_1.png',
     ref: 1,
@@ -6,6 +7,7 @@ export const OLL = [{
     solution: "RU2 R' U' RUR' U' RU' R'",
     type: 'cross'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_2.png',
     ref: 2,
@@ -13,6 +15,7 @@ export const OLL = [{
     solution: "(RU2 R2 U') (R2U') (R2U2R)",
     type: 'cross'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_3.png',
     ref: 3,
@@ -20,6 +23,7 @@ export const OLL = [{
     solution: "x' (RU' R' DRUR' D')",
     type: 'cross'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_4.png',
     ref: 4,
@@ -27,6 +31,7 @@ export const OLL = [{
     solution: "R2D' RU2R'DRU2R",
     type: 'cross'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_5.png',
     ref: 5,
@@ -34,6 +39,7 @@ export const OLL = [{
     solution: "x' (RUR' DRU' R' D')",
     type: 'cross'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_6.png',
     ref: 6,
@@ -41,6 +47,7 @@ export const OLL = [{
     solution: "L' U' LU' L' U2L",
     type: 'cross'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_7.png',
     ref: 7,
@@ -48,6 +55,7 @@ export const OLL = [{
     solution: "RUR' URU2R'",
     type: 'cross'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_8.png',
     ref: 8,
@@ -55,6 +63,7 @@ export const OLL = [{
     solution: "(RU2R2FR) (F' U2R' FRF')",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_9.png',
     ref: 9,
@@ -62,6 +71,7 @@ export const OLL = [{
     solution: "LF' L' FU2FU' RU' R' F'",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_10.png',
     ref: 10,
@@ -69,6 +79,7 @@ export const OLL = [{
     solution: "(RU2R2FRF' U2) M' URU' L'",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_11.png',
     ref: 11,
@@ -76,6 +87,7 @@ export const OLL = [{
     solution: "(FRUR' U' F') (fRUR' U' f')",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_12.png',
     ref: 12,
@@ -83,6 +95,7 @@ export const OLL = [{
     solution: "R' U2FRUR' U' F2U2FR",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_13.png',
     ref: 13,
@@ -90,6 +103,7 @@ export const OLL = [{
     solution: "MUR' F2RUL' U L2 l'",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_14.png',
     ref: 14,
@@ -97,6 +111,7 @@ export const OLL = [{
     solution: "MU' LF2L' U' RU' R2 r",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_15.png',
     ref: 15,
@@ -104,6 +119,7 @@ export const OLL = [{
     solution: "M (URUR' U') M2 (U RU' r')",
     type: 'dot'
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_16.png',
     ref: 16,
@@ -111,6 +127,7 @@ export const OLL = [{
     solution: "R' U' FURU' R' F' R",
     type: "Letter 'P'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_17.png',
     ref: 17,
@@ -118,6 +135,7 @@ export const OLL = [{
     solution: "LUF' U' L' ULFL'",
     type: "Letter 'P'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_18.png',
     ref: 18,
@@ -125,6 +143,7 @@ export const OLL = [{
     solution: "FURU' R' F'",
     type: "Letter 'P'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_19.png',
     ref: 19,
@@ -132,6 +151,7 @@ export const OLL = [{
     solution: "F' U' L' ULF",
     type: "Letter 'P'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_20.png',
     ref: 20,
@@ -139,6 +159,7 @@ export const OLL = [{
     solution: "(L' U' LU' L' U) (LULF' L' F)",
     type: "Letter 'W'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_21.png',
     ref: 21,
@@ -146,6 +167,7 @@ export const OLL = [{
     solution: "(RUR' URU') (R' U' R' FRF')",
     type: "Letter 'W'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_22.png',
     ref: 22,
@@ -153,6 +175,7 @@ export const OLL = [{
     solution: "(R' F' LF') ( L' FLF' L' F2R)",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_23.png',
     ref: 23,
@@ -160,6 +183,7 @@ export const OLL = [{
     solution: "LFR' FRF' R' FRF2L'",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_24.png',
     ref: 24,
@@ -167,6 +191,7 @@ export const OLL = [{
     solution: "F' (L' U' LU) (L' U' LU) F",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_25.png',
     ref: 25,
@@ -174,6 +199,7 @@ export const OLL = [{
     solution: "F (RUR' U') (RUR' U') F'",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_26.png',
     ref: 26,
@@ -181,6 +207,7 @@ export const OLL = [{
     solution: "(r' U) (r2U') (r2U') (r2Ur')",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_27.png',
     ref: 27,
@@ -188,6 +215,7 @@ export const OLL = [{
     solution: "(lU') (l2U) (l2U) (l2U' l)",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_28.png',
     ref: 28,
@@ -195,6 +223,7 @@ export const OLL = [{
     solution: "L' U' L y' LF' L' ULFL'",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_29.png',
     ref: 29,
@@ -202,6 +231,7 @@ export const OLL = [{
     solution: "RUR' y R' FRU' R' F' R",
     type: "Dash"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_30.png',
     ref: 30,
@@ -209,6 +239,7 @@ export const OLL = [{
     solution: "(R' U' RU F) x' (R U' R' UD')",
     type: "Letter 'C'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_31.png',
     ref: 31,
@@ -216,6 +247,7 @@ export const OLL = [{
     solution: "(R' U' R' F) (RF' U) R",
     type: "Letter 'C'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_32.png',
     ref: 32,
@@ -223,6 +255,7 @@ export const OLL = [{
     solution: "(RUR' U') (R' FRF')",
     type: "Letter 'T'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_33.png',
     ref: 33,
@@ -230,6 +263,7 @@ export const OLL = [{
     solution: "F (RUR' U') F'",
     type: "Letter 'T'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_34.png',
     ref: 34,
@@ -237,6 +271,7 @@ export const OLL = [{
     solution: "(RU2R2U' RU' R' U2) (F R F')",
     type: "Letter 'I'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_35.png',
     ref: 35,
@@ -244,6 +279,7 @@ export const OLL = [{
     solution: "F (URU' R' URU' R') F'",
     type: "Letter 'I'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_36.png',
     ref: 36,
@@ -251,6 +287,7 @@ export const OLL = [{
     solution: "(L' B' LU') (R' URU' R' URL' BL)",
     type: "Letter 'I'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_37.png',
     ref: 37,
@@ -258,6 +295,7 @@ export const OLL = [{
     solution: "(R' U' RU' R' U) y' (R' URB)",
     type: "Letter 'I'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_38.png',
     ref: 38,
@@ -265,6 +303,7 @@ export const OLL = [{
     solution: "R' F2LFL' FR",
     type: "Square"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_39.png',
     ref: 39,
@@ -272,6 +311,7 @@ export const OLL = [{
     solution: "L F2R' F' RF' L'",
     type: "Square"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_40.png',
     ref: 40,
@@ -279,6 +319,7 @@ export const OLL = [{
     solution: "x' (R' F2R2U' R' UR' F2R)",
     type: "Square"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_41.png',
     ref: 41,
@@ -286,6 +327,7 @@ export const OLL = [{
     solution: "FR' F' RURU' R'",
     type: "Square"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_42.png',
     ref: 42,
@@ -293,6 +335,7 @@ export const OLL = [{
     solution: "LFR' FRF2L'",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_43.png',
     ref: 43,
@@ -300,6 +343,7 @@ export const OLL = [{
     solution: "R' F' LF' L' F2R",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_44.png',
     ref: 44,
@@ -307,6 +351,7 @@ export const OLL = [{
     solution: "R' L2FL' FLF2L' FL' R",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_45.png',
     ref: 45,
@@ -314,6 +359,7 @@ export const OLL = [{
     solution: "LR2F' RF' R' F2RF' L' R",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_46.png',
     ref: 46,
@@ -321,6 +367,7 @@ export const OLL = [{
     solution: "F' LF' L2ULUL' U' LF2",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_47.png',
     ref: 47,
@@ -328,6 +375,7 @@ export const OLL = [{
     solution: "FR' FR2U' R' U' RUR' F2",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_48.png',
     ref: 48,
@@ -335,6 +383,7 @@ export const OLL = [{
     solution: "(R' FRF' R' FRF') (RU R' U' RUR')",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_49.png',
     ref: 49,
@@ -342,6 +391,7 @@ export const OLL = [{
     solution: "(LF' L' FLF' L' F) (L' U' L UL' U' L)",
     type: "Letter 'S'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_50.png',
     ref: 50,
@@ -349,6 +399,7 @@ export const OLL = [{
     solution: "(L F' L' U' L U) (F U' L')",
     type: "Lightning"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_51.png',
     ref: 51,
@@ -356,6 +407,7 @@ export const OLL = [{
     solution: "(R' FRUR' U') (F' UR)",
     type: "Lightning"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_52.png',
     ref: 52,
@@ -363,6 +415,7 @@ export const OLL = [{
     solution: "(LF' L' U' LFL') y' (R' UR)",
     type: "Letter 'L'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_53.png',
     ref: 53,
@@ -370,6 +423,7 @@ export const OLL = [{
     solution: "(R' FRUR' F' R) y (LU' L')",
     type: "Letter 'L'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_54.png',
     ref: 54,
@@ -377,6 +431,7 @@ export const OLL = [{
     solution: "(L' B' L) (R' U' RU) (L' BL)",
     type: "Letter 'L'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_55.png',
     ref: 55,
@@ -384,6 +439,7 @@ export const OLL = [{
     solution: "(RBR') (LUL' U') (RB' R')",
     type: "Letter 'L'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_56.png',
     ref: 56,
@@ -391,6 +447,7 @@ export const OLL = [{
     solution: "(RL' BLR') U2 (RL' BLR')",
     type: "Letter 'F'"
 }, {
+    active: true,
     category: 'OLL',
     image: 'oll_57.png',
     ref: 57,
@@ -400,6 +457,7 @@ export const OLL = [{
 }];
 
 export const PLL = [{
+    active: true,
     category: 'PLL',
     image: 'pll_1.png',
     ref: 1,
@@ -407,6 +465,7 @@ export const PLL = [{
     solution: "x' (R' D R') U2 (R D' R' U2 R2)",
     type: 'A'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_2.png',
     ref: 2,
@@ -414,6 +473,7 @@ export const PLL = [{
     solution: "x' (L D' L) U2 (L' D L) U2 L2",
     type: 'A'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_3.png',
     ref: 3,
@@ -421,6 +481,7 @@ export const PLL = [{
     solution: "x' (R U' R' D R U R' D') (R U R' D R U' R' D')",
     type: 'E'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_4.png',
     ref: 4,
@@ -428,6 +489,7 @@ export const PLL = [{
     solution: "(R' URU' R2) y' (R' U' RU) (BRB' R' B2U')",
     type: 'E'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_5.png',
     ref: 5,
@@ -435,6 +497,7 @@ export const PLL = [{
     solution: "(M2 U') (M2 U2) (M2 U') M2",
     type: 'H'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_6.png',
     ref: 6,
@@ -442,6 +505,7 @@ export const PLL = [{
     solution: "(R2 U') (R' U' RU) (R U R U' R)",
     type: 'U'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_7.png',
     ref: 7,
@@ -449,6 +513,7 @@ export const PLL = [{
     solution: "(R' UR' U') (R' U') (R' U R U R2)",
     type: 'U'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_8.png',
     ref: 8,
@@ -456,6 +521,7 @@ export const PLL = [{
     solution: "B2 (R' U' R) B2 (L' D L' D') L2",
     type: 'J'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_9.png',
     ref: 9,
@@ -463,6 +529,7 @@ export const PLL = [{
     solution: "B2 (L U L') B2 (R D' R D) R2",
     type: 'J'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_10.png',
     ref: 10,
@@ -470,6 +537,7 @@ export const PLL = [{
     solution: "(R U R' U') (R' F R2 U') (R' U' R U R' F')",
     type: 'T'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_11.png',
     ref: 11,
@@ -477,6 +545,7 @@ export const PLL = [{
     solution: "(L' U L' U') y'(R' F') (R2 U' R' U R' F R F)",
     type: 'V'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_12.png',
     ref: 12,
@@ -484,6 +553,7 @@ export const PLL = [{
     solution: "(L U2 L' U2) (L F' L' U' LU) (L F L2 U)",
     type: 'R'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_13.png',
     ref: 13,
@@ -491,6 +561,7 @@ export const PLL = [{
     solution: "(R' U2 R U2) (R' F R U R' U') (R' F' R2 U')",
     type: 'R'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_14.png',
     ref: 14,
@@ -498,6 +569,7 @@ export const PLL = [{
     solution: "z x' (U2 r' U R' U R U' r U2) y (L F' L') x",
     type: 'G'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_15.png',
     ref: 15,
@@ -505,6 +577,7 @@ export const PLL = [{
     solution: "z' x' (U2 l U' LU' L' U l' U2) y' (R' F R) x",
     type: 'G'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_16.png',
     ref: 16,
@@ -512,6 +585,7 @@ export const PLL = [{
     solution: "(R' U' R B2) z (L U' R U R') (U r' U2) z' x",
     type: 'G'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_17.png',
     ref: 17,
@@ -519,6 +593,7 @@ export const PLL = [{
     solution: "(L U L' B2) z' (R' U L' U' L) (U' R B2) z",
     type: 'G'
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_18.png',
     ref: 18,
@@ -526,6 +601,7 @@ export const PLL = [{
     solution: "(U R' U' R U') (R U R U' R' U) (R U R2 U' R' U)",
     type: "Z"
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_19.png',
     ref: 19,
@@ -533,6 +609,7 @@ export const PLL = [{
     solution: "L U' R U2 L' U R') (L U' R U2 L' U R') U'",
     type: "N"
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_20.png',
     ref: 20,
@@ -540,6 +617,7 @@ export const PLL = [{
     solution: "(R' UL' U2 R U' L) (R' UL' U2 R U' L) U",
     type: "N"
 }, {
+    active: true,
     category: 'PLL',
     image: 'pll_21.png',
     ref: 21,

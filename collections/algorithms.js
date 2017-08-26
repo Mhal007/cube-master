@@ -13,7 +13,13 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    'algorithms.insert'({
+    'algorithms.toggleActive' (algId, active) {
+        check(active, Boolean);
+        check(algId,  String);
+
+        Algorithms.update(algId, {$set: {active}});
+    },
+    'algorithms.insert' ({
         category,
         image,
         ref,
@@ -43,12 +49,12 @@ Meteor.methods({
             type
         });
     },
-    'algorithms.search'(text) {
+    'algorithms.search' (text) {
         check(text, String);
 
         return Algorithms.find();
     },
-    'algorithms.remove'(algorithmId) {
+    'algorithms.remove' (algorithmId) {
         check(algorithmId, String);
 
         /*const algorithm = Algorithms.findOne(algorithmId);

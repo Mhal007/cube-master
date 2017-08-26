@@ -7,6 +7,7 @@ import {Menu}      from 'semantic-ui-react'
 import {Segment}   from 'semantic-ui-react'
 
 import TrainingMain from './TrainingMain.js';
+import AlgSettings  from './AlgSettings.js';
 
 import {Algorithms} from '../collections/algorithms.js';
 import {Results}    from '../collections/results.js';
@@ -37,6 +38,7 @@ class Training extends Component {
             currentCategoryAvg:  0,
             isVisibleSolution:   false,
             results:             [],
+            settingsOpened:      true,
             timerCurrentValue:   0,
             timerStartValue:     0,
             timerStatus:         'resetted'
@@ -110,12 +112,14 @@ class Training extends Component {
     onChangeAlgorithm ({algorithms, currentAlgorithmId, currentCategory} = this.state) {
         this.onReset();
 
-        let newId = Math.floor(Math.random() * algorithms.length);
+        const active = algorithms.filter(alg => alg.active);
+
+        let newId = Math.floor(Math.random() * active.length);
         while (newId === currentAlgorithmId) {
-            newId = Math.floor(Math.random() * algorithms.length);
+            newId = Math.floor(Math.random() * active.length);
         }
 
-        const newAlgorithm = algorithms[newId];
+        const newAlgorithm = active[newId];
 
         this.setState({currentAlgorithm: newAlgorithm, currentAlgorithmId: newAlgorithm._id});
         this.countAverages({algRef: newAlgorithm.ref, currentCategory});
@@ -139,7 +143,20 @@ class Training extends Component {
 
     getCurrentAlgorithm = () => this.state.currentAlgorithm;
 
+    onActiveToggle = algorithm => {
+        Meteor.call('algorithms.toggleActive', algorithm._id, !algorithm.active);
+        const currentAlgs = this.state.algorithms;
+
+        currentAlgs.map(alg => {
+            if (alg._id === algorithm._id) {
+                alg.active = !alg.active;
+            }
+        });
+        this.setState({algorithms: currentAlgs});
+    };
+
     onKeyDown (event) {
+        event.preventDefault();
         const blocked = this.state.blocked;
 
         if (event.key === 'r') {
@@ -222,8 +239,10 @@ class Training extends Component {
         const {
             onChangeAlgorithm,
             onChangeCategory,
+            onActiveToggle,
 
             state: {
+                algorithms,
                 currentAlgorithm,
                 currentAlgorithmAvg,
                 currentCategory,
@@ -234,35 +253,41 @@ class Training extends Component {
         } = this;
 
         return (
-            <Grid>
-                <Grid.Column width={4}>
-                    <Menu fluid vertical tabular>
-                        <Menu.Item name='OLL'   active={currentCategory === 'OLL'}   onClick={onChangeCategory} />
-                        <Menu.Item name='PLL'   active={currentCategory === 'PLL'}   onClick={onChangeCategory} />
-                        <Menu.Item name='3x3x3' active={currentCategory === '3x3x3'} onClick={onChangeCategory} />
-                    </Menu>
-                </Grid.Column>
-                <Grid.Column width={8} textAlign='center'>
-                    <TrainingMain
-                        currentAlgorithm  = {currentAlgorithm}
-                        isVisibleSolution = {isVisibleSolution}
-                        onChangeAlgorithm = {onChangeAlgorithm}
-                        timerCurrentValue = {timerCurrentValue}
-                    />
-                </Grid.Column>
-                <Grid.Column width={4}>
-                    <Segment>
-                        Average for this algorithm:
-                        <br />
-                        {currentAlgorithmAvg ? `${Math.round(currentAlgorithmAvg * 1000) / 1000}s` : 'No records'}
+            <div>
+                <Grid>
+                    <Grid.Column width={4}>
+                        <Menu fluid vertical tabular>
+                            <Menu.Item name='OLL'   active={currentCategory === 'OLL'}   onClick={onChangeCategory} />
+                            <Menu.Item name='PLL'   active={currentCategory === 'PLL'}   onClick={onChangeCategory} />
+                            <Menu.Item name='3x3x3' active={currentCategory === '3x3x3'} onClick={onChangeCategory} />
+                        </Menu>
+                    </Grid.Column>
+                    <Grid.Column width={8} textAlign='center'>
+                        <TrainingMain
+                            currentAlgorithm  = {currentAlgorithm}
+                            isVisibleSolution = {isVisibleSolution}
+                            onChangeAlgorithm = {onChangeAlgorithm}
+                            timerCurrentValue = {timerCurrentValue}
+                        />
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        <Segment>
+                            Average for this algorithm:
+                            <br />
+                            {currentAlgorithmAvg ? `${Math.round(currentAlgorithmAvg * 1000) / 1000}s` : 'No records'}
 
-                        <br /><br />
-                        Average for all {this.state.currentCategory} algorithms:
-                        <br />
-                        {currentCategoryAvg ? `${Math.round(currentCategoryAvg * 1000) / 1000}s` : 'No records'}
-                    </Segment>
-                </Grid.Column>
-            </Grid>
+                            <br /><br />
+                            Average for all {this.state.currentCategory} algorithms:
+                            <br />
+                            {currentCategoryAvg ? `${Math.round(currentCategoryAvg * 1000) / 1000}s` : 'No records'}
+                        </Segment>
+                    </Grid.Column>
+                </Grid>
+
+                {this.state.settingsOpened && (
+                    <AlgSettings algorithms={algorithms} onActiveToggle={onActiveToggle} />
+                )}
+            </div>
         );
     }
 }

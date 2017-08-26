@@ -1,0 +1,24 @@
+@imgSize: 76px;
+@borderSize: 6px;
+
+.alg-settings {
+  padding: 4em 1em;
+
+  .alg {
+    border: @borderSize solid orangered;
+    cursor: pointer;
+    display: inline-block;
+    height: @imgSize + 2 * @borderSize;
+    margin: 1em;
+    width: @imgSize + 2 * @borderSize;
+
+    &.active {
+      border: @borderSize solid lightgreen;
+    }
+
+    img {
+      width: @imgSize;
+      height: @imgSize;
+    }
+  }
+}
