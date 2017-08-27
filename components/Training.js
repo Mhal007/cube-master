@@ -4,13 +4,15 @@ import PropTypes   from 'prop-types';
 import {Component} from 'react';
 import {Grid}      from 'semantic-ui-react'
 import {Menu}      from 'semantic-ui-react'
-import {Segment}   from 'semantic-ui-react'
 
 import TrainingMain from './TrainingMain.js';
 import AlgSettings  from './AlgSettings.js';
+import Averages     from './Averages.js';
 
 import {Algorithms} from '../collections/algorithms.js';
 import {Results}    from '../collections/results.js';
+
+import {getRandomScramble} from '../lib/global-helpers.js';
 
 class Training extends Component {
     constructor (props) {
@@ -44,17 +46,16 @@ class Training extends Component {
             timerStatus:         'resetted'
         };
 
-        this.countAverages       = this.countAverages.bind(this);
-        this.getCurrentAlgorithm = this.getCurrentAlgorithm.bind(this);
-        this.onChangeAlgorithm   = this.onChangeAlgorithm.bind(this);
-        this.onChangeCategory    = this.onChangeCategory.bind(this);
-        this.onGoToNextStatus    = this.onGoToNextStatus.bind(this);
-        this.onKeyDown           = this.onKeyDown.bind(this);
-        this.onKeyUp             = this.onKeyUp.bind(this);
-        this.onReset             = this.onReset.bind(this);
-        this.onActivateAll       = this.onActivateAll.bind(this);
-        this.onDeactivateAll     = this.onDeactivateAll.bind(this);
-        this.updateTimerTime     = this.updateTimerTime.bind(this);
+        this.countAverages     = this.countAverages.bind(this);
+        this.onChangeAlgorithm = this.onChangeAlgorithm.bind(this);
+        this.onChangeCategory  = this.onChangeCategory.bind(this);
+        this.onGoToNextStatus  = this.onGoToNextStatus.bind(this);
+        this.onKeyDown         = this.onKeyDown.bind(this);
+        this.onKeyUp           = this.onKeyUp.bind(this);
+        this.onReset           = this.onReset.bind(this);
+        this.onActivateAll     = this.onActivateAll.bind(this);
+        this.onDeactivateAll   = this.onDeactivateAll.bind(this);
+        this.updateTimerTime   = this.updateTimerTime.bind(this);
     }
 
     componentDidMount () {
@@ -106,44 +107,51 @@ class Training extends Component {
 
         this.setState({
             results,
-            currentAlgorithmAvg: sumAlg / currentAlg.length / 1000.0 || 0,
-            currentCategoryAvg:  sumCat / currentCat.length / 1000.0 || 0
+            currentAlgorithmAvg: sumAlg / currentAlg.length || 0,
+            currentCategoryAvg:  sumCat / currentCat.length || 0
         });
     }
 
     onChangeAlgorithm ({algorithms, currentAlgorithmId, currentCategory, results} = this.state) {
         this.onReset();
 
-        const active = algorithms.filter(alg => alg.active);
+        let newAlgorithm = {category: currentCategory};
 
-        let newId = Math.floor(Math.random() * active.length);
-        while (newId === currentAlgorithmId) {
-            newId = Math.floor(Math.random() * active.length);
+        if (['OLL', 'PLL'].indexOf(currentCategory) > -1) {
+            const active = algorithms.filter(alg => alg.active);
+
+            let newId = Math.floor(Math.random() * active.length);
+            while (newId === currentAlgorithmId) {
+                newId = Math.floor(Math.random() * active.length);
+            }
+
+            newAlgorithm = Object.assign(newAlgorithm, active[newId]);
+        } else if (currentCategory === '3x3x3') {
+            const scramble = getRandomScramble(12);
+            newAlgorithm = Object.assign(newAlgorithm, {scramble});
         }
-
-        const newAlgorithm = active[newId];
 
         this.setState({currentAlgorithm: newAlgorithm, currentAlgorithmId: newAlgorithm._id});
         this.countAverages({algRef: newAlgorithm.ref, currentCategory, results});
     }
 
-    onChangeCategory = (e, {name}) => {
+    onChangeCategory = category => {
         this.props.onToggleLoader(true);
 
-        const algorithms = Algorithms.find({category: name}).fetch();
-        const results    = Results.find({category: this.state.currentCategory}).fetch();
+        let algsCategory = category;
+        if (category === 'OLL-attack')
+            algsCategory = 'OLL';
+        if (category === 'PLL-attack')
+            algsCategory = 'PLL';
 
-        this.setState({
-            algorithms,
-            currentCategory: name,
-            results
-        });
+        const results = Results.find({category}).fetch();
+        const algorithms = Algorithms.find({category: algsCategory}).fetch();
 
-        this.onChangeAlgorithm({algorithms, currentCategory: name});
+        this.setState({algorithms, currentCategory: category, results});
+        this.onChangeAlgorithm({algorithms, currentCategory: category, results});
+
         this.props.onToggleLoader(false);
     };
-
-    getCurrentAlgorithm = () => this.state.currentAlgorithm;
 
     onActiveToggle = algorithm => {
         Meteor.call('algorithms.toggleActive', algorithm._id, !algorithm.active);
@@ -234,7 +242,7 @@ class Training extends Component {
         }
         else if (timerStatus === 'timer-off' && upOrDown === 'down' && !blocked.space) {
             /* Save time */
-            Meteor.call('results.insert', Object.assign(this.getCurrentAlgorithm(), {
+            Meteor.call('results.insert', Object.assign(this.state.currentAlgorithm, {
                 time: this.state.timerCurrentValue,
                 real: !this.props.debugging
             }));
@@ -271,14 +279,18 @@ class Training extends Component {
             }
         } = this;
 
+        const settingsDisabled = ['OLL', 'PLL'].indexOf(currentCategory) === -1;
+
         return (
             <div>
                 <Grid>
                     <Grid.Column width={4}>
                         <Menu fluid vertical tabular>
-                            <Menu.Item name='OLL'   active={currentCategory === 'OLL'}   onClick={onChangeCategory} />
-                            <Menu.Item name='PLL'   active={currentCategory === 'PLL'}   onClick={onChangeCategory} />
-                            <Menu.Item name='3x3x3' active={currentCategory === '3x3x3'} onClick={onChangeCategory} />
+                            <Menu.Item name='OLL'        active={currentCategory === 'OLL'}        onClick={() => onChangeCategory('OLL')} />
+                            <Menu.Item name='PLL'        active={currentCategory === 'PLL'}        onClick={() => onChangeCategory('PLL')} />
+                            <Menu.Item name='3x3x3'      active={currentCategory === '3x3x3'}      onClick={() => onChangeCategory('3x3x3')} />
+                            <Menu.Item name='OLL Attack' active={currentCategory === 'OLL-attack'} onClick={() => onChangeCategory('OLL-attack')} />
+                            <Menu.Item name='PLL Attack' active={currentCategory === 'PLL-attack'} onClick={() => onChangeCategory('PLL-attack')} />
                         </Menu>
                     </Grid.Column>
                     <Grid.Column width={8} textAlign='center'>
@@ -290,25 +302,21 @@ class Training extends Component {
                         />
                     </Grid.Column>
                     <Grid.Column width={4}>
-                        <Segment>
-                            Average for this algorithm:
-                            <br />
-                            {currentAlgorithmAvg ? `${Math.round(currentAlgorithmAvg * 1000) / 1000}s` : 'No records'}
-
-                            <br /><br />
-                            Average for all {this.state.currentCategory} algorithms:
-                            <br />
-                            {currentCategoryAvg ? `${Math.round(currentCategoryAvg * 1000) / 1000}s` : 'No records'}
-                        </Segment>
+                        <Averages
+                            currentAlgorithmAvg = {currentAlgorithmAvg}
+                            currentCategory     = {currentCategory}
+                            currentCategoryAvg  = {currentCategoryAvg}
+                        />
                     </Grid.Column>
                 </Grid>
 
                 {this.state.settingsOpened && (
                     <AlgSettings
-                        algorithms={algorithms}
-                        onActivateAll={onActivateAll}
-                        onActiveToggle={onActiveToggle}
-                        onDeactivateAll={onDeactivateAll}
+                        algorithms      = {algorithms}
+                        disabled        = {settingsDisabled}
+                        onActivateAll   = {onActivateAll}
+                        onActiveToggle  = {onActiveToggle}
+                        onDeactivateAll = {onDeactivateAll}
                     />
                 )}
             </div>

@@ -8,14 +8,12 @@ const AlgSettings = ({
     onActiveToggle,
     onDeactivateAll
 }) =>
-    <section className="alg-settings">
-        {!disabled && (
-            <div>
-                <button onClick={onActivateAll}>Select all</button>
-                <br /><br /><button onClick={onDeactivateAll}>Unselect all</button>
-                <br /><br />
-            </div>
-        )}
+    <section className={`alg-settings${disabled ? ' disabled' : ''}`}>
+        <div className="controls">
+            <button onClick={onActivateAll}>Select all</button>
+            <br /><br /><button onClick={onDeactivateAll}>Unselect all</button>
+            <br /><br />
+        </div>
         {algorithms.map(alg =>
             <div key={alg._id} className={`${alg.active ? 'active ' : ''}alg`} onClick={() => onActiveToggle(alg)}>
                 <img src={`/images/${alg.image}`} />

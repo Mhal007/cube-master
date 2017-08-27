@@ -10,7 +10,7 @@ const Timer = ({
     <section className="timer">
         {moment(timerCurrentValue).format('mm:ss:SSS')}
 
-        {isVisibleSolution && (
+        {isVisibleSolution && solution && (
             <div>
                 {solution}
             </div>
@@ -20,7 +20,7 @@ const Timer = ({
 
 Timer.propTypes = {
     isVisibleSolution: PropTypes .bool   .isRequired,
-    solution:          PropTypes .string .isRequired,
+    solution:          PropTypes .string,
     timerCurrentValue: PropTypes .number .isRequired
 };
 

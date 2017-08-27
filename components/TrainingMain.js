@@ -15,12 +15,16 @@ const TrainingMain = ({
     timerCurrentValue
 }) =>
     <section>
-        <Segment className="scramble-container">
-            {scramble}
-        </Segment>
-        <Segment className="image-container">
-            <img src={`/images/${image}`} />
-        </Segment>
+        {scramble && (
+            <Segment className="scramble-container">
+                {scramble}
+            </Segment>
+        )}
+        {image && (
+            <Segment className="image-container">
+                <img src={`/images/${image}`} />
+            </Segment>
+        )}
         <Segment className="timer-container">
             <Timer
                 isVisibleSolution = {isVisibleSolution}
@@ -28,11 +32,13 @@ const TrainingMain = ({
                 timerCurrentValue = {timerCurrentValue}
             />
         </Segment>
-        <Segment>
-            <button onClick={() => onChangeAlgorithm()}>
-                Random new alg
-            </button>
-        </Segment>
+        {(image || solution) && (
+            <Segment>
+                <button onClick={() => onChangeAlgorithm()}>
+                    Random new alg
+                </button>
+            </Segment>
+        )}
     </section>
 ;
 
@@ -52,12 +58,12 @@ export default TrainingMain;
 // TODO mobile view
 // TODO new averages
 // TODO +x/-x to average (green/red)
-// TODO list of activated OLLs/PLLs
 // TODO responsive view (UWHD)
 // TODO menu with buttons for: accept, +2, random new, delete
 
 
 // TODO DONE
+// TODO list of activated OLLs/PLLs
 // TODO Averages fix
 // TODO Averages display form change
 // TODO 0s => No records

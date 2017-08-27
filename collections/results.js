@@ -24,13 +24,19 @@ Meteor.methods({
         type
     }) {
         check(category, String);
-        check(image   , String);
         check(real    , Boolean);
-        check(ref     , Number);
-        check(scramble, String);
-        check(solution, String);
         check(time    , Number);
-        check(type    , String);
+
+        if (category === 'OLL' || category === 'PLL' || category === '3x3x3') {
+            check(scramble, String);
+        }
+
+        if (category === 'OLL' || category === 'PLL') {
+            check(image   , String);
+            check(solution, String);
+            check(ref     , Number);
+            check(type    , String);
+        }
 
         // Make sure the user is logged in before inserting a result
         /* if (! Meteor.userId()) {

@@ -4,6 +4,19 @@
 .alg-settings {
   padding: 4em 1em;
 
+  &.disabled {
+    .controls {
+      display: none;
+    }
+
+    .alg, .alg.active {
+      border: none;
+      height: @imgSize;
+      width: @imgSize;
+      margin: 0.5em;
+    }
+  }
+
   .alg {
     border: @borderSize solid orangered;
     cursor: pointer;
