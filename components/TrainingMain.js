@@ -29,9 +29,7 @@ const TrainingMain = ({
             />
         </Segment>
         <Segment>
-            <button
-                onClick={() => onChangeAlgorithm()}
-            >
+            <button onClick={() => onChangeAlgorithm()}>
                 Random new alg
             </button>
         </Segment>

@@ -52,7 +52,46 @@ class Training extends Component {
         this.onKeyDown           = this.onKeyDown.bind(this);
         this.onKeyUp             = this.onKeyUp.bind(this);
         this.onReset             = this.onReset.bind(this);
+        this.onActivateAll       = this.onActivateAll.bind(this);
+        this.onDeactivateAll     = this.onDeactivateAll.bind(this);
         this.updateTimerTime     = this.updateTimerTime.bind(this);
+    }
+
+    componentDidMount () {
+        Meteor.subscribe('algorithms', {
+            onError: () => {console.log("Error occured:", arguments)},
+            onReady: () => {
+                const algorithms = Algorithms.find({category: this.state.currentCategory}).fetch();
+                this.setState({algorithms});
+
+                Meteor.subscribe('results', {
+                    onError: () => {console.log("Error occured:", arguments)},
+                    onReady: () => {
+                        const results = Results.find({category: this.state.currentCategory, real: {$in: this.props.debugging ? [null, false] : [true]}}).fetch();
+                        this.setState({results});
+
+                        this.onChangeAlgorithm({algorithms, results});
+                        this.props.onToggleLoader(false);
+                    },
+                });
+            },
+        });
+
+        document.body.addEventListener('keydown', this.onKeyDown);
+        document.body.addEventListener('keyup'  , this.onKeyUp  );
+    }
+
+    componentWillUnmount () {
+        document.body.removeEventListener('keydown', this.onKeyDown);
+        document.body.removeEventListener('keyup'  , this.onKeyUp  );
+    }
+
+    componentWillReceiveProps (newProps) {
+        if (this.props.debugging !== newProps.debugging) {
+            const results = Results.find({category: this.state.currentCategory, real: {$in: newProps.debugging ? [null, false] : [true]}}).fetch();
+            this.setState({results});
+            this.countAverages({results});
+        }
     }
 
     countAverages ({currentCategory, results = Results.find({category: currentCategory || this.state.currentCategory, real: {$in: this.props.debugging ? [null, false] : [true]}}).fetch() || [], algRef = 1}) {
@@ -72,44 +111,7 @@ class Training extends Component {
         });
     }
 
-    componentDidMount () {
-        Meteor.subscribe('algorithms', {
-            onError: () => {console.log("Error occured:", arguments)},
-            onReady: () => {
-                const algorithms = Algorithms.find({category: this.state.currentCategory}).fetch();
-
-                this.setState({algorithms});
-                this.onChangeAlgorithm();
-            },
-        });
-
-        Meteor.subscribe('results', {
-            onError: () => {console.log("Error occured:", arguments)},
-            onReady: () => {
-                const results = Results.find({category: this.state.currentCategory, real: {$in: this.props.debugging ? [null, false] : [true]}}).fetch();
-                this.countAverages({results});
-
-                this.props.onToggleLoader(false);
-            },
-        });
-
-        document.body.addEventListener('keydown', this.onKeyDown);
-        document.body.addEventListener('keyup'  , this.onKeyUp  );
-    }
-
-    componentWillUnmount () {
-        document.body.removeEventListener('keydown', this.onKeyDown);
-        document.body.removeEventListener('keyup'  , this.onKeyUp  );
-    }
-
-    componentWillReceiveProps (newProps) {
-        if (this.props.debugging !== newProps.debugging) {
-            const results = Results.find({category: this.state.currentCategory, real: {$in: newProps.debugging ? [null, false] : [true]}}).fetch();
-            this.countAverages({results});
-        }
-    }
-
-    onChangeAlgorithm ({algorithms, currentAlgorithmId, currentCategory} = this.state) {
+    onChangeAlgorithm ({algorithms, currentAlgorithmId, currentCategory, results} = this.state) {
         this.onReset();
 
         const active = algorithms.filter(alg => alg.active);
@@ -122,7 +124,7 @@ class Training extends Component {
         const newAlgorithm = active[newId];
 
         this.setState({currentAlgorithm: newAlgorithm, currentAlgorithmId: newAlgorithm._id});
-        this.countAverages({algRef: newAlgorithm.ref, currentCategory});
+        this.countAverages({algRef: newAlgorithm.ref, currentCategory, results});
     }
 
     onChangeCategory = (e, {name}) => {
@@ -155,10 +157,28 @@ class Training extends Component {
         this.setState({algorithms: currentAlgs});
     };
 
+    onActivateAll = () => {
+        Meteor.call('algorithms.activateAll');
+        const currentAlgs = this.state.algorithms;
+        currentAlgs.map(alg => {alg.active = true;});
+        this.setState({algorithms: currentAlgs});
+    };
+
+    onDeactivateAll = () => {
+        Meteor.call('algorithms.deactivateAll');
+        const currentAlgs = this.state.algorithms;
+        currentAlgs.map(alg => {alg.active = false;});
+        this.setState({algorithms: currentAlgs});
+    };
+
     onKeyDown (event) {
         const blocked = this.state.blocked;
 
-        if (event.key === 'r') {
+        if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {
+            event.preventDefault();
+            this.onGoToNextStatus('down');
+            this.setState({blocked: {...blocked, space:   true}});
+        } else if (event.key === 'r') {
             event.preventDefault();
             this.onChangeAlgorithm();
         } else if (event.key === 'Shift' && !blocked.shift) {
@@ -167,17 +187,10 @@ class Training extends Component {
                 blocked: {...blocked, shift: true},
                 isVisibleSolution: true
             });
-        }
-        else if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {
-            event.preventDefault();
-            this.onGoToNextStatus('down');
-            this.setState({blocked: {...blocked, space:   true}});
-        }
-        else if (event.key === 'Control' && !blocked.control) {
+        } else if (event.key === 'Control' && !blocked.control) {
             event.preventDefault();
             this.setState({blocked: {...blocked, control: true}});
-        }
-        else if ((event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Escape') && !blocked.delete) {
+        } else if ((event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Escape') && !blocked.delete) {
             event.preventDefault();
             this.setState({blocked: {...blocked, delete:  true}});
         }
@@ -241,9 +254,11 @@ class Training extends Component {
 
     render () {
         const {
+            onActivateAll,
+            onActiveToggle,
             onChangeAlgorithm,
             onChangeCategory,
-            onActiveToggle,
+            onDeactivateAll,
 
             state: {
                 algorithms,
@@ -289,7 +304,12 @@ class Training extends Component {
                 </Grid>
 
                 {this.state.settingsOpened && (
-                    <AlgSettings algorithms={algorithms} onActiveToggle={onActiveToggle} />
+                    <AlgSettings
+                        algorithms={algorithms}
+                        onActivateAll={onActivateAll}
+                        onActiveToggle={onActiveToggle}
+                        onDeactivateAll={onDeactivateAll}
+                    />
                 )}
             </div>
         );

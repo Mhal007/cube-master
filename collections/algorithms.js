@@ -19,6 +19,16 @@ Meteor.methods({
 
         Algorithms.update(algId, {$set: {active}});
     },
+    'algorithms.activateAll' () {
+        Algorithms.updateMany
+            ? Algorithms.updateMany({}, {$set: {active: true}})                // Mongodb >= 3.2
+            : Algorithms.update({}, {$set: {active: true}}, {multi: true});    // Mongodb >= 2.2
+    },
+    'algorithms.deactivateAll' () {
+        Algorithms.updateMany
+            ? Algorithms.updateMany({}, {$set: {active: false}})                // Mongodb >= 3.2
+            : Algorithms.update({}, {$set: {active: false}}, {multi: true});    // Mongodb >= 2.2
+    },
     'algorithms.insert' ({
         category,
         image,
