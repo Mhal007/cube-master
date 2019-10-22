@@ -6,7 +6,7 @@ import Timer from './Timer.js';
 
 const TrainingMain = ({
   onChangeAlgorithm,
-  currentAlgorithm: { image, scramble, solution },
+  currentAlgorithm: { image, scramble, solution } = {},
   isVisibleSolution,
   timerCurrentValue
 }) => (
@@ -31,14 +31,24 @@ const TrainingMain = ({
     )}
   </section>
 );
+
 TrainingMain.propTypes = {
-  currentAlgorithm: PropTypes.object.isRequired,
+  currentAlgorithm: PropTypes.object,
   isVisibleSolution: PropTypes.bool.isRequired,
   onChangeAlgorithm: PropTypes.func.isRequired,
   timerCurrentValue: PropTypes.number.isRequired
 };
 
 export default TrainingMain;
+
+// TODO divide OLL/PLL algs into groups, refactor settings (modals?)
+// TODO refactor UI
+// TODO refactor timer & nr of renders
+// TODO add account support
+// TODO isTraining refactor (the 'real' flag)
+// TODO refactoring of isAlgorithmActive (DB -> local storage)
+// TODO sets of algs kept in DB to load selection?
+// TODO results result format (ms / s / m / h)
 
 // TODO Blindfolded + 1/2 + scrambler
 // TODO DNF option
@@ -48,12 +58,3 @@ export default TrainingMain;
 // TODO +x/-x to average (green/red)
 // TODO responsive view (UWHD)
 // TODO menu with buttons for: accept, +2, random new, delete
-
-// TODO DONE
-// TODO list of activated OLLs/PLLs
-// TODO Averages fix
-// TODO Averages display form change
-// TODO 0s => No records
-// TODO Random first alg
-// TODO button for random fix
-// TODO prepare PLL algs + oncategorychange fixes + onalgorithmchange fix

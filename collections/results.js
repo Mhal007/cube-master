@@ -11,16 +11,7 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'results.insert'({
-                 algorithmId,
-    category,
-    image,
-    real,
-    scramble,
-    solution,
-    time,
-    type
-  }) {
+  'results.insert': ({ algorithmId, category, real, scramble, time }) => {
     check(category, String);
     check(real, Boolean);
     check(time, Number);
@@ -30,10 +21,7 @@ Meteor.methods({
     }
 
     if (category === 'OLL' || category === 'PLL') {
-      check(image, String);
-      check(solution, String);
       check(algorithmId, String);
-      check(type, String);
     }
 
     // Make sure the user is logged in before inserting a result
@@ -45,20 +33,17 @@ Meteor.methods({
       algorithmId,
       category,
       createdAt: new Date(),
-      image,
       real,
       scramble,
-      solution,
-      time,
-      type
+      time
     });
   },
-  'results.search'(text) {
+  'results.search': text => {
     check(text, String);
 
     return Results.find();
   },
-  'results.remove'(resultId) {
+  'results.remove': resultId => {
     check(resultId, String);
 
     /*const result = Results.findOne(resultId);

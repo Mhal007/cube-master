@@ -154,7 +154,7 @@ class Training extends Component {
     this.setState(
       {
         currentAlgorithm: newAlgorithm,
-        currentAlgorithmId: newAlgorithm._id
+        currentAlgorithmId: newAlgorithm && newAlgorithm._id // alg may be undefined for {OLL,PLL}-Attack
       },
       this.countAverages
     );
@@ -164,8 +164,8 @@ class Training extends Component {
     this.props.onToggleLoader(true);
 
     let algsCategory = category;
-    if (category === 'OLL-attack') algsCategory = 'OLL';
-    if (category === 'PLL-attack') algsCategory = 'PLL';
+    if (category === 'OLL-attack') algsCategory = 'OLL'; // TODO to refactor
+    if (category === 'PLL-attack') algsCategory = 'PLL'; // TODO to refactor
 
     const results = Results.find({ category }).fetch();
     const algorithms = Algorithms.find({ category: algsCategory }).fetch();
@@ -275,6 +275,7 @@ class Training extends Component {
     const {
       blocked,
       currentAlgorithm,
+      currentCategory,
       timerCurrentValue,
       timerStatus
     } = this.state;
@@ -301,15 +302,24 @@ class Training extends Component {
     ) {
       /* Save time */
       const result = {
-        ...currentAlgorithm,
-        algorithmId: currentAlgorithm._id,
-        time: timerCurrentValue,
-        real: !this.props.debugging
+        ...(currentAlgorithm && {
+          algorithmId: currentAlgorithm._id,
+          scramble: currentAlgorithm.scramble
+        }),
+        category: currentCategory,
+        real: !this.props.debugging,
+        time: timerCurrentValue
       };
 
       Meteor.call('results.insert', result);
-      this.onChangeAlgorithm();
-      this.setState({ timerStatus: 'resetted', timerCurrentValue: 0 });
+      this.setState(
+        ({ results }) => ({
+          timerStatus: 'resetted',
+          timerCurrentValue: 0,
+          results: results.concat(result)
+        }),
+        this.onChangeAlgorithm
+      );
     }
   };
 

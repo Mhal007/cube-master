@@ -5,7 +5,6 @@ import React from 'react';
 const Timer = ({ isVisibleSolution, solution, timerCurrentValue }) => (
   <section className="timer">
     {moment(timerCurrentValue).format('mm:ss:SSS')}
-
     {isVisibleSolution && solution && <div>{solution}</div>}
   </section>
 );
