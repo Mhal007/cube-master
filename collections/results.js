@@ -12,10 +12,10 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   'results.insert'({
+                 algorithmId,
     category,
     image,
     real,
-    ref,
     scramble,
     solution,
     time,
@@ -32,7 +32,7 @@ Meteor.methods({
     if (category === 'OLL' || category === 'PLL') {
       check(image, String);
       check(solution, String);
-      check(ref, Number);
+      check(algorithmId, String);
       check(type, String);
     }
 
@@ -42,11 +42,11 @@ Meteor.methods({
      }*/
 
     Results.insert({
+      algorithmId,
       category,
       createdAt: new Date(),
       image,
       real,
-      ref,
       scramble,
       solution,
       time,

@@ -7,32 +7,25 @@ export const Algorithms = new Mongo.Collection('algorithms');
 if (Meteor.isServer) {
   // This code only runs on the server
   // Only publish algorithms that are public or belong to the current user
-  Meteor.publish('algorithms', function algorithmsPublication() {
-    return Algorithms.find();
-  });
+  Meteor.publish('algorithms', () => Algorithms.find());
 }
 
 Meteor.methods({
-  'algorithms.toggleActive'(algId, active) {
+  'algorithms.toggleActive': (algId, active) => {
     check(active, Boolean);
     check(algId, String);
 
     Algorithms.update(algId, { $set: { active } });
   },
-  'algorithms.activateAll'() {
-    Algorithms.updateMany
-      ? Algorithms.updateMany({}, { $set: { active: true } }) // Mongodb >= 3.2
-      : Algorithms.update({}, { $set: { active: true } }, { multi: true }); // Mongodb >= 2.2
+  'algorithms.activateAll': category => {
+    Algorithms.update({ category }, { $set: { active: true } }); // Mongodb >= 3.2
   },
-  'algorithms.deactivateAll'() {
-    Algorithms.updateMany
-      ? Algorithms.updateMany({}, { $set: { active: false } }) // Mongodb >= 3.2
-      : Algorithms.update({}, { $set: { active: false } }, { multi: true }); // Mongodb >= 2.2
+  'algorithms.deactivateAll': category => {
+    Algorithms.update({ category }, { $set: { active: false } }); // Mongodb >= 3.2
   },
-  'algorithms.insert'({ category, image, ref, scramble, solution, type }) {
+  'algorithms.insert': ({ category, image, scramble, solution, type }) => {
     check(category, String);
     check(image, String);
-    check(ref, Number);
     check(scramble, String);
     check(solution, String);
     check(type, String);
@@ -46,7 +39,6 @@ Meteor.methods({
       createdAt: new Date(),
       category,
       image,
-      ref,
       scramble,
       solution,
       type
