@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import moment from 'moment';
 
@@ -34,6 +35,7 @@ const Averages = ({
     )}
   </Segment>
 );
+
 Averages.propTypes = {
   currentAlgorithmAvg: PropTypes.number,
   currentCategory: PropTypes.string,

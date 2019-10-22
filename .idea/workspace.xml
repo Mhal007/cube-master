@@ -2,31 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99cc4f93-4f6b-40bf-919f-f24a3e37e086" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meteor/.finished-upgraders" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/.finished-upgraders" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meteor/packages" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meteor/release" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/release" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meteor/versions" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/versions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/collections/algorithms.js" beforeDir="false" afterPath="$PROJECT_DIR$/collections/algorithms.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/collections/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/collections/results.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/AlgSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/AlgSettings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Averages.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Averages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Container.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Container.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/MenuTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/MenuTop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Timer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Training.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Training.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TrainingMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TrainingMain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/global-helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/global-helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/algorithms.metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/newcubemasterdump/meteor/algorithms.metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/results.metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/newcubemasterdump/meteor/results.metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/universe_configs.metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/newcubemasterdump/meteor/universe_configs.metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/AlgorithmsCreation.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/AlgorithmsCreation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/const.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/const.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/main.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -400,7 +388,7 @@
       <workItem from="1503777145131" duration="3665000" />
       <workItem from="1503841978928" duration="14538000" />
       <workItem from="1571771840834" duration="1693000" />
-      <workItem from="1571773676682" duration="2162000" />
+      <workItem from="1571773676682" duration="7803000" />
     </task>
     <servers />
   </component>

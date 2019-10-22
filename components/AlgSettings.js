@@ -5,7 +5,7 @@ const AlgSettings = ({
   algorithms,
   disabled,
   onActivateAll,
-  onActiveToggle,
+  onToggleActive,
   onDeactivateAll
 }) => (
   <section className={`alg-settings${disabled ? ' disabled' : ''}`}>
@@ -21,7 +21,7 @@ const AlgSettings = ({
       <div
         key={alg._id}
         className={`${alg.active ? 'active ' : ''}alg`}
-        onClick={() => onActiveToggle(alg)}
+        onClick={() => onToggleActive(alg)}
       >
         <img src={`/images/${alg.image}`} />
       </div>
@@ -31,7 +31,7 @@ const AlgSettings = ({
 AlgSettings.propTypes = {
   algorithms: PropTypes.array.isRequired,
   onActivateAll: PropTypes.func.isRequired,
-  onActiveToggle: PropTypes.func.isRequired,
+  onToggleActive: PropTypes.func.isRequired,
   onDeactivateAll: PropTypes.func.isRequired
 };
 

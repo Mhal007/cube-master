@@ -12,6 +12,17 @@ import { Results } from '../collections/results.js';
 
 import { getRandomScramble } from '../lib/global-helpers.js';
 
+const getRandomEntry = (array, excludeId) => {
+  const index = Math.floor(Math.random() * array.length);
+  const entry = array[index];
+
+  if (array.length !== 1 && excludeId && entry._id === excludeId) {
+    return getRandomEntry(array, excludeId);
+  }
+
+  return entry;
+};
+
 class Training extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +38,6 @@ class Training extends Component {
       currentAlgorithm: {
         category: '',
         image: '',
-        ref: '',
         scramble: '',
         solution: '',
         type: ''
@@ -51,24 +61,29 @@ class Training extends Component {
         console.error('Error occured:', arguments);
       },
       onReady: () => {
-        const algorithms = Algorithms.find(state => ({
-          category: state.currentCategory
-        })).fetch();
-        this.setState({ algorithms });
-
         Meteor.subscribe('results', {
           onError: () => {
             console.error('Error occured:', arguments);
           },
           onReady: () => {
-            const results = Results.find(state => ({
-              category: state.currentCategory,
-              real: { $in: this.props.debugging ? [null, false] : [true] }
-            })).fetch();
-            this.setState({ results });
+            this.setState(
+              state => {
+                const algorithms = Algorithms.find({
+                  category: state.currentCategory
+                }).fetch();
 
-            this.onChangeAlgorithm({ algorithms, results });
-            this.props.onToggleLoader(false);
+                const results = Results.find({
+                  category: state.currentCategory,
+                  real: { $in: this.props.debugging ? [null, false] : [true] }
+                }).fetch();
+
+                return { algorithms, results };
+              },
+              () => {
+                this.onChangeAlgorithm();
+                this.props.onToggleLoader(false);
+              }
+            );
           }
         });
       }
@@ -80,12 +95,14 @@ class Training extends Component {
 
   componentWillReceiveProps(newProps) {
     if (this.props.debugging !== newProps.debugging) {
-      const results = Results.find(state => ({
-        category: state.currentCategory,
-        real: { $in: newProps.debugging ? [null, false] : [true] }
-      })).fetch();
-      this.setState({ results });
-      this.countAverages({ results });
+      this.setState(state => {
+        const results = Results.find({
+          category: state.currentCategory,
+          real: { $in: newProps.debugging ? [null, false] : [true] }
+        }).fetch();
+
+        return { results };
+      }, this.countAverages);
     }
   }
 
@@ -94,15 +111,11 @@ class Training extends Component {
     document.body.removeEventListener('keyup', this.onKeyUp);
   }
 
-  countAverages({
-    currentCategory,
-    results = Results.find({
-      category: currentCategory || this.state.currentCategory,
-      real: { $in: this.props.debugging ? [null, false] : [true] }
-    }).fetch() || [],
-    algRef = 1
-  }) {
-    const currentAlg = results.filter(alg => alg.ref === algRef);
+  countAverages = () => {
+    const { results, currentAlgorithmId } = this.state;
+    const currentAlg = results.filter(
+      result => result.algorithmId === currentAlgorithmId
+    );
     const currentCat = results;
 
     let sumAlg = 0;
@@ -116,35 +129,36 @@ class Training extends Component {
       currentAlgorithmAvg: sumAlg / currentAlg.length || 0,
       currentCategoryAvg: sumCat / currentCat.length || 0
     });
-  }
+  };
 
-  onChangeAlgorithm(
-    { algorithms, currentAlgorithmId, currentCategory, results } = this.state
-  ) {
+  onChangeAlgorithm = () => {
+    const { algorithms, currentAlgorithmId, currentCategory } = this.state;
     this.onReset();
 
-    let newAlgorithm = { category: currentCategory };
+    let newAlgorithm;
+    if (['OLL', 'PLL'].includes(currentCategory)) {
+      const activeAlgorithms = algorithms.filter(
+        algorithm => !!algorithm.active
+      );
 
-    if (['OLL', 'PLL'].indexOf(currentCategory) > -1) {
-      const active = algorithms.filter(alg => alg.active);
-
-      let newId = Math.floor(Math.random() * active.length);
-      while (newId === currentAlgorithmId) {
-        newId = Math.floor(Math.random() * active.length);
+      if (!activeAlgorithms.length) {
+        return;
       }
 
-      newAlgorithm = Object.assign(newAlgorithm, active[newId]);
+      newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithmId);
     } else if (currentCategory === '3x3x3') {
       const scramble = getRandomScramble(12);
-      newAlgorithm = Object.assign(newAlgorithm, { scramble });
+      newAlgorithm = { category: currentCategory, scramble };
     }
 
-    this.setState({
-      currentAlgorithm: newAlgorithm,
-      currentAlgorithmId: newAlgorithm._id
-    });
-    this.countAverages({ algRef: newAlgorithm.ref, currentCategory, results });
-  }
+    this.setState(
+      {
+        currentAlgorithm: newAlgorithm,
+        currentAlgorithmId: newAlgorithm._id
+      },
+      this.countAverages
+    );
+  };
 
   onChangeCategory = category => {
     this.props.onToggleLoader(true);
@@ -156,41 +170,49 @@ class Training extends Component {
     const results = Results.find({ category }).fetch();
     const algorithms = Algorithms.find({ category: algsCategory }).fetch();
 
-    this.setState({ algorithms, currentCategory: category, results });
-    this.onChangeAlgorithm({ algorithms, currentCategory: category, results });
-
-    this.props.onToggleLoader(false);
+    this.setState({ algorithms, currentCategory: category, results }, () => {
+      this.onChangeAlgorithm();
+      this.props.onToggleLoader(false);
+    });
   };
 
-  onActiveToggle = algorithm => {
+  onToggleActive = algorithm => {
     // TODO rework server calls
     Meteor.call('algorithms.toggleActive', algorithm._id, !algorithm.active);
-    const currentAlgs = this.state.algorithms;
 
-    currentAlgs.map(alg => {
-      if (alg._id === algorithm._id) {
-        alg.active = !alg.active;
-      }
-    });
-    this.setState(state => ({ algorithms: currentAlgs }));
+    this.setState(state => ({
+      algorithms: state.algorithms.map(alg =>
+        alg._id === algorithm._id
+          ? {
+              ...alg,
+              active: !alg.active
+            }
+          : alg
+      )
+    }));
   };
 
   onActivateAll = () => {
-    Meteor.call('algorithms.activateAll');
-    const currentAlgs = this.state.algorithms;
-    currentAlgs.map(alg => {
-      alg.active = true;
-    });
-    this.setState({ algorithms: currentAlgs });
+    const { currentCategory } = this.state;
+    Meteor.call('algorithms.activateAll', currentCategory);
+
+    this.setState(state => ({
+      algorithms: state.algorithms.map(alg => ({
+        ...alg,
+        active: true
+      }))
+    }));
   };
 
   onDeactivateAll = () => {
     Meteor.call('algorithms.deactivateAll');
-    const currentAlgs = this.state.algorithms;
-    currentAlgs.map(alg => {
-      alg.active = false;
-    });
-    this.setState({ algorithms: currentAlgs });
+
+    this.setState(state => ({
+      algorithms: state.algorithms.map(alg => ({
+        ...alg,
+        active: false
+      }))
+    }));
   };
 
   onKeyDown = event => {
@@ -250,7 +272,12 @@ class Training extends Component {
   };
 
   onGoToNextStatus = upOrDown => {
-    const { timerStatus, blocked } = this.state;
+    const {
+      blocked,
+      currentAlgorithm,
+      timerCurrentValue,
+      timerStatus
+    } = this.state;
 
     if (timerStatus === 'resetted' && upOrDown === 'down' && !blocked.space) {
       this.setState({ timerStatus: 'pre-inspection' });
@@ -273,13 +300,14 @@ class Training extends Component {
       !blocked.space
     ) {
       /* Save time */
-      Meteor.call(
-        'results.insert',
-        Object.assign(this.state.currentAlgorithm, {
-          time: this.state.timerCurrentValue,
-          real: !this.props.debugging
-        })
-      );
+      const result = {
+        ...currentAlgorithm,
+        algorithmId: currentAlgorithm._id,
+        time: timerCurrentValue,
+        real: !this.props.debugging
+      };
+
+      Meteor.call('results.insert', result);
       this.onChangeAlgorithm();
       this.setState({ timerStatus: 'resetted', timerCurrentValue: 0 });
     }
@@ -308,7 +336,7 @@ class Training extends Component {
         timerCurrentValue
       },
       onActivateAll,
-      onActiveToggle,
+      onToggleActive,
       onChangeAlgorithm,
       onChangeCategory,
       onDeactivateAll
@@ -370,7 +398,7 @@ class Training extends Component {
             algorithms={algorithms}
             disabled={settingsDisabled}
             onActivateAll={onActivateAll}
-            onActiveToggle={onActiveToggle}
+            onToggleActive={onToggleActive}
             onDeactivateAll={onDeactivateAll}
           />
         )}
