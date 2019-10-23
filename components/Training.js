@@ -23,6 +23,36 @@ const getRandomEntry = (array, excludeId) => {
   return entry;
 };
 
+const categories = [
+  {
+    label: 'OLL',
+    value: 'OLL',
+    randomizableAlgorithm: true
+  },
+  {
+    label: 'PLL',
+    value: 'PLL',
+    randomizableAlgorithm: true
+  },
+  {
+    label: '3x3x3',
+    value: '3x3x3',
+    randomizableScramble: true
+  },
+  {
+    label: 'OLL Attack',
+    value: 'OLL-attack',
+    algorithmsCategory: 'OLL',
+    settingsDisabled: true
+  },
+  {
+    label: 'PLL Attack',
+    value: 'PLL-attack',
+    algorithmsCategory: 'PLL',
+    settingsDisabled: true
+  }
+];
+
 class Training extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +74,7 @@ class Training extends Component {
       },
       currentAlgorithmAvg: 0,
       currentAlgorithmId: 0,
-      currentCategory: 'OLL',
+      currentCategory: categories[0],
       currentCategoryAvg: 0,
       isVisibleSolution: false,
       results: [],
@@ -69,11 +99,11 @@ class Training extends Component {
             this.setState(
               state => {
                 const algorithms = Algorithms.find({
-                  category: state.currentCategory
+                  category: state.currentCategory.value
                 }).fetch();
 
                 const results = Results.find({
-                  category: state.currentCategory,
+                  category: state.currentCategory.value,
                   real: { $in: this.props.debugging ? [null, false] : [true] }
                 }).fetch();
 
@@ -97,7 +127,7 @@ class Training extends Component {
     if (this.props.debugging !== newProps.debugging) {
       this.setState(state => {
         const results = Results.find({
-          category: state.currentCategory,
+          category: state.currentCategory.value,
           real: { $in: newProps.debugging ? [null, false] : [true] }
         }).fetch();
 
@@ -136,7 +166,7 @@ class Training extends Component {
     this.onReset();
 
     let newAlgorithm;
-    if (['OLL', 'PLL'].includes(currentCategory)) {
+    if (currentCategory.randomizableAlgorithm) {
       const activeAlgorithms = algorithms.filter(
         algorithm => !!algorithm.active
       );
@@ -146,29 +176,28 @@ class Training extends Component {
       }
 
       newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithmId);
-    } else if (currentCategory === '3x3x3') {
+    } else if (currentCategory.randomizableScramble) {
       const scramble = getRandomScramble(12);
-      newAlgorithm = { category: currentCategory, scramble };
+      newAlgorithm = { category: currentCategory.value, scramble };
     }
 
     this.setState(
       {
         currentAlgorithm: newAlgorithm,
-        currentAlgorithmId: newAlgorithm && newAlgorithm._id // alg may be undefined for {OLL,PLL}-Attack
+        currentAlgorithmId: newAlgorithm && newAlgorithm._id // alg may be undefined, e.g. for {OLL,PLL}-Attack
       },
       this.countAverages
     );
   };
 
   onChangeCategory = category => {
+    const { value, algorithmsCategory } = category;
     this.props.onToggleLoader(true);
 
-    let algsCategory = category;
-    if (category === 'OLL-attack') algsCategory = 'OLL'; // TODO to refactor
-    if (category === 'PLL-attack') algsCategory = 'PLL'; // TODO to refactor
-
-    const results = Results.find({ category }).fetch();
-    const algorithms = Algorithms.find({ category: algsCategory }).fetch();
+    const results = Results.find({ category: value }).fetch();
+    const algorithms = Algorithms.find({
+      category: algorithmsCategory || value
+    }).fetch();
 
     this.setState({ algorithms, currentCategory: category, results }, () => {
       this.onChangeAlgorithm();
@@ -194,7 +223,7 @@ class Training extends Component {
 
   onActivateAll = () => {
     const { currentCategory } = this.state;
-    Meteor.call('algorithms.activateAll', currentCategory);
+    Meteor.call('algorithms.activateAll', currentCategory.value);
 
     this.setState(state => ({
       algorithms: state.algorithms.map(alg => ({
@@ -306,7 +335,7 @@ class Training extends Component {
           algorithmId: currentAlgorithm._id,
           scramble: currentAlgorithm.scramble
         }),
-        category: currentCategory,
+        category: currentCategory.value,
         real: !this.props.debugging,
         time: timerCurrentValue
       };
@@ -352,38 +381,19 @@ class Training extends Component {
       onDeactivateAll
     } = this;
 
-    const settingsDisabled = ['OLL', 'PLL'].indexOf(currentCategory) === -1;
-
     return (
       <div>
         <Grid>
           <Grid.Column width={4}>
             <Menu fluid vertical tabular>
-              <Menu.Item
-                name="OLL"
-                active={currentCategory === 'OLL'}
-                onClick={() => onChangeCategory('OLL')}
-              />
-              <Menu.Item
-                name="PLL"
-                active={currentCategory === 'PLL'}
-                onClick={() => onChangeCategory('PLL')}
-              />
-              <Menu.Item
-                name="3x3x3"
-                active={currentCategory === '3x3x3'}
-                onClick={() => onChangeCategory('3x3x3')}
-              />
-              <Menu.Item
-                name="OLL Attack"
-                active={currentCategory === 'OLL-attack'}
-                onClick={() => onChangeCategory('OLL-attack')}
-              />
-              <Menu.Item
-                name="PLL Attack"
-                active={currentCategory === 'PLL-attack'}
-                onClick={() => onChangeCategory('PLL-attack')}
-              />
+              {categories.map(category => (
+                <Menu.Item
+                  key={category.value}
+                  name={category.label}
+                  active={currentCategory.value === category.value}
+                  onClick={() => onChangeCategory(category)}
+                />
+              ))}
             </Menu>
           </Grid.Column>
           <Grid.Column width={8} textAlign="center">
@@ -406,7 +416,7 @@ class Training extends Component {
         {this.state.settingsOpened && (
           <AlgSettings
             algorithms={algorithms}
-            disabled={settingsDisabled}
+            currentCategory={currentCategory}
             onActivateAll={onActivateAll}
             onToggleActive={onToggleActive}
             onDeactivateAll={onDeactivateAll}
