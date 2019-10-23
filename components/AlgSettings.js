@@ -3,25 +3,29 @@ import PropTypes from 'prop-types';
 
 const AlgSettings = ({
   algorithms,
-  disabled,
+  currentCategory: { settingsDisabled },
   onActivateAll,
   onToggleActive,
   onDeactivateAll
 }) => (
-  <section className={`alg-settings${disabled ? ' disabled' : ''}`}>
+  <section className={`alg-settings${settingsDisabled ? ' disabled' : ''}`}>
     <div className="controls">
-      <button onClick={onActivateAll}>Select all</button>
+      <button onClick={settingsDisabled ? null : onActivateAll}>
+        Select all
+      </button>
       <br />
       <br />
-      <button onClick={onDeactivateAll}>Unselect all</button>
+      <button onClick={settingsDisabled ? null : onDeactivateAll}>
+        Unselect all
+      </button>
       <br />
       <br />
     </div>
     {algorithms.map(alg => (
       <div
         key={alg._id}
-        className={`${alg.active ? 'active ' : ''}alg`}
-        onClick={() => onToggleActive(alg)}
+        className={`${settingsDisabled || alg.active ? 'active ' : ''}alg`}
+        onClick={() => (settingsDisabled ? null : onToggleActive(alg))}
       >
         <img src={`/images/${alg.image}`} />
       </div>
@@ -30,6 +34,7 @@ const AlgSettings = ({
 );
 AlgSettings.propTypes = {
   algorithms: PropTypes.array.isRequired,
+  currentCategory: PropTypes.object.isRequired,
   onActivateAll: PropTypes.func.isRequired,
   onToggleActive: PropTypes.func.isRequired,
   onDeactivateAll: PropTypes.func.isRequired

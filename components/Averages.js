@@ -9,7 +9,7 @@ const Averages = ({
   currentCategoryAvg
 }) => (
   <Segment>
-    {['OLL', 'PLL'].indexOf(currentCategory) > -1 ? (
+    {['OLL', 'PLL'].indexOf(currentCategory.value) > -1 ? (
       <div>
         Average for this algorithm:
         <br />
@@ -18,7 +18,7 @@ const Averages = ({
           : 'No records'}
         <br />
         <br />
-        Average for all {currentCategory} algorithms:
+        Average for all {currentCategory.value} algorithms:
         <br />
         {currentCategoryAvg
           ? moment(currentCategoryAvg).format('ss:SSS')
@@ -26,7 +26,7 @@ const Averages = ({
       </div>
     ) : (
       <div>
-        Average for all in {currentCategory}:
+        Average for all in {currentCategory.value}:
         <br />
         {currentCategoryAvg
           ? moment(currentCategoryAvg).format('mm:ss:SSS')
@@ -38,7 +38,7 @@ const Averages = ({
 
 Averages.propTypes = {
   currentAlgorithmAvg: PropTypes.number,
-  currentCategory: PropTypes.string,
+  currentCategory: PropTypes.object,
   currentCategoryAvg: PropTypes.number
 };
 
