@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="99cc4f93-4f6b-40bf-919f-f24a3e37e086" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/algorithms.bson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/algorithms.metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/results.bson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/results.metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/universe_configs.bson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/universe_configs.metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newcubemasterdump/scripts" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -390,7 +381,7 @@
       <workItem from="1571773676682" duration="15516000" />
       <workItem from="1571817619864" duration="13000" />
       <workItem from="1571818292621" duration="111000" />
-      <workItem from="1572119703996" duration="12395000" />
+      <workItem from="1572119703996" duration="12441000" />
     </task>
     <servers />
   </component>
