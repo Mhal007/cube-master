@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Loader, Segment } from 'semantic-ui-react';
 
-import MenuTop from './MenuTop.js';
-import Results from './Results.js';
-import Training from './Training.js';
+import MenuTop from './menuTop.js';
+import Results from './results.js';
+import Training from './training.js';
 
 export default class Container extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ export default class Container extends Component {
     } = this;
 
     return (
-      <div className="container">
+      <div className="segment">
         <header>
           <MenuTop currentTab={currentTab} onChangeTab={onChangeTab} />
         </header>

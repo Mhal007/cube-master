@@ -75,6 +75,7 @@ class ResultsTab extends Component {
 
     return (
       <Table
+        inverted
         headerRow={this.renderHeader}
         tableData={results}
         renderBodyRow={this.renderRow}
