@@ -3,9 +3,10 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Grid, Menu } from 'semantic-ui-react';
 
-import TrainingMain from './TrainingMain.js';
-import AlgSettings from './AlgSettings.js';
-import Averages from './Averages.js';
+import AlgSettings from './algSettings.js';
+import Averages from './averages.js';
+import TipsAndTricks from './tipsAndTricks.js';
+import TrainingMain from './trainingMain.js';
 
 import { Algorithms } from '../collections/algorithms.js';
 import { Results } from '../collections/results.js';
@@ -70,6 +71,7 @@ class Training extends Component {
         image: '',
         scramble: '',
         solution: '',
+        subtype: '',
         type: ''
       },
       currentAlgorithmAvg: 0,
@@ -177,7 +179,7 @@ class Training extends Component {
 
       newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithmId);
     } else if (currentCategory.randomizableScramble) {
-      const scramble = getRandomScramble(12);
+      const scramble = getRandomScramble(25);
       newAlgorithm = { category: currentCategory.value, scramble };
     }
 
@@ -382,10 +384,10 @@ class Training extends Component {
     } = this;
 
     return (
-      <div>
+      <>
         <Grid>
           <Grid.Column width={4}>
-            <Menu fluid vertical tabular>
+            <Menu className="left-menu" blue inverted tabular vertical>
               {categories.map(category => (
                 <Menu.Item
                   key={category.value}
@@ -410,9 +412,9 @@ class Training extends Component {
               currentCategory={currentCategory}
               currentCategoryAvg={currentCategoryAvg}
             />
+            <TipsAndTricks />
           </Grid.Column>
         </Grid>
-
         {this.state.settingsOpened && (
           <AlgSettings
             algorithms={algorithms}
@@ -422,7 +424,7 @@ class Training extends Component {
             onDeactivateAll={onDeactivateAll}
           />
         )}
-      </div>
+      </>
     );
   }
 }

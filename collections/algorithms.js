@@ -23,11 +23,12 @@ Meteor.methods({
   'algorithms.deactivateAll': category => {
     Algorithms.update({ category }, { $set: { active: false } }); // Mongodb >= 3.2
   },
-  'algorithms.insert': ({ category, image, scramble, solution, type }) => {
+  'algorithms.insert': ({ category, image, scramble, solution, subtype, type }) => {
     check(category, String);
     check(image, String);
     check(scramble, String);
     check(solution, String);
+    check(subtype, String);
     check(type, String);
 
     // Make sure the user is logged in before inserting a algorithm
@@ -41,6 +42,7 @@ Meteor.methods({
       image,
       scramble,
       solution,
+      subtype,
       type
     });
   },
