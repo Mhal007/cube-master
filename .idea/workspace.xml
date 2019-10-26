@@ -2,32 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99cc4f93-4f6b-40bf-919f-f24a3e37e086" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/stylesheets/index.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/algSettings.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/algSettings.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/averages.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/averages.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/tipsAndTricks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/traininMain.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/trainingMain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collections/algorithms.js" beforeDir="false" afterPath="$PROJECT_DIR$/collections/algorithms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/AlgSettings.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Averages.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Container.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/container.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/MenuTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/menuTop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/timer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Training.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/training.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TrainingMain.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/AlgorithmsCreation.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/algorithmsCreation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/const.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/const.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/algorithms.bson" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/algorithms.metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/results.bson" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/results.metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/universe_configs.bson" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newcubemasterdump/meteor/universe_configs.metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newcubemasterdump/scripts" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -406,7 +390,7 @@
       <workItem from="1571773676682" duration="15516000" />
       <workItem from="1571817619864" duration="13000" />
       <workItem from="1571818292621" duration="111000" />
-      <workItem from="1572119703996" duration="12205000" />
+      <workItem from="1572119703996" duration="12395000" />
     </task>
     <servers />
   </component>

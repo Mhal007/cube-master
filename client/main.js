@@ -9,6 +9,8 @@ Meteor.startup(() => {
   render(<Container />, document.getElementById('render-target'));
 });
 
+// TODO display avg time under each algorithm
+// TODO filtering algs by group
 // TODO menu with buttons for: accept, +2, random new, delete
 // TODO remove reducible moves from scrambles
 // TODO visual scramble !
