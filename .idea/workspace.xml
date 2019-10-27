@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99cc4f93-4f6b-40bf-919f-f24a3e37e086" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/client/components/loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/results/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/training/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/lib/composer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/publications/algorithms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/publications/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.meteor/packages" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.meteor/versions" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/versions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/stylesheets/AlgSettings.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/algSettings.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collections/algorithms.js" beforeDir="false" afterPath="$PROJECT_DIR$/collections/algorithms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collections/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/collections/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/algSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/algSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/algSettings.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/averages.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/averages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/averages.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/averages.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/container.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/container.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/menuTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/menuTop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/results/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/timer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/tipsAndTricks.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/tipsAndTricks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/traininMain.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/trainingMain.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/training.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/training/training.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/trainingMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/trainingMain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -409,7 +381,7 @@
       <workItem from="1571773676682" duration="15516000" />
       <workItem from="1571817619864" duration="13000" />
       <workItem from="1571818292621" duration="111000" />
-      <workItem from="1572119703996" duration="26048000" />
+      <workItem from="1572119703996" duration="27012000" />
     </task>
     <servers />
   </component>

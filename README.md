@@ -8,6 +8,7 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1
+- +x/-x to average (green/red)
 - block space scrolling
 - menu with buttons for: accept, +2, random new, delete
 - filtering algs by group
@@ -38,5 +39,4 @@ Rubik's cube training site.
 - 3x3x3 working + scrambler
 - mobile view
 - new averages
-- +x/-x to average (green/red)
 - responsive view (UWHD)
