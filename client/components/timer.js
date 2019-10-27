@@ -8,6 +8,7 @@ const Timer = ({ isVisibleSolution, solution, timerCurrentValue }) => (
     {isVisibleSolution && solution && <p>{solution}</p>}
   </div>
 );
+
 Timer.propTypes = {
   isVisibleSolution: PropTypes.bool.isRequired,
   solution: PropTypes.string,
