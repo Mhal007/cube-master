@@ -9,16 +9,14 @@ Rubik's cube training site.
 ## TODO
 #### Priority level 1
 - +x/-x to average (green/red)
-- block space scrolling
-- menu with buttons for: accept, +2, random new, delete
-- filtering algs by group
-- add router and paths
-- remove reducible moves from scrambles
-- save settings to local storage: grouping level, solution visiblity, algs selection
-- organize imports + absolute paths instead of relative
 - PropTypes all the way
 - fix: rerandomize alg after diabling it in the options
 - fix: space should rerandomize when no algs selected
+- organize imports + absolute paths instead of relative
+- menu with buttons for: accept, +2, random new, delete
+- filtering algs by group
+- add router and paths
+- save settings to local storage: grouping level, solution visiblity, algs selection
 
 
 #### Priority level 2

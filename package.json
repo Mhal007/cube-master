@@ -6,6 +6,10 @@
     "eslint": "eslint --fix ."
   },
   "dependencies": {
+    "@types/jest": "24.0.20",
+    "@types/node": "12.11.7",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.3",
     "babel-runtime": "6.23.0",
     "chai": "4.2.0",
     "indexof": "0.0.1",
@@ -15,9 +19,9 @@
     "react": "16.10.2",
     "react-dom": "16.10.2",
     "react-komposer": "2.0.0",
-    "react-semantic-toasts": "^0.6.4",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.1",
+    "react-semantic-toasts": "0.6.4",
+    "semantic-ui-css": "2.4.1",
+    "semantic-ui-react": "0.88.1",
     "typescript": "3.6.4"
   },
   "devDependencies": {

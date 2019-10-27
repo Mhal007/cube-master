@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { Grid, Menu } from 'semantic-ui-react';
 import { SemanticToastContainer, toast } from 'react-semantic-toasts';
 
-import AlgSettings from '../algSettings.js';
-import Averages from '../averages.js';
-import TipsAndTricks from '../tipsAndTricks.js';
-import TrainingMain from '../trainingMain.js';
+import AlgSettings from '../algSettings';
+import Averages from '../averages';
+import TipsAndTricks from '../tipsAndTricks';
+import TrainingMain from '../trainingMain';
 
-import { getRandomScramble } from '../../../lib/global-helpers.js';
+import { getRandomScramble } from '../../../lib/global-helpers';
 
 // TODO move it
 const getRandomEntry = (array, excludeId) => {
@@ -67,11 +67,13 @@ class Training extends Component {
     this.props.onToggleLoader(false);
 
     document.body.addEventListener('keydown', this.onKeyDown);
+    document.body.addEventListener('keypress', this.onKeyPress);
     document.body.addEventListener('keyup', this.onKeyUp);
   }
 
   componentWillUnmount() {
     document.body.removeEventListener('keydown', this.onKeyDown);
+    document.body.removeEventListener('keypress', this.onKeyPress);
     document.body.removeEventListener('keyup', this.onKeyUp);
   }
 
@@ -98,13 +100,10 @@ class Training extends Component {
       newAlgorithm = { category: currentCategory.value, scramble };
     }
 
-    this.setState(
-      {
-        currentAlgorithm: newAlgorithm,
-        currentAlgorithmId: newAlgorithm && newAlgorithm._id // alg may be undefined, e.g. for {OLL,PLL}-Attack
-      },
-      this.countAverages
-    );
+    this.setState({
+      currentAlgorithm: newAlgorithm,
+      currentAlgorithmId: newAlgorithm && newAlgorithm._id // alg may be undefined, e.g. for {OLL,PLL}-Attack
+    });
   };
 
   onChangeCategory = category => {
@@ -131,6 +130,10 @@ class Training extends Component {
   };
 
   onKeyDown = event => {
+    if (event.target !== document.body) {
+      return;
+    }
+
     const blocked = this.state.blocked;
 
     if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {
@@ -160,7 +163,17 @@ class Training extends Component {
     }
   };
 
+  onKeyPress = event => {
+    if (event.key === ' ' && event.target === document.body) {
+      event.preventDefault();
+    }
+  };
+
   onKeyUp = event => {
+    if (event.target !== document.body) {
+      return;
+    }
+
     const { blocked, isVisibleSolution } = this.state;
 
     if (event.key === 'Enter' || event.key === ' ') {

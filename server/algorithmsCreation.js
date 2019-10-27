@@ -1,4 +1,4 @@
-import { Algorithms } from '../collections/algorithms.js';
+import { Algorithms } from '../collections/algorithms';
 
 import { OLL, PLL } from './const';
 
