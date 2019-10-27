@@ -2,13 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-export const Algorithms = new Mongo.Collection('algorithms');
+import { expect } from 'chai';
 
-if (Meteor.isServer) {
-  // This code only runs on the server
-  // Only publish algorithms that are public or belong to the current user
-  Meteor.publish('algorithms', () => Algorithms.find());
-}
+export const Algorithms = new Mongo.Collection('algorithms');
 
 Meteor.methods({
   'algorithms.toggleActive': (algId, active) => {
@@ -18,18 +14,33 @@ Meteor.methods({
     Algorithms.update(algId, { $set: { active } });
   },
   'algorithms.activateAll': category => {
-    Algorithms.update({ category }, { $set: { active: true } }); // Mongodb >= 3.2
+    Algorithms.update(
+      { category },
+      { $set: { active: true } },
+      { multi: true }
+    );
   },
   'algorithms.deactivateAll': category => {
-    Algorithms.update({ category }, { $set: { active: false } }); // Mongodb >= 3.2
+    Algorithms.update(
+      { category },
+      { $set: { active: false } },
+      { multi: true }
+    );
   },
-  'algorithms.insert': ({ category, image, scramble, solution, subtype, type }) => {
-    check(category, String);
-    check(image, String);
-    check(scramble, String);
-    check(solution, String);
-    check(subtype, String);
-    check(type, String);
+  'algorithms.insert': ({
+    category,
+    image,
+    scramble,
+    solution,
+    subtype,
+    type
+  }) => {
+    expect(category).to.be.a('string');
+    expect(image).to.be.a('string');
+    expect(scramble).to.be.a('string');
+    expect(solution).to.be.a('string');
+    expect(subtype).to.be.a('string');
+    expect(type).to.be.a('string');
 
     // Make sure the user is logged in before inserting a algorithm
     /* if (! Meteor.userId()) {

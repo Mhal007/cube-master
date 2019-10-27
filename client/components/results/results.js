@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Table } from 'semantic-ui-react';
 import moment from 'moment';
 
-import { Results } from '../collections/results.js';
-
 const columns = [
   {
     label: 'Date',
@@ -37,21 +35,6 @@ const columns = [
 class ResultsTab extends Component {
   constructor(args) {
     super(args);
-
-    this.state = {
-      results: []
-    };
-  }
-
-  componentDidMount() {
-    Meteor.subscribe('results', {
-      onError: () => {
-        console.error('Error occured:', arguments);
-      },
-      onReady: () => {
-        this.setState({ results: Results.find().fetch() });
-      }
-    });
   }
 
   renderHeader = () => (
@@ -71,7 +54,7 @@ class ResultsTab extends Component {
   );
 
   render() {
-    const { results } = this.state;
+    const { results } = this.props;
 
     return (
       <Table

@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { List, Segment } from 'semantic-ui-react';
 import moment from 'moment';
+import { getAverage } from '../utils';
 
-const Averages = ({
-  currentAlgorithmAvg,
-  currentCategory,
-  currentCategoryAvg
-}) => {
+const Averages = ({ currentAlgorithm, currentCategory }) => {
+  const currentAlgorithmAvg = getAverage(
+    currentAlgorithm && currentAlgorithm.results
+  );
+  const currentCategoryAvg = getAverage(
+    currentCategory && currentCategory.results
+  );
+
   const averages = ['OLL', 'PLL'].includes(currentCategory.value)
     ? [
         {

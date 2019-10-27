@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Loader, Segment } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 
-import MenuTop from './menuTop.js';
-import Results from './results.js';
-import Training from './training.js';
+import Loader from './loader';
+import MenuTop from './menuTop';
+import Results from './results';
+import Training from './training';
 
 export default class Container extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Container extends Component {
         </header>
 
         <Segment>
-          {isVisibleLoader && <Loader content="Loading" />}
+          {isVisibleLoader && <Loader />}
 
           <main>
             {(currentTab === 'training' || currentTab === 'debugging') && (
@@ -44,7 +45,9 @@ export default class Container extends Component {
                 debugging={currentTab === 'debugging'}
               />
             )}
-            {currentTab === 'results' && <Results />}
+            {currentTab === 'results' && (
+              <Results debugging={currentTab === 'debugging'} />
+            )}
           </main>
         </Segment>
 
