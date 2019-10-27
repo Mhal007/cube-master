@@ -10,7 +10,7 @@
     "chai": "4.2.0",
     "indexof": "0.0.1",
     "lodash": "4.17.15",
-    "moment": "2.18.1",
+    "moment": "2.24.0",
     "rc-slider": "8.7.1",
     "react": "16.10.2",
     "react-dom": "16.10.2",
