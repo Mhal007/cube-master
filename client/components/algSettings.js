@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
+import { getAverage } from '../utils';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
 
@@ -25,7 +26,9 @@ const AlgSettings = ({
       : [];
 
   return (
-    <section className={`alg-settings${settingsDisabled ? ' disabled' : ''}`}>
+    <section
+      className={`algorithm-settings${settingsDisabled ? ' disabled' : ''}`}
+    >
       <List divided verticalAlign="middle">
         <List.Item>
           <List.Content floated="right">
@@ -72,14 +75,17 @@ const AlgSettings = ({
           {values.map(algorithm => (
             <div
               key={algorithm._id}
-              className={`${
-                settingsDisabled || algorithm.active ? 'active ' : ''
-              }alg`}
+              className={`algorithm${
+                settingsDisabled || algorithm.active ? ' active' : ''
+              }`}
               onClick={() =>
                 settingsDisabled ? null : onToggleActive(algorithm)
               }
             >
               <img src={`/images/${algorithm.image}`} />
+              <div className="results-average">
+                {getAverage(algorithm && algorithm.results)}
+              </div>
             </div>
           ))}
         </Segment>
@@ -89,7 +95,6 @@ const AlgSettings = ({
 };
 
 AlgSettings.propTypes = {
-  algorithms: PropTypes.array.isRequired,
   currentCategory: PropTypes.object.isRequired,
   onActivateAll: PropTypes.func.isRequired,
   onToggleActive: PropTypes.func.isRequired,

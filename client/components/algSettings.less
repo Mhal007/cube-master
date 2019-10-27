@@ -1,6 +1,6 @@
 @imgSize: 76px;
 
-.alg-settings {
+.algorithm-settings {
   padding: 4em 1em;
 
   &.disabled {
@@ -8,7 +8,7 @@
       display: none;
     }
 
-    .alg, .alg.active {
+    .algorithm, .algorithm.active {
       border: none;
       height: @imgSize;
       width: @imgSize;
@@ -16,7 +16,17 @@
     }
   }
 
-  .alg {
+  .grouping-level {
+    width: 200px;
+    height: 50px;
+
+    .title {
+      text-align: center;
+      margin-bottom: 7px;
+    }
+  }
+
+  .algorithm {
     cursor: pointer;
     display: inline-block;
     height: @imgSize;
@@ -32,6 +42,10 @@
     img {
       width: @imgSize;
       height: @imgSize;
+    }
+
+    .results-average {
+      text-align: center;
     }
   }
 }

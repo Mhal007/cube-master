@@ -2,64 +2,42 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Grid, Menu } from 'semantic-ui-react';
+import { SemanticToastContainer, toast } from 'react-semantic-toasts';
 
-import AlgSettings from './algSettings.js';
-import Averages from './averages.js';
-import TipsAndTricks from './tipsAndTricks.js';
-import TrainingMain from './trainingMain.js';
+import AlgSettings from '../algSettings.js';
+import Averages from '../averages.js';
+import TipsAndTricks from '../tipsAndTricks.js';
+import TrainingMain from '../trainingMain.js';
 
-import { Algorithms } from '../collections/algorithms.js';
-import { Results } from '../collections/results.js';
+import { getRandomScramble } from '../../../lib/global-helpers.js';
 
-import { getRandomScramble } from '../lib/global-helpers.js';
-
+// TODO move it
 const getRandomEntry = (array, excludeId) => {
   const index = Math.floor(Math.random() * array.length);
   const entry = array[index];
 
-  if (array.length !== 1 && excludeId && entry._id === excludeId) {
+  if (array.length > 1 && excludeId && entry._id === excludeId) {
     return getRandomEntry(array, excludeId);
   }
 
   return entry;
 };
 
-const categories = [
-  {
-    label: 'OLL',
-    value: 'OLL',
-    randomizableAlgorithm: true
-  },
-  {
-    label: 'PLL',
-    value: 'PLL',
-    randomizableAlgorithm: true
-  },
-  {
-    label: '3x3x3',
-    value: '3x3x3',
-    randomizableScramble: true
-  },
-  {
-    label: 'OLL Attack',
-    value: 'OLL-attack',
-    algorithmsCategory: 'OLL',
-    settingsDisabled: true
-  },
-  {
-    label: 'PLL Attack',
-    value: 'PLL-attack',
-    algorithmsCategory: 'PLL',
-    settingsDisabled: true
-  }
-];
+// TODO move it
+const toastNoActiveAlgorithms = () =>
+  toast({
+    title: 'No active algorithms',
+    type: 'warning',
+    description:
+      'Randomizing algorithms pauzed until you select at least one algorithm',
+    time: 5000
+  });
 
 class Training extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      algorithms: [],
       blocked: {
         control: false,
         delete: false,
@@ -74,12 +52,9 @@ class Training extends Component {
         subtype: '',
         type: ''
       },
-      currentAlgorithmAvg: 0,
       currentAlgorithmId: 0,
-      currentCategory: categories[0],
-      currentCategoryAvg: 0,
+      currentCategory: this.props.categories[0],
       isVisibleSolution: false,
-      results: [],
       settingsOpened: true,
       timerCurrentValue: 0,
       timerStartValue: 0,
@@ -88,54 +63,11 @@ class Training extends Component {
   }
 
   componentDidMount() {
-    Meteor.subscribe('algorithms', {
-      onError: () => {
-        console.error('Error occured:', arguments);
-      },
-      onReady: () => {
-        Meteor.subscribe('results', {
-          onError: () => {
-            console.error('Error occured:', arguments);
-          },
-          onReady: () => {
-            this.setState(
-              state => {
-                const algorithms = Algorithms.find({
-                  category: state.currentCategory.value
-                }).fetch();
-
-                const results = Results.find({
-                  category: state.currentCategory.value,
-                  real: { $in: this.props.debugging ? [null, false] : [true] }
-                }).fetch();
-
-                return { algorithms, results };
-              },
-              () => {
-                this.onChangeAlgorithm();
-                this.props.onToggleLoader(false);
-              }
-            );
-          }
-        });
-      }
-    });
+    this.onChangeAlgorithm();
+    this.props.onToggleLoader(false);
 
     document.body.addEventListener('keydown', this.onKeyDown);
     document.body.addEventListener('keyup', this.onKeyUp);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (this.props.debugging !== newProps.debugging) {
-      this.setState(state => {
-        const results = Results.find({
-          category: state.currentCategory.value,
-          real: { $in: newProps.debugging ? [null, false] : [true] }
-        }).fetch();
-
-        return { results };
-      }, this.countAverages);
-    }
   }
 
   componentWillUnmount() {
@@ -143,38 +75,21 @@ class Training extends Component {
     document.body.removeEventListener('keyup', this.onKeyUp);
   }
 
-  countAverages = () => {
-    const { results, currentAlgorithmId } = this.state;
-    const currentAlg = results.filter(
-      result => result.algorithmId === currentAlgorithmId
-    );
-    const currentCat = results;
-
-    let sumAlg = 0;
-    let sumCat = 0;
-
-    currentAlg.forEach(alg => (sumAlg += alg.time));
-    currentCat.forEach(alg => (sumCat += alg.time));
-
-    this.setState({
-      results,
-      currentAlgorithmAvg: sumAlg / currentAlg.length || 0,
-      currentCategoryAvg: sumCat / currentCat.length || 0
-    });
-  };
-
   onChangeAlgorithm = () => {
-    const { algorithms, currentAlgorithmId, currentCategory } = this.state;
+    const { algorithms } = this.props;
+    const { currentAlgorithmId, currentCategory } = this.state;
+
     this.onReset();
 
     let newAlgorithm;
     if (currentCategory.randomizableAlgorithm) {
       const activeAlgorithms = algorithms.filter(
-        algorithm => !!algorithm.active
+        algorithm =>
+          !!algorithm.active && algorithm.category === currentCategory.value
       );
 
       if (!activeAlgorithms.length) {
-        return;
+        toastNoActiveAlgorithms();
       }
 
       newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithmId);
@@ -193,57 +108,26 @@ class Training extends Component {
   };
 
   onChangeCategory = category => {
-    const { value, algorithmsCategory } = category;
     this.props.onToggleLoader(true);
 
-    const results = Results.find({ category: value }).fetch();
-    const algorithms = Algorithms.find({
-      category: algorithmsCategory || value
-    }).fetch();
-
-    this.setState({ algorithms, currentCategory: category, results }, () => {
+    this.setState({ currentCategory: category }, () => {
       this.onChangeAlgorithm();
       this.props.onToggleLoader(false);
     });
   };
 
   onToggleActive = algorithm => {
-    // TODO rework server calls
     Meteor.call('algorithms.toggleActive', algorithm._id, !algorithm.active);
-
-    this.setState(state => ({
-      algorithms: state.algorithms.map(alg =>
-        alg._id === algorithm._id
-          ? {
-              ...alg,
-              active: !alg.active
-            }
-          : alg
-      )
-    }));
   };
 
   onActivateAll = () => {
     const { currentCategory } = this.state;
     Meteor.call('algorithms.activateAll', currentCategory.value);
-
-    this.setState(state => ({
-      algorithms: state.algorithms.map(alg => ({
-        ...alg,
-        active: true
-      }))
-    }));
   };
 
   onDeactivateAll = () => {
     Meteor.call('algorithms.deactivateAll');
-
-    this.setState(state => ({
-      algorithms: state.algorithms.map(alg => ({
-        ...alg,
-        active: false
-      }))
-    }));
+    toastNoActiveAlgorithms();
   };
 
   onKeyDown = event => {
@@ -342,15 +226,7 @@ class Training extends Component {
         time: timerCurrentValue
       };
 
-      Meteor.call('results.insert', result);
-      this.setState(
-        ({ results }) => ({
-          timerStatus: 'resetted',
-          timerCurrentValue: 0,
-          results: results.concat(result)
-        }),
-        this.onChangeAlgorithm
-      );
+      Meteor.call('results.insert', result, () => this.onChangeAlgorithm());
     }
   };
 
@@ -368,14 +244,12 @@ class Training extends Component {
   render() {
     const {
       state: {
-        algorithms,
         currentAlgorithm,
-        currentAlgorithmAvg,
         currentCategory,
-        currentCategoryAvg,
         isVisibleSolution,
         timerCurrentValue
       },
+      props: { algorithms, categories },
       onActivateAll,
       onToggleActive,
       onChangeAlgorithm,
@@ -383,11 +257,16 @@ class Training extends Component {
       onDeactivateAll
     } = this;
 
+    const currentAlgorithms = algorithms.filter(
+      algorithm => algorithm.category === currentCategory.value
+    );
+
     return (
       <>
+        <SemanticToastContainer />
         <Grid>
           <Grid.Column width={4}>
-            <Menu className="left-menu" blue inverted tabular vertical>
+            <Menu className="left-menu" inverted tabular vertical>
               {categories.map(category => (
                 <Menu.Item
                   key={category.value}
@@ -408,16 +287,15 @@ class Training extends Component {
           </Grid.Column>
           <Grid.Column width={4}>
             <Averages
-              currentAlgorithmAvg={currentAlgorithmAvg}
+              currentAlgorithm={currentAlgorithm}
               currentCategory={currentCategory}
-              currentCategoryAvg={currentCategoryAvg}
             />
             <TipsAndTricks />
           </Grid.Column>
         </Grid>
         {this.state.settingsOpened && (
           <AlgSettings
-            algorithms={algorithms}
+            algorithms={currentAlgorithms}
             currentCategory={currentCategory}
             onActivateAll={onActivateAll}
             onToggleActive={onToggleActive}

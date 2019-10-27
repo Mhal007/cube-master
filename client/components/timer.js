@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Timer = ({ isVisibleSolution, solution, timerCurrentValue }) => (
-  <section className="timer">
-    {moment(timerCurrentValue).format('mm:ss:SSS')}
-    {isVisibleSolution && solution && <div>{solution}</div>}
-  </section>
+  <div className="timer">
+    <p>{moment(timerCurrentValue).format('mm:ss:SSS')}</p>
+    {isVisibleSolution && solution && <p>{solution}</p>}
+  </div>
 );
 Timer.propTypes = {
   isVisibleSolution: PropTypes.bool.isRequired,

@@ -4,12 +4,6 @@ import { check } from 'meteor/check';
 
 export const Results = new Mongo.Collection('results');
 
-if (Meteor.isServer) {
-  // This code only runs on the server
-  // Only publish results that are public or belong to the current user
-  Meteor.publish('results', () => Results.find());
-}
-
 Meteor.methods({
   'results.insert': ({ algorithmId, category, real, scramble, time }) => {
     check(category, String);
