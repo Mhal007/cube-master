@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1803a8aa-f555-47ca-be2a-58a169ef393f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/publications/algorithms.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/publications/results.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generateSVGs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/generateSVGs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/global-helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/global-helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/const.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/publications/algorithms.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/algorithms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/publications/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +92,7 @@
       <workItem from="1572509588030" duration="65000" />
       <workItem from="1572511628463" duration="254000" />
       <workItem from="1572623029002" duration="34458000" />
-      <workItem from="1572715750412" duration="10647000" />
+      <workItem from="1572715750412" duration="11050000" />
     </task>
     <servers />
   </component>
