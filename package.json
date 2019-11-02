@@ -8,11 +8,6 @@
     "svgs": "ts-node generateSVGs"
   },
   "dependencies": {
-    "@types/jest": "24.0.20",
-    "@types/meteor": "^1.4.36",
-    "@types/node": "12.11.7",
-    "@types/react": "16.9.11",
-    "@types/react-dom": "16.9.3",
     "babel-runtime": "6.23.0",
     "chai": "4.2.0",
     "indexof": "0.0.1",
@@ -30,6 +25,15 @@
     "typescript": "3.6.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.21",
+    "@types/meteor": "^1.4.36",
+    "@types/node": "^12.12.5",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
     "@typescript-eslint/eslint-plugin": "2.5.0",
     "@typescript-eslint/parser": "2.5.0",
     "eslint": "6.5.1",

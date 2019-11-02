@@ -1,14 +1,22 @@
 {
   "compilerOptions": {
     "jsx": "react",
+    "lib": ["es2015", "dom"],
     "sourceMap": true,
     "strict": false,
-    "moduleResolution": "node",
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
-    "pretty": true
-  },
-  "include": [
-    "src/**/*.ts"
-  ]
+    "pretty": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "jest",
+      "meteor",
+      "node",
+      "react",
+      "react-dom"
+    ]
+  }
 }

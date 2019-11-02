@@ -22,9 +22,17 @@
     "sourceType": "module"
   },
   "plugins": [
+    "import",
     "react",
     "@typescript-eslint"
   ],
   "rules": {
+  },
+  "settings": {
+    "import/resolver": "meteor",
+    "import/ignore": [""],
+    "react": {
+      "version": "detect"
+    }
   }
 }
