@@ -5,9 +5,12 @@
   "scripts": {
     "eslint": "eslint --fix .",
     "start": "concurrently \"meteor run\" npm:watch-*",
-    "svgs": "node generateSVGs",
+    "svgs": "ts-node generateSVGs",
     "watch-types": "tsc --watch",
-    "watch-ts": "babel -w './' --out-dir './' --watch --extensions '.ts'"
+    "watch-ts-client": "babel --watch client --out-dir client --watch --extensions '.ts'",
+    "watch-ts-collections": "babel --watch collections --out-dir collections --watch --extensions '.ts'",
+    "watch-ts-lib": "babel --watch lib --out-dir lib --watch --extensions '.ts'",
+    "watch-ts-server": "babel --watch server --out-dir server --watch --extensions '.ts'"
   },
   "dependencies": {
     "babel-runtime": "6.23.0",
@@ -33,6 +36,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
+    "@types/chai": "^4.2.4",
     "@types/jest": "^24.0.21",
     "@types/meteor": "^1.4.36",
     "@types/node": "^12.12.5",

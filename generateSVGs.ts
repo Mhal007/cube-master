@@ -31,6 +31,19 @@ import { OLLs, algorithm } from './server/const';
 //   ]
 // };
 
+type strikeFormatted = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  fill: string;
+};
+
+type squareFormatted = strikeFormatted & {
+  stroke: string;
+  strokeWidth: number;
+};
+
 const filesPath = 'public/images/';
 
 const getSVGcontent = (
@@ -48,16 +61,17 @@ const getSVGcontent = (
   const colorSecondary = 'gray';
   const colorBackground = 'black';
 
-  const squaresFormatted = squares.map((row, rowIndex) =>
-    row.map((face, columnIndex) => ({
-      x: spacingLength * 2 + columnIndex * (squareLength + spacingLength),
-      y: spacingLength * 2 + rowIndex * (squareLength + spacingLength),
-      width: squareLength,
-      height: squareLength,
-      fill: face ? colorPrimary : colorSecondary,
-      stroke: colorBackground,
-      strokeWidth: spacingLength
-    }))
+  const squaresFormatted: squareFormatted[][] = squares.map(
+    (row: number[], rowIndex: number) =>
+      row.map((face, columnIndex) => ({
+        x: spacingLength * 2 + columnIndex * (squareLength + spacingLength),
+        y: spacingLength * 2 + rowIndex * (squareLength + spacingLength),
+        width: squareLength,
+        height: squareLength,
+        fill: face ? colorPrimary : colorSecondary,
+        stroke: colorBackground,
+        strokeWidth: spacingLength
+      }))
   );
 
   const getStrikePosition = (index: number) => {
@@ -72,39 +86,47 @@ const getSVGcontent = (
     return spacingLength * 2 + (index - 1) * (spacingLength + squareLength);
   };
 
-  const strikesTop: any[] = strikes[0].map((strike, strikeIndex) => ({
-    x: getStrikePosition(strikeIndex + 1),
-    y: getStrikePosition(0),
-    width: squareLength,
-    height: spacingLength,
-    fill: strike && colorPrimary
-  }));
+  const strikesTop: strikeFormatted[] = strikes[0].map(
+    (strike: number, strikeIndex: number) => ({
+      x: getStrikePosition(strikeIndex + 1),
+      y: getStrikePosition(0),
+      width: squareLength,
+      height: spacingLength,
+      fill: strike ? colorPrimary : ''
+    })
+  );
 
-  const strikesRight: any[] = strikes[1].map((strike, strikeIndex) => ({
-    x: getStrikePosition(cubeSize + 1),
-    y: getStrikePosition(strikeIndex + 1),
-    width: spacingLength,
-    height: squareLength,
-    fill: strike && colorPrimary
-  }));
+  const strikesRight: strikeFormatted[] = strikes[1].map(
+    (strike: number, strikeIndex: number) => ({
+      x: getStrikePosition(cubeSize + 1),
+      y: getStrikePosition(strikeIndex + 1),
+      width: spacingLength,
+      height: squareLength,
+      fill: strike ? colorPrimary : ''
+    })
+  );
 
-  const strikesBottom: any[] = strikes[2].map((strike, strikeIndex) => ({
-    x: getStrikePosition(strikeIndex + 1),
-    y: getStrikePosition(cubeSize + 1),
-    width: squareLength,
-    height: spacingLength,
-    fill: strike && colorPrimary
-  }));
+  const strikesBottom: strikeFormatted[] = strikes[2].map(
+    (strike: number, strikeIndex: number) => ({
+      x: getStrikePosition(strikeIndex + 1),
+      y: getStrikePosition(cubeSize + 1),
+      width: squareLength,
+      height: spacingLength,
+      fill: strike ? colorPrimary : ''
+    })
+  );
 
-  const strikesLeft: any[] = strikes[3].map((strike, strikeIndex) => ({
-    x: getStrikePosition(0),
-    y: getStrikePosition(strikeIndex + 1),
-    width: spacingLength,
-    height: squareLength,
-    fill: strike && colorPrimary
-  }));
+  const strikesLeft: strikeFormatted[] = strikes[3].map(
+    (strike: number, strikeIndex: number) => ({
+      x: getStrikePosition(0),
+      y: getStrikePosition(strikeIndex + 1),
+      width: spacingLength,
+      height: squareLength,
+      fill: strike ? colorPrimary : ''
+    })
+  );
 
-  const strikesFormatted = [
+  const strikesFormatted: strikeFormatted[][] = [
     strikesTop,
     strikesRight,
     strikesBottom,
@@ -190,8 +212,10 @@ const writeFile = (
 };
 
 /* write files */
-OLLs.filter(OLL => OLL.squares).forEach(async (scramble: algorithm) => {
-  const content = getSVGcontent(scramble, 25, 3);
-  const result = await writeFile(filesPath, scramble.name, '.svg', content);
-  console.info(result);
-});
+OLLs.filter((OLL: algorithm) => OLL.squares).forEach(
+  async (scramble: algorithm) => {
+    const content = getSVGcontent(scramble, 25, 3);
+    const result = await writeFile(filesPath, scramble.name, '.svg', content);
+    console.info(result);
+  }
+);

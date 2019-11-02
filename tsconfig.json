@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "allowJs": true,
+    "alwaysStrict": true,
+    "allowJs": false,
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
@@ -11,16 +12,6 @@
     "pretty": true,
     "sourceMap": true,
     "strict": true,
-    "target": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "jest",
-      "meteor",
-      "node",
-      "react",
-      "react-dom"
-    ]
+    "target": "esnext"
   }
 }

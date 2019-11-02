@@ -47,7 +47,7 @@ Meteor.methods({
          throw new Meteor.Error('not-authorized');
      }*/
 
-    Algorithms.insert({
+    const doc = {
       createdAt: new Date(),
       category,
       image,
@@ -55,7 +55,9 @@ Meteor.methods({
       solution,
       subtype,
       type
-    });
+    };
+
+    Algorithms.insert(doc);
   },
   'algorithms.search'(text) {
     check(text, String);

@@ -23,14 +23,16 @@ Meteor.methods({
      throw new Meteor.Error('not-authorized');
      }*/
 
-    Results.insert({
+    const doc = {
       algorithmId,
       category,
       createdAt: new Date(),
       real,
       scramble,
       time
-    });
+    };
+
+    Results.insert(doc);
   },
   'results.search': text => {
     check(text, String);
