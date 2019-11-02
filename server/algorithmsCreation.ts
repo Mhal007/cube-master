@@ -1,13 +1,14 @@
+import { Meteor } from 'meteor/meteor';
 import { Algorithms } from '../collections/algorithms';
 
-import { OLL, PLL } from './const';
+import { OLLs, PLLs } from './const';
 
 export const createAlgorithms = () => {
   const isOLL = !!Algorithms.findOne({ category: 'OLL' });
   const isPLL = !!Algorithms.findOne({ category: 'PLL' });
 
   !isOLL &&
-    OLL.forEach(algorithm => Meteor.call('algorithms.insert', algorithm));
+    OLLs.forEach(algorithm => Meteor.call('algorithms.insert', algorithm));
   !isPLL &&
-    PLL.forEach(algorithm => Meteor.call('algorithms.insert', algorithm));
+    PLLs.forEach(algorithm => Meteor.call('algorithms.insert', algorithm));
 };
