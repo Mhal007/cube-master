@@ -1,6 +1,5 @@
 import * as fs from 'fs';
-// @ts-ignore
-import { OLLs } from './server/const';
+import { OLLs, algorithm } from './server/const';
 
 // const testCases= [{
 //   name: 'OLL_test',
@@ -35,10 +34,14 @@ import { OLLs } from './server/const';
 const filesPath = 'public/images/';
 
 const getSVGcontent = (
-  { squares, strikes }: { squares?: any; strikes?: any }, // TODO change when done
-  squareLength,
-  spacingLength = squareLength / 10
-) => {
+  { squares, strikes }: algorithm,
+  squareLength: number,
+  spacingLength: number = squareLength / 10
+): string => {
+  if (!squares || !strikes) {
+    return '';
+  }
+
   const cubeSize = squares[0].length;
 
   const colorPrimary = '#ffff45';
@@ -57,7 +60,7 @@ const getSVGcontent = (
     }))
   );
 
-  const getStrikePosition = index => {
+  const getStrikePosition = (index: number) => {
     if (index === 0) {
       return 0.5 * spacingLength;
     }
@@ -187,7 +190,7 @@ const writeFile = (
 };
 
 /* write files */
-OLLs.filter(OLL => OLL.squares).forEach(async scramble => {
+OLLs.filter(OLL => OLL.squares).forEach(async (scramble: algorithm) => {
   const content = getSVGcontent(scramble, 25, 3);
   const result = await writeFile(filesPath, scramble.name, '.svg', content);
   console.info(result);

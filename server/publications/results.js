@@ -1,5 +1,10 @@
-import { Meteor } from 'meteor/meteor';
-import { Results } from '../../collections/results';
+"use strict";
+
+var _meteor = require("meteor/meteor");
+
+var _results = require("../../collections/results");
 
 // TODO Only publish algorithms that are public or belong to the current user
-Meteor.publish('results', () => Results.find());
+_meteor.Meteor.publish('results', function () {
+  return _results.Results.find();
+});

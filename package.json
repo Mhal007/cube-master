@@ -3,13 +3,19 @@
   "private": true,
   "main": "server/main.ts",
   "scripts": {
-    "start": "meteor run",
     "eslint": "eslint --fix .",
-    "svgs": "ts-node generateSVGs"
+    "start": "concurrently \"meteor run\" npm:watch-*",
+    "svgs": "ts-node generateSVGs",
+    "watch-types": "tsc --watch",
+    "watch-ts-client": "babel -w client --out-dir client --watch --extensions '.ts'",
+    "watch-ts-collections": "babel -w collections --out-dir collections --watch --extensions '.ts'",
+    "watch-ts-lib": "babel -w lib --out-dir lib --watch --extensions '.ts'",
+    "watch-ts-server": "babel -w server --out-dir server --watch --extensions '.ts'"
   },
   "dependencies": {
     "babel-runtime": "6.23.0",
     "chai": "4.2.0",
+    "concurrently": "^5.0.0",
     "indexof": "0.0.1",
     "lodash": "4.17.15",
     "meteor-node-stubs": "^0.4.1",
@@ -21,12 +27,13 @@
     "react-komposer": "2.0.0",
     "react-semantic-toasts": "0.6.4",
     "semantic-ui-css": "2.4.1",
-    "semantic-ui-react": "0.88.1",
-    "typescript": "3.6.4"
+    "semantic-ui-react": "0.88.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
     "@types/jest": "^24.0.21",
@@ -43,6 +50,7 @@
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "1.7.0",
     "prop-types": "15.7.2",
-    "ts-node": "^8.4.1"
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
   }
 }

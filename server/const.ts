@@ -1,4 +1,4 @@
-type algorithm = {
+export type algorithm = {
   active: boolean;
   category: 'OLL' | 'PLL';
   name: string;
