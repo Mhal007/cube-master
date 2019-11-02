@@ -15,15 +15,24 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "modules": true
     },
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
   "plugins": [
+    "import",
     "react",
     "@typescript-eslint"
   ],
   "rules": {
+  },
+  "settings": {
+    "import/resolver": "meteor",
+    "import/ignore": [""],
+    "react": {
+      "version": "detect"
+    }
   }
 }

@@ -1,4 +1,4 @@
-const allowedMoves = [
+const allowedMoves: string[] = [
   'F',
   "F'",
   'F2',
@@ -21,12 +21,12 @@ const allowedMoves = [
 
 const getRandomMove = () =>
   allowedMoves[Math.floor(Math.random() * allowedMoves.length)];
-const movesConflict = (moveA, moveB) =>
+const movesConflict = (moveA: string, moveB?: string) =>
   moveA &&
   moveB &&
   moveA.split('').some(character => moveB.includes(character));
 
-export const getRandomScramble = movesNr => {
+export const getRandomScramble = (movesNr: number) => {
   const moves = [];
 
   let move;
