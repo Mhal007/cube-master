@@ -315,10 +315,6 @@ class Training extends Component {
             onDeactivateAll={onDeactivateAll}
           />
         )}
-        {/*<ReactComponent />*/}
-        {[...new Array(57)].map((el, index) => (
-          <img src={`/images/oll_${index + 1}.svg`} />
-        ))}
       </>
     );
   }

@@ -18,7 +18,7 @@
                   y="6" 
                   width="25"
                   height="25"
-                  fill="gray"
+                  fill="#ffff45"
                 />
               
                 <rect 
@@ -42,7 +42,7 @@
                   y="34" 
                   width="25"
                   height="25"
-                  fill="#ffff45"
+                  fill="gray"
                 />
               
                 <rect 
@@ -74,7 +74,7 @@
                   y="62" 
                   width="25"
                   height="25"
-                  fill="#ffff45"
+                  fill="gray"
                 />
               
                 <rect 
@@ -98,7 +98,7 @@
                 />
               
                 <rect 
-                  x="6" 
+                  x="34" 
                   y="88.5" 
                   width="25"
                   height="3"
@@ -107,7 +107,15 @@
               
                 <rect 
                   x="1.5" 
-                  y="6" 
+                  y="34" 
+                  width="3"
+                  height="25"
+                  fill="#ffff45"
+                />
+              
+                <rect 
+                  x="1.5" 
+                  y="62" 
                   width="3"
                   height="25"
                   fill="#ffff45"

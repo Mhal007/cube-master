@@ -8,6 +8,7 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1
+- create custom images for algs (better res as well)
 - +x/-x to average (green/red)
 - PropTypes all the way
 - fix: rerandomize alg after diabling it in the options
@@ -20,9 +21,8 @@ Rubik's cube training site.
 
 
 #### Priority level 2
-- visual scramble !
+- visual scramble!
 - add account support
-- create custom images for algs (better res as well)
 - Refactor algs naming and order
 - refactor timer & nr of renders
 - isTraining refactor (the 'real' flag)
