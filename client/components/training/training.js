@@ -315,6 +315,8 @@ class Training extends Component {
             onDeactivateAll={onDeactivateAll}
           />
         )}
+        <img src="/images/pll_2.png" />
+        <img src="/images/pll_2.svg" />
       </>
     );
   }

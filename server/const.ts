@@ -12,8 +12,8 @@ export type algorithm = {
   lines?: line[];
 };
 
-export type line = [point, point, point?];
-export type point = [number, number];
+export type line = point[];
+export type point = { x: number; y: number };
 
 type squaresType = [
   [0 | 1, 0 | 1, 0 | 1], // top row, left to right
@@ -965,7 +965,7 @@ export const PLLs: algorithm[] = [
     subtype: 'A',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[[0, 0], [2, 0], [2, 2]]]
+    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }, { x: 2, y: 2 }]]
   },
   {
     active: true,
@@ -978,7 +978,7 @@ export const PLLs: algorithm[] = [
     subtype: 'A',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[[0, 0], [0, 2], [2, 0]]]
+    lines: [[{ x: 0, y: 0 }, { x: 0, y: 2 }, { x: 2, y: 0 }]]
   },
   {
     active: true,

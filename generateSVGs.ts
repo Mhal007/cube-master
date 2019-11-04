@@ -14,10 +14,15 @@ type squareFormatted = strikeFormatted & {
   strokeWidth: number;
 };
 
-const filesPath = 'public/images/';
+type marker = {
+  points: point[];
+  angle: number;
+};
+
+const filesPath: string = 'public/images/';
 
 const getSVGcontent = (
-  { squares, strikes, lines }: algorithm,
+  { squares, strikes, lines = [] }: algorithm,
   squareLength: number,
   spacingLength: number = squareLength / 10
 ): string => {
@@ -42,7 +47,7 @@ const getSVGcontent = (
       }))
   );
 
-  const getStrikePosition = (index: number) => {
+  const getStrikePosition = (index: number): number => {
     if (index === 0) {
       return 0.5 * spacingLength;
     }
@@ -101,7 +106,7 @@ const getSVGcontent = (
     strikesLeft
   ];
 
-  const getCenter = ([squareX, squareY]: point) => {
+  const getCenter = ({ x: squareX, y: squareY }: point) => {
     const x =
       2 * spacingLength +
       0.5 * squareLength +
@@ -111,35 +116,63 @@ const getSVGcontent = (
       0.5 * squareLength +
       (spacingLength + squareLength) * squareY;
 
-    return [x, y];
+    return { x, y };
   };
 
-  const getPolylinePoints = (line: line) => {
-    if (line.length === 2) {
-      const centerFirst = getCenter(line[0]);
-      const centerSecond = getCenter(line[1]);
+  const getPoints = (line: line): line => line.map(point => getCenter(point));
 
-      return [centerFirst, centerSecond];
-    } else if (line.length === 3) {
-      console.log('line', line);
-      const centerFirst = getCenter(line[0]);
-      const centerSecond = getCenter(line[1]);
-      const centerThird = line[2] ? getCenter(line[2]) : [0, 0];
+  const lineToMarker = (pointA: point, pointB: point) => {
+    const pointC = {
+      x: pointA.x + Math.abs(pointB.x - pointA.x),
+      y: pointA.y
+    };
 
-      console.log('centerFirst', centerFirst);
-      console.log('centerSecond', centerSecond);
-      console.log('centerThird', centerThird);
+    const rotationAngle = (((
+        Math.atan2(pointB.y - pointA.y, pointB.x - pointA.x)) *
+        180) /
+        Math.PI) - Math.atan2(pointC.y - pointA.y, pointC.x - pointA.x);
 
-      return [centerFirst, centerSecond, centerThird, centerFirst];
+    const leftBackPoint = {
+      x: pointB.x - 0.25 * squareLength,
+      y: pointB.y - 0.25 * squareLength
+    };
+
+    const rightBackPoint = {
+      x: pointB.x - 0.25 * squareLength,
+      y: pointB.y + 0.25 * squareLength
+    };
+
+    console.log('pointA', pointA);
+    console.log('pointB', pointB);
+    console.log('leftBackPoint', leftBackPoint);
+    console.log('rightBackPoint', rightBackPoint);
+
+    return {
+      points: [leftBackPoint, pointB, rightBackPoint],
+      angle: rotationAngle
+    };
+  };
+
+  const getMarkers = (line: line): marker[] => {
+    const markers = [];
+
+    for (let i = 0; i < line.length; i++) {
+      if (i > 0) {
+        markers.push(lineToMarker(line[i - 1], line[i]));
+      }
     }
 
-    return [];
+    markers.push(lineToMarker(line[line.length - 1], line[0]));
+
+    return markers;
   };
 
-  const boardSize =
+  const linesFormatted: line[] = lines.map(line => getPoints(line));
+
+  const boardSize: number =
     spacingLength * 3 + cubeSize * (squareLength + spacingLength);
 
-  const content = `
+  const content: string = `
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
       width="${boardSize}"
@@ -193,20 +226,43 @@ const getSVGcontent = (
         .join('')}
       
       <!-- LINES -->
-      ${
-        lines
-          ? lines
-              .map(line => getPolylinePoints(line))
-              .map(
-                polylinePoints => `
-                  <polyline points="${polylinePoints.reduce(
-                    (points, point) => `${points} ${point[0]},${point[1]}`,
+      ${linesFormatted.map(
+        line => `
+          <polyline 
+          points="${line.reduce(
+            (points, point) => `${points} ${point.x},${point.y}`,
+            ''
+          ) + ` ${line[0].x},${line[0].y}`}" 
+          fill="none" 
+          stroke="orange" 
+          stroke-width="3"
+          />
+        `
+      )}
+      
+      <!-- MARKERS -->
+      ${linesFormatted
+        .map((line: line) =>
+          getMarkers(line)
+            .map(
+              ({ points, angle }: { points: point[]; angle: number }) => `
+                <polygon 
+                  points="${points.reduce(
+                    (points: string, point: point) =>
+                      `${points} ${point.x},${point.y}`,
                     ''
-                  )}" fill="none" stroke="red" stroke-width="3"/>
-                `
-              )
-          : ''
-      }
+                  )}"
+                  fill="red" 
+                  transform="
+                  translate(${points[1].x} ${points[1].y}) 
+                  rotate(${angle} 0 0) 
+                  translate(${-1 * points[1].x} ${-1 * points[1].y})"
+                />
+              `
+            )
+            .join('')
+        )
+        .join('')}
     </svg>
   `;
 

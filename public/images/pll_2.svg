@@ -92,7 +92,42 @@
       
       <!-- LINES -->
       
-                  <polyline points=" 18.5,18.5 18.5,74.5 74.5,18.5 18.5,18.5" fill="none" stroke="red" stroke-width="3"/>
-                
+          <polyline 
+          points=" 18.5,18.5 18.5,74.5 74.5,18.5 18.5,18.5" 
+          fill="none" 
+          stroke="orange" 
+          stroke-width="3"
+          />
+        
+      
+      <!-- MARKERS -->
+      
+                <polygon 
+                  points=" 12.25,68.25 18.5,74.5 12.25,80.75"
+                  fill="red" 
+                  transform="
+                  translate(18.5 74.5) 
+                  rotate(90 0 0) 
+                  translate(-18.5 -74.5)"
+                />
+              
+                <polygon 
+                  points=" 68.25,12.25 74.5,18.5 68.25,24.75"
+                  fill="red" 
+                  transform="
+                  translate(74.5 18.5) 
+                  rotate(-45 0 0) 
+                  translate(-74.5 -18.5)"
+                />
+              
+                <polygon 
+                  points=" 12.25,12.25 18.5,18.5 12.25,24.75"
+                  fill="red" 
+                  transform="
+                  translate(18.5 18.5) 
+                  rotate(180 0 0) 
+                  translate(-18.5 -18.5)"
+                />
+              
     </svg>
   
