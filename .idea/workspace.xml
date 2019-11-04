@@ -3,68 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1803a8aa-f555-47ca-be2a-58a169ef393f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/training/training.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/training/training.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generateSVGs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/generateSVGs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_10.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_10.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_11.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_11.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_12.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_12.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_13.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_13.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_14.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_14.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_15.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_15.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_16.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_16.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_17.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_17.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_18.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_18.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_19.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_19.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_20.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_20.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_21.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_21.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_22.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_22.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_23.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_23.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_24.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_24.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_25.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_25.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_26.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_26.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_27.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_27.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_28.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_28.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_29.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_29.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_3.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_3.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_30.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_30.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_31.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_31.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_32.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_32.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_33.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_33.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_34.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_34.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_35.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_35.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_36.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_36.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_37.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_37.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_38.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_38.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_39.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_39.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_4.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_4.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_40.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_40.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_41.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_41.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_42.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_42.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_43.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_43.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_44.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_44.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_45.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_45.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_46.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_46.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_47.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_47.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_48.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_48.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_49.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_49.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_5.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_5.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_50.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_50.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_51.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_51.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_52.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_52.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_53.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_53.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_54.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_54.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_55.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_55.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_56.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_56.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_57.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_57.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_6.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_6.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_7.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_7.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_8.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_8.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/oll_9.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/oll_9.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/pll_1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/pll_2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/const.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +96,7 @@
       <workItem from="1572715750412" duration="11050000" />
       <workItem from="1572785447850" duration="1174000" />
       <workItem from="1572791514976" duration="6182000" />
-      <workItem from="1572800434477" duration="12569000" />
+      <workItem from="1572800434477" duration="13365000" />
     </task>
     <servers />
   </component>
