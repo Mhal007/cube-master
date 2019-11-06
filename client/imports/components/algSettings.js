@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
-import { getAverage } from '../utils';
+import { getAverage } from '../../utils';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
 
