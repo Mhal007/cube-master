@@ -5,10 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/results/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/results/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/training/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/training/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/training/training.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/training/training.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/algorithmsCreation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/algorithmsCreation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/publications/algorithms.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/algorithms.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/publications/results.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/results.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +98,7 @@
       <workItem from="1572785447850" duration="1174000" />
       <workItem from="1572791514976" duration="6182000" />
       <workItem from="1572800434477" duration="13395000" />
-      <workItem from="1573064194922" duration="2002000" />
+      <workItem from="1573064194922" duration="2940000" />
     </task>
     <servers />
   </component>
@@ -113,9 +109,9 @@
         <option value="$PROJECT_DIR$/lib/global-helpers.js" />
         <option value="$PROJECT_DIR$/server/algorithmsCreation.js" />
         <option value="$PROJECT_DIR$/server/const.js" />
-        <option value="$PROJECT_DIR$/client/utils.js" />
         <option value="$PROJECT_DIR$/collections/results.js" />
         <option value="$PROJECT_DIR$/server/publications/algorithms.js" />
+        <option value="$PROJECT_DIR$/client/utils.js" />
         <option value="$PROJECT_DIR$/server/main.js" />
         <option value="$PROJECT_DIR$/collections/algorithms.js" />
         <option value="$PROJECT_DIR$/server/publications/results.js" />
