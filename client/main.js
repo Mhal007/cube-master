@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
-import Container from './components/container';
+import Container from './imports/components/container';
 
 import 'rc-slider/assets/index.css';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';

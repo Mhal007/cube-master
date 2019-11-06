@@ -1,4 +1,4 @@
-export const getAverage = (results: number[]) => {
+export const getAverage = (results: number[]): number => {
   if (!results || results.length === 0) {
     return 0;
   }
