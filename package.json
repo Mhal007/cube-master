@@ -1,7 +1,7 @@
 {
   "name": "cube-master",
   "private": true,
-  "main": "server/main.ts",
+  "main": "server/main.js",
   "scripts": {
     "eslint": "eslint --fix .",
     "start": "concurrently \"meteor run\" npm:watch-*",

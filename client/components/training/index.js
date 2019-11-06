@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
-import { Algorithms } from '/collections/algorithms';
-import { Results } from '/collections/results';
+import { Algorithms } from '../../../collections/algorithms';
+import { Results } from '../../../collections/results';
 import { composer } from '../../lib/composer';
 import Training from './training';
 

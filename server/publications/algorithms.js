@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Results } from '/collections/results';
+import { Algorithms } from '../../collections/algorithms';
 
 // TODO Only publish algorithms that are public or belong to the current user
-Meteor.publish('results', () => Results.find());
+Meteor.publish('algorithms', () => Algorithms.find());
