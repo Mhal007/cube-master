@@ -2,6 +2,7 @@
   "compilerOptions": {
     "alwaysStrict": true,
     "allowJs": false,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react",
@@ -12,6 +13,6 @@
     "pretty": true,
     "sourceMap": true,
     "strict": true,
-    "target": "esnext"
+    "target": "es6"
   }
 }

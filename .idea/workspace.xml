@@ -4,6 +4,7 @@
     <list default="true" id="1803a8aa-f555-47ca-be2a-58a169ef393f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generateSVGs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/generateSVGs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +97,8 @@
       <workItem from="1572715750412" duration="11050000" />
       <workItem from="1572785447850" duration="1174000" />
       <workItem from="1572791514976" duration="6182000" />
-      <workItem from="1572800434477" duration="13365000" />
+      <workItem from="1572800434477" duration="13395000" />
+      <workItem from="1573064194922" duration="1075000" />
     </task>
     <servers />
   </component>

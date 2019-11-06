@@ -128,7 +128,7 @@ const getSVGcontent = (
     };
 
     const rotationAngle =
-      Math.atan2(pointB.y - pointA.y, pointB.x - pointA.x) * 180 / Math.PI -
+      (Math.atan2(pointB.y - pointA.y, pointB.x - pointA.x) * 180) / Math.PI -
       Math.atan2(pointC.y - pointA.y, pointC.x - pointA.x);
 
     const leftBackPoint = {
