@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1803a8aa-f555-47ca-be2a-58a169ef393f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generateSVGs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/generateSVGs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/results/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/results/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/training/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/training/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/training/training.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/training/training.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/algorithmsCreation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/algorithmsCreation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/publications/algorithms.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/algorithms.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/publications/results.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/results.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +39,7 @@
     <property name="js.meteor.library.cached" value="$PROJECT_DIR$/.meteor" />
     <property name="js.meteor.library.was.enabled" value="true" />
     <property name="js.meteor.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../onyx" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../aleno.me" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -98,7 +102,7 @@
       <workItem from="1572785447850" duration="1174000" />
       <workItem from="1572791514976" duration="6182000" />
       <workItem from="1572800434477" duration="13395000" />
-      <workItem from="1573064194922" duration="1075000" />
+      <workItem from="1573064194922" duration="2002000" />
     </task>
     <servers />
   </component>

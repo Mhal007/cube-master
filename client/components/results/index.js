@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
-import { Results } from '../../../collections/results';
-import { composer } from '../../lib/composer';
+import { Results } from '/collections/results';
+import { composer } from '/lib/composer';
 import ResultsComponent from './results';
 
 const compose = (props, onData) => {

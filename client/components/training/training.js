@@ -9,7 +9,7 @@ import Averages from '../averages';
 import TipsAndTricks from '../tipsAndTricks';
 import TrainingMain from '../trainingMain';
 
-import { getRandomScramble } from '../../../lib/global-helpers';
+import { getRandomScramble } from '/lib/global-helpers';
 
 // TODO move it
 const getRandomEntry = (array, excludeId) => {

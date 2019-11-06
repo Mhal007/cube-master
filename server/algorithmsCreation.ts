@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Algorithms } from '../collections/algorithms';
+import { Algorithms } from '/collections/algorithms';
 
 import { OLLs, PLLs } from './const';
 
