@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1803a8aa-f555-47ca-be2a-58a169ef393f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/training/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/training/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collections/algorithms.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collections/algorithms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collections/results.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collections/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/global-helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/global-helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/algorithmsCreation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/algorithmsCreation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/publications/algorithms.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/algorithms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/publications/results.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/publications/results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generateSVGs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/generateSVGs.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,6 +109,7 @@
         <option value="$PROJECT_DIR$/collections/algorithms.js" />
         <option value="$PROJECT_DIR$/server/publications/algorithms.js" />
         <option value="$PROJECT_DIR$/server/publications/results.js" />
+        <option value="$PROJECT_DIR$/server/const.js" />
       </list>
     </option>
   </component>

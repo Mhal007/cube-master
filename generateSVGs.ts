@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { OLLs, PLLs, algorithm, line, point } from './server/const';
+import { algorithm, line, OLLs, PLLs, point } from './server/const';
 
 type strikeFormatted = {
   x: number;
