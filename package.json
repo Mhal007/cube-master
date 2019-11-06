@@ -8,7 +8,6 @@
     "svgs": "ts-node devops/imports/generateSVGs"
   },
   "dependencies": {
-    "@babel/core": "^7.7.0",
     "chai": "4.2.0",
     "indexof": "0.0.1",
     "lodash": "4.17.15",
@@ -22,6 +21,7 @@
     "semantic-ui-react": "0.88.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@types/chai": "^4.2.4",
     "@types/jest": "^24.0.22",
