@@ -15,8 +15,11 @@ type squareFormatted = strikeFormatted & {
 };
 
 type marker = {
-  points: point[];
   angle: number;
+  margin: number;
+  svgPoints: string;
+  x: number;
+  y: number;
 };
 
 const filesPath: string = 'public/images/';
@@ -28,11 +31,11 @@ const getSVGcontent = (
 ): string => {
   const cubeSize = squares[0].length;
 
-  console.log('lines', lines);
-
   const colorPrimary = '#ffff45';
   const colorSecondary = 'gray';
   const colorBackground = 'black';
+  const colorLine = 'cornflowerblue';
+  const colorLineTip = '#FF5722';
 
   const squaresFormatted: squareFormatted[][] = squares.map(
     (row: number[], rowIndex: number) =>
@@ -106,7 +109,7 @@ const getSVGcontent = (
     strikesLeft
   ];
 
-  const getCenter = ({ x: squareX, y: squareY }: point) => {
+  const getSquareCenter = ({ x: squareX, y: squareY }: point) => {
     const x =
       2 * spacingLength +
       0.5 * squareLength +
@@ -119,9 +122,11 @@ const getSVGcontent = (
     return { x, y };
   };
 
-  const getPoints = (line: line): line => line.map(point => getCenter(point));
+  const getSVGPoints = (line: line): string =>
+    line.reduce((points, point) => `${points} ${point.x},${point.y}`, '') +
+    ` ${line[0].x},${line[0].y}`;
 
-  const lineToMarker = (pointA: point, pointB: point) => {
+  const lineToMarker = (pointA: point, pointB: point): marker => {
     const pointC = {
       x: pointA.x + Math.abs(pointB.x - pointA.x),
       y: pointA.y
@@ -132,23 +137,24 @@ const getSVGcontent = (
       Math.atan2(pointC.y - pointA.y, pointC.x - pointA.x);
 
     const leftBackPoint = {
-      x: pointB.x - 0.25 * squareLength,
-      y: pointB.y - 0.25 * squareLength
+      x: pointB.x - 0.3 * squareLength,
+      y: pointB.y - 0.3 * squareLength
     };
 
     const rightBackPoint = {
-      x: pointB.x - 0.25 * squareLength,
-      y: pointB.y + 0.25 * squareLength
+      x: pointB.x - 0.3 * squareLength,
+      y: pointB.y + 0.3 * squareLength
     };
 
-    console.log('pointA', pointA);
-    console.log('pointB', pointB);
-    console.log('leftBackPoint', leftBackPoint);
-    console.log('rightBackPoint', rightBackPoint);
+    const margin = 0.2 * squareLength;
 
+    // TODO getSVGPoints returns one point more than needed
     return {
-      points: [leftBackPoint, pointB, rightBackPoint],
-      angle: rotationAngle
+      svgPoints: getSVGPoints([leftBackPoint, pointB, rightBackPoint]),
+      angle: rotationAngle,
+      x: pointB.x,
+      y: pointB.y,
+      margin
     };
   };
 
@@ -166,7 +172,9 @@ const getSVGcontent = (
     return markers;
   };
 
-  const linesFormatted: line[] = lines.map(line => getPoints(line));
+  const linesFormatted: line[] = lines.map(line =>
+    line.map(point => getSquareCenter(point))
+  );
 
   const boardSize: number =
     spacingLength * 3 + cubeSize * (squareLength + spacingLength);
@@ -228,12 +236,9 @@ const getSVGcontent = (
       ${linesFormatted.map(
         line => `
           <polyline 
-          points="${line.reduce(
-            (points, point) => `${points} ${point.x},${point.y}`,
-            ''
-          ) + ` ${line[0].x},${line[0].y}`}" 
+          points="${getSVGPoints(line)}"
           fill="none" 
-          stroke="orange" 
+          stroke="${colorLine}"
           stroke-width="3"
           />
         `
@@ -244,18 +249,11 @@ const getSVGcontent = (
         .map((line: line) =>
           getMarkers(line)
             .map(
-              ({ points, angle }: { points: point[]; angle: number }) => `
+              ({ angle, margin, svgPoints, x, y }: marker) => `
                 <polygon 
-                  points="${points.reduce(
-                    (points: string, point: point) =>
-                      `${points} ${point.x},${point.y}`,
-                    ''
-                  )}"
-                  fill="red" 
-                  transform="
-                  translate(${points[1].x} ${points[1].y}) 
-                  rotate(${angle} 0 0) 
-                  translate(${-1 * points[1].x} ${-1 * points[1].y})"
+                  points="${svgPoints}"
+                  fill="${colorLineTip}" 
+                  transform="rotate(${angle} ${x} ${y}) translate(${margin})"
                 />
               `
             )
@@ -274,30 +272,25 @@ const writeFile = (
   extension: string,
   content: string
 ) => {
-  return new Promise(resolve => {
-    fs.writeFile(`${path}${name}${extension}`, content, err => {
-      if (err) {
-        throw err;
-      }
+  fs.writeFile(`${path}${name}${extension}`, content, err => {
+    if (err) {
+      throw err;
+    }
 
-      resolve(`File ${name} created successfully`);
-    });
+    console.info(`File ${name} created successfully`);
   });
 };
 
 /* write files */
-OLLs.filter((OLL: algorithm) => OLL.squares).forEach(
-  async (scramble: algorithm) => {
-    const content = getSVGcontent(scramble, 25, 3);
-    const result = await writeFile(filesPath, scramble.name, '.svg', content);
-    console.info(result);
-  }
-);
+OLLs.forEach((scramble: algorithm) => {
+  const content = getSVGcontent(scramble, 25, 3);
+  writeFile(filesPath, scramble.name, '.svg', content);
+});
 
 PLLs.filter((PLL: algorithm) => PLL.lines && PLL.lines.length).forEach(
-  async (scramble: algorithm) => {
+  // TODO remove filter when done
+  (scramble: algorithm) => {
     const content = getSVGcontent(scramble, 25, 3);
-    const result = await writeFile(filesPath, scramble.name, '.svg', content);
-    console.info(result);
+    writeFile(filesPath, scramble.name, '.svg', content);
   }
 );

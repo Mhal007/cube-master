@@ -957,7 +957,7 @@ export const PLLs: algorithm[] = [
   {
     active: true,
     category: 'PLL',
-    image: 'pll_1.png',
+    image: 'pll_1.svg',
     name: 'pll_1',
     scramble: "x' (U L' U R2 U') (L U R2 U2)",
     solution: "x' (R' D R') U2 (R D' R' U2 R2)",
@@ -970,7 +970,7 @@ export const PLLs: algorithm[] = [
   {
     active: true,
     category: 'PLL',
-    image: 'pll_2.png',
+    image: 'pll_2.svg',
     name: 'pll_2',
     scramble: "x' (U' R U' L2U) (R' U' L2 U2)",
     solution: "x' (L D' L) U2 (L' D L) U2 L2",
@@ -983,7 +983,7 @@ export const PLLs: algorithm[] = [
   {
     active: true,
     category: 'PLL',
-    image: 'pll_3.png',
+    image: 'pll_3.svg',
     name: 'pll_3',
     scramble: "x' (R U' R' D R U R' D') (R U R' D R U' R' D')",
     solution: "x' (R U' R' D R U R' D') (R U R' D R U' R' D')",
@@ -991,12 +991,12 @@ export const PLLs: algorithm[] = [
     subtype: 'E',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 0, y: 2 }], [{ x: 2, y: 0 }, { x: 2, y: 2 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_4.png',
+    image: 'pll_4.svg',
     name: 'pll_4',
     scramble: "(R' URU' R2) y' (R' U' RU) (BRB' R' B2U')",
     solution: "(R' URU' R2) y' (R' U' RU) (BRB' R' B2U')",
@@ -1004,12 +1004,12 @@ export const PLLs: algorithm[] = [
     subtype: 'E',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_5.png',
+    image: 'pll_5.svg',
     name: 'pll_5',
     scramble: "(M2 U') (M2 U2) (M2 U') M2",
     solution: "(M2 U') (M2 U2) (M2 U') M2",
@@ -1017,12 +1017,12 @@ export const PLLs: algorithm[] = [
     subtype: 'H',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 1, y: 0 }, { x: 1, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_6.png',
+    image: 'pll_6.svg',
     name: 'pll_6',
     scramble: "(R' UR' U') (R' U') (R' U R U R2)",
     solution: "(R2 U') (R' U' RU) (R U R U' R)",
@@ -1030,12 +1030,12 @@ export const PLLs: algorithm[] = [
     subtype: 'U',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 1 }, { x: 2, y: 1 }, { x: 1, y: 0 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_7.png',
+    image: 'pll_7.svg',
     name: 'pll_7',
     scramble: "(R2 U') (R' U' RU) (R U R U' R)",
     solution: "(R' UR' U') (R' U') (R' U R U R2)",
@@ -1043,12 +1043,12 @@ export const PLLs: algorithm[] = [
     subtype: 'U',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 1 }, { x: 1, y: 0 }, { x: 2, y: 1 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_8.png',
+    image: 'pll_8.svg',
     name: 'pll_8',
     scramble: "L U' R' UL' U2 R U' R' U2 R x2",
     solution: "B2 (R' U' R) B2 (L' D L' D') L2",
@@ -1056,12 +1056,12 @@ export const PLLs: algorithm[] = [
     subtype: 'J',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 0, y: 2 }], [{ x: 0, y: 1 }, { x: 1, y: 2 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_9.png',
+    image: 'pll_9.svg',
     name: 'pll_9',
     scramble: "(R' U L U' R) (U2 L' U L U2 L') x2",
     solution: "B2 (L U L') B2 (R D' R D) R2",
@@ -1069,12 +1069,12 @@ export const PLLs: algorithm[] = [
     subtype: 'J',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 2, y: 0 }, { x: 2, y: 2 }], [{ x: 2, y: 1 }, { x: 1, y: 2 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_10.png',
+    image: 'pll_10.svg',
     name: 'pll_10',
     scramble: "(R U R' U') (R' F R2 U') (R' U' R U R' F')",
     solution: "(R U R' U') (R' F R2 U') (R' U' R U R' F')",
@@ -1082,12 +1082,12 @@ export const PLLs: algorithm[] = [
     subtype: 'T',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 2, y: 0 }, { x: 2, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_11.png',
+    image: 'pll_11.svg',
     name: 'pll_11',
     scramble: "(L' U L' U') y'(R' F') (R2 U' R' U R' F R F) y",
     solution: "(L' U L' U') y'(R' F') (R2 U' R' U R' F R F)",
@@ -1095,12 +1095,12 @@ export const PLLs: algorithm[] = [
     subtype: 'V',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 2, y: 2 }], [{ x: 0, y: 1 }, { x: 1, y: 2 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_12.png',
+    image: 'pll_12.svg',
     name: 'pll_12',
     scramble: "(L U2 L' U2) (L F' L' U' LU) (L F L2 U)",
     solution: "(L U2 L' U2) (L F' L' U' LU) (L F L2 U)",
@@ -1108,12 +1108,12 @@ export const PLLs: algorithm[] = [
     subtype: 'R',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }], [{ x: 0, y: 1 }, { x: 1, y: 2 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_13.png',
+    image: 'pll_13.svg',
     name: 'pll_13',
     scramble: "(R' U2 R U2) (R' F R U R' U') (R' F' R2 U')",
     solution: "(R' U2 R U2) (R' F R U R' U') (R' F' R2 U')",
@@ -1121,12 +1121,12 @@ export const PLLs: algorithm[] = [
     subtype: 'R',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }], [{ x: 2, y: 1 }, { x: 1, y: 2 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_14.png',
+    image: 'pll_14.svg',
     name: 'pll_14',
     scramble: "(L U L' B2) z' (R' U L' U' L) (U' R B2) z",
     solution: "z x' (U2 r' U R' U R U' r U2) y (L F' L') x",
@@ -1134,12 +1134,15 @@ export const PLLs: algorithm[] = [
     subtype: 'G',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [
+      [{ x: 1, y: 0 }, { x: 2, y: 1 }, { x: 1, y: 2 }],
+      [{ x: 2, y: 0 }, { x: 0, y: 2 }, { x: 2, y: 2 }]
+    ]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_15.png',
+    image: 'pll_15.svg',
     name: 'pll_15',
     scramble: "(R' U' R B2) z (L U' R U R') (U r' U2) z' x",
     solution: "z' x' (U2 l U' LU' L' U l' U2) y' (R' F R) x",
@@ -1147,12 +1150,15 @@ export const PLLs: algorithm[] = [
     subtype: 'G',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [
+      [{ x: 0, y: 0 }, { x: 2, y: 2 }, { x: 0, y: 2 }],
+      [{ x: 1, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 2 }]
+    ]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_16.png',
+    image: 'pll_16.svg',
     name: 'pll_16',
     scramble: "z' (U2 l U' LU' L' U l' U2) y' (R' F R) x",
     solution: "(R' U' R B2) z (L U' R U R') (U r' U2) z' x",
@@ -1160,12 +1166,15 @@ export const PLLs: algorithm[] = [
     subtype: 'G',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [
+      [{ x: 0, y: 0 }, { x: 0, y: 2 }, { x: 2, y: 2 }],
+      [{ x: 1, y: 0 }, { x: 1, y: 2 }, { x: 0, y: 1 }]
+    ]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_17.png',
+    image: 'pll_17.svg',
     name: 'pll_17',
     scramble: "z (U2 r' U R' U R U' r U2) y (L F' L') x",
     solution: "(L U L' B2) z' (R' U L' U' L) (U' R B2) z",
@@ -1173,12 +1182,15 @@ export const PLLs: algorithm[] = [
     subtype: 'G',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [
+      [{ x: 2, y: 0 }, { x: 2, y: 2 }, { x: 0, y: 2 }],
+      [{ x: 1, y: 0 }, { x: 1, y: 2 }, { x: 2, y: 1 }]
+    ]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_18.png',
+    image: 'pll_18.svg',
     name: 'pll_18',
     scramble: "(U R' U' R U') (R U R U' R' U) (R U R2 U' R' U)",
     solution: "(U R' U' R U') (R U R U' R' U) (R U R2 U' R' U)",
@@ -1186,12 +1198,12 @@ export const PLLs: algorithm[] = [
     subtype: 'Z',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 1, y: 0 }, { x: 0, y: 1 }], [{ x: 2, y: 1 }, { x: 1, y: 2 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_19.png',
+    image: 'pll_19.svg',
     name: 'pll_19',
     scramble: "L U' R U2 L' U R') (L U' R U2 L' U R') U'",
     solution: "L U' R U2 L' U R') (L U' R U2 L' U R') U'",
@@ -1199,12 +1211,12 @@ export const PLLs: algorithm[] = [
     subtype: 'N',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 2, y: 0 }, { x: 0, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_20.png',
+    image: 'pll_20.svg',
     name: 'pll_20',
     scramble: "(R' UL' U2 R U' L) (R' UL' U2 R U' L) U",
     solution: "(R' UL' U2 R U' L) (R' UL' U2 R U' L) U",
@@ -1212,12 +1224,12 @@ export const PLLs: algorithm[] = [
     subtype: 'N',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 2, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
   },
   {
     active: true,
     category: 'PLL',
-    image: 'pll_21.png',
+    image: 'pll_21.svg',
     name: 'pll_21',
     scramble: "(F R U' R' U' R U R' F') (R U R' U') (R' F R F')",
     solution: "(F R U' R' U' R U R' F') (R U R' U') (R' F R F')",
@@ -1225,6 +1237,6 @@ export const PLLs: algorithm[] = [
     subtype: 'Y',
     squares: squresFull,
     strikes: srikesNone,
-    lines: []
+    lines: [[{ x: 0, y: 0 }, { x: 2, y: 2 }], [{ x: 1, y: 0 }, { x: 0, y: 1 }]]
   }
 ];

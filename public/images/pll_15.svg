@@ -93,7 +93,14 @@
       <!-- LINES -->
       
           <polyline 
-          points=" 18.5,18.5 18.5,74.5 74.5,18.5 18.5,18.5"
+          points=" 18.5,18.5 74.5,74.5 18.5,74.5 18.5,18.5"
+          fill="none" 
+          stroke="cornflowerblue"
+          stroke-width="3"
+          />
+        ,
+          <polyline 
+          points=" 46.5,18.5 18.5,46.5 46.5,74.5 46.5,18.5"
           fill="none" 
           stroke="cornflowerblue"
           stroke-width="3"
@@ -103,21 +110,39 @@
       <!-- MARKERS -->
       
                 <polygon 
-                  points=" 11,67 18.5,74.5 11,82 11,67"
+                  points=" 67,67 74.5,74.5 67,82 67,67"
                   fill="#FF5722" 
-                  transform="rotate(90 18.5 74.5) translate(5)"
+                  transform="rotate(45 74.5 74.5) translate(5)"
                 />
               
                 <polygon 
-                  points=" 67,11 74.5,18.5 67,26 67,11"
+                  points=" 11,67 18.5,74.5 11,82 11,67"
                   fill="#FF5722" 
-                  transform="rotate(-45 74.5 18.5) translate(5)"
+                  transform="rotate(180 18.5 74.5) translate(5)"
                 />
               
                 <polygon 
                   points=" 11,11 18.5,18.5 11,26 11,11"
                   fill="#FF5722" 
-                  transform="rotate(180 18.5 18.5) translate(5)"
+                  transform="rotate(-90 18.5 18.5) translate(5)"
+                />
+              
+                <polygon 
+                  points=" 11,39 18.5,46.5 11,54 11,39"
+                  fill="#FF5722" 
+                  transform="rotate(135 18.5 46.5) translate(5)"
+                />
+              
+                <polygon 
+                  points=" 39,67 46.5,74.5 39,82 39,67"
+                  fill="#FF5722" 
+                  transform="rotate(45 46.5 74.5) translate(5)"
+                />
+              
+                <polygon 
+                  points=" 39,11 46.5,18.5 39,26 39,11"
+                  fill="#FF5722" 
+                  transform="rotate(-90 46.5 18.5) translate(5)"
                 />
               
     </svg>

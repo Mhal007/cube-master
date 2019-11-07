@@ -2,10 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1803a8aa-f555-47ca-be2a-58a169ef393f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/pll_10.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_11.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_12.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_13.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_14.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_15.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_16.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_17.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_18.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_19.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_20.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_21.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_3.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_4.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_5.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_6.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_7.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_8.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/pll_9.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/imports/components/algSettings.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/stylesheets/algSettings.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/imports/components/averages.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/stylesheets/averages.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/imports/components/trainingMain.less" beforeDir="false" afterPath="$PROJECT_DIR$/client/stylesheets/trainingMain.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/imports/components/training/training.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/imports/components/training/training.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devops/imports/generateSVGs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/devops/imports/generateSVGs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/pll_1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/pll_2.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/pll_9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/imports/const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/imports/const.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +79,7 @@
     <property name="js.meteor.library.cached" value="$PROJECT_DIR$/.meteor" />
     <property name="js.meteor.library.was.enabled" value="true" />
     <property name="js.meteor.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../aleno.me" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -50,7 +93,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -100,6 +143,8 @@
       <workItem from="1572791514976" duration="6182000" />
       <workItem from="1572800434477" duration="13395000" />
       <workItem from="1573064194922" duration="2940000" />
+      <workItem from="1573147782669" duration="19000" />
+      <workItem from="1573147814382" duration="9789000" />
     </task>
     <servers />
   </component>

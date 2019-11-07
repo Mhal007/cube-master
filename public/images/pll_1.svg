@@ -93,9 +93,9 @@
       <!-- LINES -->
       
           <polyline 
-          points=" 18.5,18.5 74.5,18.5 74.5,74.5 18.5,18.5" 
+          points=" 18.5,18.5 74.5,18.5 74.5,74.5 18.5,18.5"
           fill="none" 
-          stroke="orange" 
+          stroke="cornflowerblue"
           stroke-width="3"
           />
         
@@ -103,30 +103,21 @@
       <!-- MARKERS -->
       
                 <polygon 
-                  points=" 68.25,12.25 74.5,18.5 68.25,24.75"
-                  fill="red" 
-                  transform="
-                  translate(74.5 18.5) 
-                  rotate(0 0 0) 
-                  translate(-74.5 -18.5)"
+                  points=" 67,11 74.5,18.5 67,26 67,11"
+                  fill="#FF5722" 
+                  transform="rotate(0 74.5 18.5) translate(5)"
                 />
               
                 <polygon 
-                  points=" 68.25,68.25 74.5,74.5 68.25,80.75"
-                  fill="red" 
-                  transform="
-                  translate(74.5 74.5) 
-                  rotate(90 0 0) 
-                  translate(-74.5 -74.5)"
+                  points=" 67,67 74.5,74.5 67,82 67,67"
+                  fill="#FF5722" 
+                  transform="rotate(90 74.5 74.5) translate(5)"
                 />
               
                 <polygon 
-                  points=" 12.25,12.25 18.5,18.5 12.25,24.75"
-                  fill="red" 
-                  transform="
-                  translate(18.5 18.5) 
-                  rotate(-135 0 0) 
-                  translate(-18.5 -18.5)"
+                  points=" 11,11 18.5,18.5 11,26 11,11"
+                  fill="#FF5722" 
+                  transform="rotate(-135 18.5 18.5) translate(5)"
                 />
               
     </svg>

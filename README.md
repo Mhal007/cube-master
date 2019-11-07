@@ -8,26 +8,26 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1
-- create custom images for algs (better res as well)
-- +x/-x to average (green/red)
-- PropTypes all the way
-- fix: rerandomize alg after diabling it in the options
-- fix: space should rerandomize when no algs selected
-- organize imports + absolute paths instead of relative
-- menu with buttons for: accept, +2, random new, delete
-- filtering algs by group
+- refactor generateSVGs (line and tip as single object)
 - add router and paths
 - save settings to local storage: grouping level, solution visiblity, algs selection
+- add account support
+- Refactor algs naming and order
+- +x/-x to average (green/red)
+- PropTypes all the way
+- fix: rerandomize alg after disabling it in the options
+- fix: space should rerandomize when no algs selected
+- organize imports + absolute paths
+- menu with buttons for: accept, +2, random new, delete
 
 
 #### Priority level 2
 - visual scramble!
-- add account support
-- Refactor algs naming and order
+- filtering algs by group
 - refactor timer & nr of renders
 - isTraining refactor (the 'real' flag)
 - refactoring of isAlgorithmActive (DB -> local storage)
-- sets of algs kept in DB to load selection?
+- sets of algs kept in DB to load selection(?)
 - results result format (ms / s / m / h)
 
 
@@ -37,4 +37,6 @@ Rubik's cube training site.
 - 3x3x3 working + scrambler
 - mobile view
 - new averages
-- responsive view (UWHD)
+- responsive view mobile
+- responsvie view FHD+
+- solving simplified view 
