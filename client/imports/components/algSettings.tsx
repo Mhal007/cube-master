@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent, useState } from 'react';
 import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import { getAverage } from '../../utils';
+import { algorithm } from '../../../server/imports/const';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
 
-const AlgSettings = ({
+type algorithmWithResults = algorithm & {
+  results: any; // TODO
+};
+
+type Props = {
+  algorithms: algorithmWithResults[];
+  currentCategory: any; // TODO
+  onActivateAll: () => void;
+  onToggleActive: (algorithm: algorithm) => void;
+  onDeactivateAll: () => void;
+};
+
+const AlgSettings: FunctionComponent<Props> = ({
   algorithms,
   currentCategory: { settingsDisabled },
   onActivateAll,
@@ -38,11 +50,12 @@ const AlgSettings = ({
                 min={0}
                 max={2}
                 onChange={setDetailsLevel}
-                tipFormatter={value => ['None', 'General', 'Precise'][value]}
+                tipFormatter={(value: number): string =>
+                  ['None', 'General', 'Precise'][value]
+                }
                 tipProps={{
                   placement: 'bottom',
-                  visible: true,
-                  borderRadius: '0px'
+                  visible: true
                 }}
                 value={detailsLevel}
               />
@@ -53,13 +66,13 @@ const AlgSettings = ({
               <div className="controls">
                 <Button
                   secondary
-                  onClick={settingsDisabled ? null : onActivateAll}
+                  onClick={settingsDisabled ? undefined : onActivateAll}
                 >
                   Select all
                 </Button>
                 <Button
                   secondary
-                  onClick={settingsDisabled ? null : onDeactivateAll}
+                  onClick={settingsDisabled ? undefined : onDeactivateAll}
                 >
                   Unselect all
                 </Button>
@@ -82,7 +95,7 @@ const AlgSettings = ({
                 settingsDisabled ? null : onToggleActive(algorithm)
               }
             >
-              <img src={`/images/${algorithm.image}`} />
+              <img alt={algorithm.name} src={`/images/${algorithm.image}`} />
               <div className="results-average">
                 {getAverage(algorithm && algorithm.results)}
               </div>
@@ -92,13 +105,6 @@ const AlgSettings = ({
       ))}
     </section>
   );
-};
-
-AlgSettings.propTypes = {
-  currentCategory: PropTypes.object.isRequired,
-  onActivateAll: PropTypes.func.isRequired,
-  onToggleActive: PropTypes.func.isRequired,
-  onDeactivateAll: PropTypes.func.isRequired
 };
 
 export default AlgSettings;

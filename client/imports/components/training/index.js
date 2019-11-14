@@ -5,7 +5,7 @@ import { Results } from '../../../../collections/results';
 import { composer } from '../../lib/composer';
 import Training from './training';
 
-// TODO move it
+// TODO to be moved
 const categories = [
   {
     label: 'OLL',

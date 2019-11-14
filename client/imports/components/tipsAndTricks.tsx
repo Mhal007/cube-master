@@ -1,7 +1,13 @@
 import React from 'react';
 import { List, Segment } from 'semantic-ui-react';
 
-const tipsList = [
+type tip = {
+  description: string;
+  header: string;
+  icon: string;
+};
+
+const tipsList: tip[] = [
   {
     header: 'Enter / Space',
     description: '... -> start timer -> stop timer -> save result -> ...'

@@ -1,12 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 
 import Timer from './timer';
+import { algorithm } from '../../../server/imports/const';
 
-const TrainingMain = ({
+type Props = {
+  onChangeAlgorithm: () => void;
+  currentAlgorithm?: algorithm;
+  isVisibleSolution: boolean;
+  timerCurrentValue: number;
+};
+
+const TrainingMain: FunctionComponent<Props> = ({
   onChangeAlgorithm,
-  currentAlgorithm: { image, scramble, solution } = {},
+  currentAlgorithm: { image, scramble, solution } = {
+    image: undefined,
+    scramble: undefined,
+    solution: undefined
+  },
   isVisibleSolution,
   timerCurrentValue
 }) => (
@@ -33,12 +44,5 @@ const TrainingMain = ({
     )}
   </section>
 );
-
-TrainingMain.propTypes = {
-  currentAlgorithm: PropTypes.object,
-  isVisibleSolution: PropTypes.bool.isRequired,
-  onChangeAlgorithm: PropTypes.func.isRequired,
-  timerCurrentValue: PropTypes.number.isRequired
-};
 
 export default TrainingMain;

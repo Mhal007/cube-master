@@ -8,16 +8,15 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1
-- refactor generateSVGs (line and tip as single object)
-- add router and paths
-- save settings to local storage: grouping level, solution visiblity, algs selection
 - add account support
-- Refactor algs naming and order
-- +x/-x to average (green/red)
-- PropTypes all the way
+- finish transition to TS
+- resolve TODOs
 - fix: rerandomize alg after disabling it in the options
 - fix: space should rerandomize when no algs selected
-- organize imports + absolute paths
+- refactor generateSVGs (line and tip as single object)
+- save settings to local storage: grouping level, solution visiblity, algs selection
+- Refactor algs naming and order
+- +x/-x to average (green/red)
 - menu with buttons for: accept, +2, random new, delete
 
 
