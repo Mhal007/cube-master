@@ -195,6 +195,10 @@ class Training extends Component {
       timerStatus
     } = this.state;
 
+    if (!currentAlgorithm) {
+      return;
+    }
+
     if (timerStatus === 'resetted' && upOrDown === 'down' && !blocked.space) {
       this.setState({ timerStatus: 'pre-inspection' });
     } else if (timerStatus === 'pre-inspection' && upOrDown === 'up') {
