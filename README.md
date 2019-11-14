@@ -8,25 +8,21 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1
-- refactor generateSVGs (line and tip as single object)
-- add router and paths
-- save settings to local storage: grouping level, solution visiblity, algs selection
 - add account support
+- finish transition to TS
+- resolve TODOs
+- refactor generateSVGs (line and tip as single object)
+- save settings to local storage: grouping level, solution visiblity, algs selection
 - Refactor algs naming and order
 - +x/-x to average (green/red)
-- PropTypes all the way
-- fix: rerandomize alg after disabling it in the options
-- fix: space should rerandomize when no algs selected
-- organize imports + absolute paths
 - menu with buttons for: accept, +2, random new, delete
 
 
 #### Priority level 2
 - visual scramble!
 - filtering algs by group
-- refactor timer & nr of renders
-- isTraining refactor (the 'real' flag)
-- refactoring of isAlgorithmActive (DB -> local storage)
+- timer refactoring & nr of renders
+- isAlgorithmActive refactoring
 - sets of algs kept in DB to load selection(?)
 - results result format (ms / s / m / h)
 
@@ -38,5 +34,5 @@ Rubik's cube training site.
 - mobile view
 - new averages
 - responsive view mobile
-- responsvie view FHD+
+- responsive view FHD+
 - solving simplified view 

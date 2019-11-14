@@ -1,4 +1,5 @@
 export type algorithm = {
+  _id?: string;
   active: boolean;
   category: 'OLL' | 'PLL';
   name: string;

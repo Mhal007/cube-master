@@ -2,11 +2,11 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
-import Container from './imports/components/container';
+import Router from './imports/components/router';
 
 import 'rc-slider/assets/index.css';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
 
 Meteor.startup(() => {
-  render(<Container />, document.getElementById('render-target'));
+  render(<Router />, document.getElementById('render-target'));
 });

@@ -5,9 +5,8 @@ import { check } from 'meteor/check';
 export const Results = new Mongo.Collection('results');
 
 Meteor.methods({
-  'results.insert': ({ algorithmId, category, real, scramble, time }) => {
+  'results.insert': ({ algorithmId, category, scramble, time }) => {
     check(category, String);
-    check(real, Boolean);
     check(time, Number);
 
     if (category === 'OLL' || category === 'PLL' || category === '3x3x3') {
@@ -27,7 +26,6 @@ Meteor.methods({
       algorithmId,
       category,
       createdAt: new Date(),
-      real,
       scramble,
       time
     };
