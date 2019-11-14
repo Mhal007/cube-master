@@ -1,1 +1,0 @@
-{"head":"<title>Cube Master</title>\n  <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css\" />","body":"","js":"\nTemplate.body.addContent((function() {\n  var view = this;\n  return HTML.Raw('<div id=\"render-target\"></div>');\n}));\nMeteor.startup(Template.body.renderToDocument);\n","bodyAttrs":{}}
