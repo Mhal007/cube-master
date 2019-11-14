@@ -235,7 +235,6 @@ class Training extends Component {
           scramble: currentAlgorithm.scramble
         }),
         category: currentCategory.value,
-        real: !this.props.debugging,
         time: timerCurrentValue
       };
 
@@ -321,8 +320,7 @@ class Training extends Component {
 }
 
 Training.propTypes = {
-  onToggleLoader: PropTypes.func.isRequired,
-  debugging: PropTypes.bool.isRequired
+  onToggleLoader: PropTypes.func.isRequired
 };
 
 export default Training;

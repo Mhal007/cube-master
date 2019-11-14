@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment } from 'semantic-ui-react';
+import { Router } from '@reach/router';
 
 import Loader from './loader';
 import MenuTop from './menuTop';
@@ -11,45 +11,39 @@ export default class Container extends Component {
     super(props);
 
     this.state = {
-      currentTab: 'training',
-      isVisibleLoader: true
+      isVisibleLoader: false
     };
-
-    this.onChangeTab = this.onChangeTab.bind(this);
   }
 
-  onChangeTab = (e, { name }) => this.setState({ currentTab: name });
   onToggleLoader = newValue => this.setState({ isVisibleLoader: newValue });
 
   render() {
     const {
       onChangeTab,
       onToggleLoader,
-
-      state: { currentTab, isVisibleLoader }
+      state: { isVisibleLoader }
     } = this;
 
     return (
-      <div className="segment">
+      <div>
         <header>
-          <MenuTop currentTab={currentTab} onChangeTab={onChangeTab} />
+          <Router>
+            <MenuTop onChangeTab={onChangeTab} default />
+          </Router>
         </header>
 
-        <Segment>
-          {isVisibleLoader && <Loader />}
-
-          <main>
-            {(currentTab === 'training' || currentTab === 'debugging') && (
-              <Training
-                onToggleLoader={onToggleLoader}
-                debugging={currentTab === 'debugging'}
-              />
-            )}
-            {currentTab === 'results' && (
-              <Results debugging={currentTab === 'debugging'} />
-            )}
-          </main>
-        </Segment>
+        {isVisibleLoader ? (
+          <Loader />
+        ) : (
+          <Router>
+            <Training
+              onToggleLoader={onToggleLoader}
+              path="/training"
+              default
+            />
+            <Results path="/results" />
+          </Router>
+        )}
 
         <footer />
       </div>

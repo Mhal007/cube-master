@@ -8,6 +8,7 @@
     "svgs": "ts-node devops/imports/generateSVGs"
   },
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "chai": "4.2.0",
     "indexof": "0.0.1",
     "lodash": "4.17.15",

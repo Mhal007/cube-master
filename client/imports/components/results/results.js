@@ -13,11 +13,6 @@ const columns = [
     value: 'category'
   },
   {
-    label: 'Debugging',
-    value: 'real',
-    format: value => (value ? 'no' : 'yes') // not real means that it is debugging
-  },
-  {
     label: 'Scramble',
     value: 'scramble'
   },

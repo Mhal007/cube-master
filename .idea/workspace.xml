@@ -2,53 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1803a8aa-f555-47ca-be2a-58a169ef393f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/pll_10.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_11.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_12.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_13.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_14.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_15.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_16.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_17.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_18.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_19.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_20.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_21.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_3.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_4.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_5.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_6.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_7.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_8.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/pll_9.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collections/algorithms.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collections/results.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/publications/algorithms.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/publications/results.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meteor/packages" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meteor/release" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/release" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.meteor/versions" beforeDir="false" afterPath="$PROJECT_DIR$/.meteor/versions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/imports/components/container.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/imports/components/container.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/imports/components/menuTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/imports/components/menuTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/imports/components/results/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/imports/components/results/results.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/imports/components/training/training.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/imports/components/training/training.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devops/imports/generateSVGs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/devops/imports/generateSVGs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/pll_1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_2.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/pll_2.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/pll_9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/imports/const.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/imports/const.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collections/algorithms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/collections/results.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/publications/algorithms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/publications/results.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -79,7 +51,7 @@
     <property name="js.meteor.library.cached" value="$PROJECT_DIR$/.meteor" />
     <property name="js.meteor.library.was.enabled" value="true" />
     <property name="js.meteor.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/imports/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -96,19 +68,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/collections" />
-      <recent name="$PROJECT_DIR$/utils" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/server" />
-      <recent name="$PROJECT_DIR$/public/images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/stylesheets" />
       <recent name="$PROJECT_DIR$/client/imports" />
       <recent name="$PROJECT_DIR$/devops/imports" />
       <recent name="$PROJECT_DIR$/server/imports" />
       <recent name="$PROJECT_DIR$/devops" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/imports/components" />
+      <recent name="$PROJECT_DIR$/collections" />
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/server" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -144,7 +116,10 @@
       <workItem from="1572800434477" duration="13395000" />
       <workItem from="1573064194922" duration="2940000" />
       <workItem from="1573147782669" duration="19000" />
-      <workItem from="1573147814382" duration="9789000" />
+      <workItem from="1573147814382" duration="10391000" />
+      <workItem from="1573204251558" duration="776000" />
+      <workItem from="1573207383158" duration="599000" />
+      <workItem from="1573755649131" duration="2025000" />
     </task>
     <servers />
   </component>
@@ -153,9 +128,6 @@
     <option name="exactExcludedFiles">
       <list>
         <option value="$PROJECT_DIR$/collections/results.js" />
-        <option value="$PROJECT_DIR$/collections/algorithms.js" />
-        <option value="$PROJECT_DIR$/server/publications/algorithms.js" />
-        <option value="$PROJECT_DIR$/server/publications/results.js" />
       </list>
     </option>
   </component>

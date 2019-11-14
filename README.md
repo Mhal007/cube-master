@@ -25,7 +25,6 @@ Rubik's cube training site.
 - visual scramble!
 - filtering algs by group
 - refactor timer & nr of renders
-- isTraining refactor (the 'real' flag)
 - refactoring of isAlgorithmActive (DB -> local storage)
 - sets of algs kept in DB to load selection(?)
 - results result format (ms / s / m / h)
