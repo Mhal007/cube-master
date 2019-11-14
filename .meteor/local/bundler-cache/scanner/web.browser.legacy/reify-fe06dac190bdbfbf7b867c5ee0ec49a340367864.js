@@ -1,0 +1,345 @@
+module.export({default:function(){return Transition}});var _objectSpread;module.link("@babel/runtime/helpers/objectSpread",{default:function(v){_objectSpread=v}},0);var _classCallCheck;module.link("@babel/runtime/helpers/classCallCheck",{default:function(v){_classCallCheck=v}},1);var _createClass;module.link("@babel/runtime/helpers/createClass",{default:function(v){_createClass=v}},2);var _possibleConstructorReturn;module.link("@babel/runtime/helpers/possibleConstructorReturn",{default:function(v){_possibleConstructorReturn=v}},3);var _getPrototypeOf;module.link("@babel/runtime/helpers/getPrototypeOf",{default:function(v){_getPrototypeOf=v}},4);var _assertThisInitialized;module.link("@babel/runtime/helpers/assertThisInitialized",{default:function(v){_assertThisInitialized=v}},5);var _inherits;module.link("@babel/runtime/helpers/inherits",{default:function(v){_inherits=v}},6);var _defineProperty;module.link("@babel/runtime/helpers/defineProperty",{default:function(v){_defineProperty=v}},7);var _includes;module.link("lodash/includes",{default:function(v){_includes=v}},8);var _isNil;module.link("lodash/isNil",{default:function(v){_isNil=v}},9);var _get;module.link("lodash/get",{default:function(v){_get=v}},10);var _invoke;module.link("lodash/invoke",{default:function(v){_invoke=v}},11);var cx;module.link('classnames',{default:function(v){cx=v}},12);var PropTypes;module.link('prop-types',{default:function(v){PropTypes=v}},13);var cloneElement,Component;module.link('react',{cloneElement:function(v){cloneElement=v},Component:function(v){Component=v}},14);var normalizeTransitionDuration,SUI,useKeyOnly;module.link('../../lib',{normalizeTransitionDuration:function(v){normalizeTransitionDuration=v},SUI:function(v){SUI=v},useKeyOnly:function(v){useKeyOnly=v}},15);var TransitionGroup;module.link('./TransitionGroup',{default:function(v){TransitionGroup=v}},16);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var TRANSITION_TYPE = {
+  ENTERING: 'show',
+  EXITING: 'hide'
+  /**
+   * A transition is an animation usually used to move content in or out of view.
+   */
+
+};
+
+var Transition =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Transition, _Component);
+
+  function Transition() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Transition);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Transition)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "handleStart", function () {
+      var duration = _this.props.duration;
+      var status = _this.nextStatus;
+      _this.nextStatus = null;
+
+      _this.setState({
+        status: status,
+        animating: true
+      }, function () {
+        var durationType = TRANSITION_TYPE[status];
+        var durationValue = normalizeTransitionDuration(duration, durationType);
+
+        _invoke(_this.props, 'onStart', null, _objectSpread({}, _this.props, {
+          status: status
+        }));
+
+        _this.timeoutId = setTimeout(_this.handleComplete, durationValue);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleComplete", function () {
+      var current = _this.state.status;
+
+      _invoke(_this.props, 'onComplete', null, _objectSpread({}, _this.props, {
+        status: current
+      }));
+
+      if (_this.nextStatus) {
+        _this.handleStart();
+
+        return;
+      }
+
+      var status = _this.computeCompletedStatus();
+
+      var callback = current === Transition.ENTERING ? 'onShow' : 'onHide';
+
+      _this.setState({
+        status: status,
+        animating: false
+      }, function () {
+        _invoke(_this.props, callback, null, _objectSpread({}, _this.props, {
+          status: status
+        }));
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateStatus", function () {
+      var animating = _this.state.animating;
+
+      if (_this.nextStatus) {
+        _this.nextStatus = _this.computeNextStatus();
+        if (!animating) _this.handleStart();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "computeClasses", function () {
+      var _this$props = _this.props,
+          animation = _this$props.animation,
+          directional = _this$props.directional,
+          children = _this$props.children;
+      var _this$state = _this.state,
+          animating = _this$state.animating,
+          status = _this$state.status;
+
+      var childClasses = _get(children, 'props.className');
+
+      var isDirectional = _isNil(directional) ? _includes(SUI.DIRECTIONAL_TRANSITIONS, animation) : directional;
+
+      if (isDirectional) {
+        return cx(animation, childClasses, useKeyOnly(animating, 'animating'), useKeyOnly(status === Transition.ENTERING, 'in'), useKeyOnly(status === Transition.EXITING, 'out'), useKeyOnly(status === Transition.EXITED, 'hidden'), useKeyOnly(status !== Transition.EXITED, 'visible'), 'transition');
+      }
+
+      return cx(animation, childClasses, useKeyOnly(animating, 'animating transition'));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "computeCompletedStatus", function () {
+      var unmountOnHide = _this.props.unmountOnHide;
+      var status = _this.state.status;
+      if (status === Transition.ENTERING) return Transition.ENTERED;
+      return unmountOnHide ? Transition.UNMOUNTED : Transition.EXITED;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "computeInitialStatuses", function () {
+      var _this$props2 = _this.props,
+          visible = _this$props2.visible,
+          mountOnShow = _this$props2.mountOnShow,
+          transitionOnMount = _this$props2.transitionOnMount,
+          unmountOnHide = _this$props2.unmountOnHide;
+
+      if (visible) {
+        if (transitionOnMount) {
+          return {
+            initial: Transition.EXITED,
+            next: Transition.ENTERING
+          };
+        }
+
+        return {
+          initial: Transition.ENTERED
+        };
+      }
+
+      if (mountOnShow || unmountOnHide) return {
+        initial: Transition.UNMOUNTED
+      };
+      return {
+        initial: Transition.EXITED
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "computeNextStatus", function () {
+      var _this$state2 = _this.state,
+          animating = _this$state2.animating,
+          status = _this$state2.status;
+      if (animating) return status === Transition.ENTERING ? Transition.EXITING : Transition.ENTERING;
+      return status === Transition.ENTERED ? Transition.EXITING : Transition.ENTERING;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "computeStatuses", function (props) {
+      var status = _this.state.status;
+      var visible = props.visible;
+
+      if (visible) {
+        return {
+          current: status === Transition.UNMOUNTED && Transition.EXITED,
+          next: status !== Transition.ENTERING && status !== Transition.ENTERED && Transition.ENTERING
+        };
+      }
+
+      return {
+        next: (status === Transition.ENTERING || status === Transition.ENTERED) && Transition.EXITING
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "computeStyle", function () {
+      var _this$props3 = _this.props,
+          children = _this$props3.children,
+          duration = _this$props3.duration;
+      var status = _this.state.status;
+
+      var childStyle = _get(children, 'props.style');
+
+      var type = TRANSITION_TYPE[status];
+      var animationDuration = type && "".concat(normalizeTransitionDuration(duration, type), "ms");
+      return _objectSpread({}, childStyle, {
+        animationDuration: animationDuration
+      });
+    });
+
+    var _this$computeInitialS = _this.computeInitialStatuses(),
+        _status = _this$computeInitialS.initial,
+        next = _this$computeInitialS.next;
+
+    _this.nextStatus = next;
+    _this.state = {
+      status: _status
+    };
+    return _this;
+  } // ----------------------------------------
+  // Lifecycle
+  // ----------------------------------------
+
+
+  _createClass(Transition, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateStatus();
+    } // eslint-disable-next-line camelcase
+
+  }, {
+    key: "UNSAFE_componentWillReceiveProps",
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
+      var _this$computeStatuses = this.computeStatuses(nextProps),
+          status = _this$computeStatuses.current,
+          next = _this$computeStatuses.next;
+
+      this.nextStatus = next;
+      if (status) this.setState({
+        status: status
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.updateStatus();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearTimeout(this.timeoutId);
+    } // ----------------------------------------
+    // Callback handling
+    // ----------------------------------------
+
+  }, {
+    key: "render",
+    // ----------------------------------------
+    // Render
+    // ----------------------------------------
+    value: function render() {
+      var children = this.props.children;
+      var status = this.state.status;
+      if (status === Transition.UNMOUNTED) return null;
+      return cloneElement(children, {
+        className: this.computeClasses(),
+        style: this.computeStyle()
+      });
+    }
+  }]);
+
+  return Transition;
+}(Component);
+
+_defineProperty(Transition, "defaultProps", {
+  animation: 'fade',
+  duration: 500,
+  visible: true,
+  mountOnShow: true,
+  transitionOnMount: false,
+  unmountOnHide: false
+});
+
+_defineProperty(Transition, "ENTERED", 'ENTERED');
+
+_defineProperty(Transition, "ENTERING", 'ENTERING');
+
+_defineProperty(Transition, "EXITED", 'EXITED');
+
+_defineProperty(Transition, "EXITING", 'EXITING');
+
+_defineProperty(Transition, "UNMOUNTED", 'UNMOUNTED');
+
+_defineProperty(Transition, "Group", TransitionGroup);
+
+_defineProperty(Transition, "handledProps", ["animation", "children", "directional", "duration", "mountOnShow", "onComplete", "onHide", "onShow", "onStart", "reactKey", "transitionOnMount", "unmountOnHide", "visible"]);
+
+
+Transition.propTypes = process.env.NODE_ENV !== "production" ? {
+  /** Named animation event to used. Must be defined in CSS. */
+  animation: PropTypes.oneOfType([PropTypes.oneOf(SUI.TRANSITIONS), PropTypes.string]),
+
+  /** Primary content. */
+  children: PropTypes.element.isRequired,
+
+  /** Whether it is directional animation event or not. Use it only for custom transitions. */
+  directional: PropTypes.bool,
+
+  /** Duration of the CSS transition animation in milliseconds. */
+  duration: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
+    hide: PropTypes.number,
+    show: PropTypes.number
+  }), PropTypes.string]),
+
+  /** Show the component; triggers the enter or exit animation. */
+  visible: PropTypes.bool,
+
+  /** Wait until the first "enter" transition to mount the component (add it to the DOM). */
+  mountOnShow: PropTypes.bool,
+
+  /**
+   * Callback on each transition that changes visibility to shown.
+   *
+   * @param {null}
+   * @param {object} data - All props with status.
+   */
+  onComplete: PropTypes.func,
+
+  /**
+   * Callback on each transition that changes visibility to hidden.
+   *
+   * @param {null}
+   * @param {object} data - All props with status.
+   */
+  onHide: PropTypes.func,
+
+  /**
+   * Callback on each transition that changes visibility to shown.
+   *
+   * @param {null}
+   * @param {object} data - All props with status.
+   */
+  onShow: PropTypes.func,
+
+  /**
+   * Callback on animation start.
+   *
+   * @param {null}
+   * @param {object} data - All props with status.
+   */
+  onStart: PropTypes.func,
+
+  /** React's key of the element. */
+  reactKey: PropTypes.string,
+
+  /** Run the enter animation when the component mounts, if it is initially shown. */
+  transitionOnMount: PropTypes.bool,
+
+  /** Unmount the component (remove it from the DOM) when it is not shown. */
+  unmountOnHide: PropTypes.bool
+} : {};

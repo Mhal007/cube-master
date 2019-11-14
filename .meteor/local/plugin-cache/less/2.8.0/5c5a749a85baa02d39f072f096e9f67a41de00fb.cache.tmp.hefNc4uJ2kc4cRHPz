@@ -1,0 +1,2 @@
+{"{}/client/components/averages.less":"5c5a749a85baa02d39f072f096e9f67a41de00fb"}
+{"css":".averages {\n  font-family: monospace;\n}\n","sourceMap":{"version":3,"sources":["client/components/averages.less"],"names":[],"mappings":"AAAA;EACE,sBAAA","sourcesContent":[".averages {\n  font-family: monospace;\n}\n"]}}

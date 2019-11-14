@@ -1,0 +1,69 @@
+.algorithm-settings {
+  padding: 4em 1em;
+}
+.algorithm-settings.disabled .controls {
+  display: none;
+}
+.algorithm-settings.disabled .algorithm,
+.algorithm-settings.disabled .algorithm.active {
+  border: none;
+  height: 76px;
+  width: 76px;
+  margin: 0.5em;
+}
+.algorithm-settings .grouping-level {
+  width: 200px;
+  height: 50px;
+}
+.algorithm-settings .grouping-level .title {
+  text-align: center;
+  margin-bottom: 7px;
+}
+.algorithm-settings .algorithm {
+  cursor: pointer;
+  display: inline-block;
+  height: 76px;
+  margin: 0.5em;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  width: 76px;
+}
+.algorithm-settings .algorithm.active {
+  opacity: 1;
+}
+.algorithm-settings .algorithm img {
+  width: 76px;
+  height: 76px;
+}
+.algorithm-settings .algorithm .results-average {
+  text-align: center;
+}.averages {
+  font-family: monospace;
+}body {
+  background-color: #1f1f1f !important;
+  color: white !important;
+}
+.left-menu .active.item {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+/* semantic UI overrides */
+.ui.segment {
+  background-color: inherit !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  border: none;
+  box-shadow: none;
+}.training-main {
+  font-family: monospace;
+  font-size: 1.5em;
+}
+.training-main .scramble-segment {
+  height: 5em;
+  line-height: 1.5em;
+}
+.training-main .image-segment img {
+  height: 150px;
+}
+.training-main .timer-segment {
+  height: 6em;
+}
