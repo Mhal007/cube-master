@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import PropTypes from 'prop-types';
 import { Grid, Menu } from 'semantic-ui-react';
 import { SemanticToastContainer, toast } from 'react-semantic-toasts';
 
@@ -11,7 +10,7 @@ import TrainingMain from '../trainingMain';
 
 import { getRandomScramble } from '/lib/global-helpers';
 
-// TODO move it
+// TODO to be moved
 const getRandomEntry = (array, excludeId) => {
   const index = Math.floor(Math.random() * array.length);
   const entry = array[index];
@@ -23,7 +22,7 @@ const getRandomEntry = (array, excludeId) => {
   return entry;
 };
 
-// TODO move it
+// TODO to be moved
 const toastNoActiveAlgorithms = () =>
   toast({
     title: 'No active algorithms',
@@ -64,7 +63,6 @@ class Training extends Component {
 
   componentDidMount() {
     this.onChangeAlgorithm();
-    this.props.onToggleLoader(false);
 
     document.body.addEventListener('keydown', this.onKeyDown);
     document.body.addEventListener('keypress', this.onKeyPress);
@@ -107,11 +105,8 @@ class Training extends Component {
   };
 
   onChangeCategory = category => {
-    this.props.onToggleLoader(true);
-
     this.setState({ currentCategory: category }, () => {
       this.onChangeAlgorithm();
-      this.props.onToggleLoader(false);
     });
   };
 
@@ -130,10 +125,6 @@ class Training extends Component {
   };
 
   onKeyDown = event => {
-    if (event.target !== document.body) {
-      return;
-    }
-
     const blocked = this.state.blocked;
 
     if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {
@@ -164,16 +155,12 @@ class Training extends Component {
   };
 
   onKeyPress = event => {
-    if (event.key === ' ' && event.target === document.body) {
+    if (event.key === ' ') {
       event.preventDefault();
     }
   };
 
   onKeyUp = event => {
-    if (event.target !== document.body) {
-      return;
-    }
-
     const { blocked, isVisibleSolution } = this.state;
 
     if (event.key === 'Enter' || event.key === ' ') {
@@ -208,6 +195,10 @@ class Training extends Component {
       timerStatus
     } = this.state;
 
+    if (!currentAlgorithm) {
+      return;
+    }
+
     if (timerStatus === 'resetted' && upOrDown === 'down' && !blocked.space) {
       this.setState({ timerStatus: 'pre-inspection' });
     } else if (timerStatus === 'pre-inspection' && upOrDown === 'up') {
@@ -228,14 +219,13 @@ class Training extends Component {
       upOrDown === 'down' &&
       !blocked.space
     ) {
-      /* Save time */
+      /* Save the time */
       const result = {
         ...(currentAlgorithm && {
           algorithmId: currentAlgorithm._id,
           scramble: currentAlgorithm.scramble
         }),
         category: currentCategory.value,
-        real: !this.props.debugging,
         time: timerCurrentValue
       };
 
@@ -319,10 +309,5 @@ class Training extends Component {
     );
   }
 }
-
-Training.propTypes = {
-  onToggleLoader: PropTypes.func.isRequired,
-  debugging: PropTypes.bool.isRequired
-};
 
 export default Training;

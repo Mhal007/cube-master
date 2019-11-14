@@ -1,16 +1,19 @@
 {
   "name": "cube-master",
   "private": true,
-  "main": "server/main.js",
+  "main": "server/main.ts",
   "scripts": {
     "eslint": "eslint --fix .",
     "start": "meteor run",
     "svgs": "ts-node devops/imports/generateSVGs"
   },
   "dependencies": {
+    "@reach/router": "^1.2.1",
+    "@types/lodash": "^4.14.147",
+    "@types/reach__router": "^1.2.6",
     "chai": "4.2.0",
     "indexof": "0.0.1",
-    "lodash": "4.17.15",
+    "lodash": "^4.17.15",
     "moment": "2.24.0",
     "rc-slider": "8.7.1",
     "react": "16.10.2",
@@ -27,6 +30,8 @@
     "@types/jest": "^24.0.22",
     "@types/meteor": "^1.4.36",
     "@types/node": "^12.12.6",
+    "@types/rc-slider": "^8.6.5",
+    "@types/rc-tooltip": "^3.7.1",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "@typescript-eslint/eslint-plugin": "2.5.0",

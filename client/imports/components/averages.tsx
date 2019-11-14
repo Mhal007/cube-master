@@ -1,10 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import { List, Segment } from 'semantic-ui-react';
 import moment from 'moment';
-import { getAverage } from '../../utils';
 
-const Averages = ({ currentAlgorithm, currentCategory }) => {
+import { getAverage } from '../../utils';
+import { algorithm } from '../../../server/imports/const';
+
+type algorithmWithResults = algorithm & {
+  results: any; // TODO
+};
+
+type Props = {
+  currentAlgorithmAvg: number;
+  currentAlgorithm?: algorithmWithResults;
+  currentCategory: any; // TODO
+  currentCategoryAvg: number;
+};
+
+const Averages: FunctionComponent<Props> = ({
+  currentAlgorithm,
+  currentCategory
+}) => {
   const currentAlgorithmAvg = getAverage(
     currentAlgorithm && currentAlgorithm.results
   );
@@ -41,12 +56,6 @@ const Averages = ({ currentAlgorithm, currentCategory }) => {
       <List inverted items={averages} />
     </Segment>
   );
-};
-
-Averages.propTypes = {
-  currentAlgorithmAvg: PropTypes.number,
-  currentCategory: PropTypes.object,
-  currentCategoryAvg: PropTypes.number
 };
 
 export default Averages;
