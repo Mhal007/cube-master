@@ -1,4 +1,4 @@
-import {algorithm, squaresType, strikesType} from '../../lib/types';
+import { algorithm, squaresType, strikesType } from '../../lib/types';
 
 const squresFull: squaresType = [/* eslint-disable-line */
   [1, 1, 1],
