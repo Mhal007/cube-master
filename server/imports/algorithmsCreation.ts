@@ -8,11 +8,7 @@ export const createAlgorithms = () => {
   const isPLL = !!Algorithms.findOne({ category: 'PLL' });
 
   !isOLL &&
-    OLLs.forEach(algorithm =>
-      Meteor.call('algorithms.insert', algorithm)
-    );
+    OLLs.forEach(algorithm => Meteor.call('algorithms.insert', algorithm));
   !isPLL &&
-    PLLs.forEach(algorithm =>
-      Meteor.call('algorithms.insert', algorithm)
-    );
+    PLLs.forEach(algorithm => Meteor.call('algorithms.insert', algorithm));
 };

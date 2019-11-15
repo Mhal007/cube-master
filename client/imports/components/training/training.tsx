@@ -37,8 +37,6 @@ type State = {
 };
 
 class Training extends Component<Props, State> {
-  timer: any;
-
   constructor(props: Props) {
     super(props);
 
@@ -72,6 +70,8 @@ class Training extends Component<Props, State> {
     document.body.removeEventListener('keypress', this.onKeyPress);
     document.body.removeEventListener('keyup', this.onKeyUp);
   }
+
+  timer: any;
 
   onChangeAlgorithm = (): void => {
     const { algorithms } = this.props;
