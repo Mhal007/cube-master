@@ -656,11 +656,11 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=a416109a0b08ad2679b700c7d2963dc63c9f9452",
+      "url": "/app/app.js?hash=51dd45fcfdfe0b8a6e8dcc01c6bee0cb90991d2b",
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/a416109a0b08ad2679b700c7d2963dc63c9f9452.map",
+      "sourceMapUrl": "/app/51dd45fcfdfe0b8a6e8dcc01c6bee0cb90991d2b.map",
       "size": 53723,
-      "hash": "a416109a0b08ad2679b700c7d2963dc63c9f9452",
+      "hash": "51dd45fcfdfe0b8a6e8dcc01c6bee0cb90991d2b",
       "sri": "ej5NK6gJJp0JEmUYywS4md+K2oIk2VQWHt2pUY5FzER2oZxPyF2nMxIAiD/l/Dr+Td8euNSkBJ+qLLv/3VIkTg=="
     },
     {

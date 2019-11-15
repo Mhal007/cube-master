@@ -1,10 +1,10 @@
-type squaresType = [
+export type squaresType = [
   [0 | 1, 0 | 1, 0 | 1], // top row, left to right
   [0 | 1, 0 | 1, 0 | 1], // middle row, left to right
   [0 | 1, 0 | 1, 0 | 1] // bottom row, left to right
 ];
 
-type strikesType =
+export type strikesType =
   | [
       [0 | 1, 0 | 1, 0 | 1], // top group, left to right
       [0 | 1, 0 | 1, 0 | 1], // right group, top to bottom
