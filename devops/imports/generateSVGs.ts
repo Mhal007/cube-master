@@ -22,7 +22,7 @@ type marker = {
   y: number;
 };
 
-const filesPath: string = 'public/images/';
+const filesPath = 'public/images/';
 
 const getSVGcontent = (
   { squares, strikes, lines = [] }: algorithm,
@@ -179,7 +179,7 @@ const getSVGcontent = (
   const boardSize: number =
     spacingLength * 3 + cubeSize * (squareLength + spacingLength);
 
-  const content: string = `
+  const content = `
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
       width="${boardSize}"
@@ -287,10 +287,7 @@ OLLs.forEach((scramble: algorithm) => {
   writeFile(filesPath, scramble.name, '.svg', content);
 });
 
-PLLs.filter((PLL: algorithm) => PLL.lines && PLL.lines.length).forEach(
-  // TODO remove filter when done
-  (scramble: algorithm) => {
-    const content = getSVGcontent(scramble, 25, 3);
-    writeFile(filesPath, scramble.name, '.svg', content);
-  }
-);
+PLLs.forEach((scramble: algorithm) => {
+  const content = getSVGcontent(scramble, 25, 3);
+  writeFile(filesPath, scramble.name, '.svg', content);
+});

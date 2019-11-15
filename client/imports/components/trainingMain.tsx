@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 
 import Timer from './timer';
-import { algorithm } from '../../../server/imports/const';
+import { algorithm } from '../../../lib/types';
 
 type Props = {
   onChangeAlgorithm: () => void;
@@ -37,7 +37,7 @@ const TrainingMain: FunctionComponent<Props> = ({
     </Segment>
     {(image || solution) && (
       <Segment>
-        <Button primary onClick={() => onChangeAlgorithm()}>
+        <Button primary onClick={(): void => onChangeAlgorithm()}>
           Randomize new
         </Button>
       </Segment>

@@ -1,35 +1,4 @@
-export type algorithm = {
-  _id?: string;
-  active: boolean;
-  category: 'OLL' | 'PLL';
-  name: string;
-  image: string;
-  scramble: string;
-  solution: string;
-  type: string;
-  subtype: string;
-  squares: squaresType;
-  strikes: strikesType;
-  lines?: line[];
-};
-
-export type line = point[];
-export type point = { x: number; y: number };
-
-type squaresType = [
-  [0 | 1, 0 | 1, 0 | 1], // top row, left to right
-  [0 | 1, 0 | 1, 0 | 1], // middle row, left to right
-  [0 | 1, 0 | 1, 0 | 1] // bottom row, left to right
-];
-
-type strikesType =
-  | [
-      [0 | 1, 0 | 1, 0 | 1], // top group, left to right
-      [0 | 1, 0 | 1, 0 | 1], // right group, top to bottom
-      [0 | 1, 0 | 1, 0 | 1], // bottom group, left to right
-      [0 | 1, 0 | 1, 0 | 1] // left group, top to bottom
-    ]
-  | [];
+import { algorithm } from '../../lib/types';
 
 const squresFull: squaresType = [/* eslint-disable-line */
   [1, 1, 1],
@@ -54,7 +23,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 1, 0]
     ],
-    strikes: [[1, 0, 1], [0, 0, 0], [1, 0, 1], [0, 0, 0]]
+    strikes: [
+      [1, 0, 1],
+      [0, 0, 0],
+      [1, 0, 1],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -70,7 +44,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 1, 0]
     ],
-    strikes: [[0, 0, 1], [0, 0, 0], [0, 0, 1], [1, 0, 1]]
+    strikes: [
+      [0, 0, 1],
+      [0, 0, 0],
+      [0, 0, 1],
+      [1, 0, 1]
+    ]
   },
   {
     active: true,
@@ -86,7 +65,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [1, 1, 0]
     ],
-    strikes: [[1, 0, 0], [0, 0, 1], [0, 0, 0], [0, 0, 0]]
+    strikes: [
+      [1, 0, 0],
+      [0, 0, 1],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -102,7 +86,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [1, 1, 1]
     ],
-    strikes: [[1, 0, 1], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    strikes: [
+      [1, 0, 1],
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -118,7 +107,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 1, 0]
     ],
-    strikes: [[0, 0, 0], [0, 0, 1], [0, 0, 0], [0, 0, 1]]
+    strikes: [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 0, 0],
+      [0, 0, 1]
+    ]
   },
   {
     active: true,
@@ -134,7 +128,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 1, 1]
     ],
-    strikes: [[0, 0, 1], [0, 0, 0], [1, 0, 0], [1, 0, 0]]
+    strikes: [
+      [0, 0, 1],
+      [0, 0, 0],
+      [1, 0, 0],
+      [1, 0, 0]
+    ]
   },
   {
     active: true,
@@ -150,7 +149,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [1, 1, 0]
     ],
-    strikes: [[1, 0, 0], [1, 0, 0], [0, 0, 1], [0, 0, 0]]
+    strikes: [
+      [1, 0, 0],
+      [1, 0, 0],
+      [0, 0, 1],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -166,7 +170,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 0, 0]
     ],
-    strikes: [[0, 1, 0], [1, 1, 1], [0, 1, 0], [1, 1, 1]]
+    strikes: [
+      [0, 1, 0],
+      [1, 1, 1],
+      [0, 1, 0],
+      [1, 1, 1]
+    ]
   },
   {
     active: true,
@@ -182,7 +191,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 0, 1]
     ],
-    strikes: [[0, 1, 0], [1, 1, 0], [1, 1, 0], [0, 1, 0]]
+    strikes: [
+      [0, 1, 0],
+      [1, 1, 0],
+      [1, 1, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -198,7 +212,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 0, 1]
     ],
-    strikes: [[0, 1, 0], [0, 1, 0], [0, 1, 0], [1, 1, 1]]
+    strikes: [
+      [0, 1, 0],
+      [0, 1, 0],
+      [0, 1, 0],
+      [1, 1, 1]
+    ]
   },
   {
     active: true,
@@ -214,7 +233,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 0, 0]
     ],
-    strikes: [[0, 1, 1], [0, 1, 0], [0, 1, 1], [1, 1, 1]]
+    strikes: [
+      [0, 1, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 1, 1]
+    ]
   },
   {
     active: true,
@@ -230,7 +254,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 0, 0]
     ],
-    strikes: [[0, 1, 0], [0, 1, 1], [0, 1, 0], [0, 1, 1]]
+    strikes: [
+      [0, 1, 0],
+      [0, 1, 1],
+      [0, 1, 0],
+      [0, 1, 1]
+    ]
   },
   {
     active: true,
@@ -246,7 +275,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [1, 0, 0]
     ],
-    strikes: [[1, 1, 0], [1, 1, 0], [0, 1, 1], [0, 1, 0]]
+    strikes: [
+      [1, 1, 0],
+      [1, 1, 0],
+      [0, 1, 1],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -262,7 +296,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 0, 1]
     ],
-    strikes: [[0, 1, 1], [0, 1, 0], [1, 1, 0], [1, 1, 0]]
+    strikes: [
+      [0, 1, 1],
+      [0, 1, 0],
+      [1, 1, 0],
+      [1, 1, 0]
+    ]
   },
   {
     active: true,
@@ -278,7 +317,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [1, 0, 1]
     ],
-    strikes: [[0, 1, 0], [0, 1, 0], [0, 1, 0], [0, 1, 0]]
+    strikes: [
+      [0, 1, 0],
+      [0, 1, 0],
+      [0, 1, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -294,7 +338,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[1, 0, 0], [0, 0, 0], [1, 1, 0], [0, 1, 0]]
+    strikes: [
+      [1, 0, 0],
+      [0, 0, 0],
+      [1, 1, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -310,7 +359,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [1, 0, 0]
     ],
-    strikes: [[0, 0, 1], [0, 1, 0], [0, 1, 1], [0, 0, 0]]
+    strikes: [
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -326,7 +380,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [1, 0, 0]
     ],
-    strikes: [[0, 0, 0], [1, 1, 1], [0, 1, 0], [0, 0, 0]]
+    strikes: [
+      [0, 0, 0],
+      [1, 1, 1],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -342,7 +401,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[0, 0, 0], [0, 0, 0], [0, 1, 0], [1, 1, 1]]
+    strikes: [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 1, 0],
+      [1, 1, 1]
+    ]
   },
   {
     active: true,
@@ -358,7 +422,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[0, 0, 1], [0, 0, 0], [0, 1, 0], [0, 1, 1]]
+    strikes: [
+      [0, 0, 1],
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 1, 1]
+    ]
   },
   {
     active: true,
@@ -374,7 +443,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [1, 0, 0]
     ],
-    strikes: [[1, 0, 0], [0, 1, 1], [0, 1, 0], [0, 0, 0]]
+    strikes: [
+      [1, 0, 0],
+      [0, 1, 1],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -390,7 +464,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 0, 0]
     ],
-    strikes: [[0, 0, 0], [1, 1, 1], [0, 1, 0], [1, 0, 1]]
+    strikes: [
+      [0, 0, 0],
+      [1, 1, 1],
+      [0, 1, 0],
+      [1, 0, 1]
+    ]
   },
   {
     active: true,
@@ -406,7 +485,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 0, 0]
     ],
-    strikes: [[0, 0, 0], [1, 0, 1], [0, 1, 0], [1, 1, 1]]
+    strikes: [
+      [0, 0, 0],
+      [1, 0, 1],
+      [0, 1, 0],
+      [1, 1, 1]
+    ]
   },
   {
     active: true,
@@ -422,7 +506,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 0, 0]
     ],
-    strikes: [[1, 0, 0], [1, 0, 1], [1, 1, 0], [0, 1, 0]]
+    strikes: [
+      [1, 0, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -438,7 +527,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 0, 0]
     ],
-    strikes: [[0, 0, 1], [0, 1, 0], [0, 1, 1], [1, 0, 1]]
+    strikes: [
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 1],
+      [1, 0, 1]
+    ]
   },
   {
     active: true,
@@ -454,7 +548,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 1, 0]
     ],
-    strikes: [[0, 1, 1], [0, 0, 0], [0, 0, 1], [1, 1, 1]]
+    strikes: [
+      [0, 1, 1],
+      [0, 0, 0],
+      [0, 0, 1],
+      [1, 1, 1]
+    ]
   },
   {
     active: true,
@@ -470,7 +569,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 1, 0]
     ],
-    strikes: [[1, 1, 0], [1, 1, 1], [1, 0, 0], [0, 0, 0]]
+    strikes: [
+      [1, 1, 0],
+      [1, 1, 1],
+      [1, 0, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -486,7 +590,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 1, 0]
     ],
-    strikes: [[0, 1, 1], [0, 0, 1], [1, 0, 0], [0, 1, 0]]
+    strikes: [
+      [0, 1, 1],
+      [0, 0, 1],
+      [1, 0, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -502,7 +611,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 1, 0]
     ],
-    strikes: [[1, 1, 0], [0, 1, 0], [0, 0, 1], [0, 0, 1]]
+    strikes: [
+      [1, 1, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+      [0, 0, 1]
+    ]
   },
   {
     active: true,
@@ -518,7 +632,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 0]
     ],
-    strikes: [[0, 1, 0], [0, 0, 1], [0, 1, 0], [0, 0, 1]]
+    strikes: [
+      [0, 1, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 0, 1]
+    ]
   },
   {
     active: true,
@@ -534,7 +653,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [1, 1, 0]
     ],
-    strikes: [[0, 0, 0], [1, 1, 1], [0, 0, 0], [0, 1, 0]]
+    strikes: [
+      [0, 0, 0],
+      [1, 1, 1],
+      [0, 0, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -550,7 +674,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[1, 1, 0], [0, 0, 0], [1, 1, 0], [0, 0, 0]]
+    strikes: [
+      [1, 1, 0],
+      [0, 0, 0],
+      [1, 1, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -566,7 +695,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[0, 1, 0], [0, 0, 0], [0, 1, 0], [1, 0, 1]]
+    strikes: [
+      [0, 1, 0],
+      [0, 0, 0],
+      [0, 1, 0],
+      [1, 0, 1]
+    ]
   },
   {
     active: true,
@@ -582,7 +716,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 1, 0]
     ],
-    strikes: [[0, 0, 0], [1, 1, 1], [0, 0, 0], [1, 1, 1]]
+    strikes: [
+      [0, 0, 0],
+      [1, 1, 1],
+      [0, 0, 0],
+      [1, 1, 1]
+    ]
   },
   {
     active: true,
@@ -598,7 +737,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 0]
     ],
-    strikes: [[1, 1, 0], [1, 0, 1], [1, 1, 0], [0, 0, 0]]
+    strikes: [
+      [1, 1, 0],
+      [1, 0, 1],
+      [1, 1, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -614,7 +758,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 0]
     ],
-    strikes: [[0, 1, 0], [1, 0, 1], [0, 1, 0], [1, 0, 1]]
+    strikes: [
+      [0, 1, 0],
+      [1, 0, 1],
+      [0, 1, 0],
+      [1, 0, 1]
+    ]
   },
   {
     active: true,
@@ -630,7 +779,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 0],
       [0, 1, 0]
     ],
-    strikes: [[1, 0, 0], [1, 1, 1], [1, 0, 0], [0, 1, 0]]
+    strikes: [
+      [1, 0, 0],
+      [1, 1, 1],
+      [1, 0, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -646,7 +800,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 1, 1]
     ],
-    strikes: [[1, 1, 0], [1, 0, 0], [0, 0, 0], [0, 1, 1]]
+    strikes: [
+      [1, 1, 0],
+      [1, 0, 0],
+      [0, 0, 0],
+      [0, 1, 1]
+    ]
   },
   {
     active: true,
@@ -662,7 +821,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [1, 1, 0]
     ],
-    strikes: [[0, 1, 1], [0, 1, 1], [0, 0, 0], [1, 0, 0]]
+    strikes: [
+      [0, 1, 1],
+      [0, 1, 1],
+      [0, 0, 0],
+      [1, 0, 0]
+    ]
   },
   {
     active: true,
@@ -678,7 +842,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [1, 0, 0]
     ],
-    strikes: [[1, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 0]]
+    strikes: [
+      [1, 0, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -694,7 +863,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 0, 1]
     ],
-    strikes: [[0, 0, 0], [1, 1, 0], [1, 1, 0], [0, 0, 0]]
+    strikes: [
+      [0, 0, 0],
+      [1, 1, 0],
+      [1, 1, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -710,7 +884,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 1, 0]
     ],
-    strikes: [[1, 1, 0], [0, 0, 0], [0, 0, 1], [0, 1, 1]]
+    strikes: [
+      [1, 1, 0],
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 1]
+    ]
   },
   {
     active: true,
@@ -726,7 +905,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 1, 0]
     ],
-    strikes: [[0, 1, 1], [0, 1, 1], [1, 0, 0], [0, 0, 0]]
+    strikes: [
+      [0, 1, 1],
+      [0, 1, 1],
+      [1, 0, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -742,7 +926,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 1, 0]
     ],
-    strikes: [[0, 1, 0], [1, 1, 0], [0, 0, 1], [0, 0, 1]]
+    strikes: [
+      [0, 1, 0],
+      [1, 1, 0],
+      [0, 0, 1],
+      [0, 0, 1]
+    ]
   },
   {
     active: true,
@@ -758,7 +947,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [0, 1, 0]
     ],
-    strikes: [[0, 1, 0], [0, 0, 1], [1, 0, 0], [1, 1, 0]]
+    strikes: [
+      [0, 1, 0],
+      [0, 0, 1],
+      [1, 0, 0],
+      [1, 1, 0]
+    ]
   },
   {
     active: true,
@@ -774,7 +968,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [1, 0, 1]
     ],
-    strikes: [[0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 0, 0]]
+    strikes: [
+      [0, 0, 0],
+      [1, 0, 0],
+      [0, 1, 0],
+      [1, 0, 0]
+    ]
   },
   {
     active: true,
@@ -790,7 +989,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [1, 0, 1]
     ],
-    strikes: [[0, 0, 0], [1, 1, 0], [0, 1, 0], [1, 0, 0]]
+    strikes: [
+      [0, 0, 0],
+      [1, 1, 0],
+      [0, 1, 0],
+      [1, 0, 0]
+    ]
   },
   {
     active: true,
@@ -806,7 +1010,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 0],
       [0, 0, 1]
     ],
-    strikes: [[0, 0, 0], [0, 1, 0], [0, 1, 0], [1, 0, 1]]
+    strikes: [
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 1, 0],
+      [1, 0, 1]
+    ]
   },
   {
     active: true,
@@ -822,7 +1031,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [1, 0, 0]
     ],
-    strikes: [[0, 0, 0], [1, 0, 1], [0, 1, 0], [0, 1, 0]]
+    strikes: [
+      [0, 0, 0],
+      [1, 0, 1],
+      [0, 1, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -838,7 +1052,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [1, 0, 0]
     ],
-    strikes: [[1, 1, 0], [0, 0, 1], [0, 1, 0], [0, 0, 0]]
+    strikes: [
+      [1, 1, 0],
+      [0, 0, 1],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -854,7 +1073,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[0, 1, 1], [0, 0, 0], [0, 1, 0], [0, 0, 1]]
+    strikes: [
+      [0, 1, 1],
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1]
+    ]
   },
   {
     active: true,
@@ -870,7 +1094,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [1, 0, 0]
     ],
-    strikes: [[1, 1, 0], [1, 0, 0], [0, 1, 1], [0, 0, 0]]
+    strikes: [
+      [1, 1, 0],
+      [1, 0, 0],
+      [0, 1, 1],
+      [0, 0, 0]
+    ]
   },
   {
     active: true,
@@ -886,7 +1115,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[0, 1, 1], [0, 0, 0], [1, 1, 0], [1, 0, 0]]
+    strikes: [
+      [0, 1, 1],
+      [0, 0, 0],
+      [1, 1, 0],
+      [1, 0, 0]
+    ]
   },
   {
     active: true,
@@ -902,7 +1136,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [0, 0, 1]
     ],
-    strikes: [[1, 1, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]]
+    strikes: [
+      [1, 1, 0],
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1]
+    ]
   },
   {
     active: true,
@@ -918,7 +1157,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [1, 0, 0]
     ],
-    strikes: [[0, 1, 1], [0, 0, 1], [0, 1, 0], [1, 0, 0]]
+    strikes: [
+      [0, 1, 1],
+      [0, 0, 1],
+      [0, 1, 0],
+      [1, 0, 0]
+    ]
   },
   {
     active: true,
@@ -934,7 +1178,12 @@ export const OLLs: algorithm[] = [
       [0, 1, 1],
       [1, 1, 1]
     ],
-    strikes: [[0, 1, 0], [0, 0, 0], [0, 0, 0], [0, 1, 0]]
+    strikes: [
+      [0, 1, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 1, 0]
+    ]
   },
   {
     active: true,
@@ -950,7 +1199,12 @@ export const OLLs: algorithm[] = [
       [1, 1, 1],
       [1, 0, 1]
     ],
-    strikes: [[0, 1, 0], [0, 0, 0], [0, 1, 0], [0, 0, 0]]
+    strikes: [
+      [0, 1, 0],
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
   }
 ];
 
@@ -966,7 +1220,13 @@ export const PLLs: algorithm[] = [
     subtype: 'A',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }, { x: 2, y: 2 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 0 },
+        { x: 2, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -979,7 +1239,13 @@ export const PLLs: algorithm[] = [
     subtype: 'A',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 0, y: 2 }, { x: 2, y: 0 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 2 },
+        { x: 2, y: 0 }
+      ]
+    ]
   },
   {
     active: true,
@@ -992,7 +1258,16 @@ export const PLLs: algorithm[] = [
     subtype: 'E',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 0, y: 2 }], [{ x: 2, y: 0 }, { x: 2, y: 2 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 2 }
+      ],
+      [
+        { x: 2, y: 0 },
+        { x: 2, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1005,7 +1280,16 @@ export const PLLs: algorithm[] = [
     subtype: 'E',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 0 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 2, y: 1 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1018,7 +1302,16 @@ export const PLLs: algorithm[] = [
     subtype: 'H',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 1, y: 0 }, { x: 1, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
+    lines: [
+      [
+        { x: 1, y: 0 },
+        { x: 1, y: 2 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 2, y: 1 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1031,7 +1324,13 @@ export const PLLs: algorithm[] = [
     subtype: 'U',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 1 }, { x: 2, y: 1 }, { x: 1, y: 0 }]]
+    lines: [
+      [
+        { x: 0, y: 1 },
+        { x: 2, y: 1 },
+        { x: 1, y: 0 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1044,7 +1343,13 @@ export const PLLs: algorithm[] = [
     subtype: 'U',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 1 }, { x: 1, y: 0 }, { x: 2, y: 1 }]]
+    lines: [
+      [
+        { x: 0, y: 1 },
+        { x: 1, y: 0 },
+        { x: 2, y: 1 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1057,7 +1362,16 @@ export const PLLs: algorithm[] = [
     subtype: 'J',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 0, y: 2 }], [{ x: 0, y: 1 }, { x: 1, y: 2 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 2 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 1, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1070,7 +1384,16 @@ export const PLLs: algorithm[] = [
     subtype: 'J',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 2, y: 0 }, { x: 2, y: 2 }], [{ x: 2, y: 1 }, { x: 1, y: 2 }]]
+    lines: [
+      [
+        { x: 2, y: 0 },
+        { x: 2, y: 2 }
+      ],
+      [
+        { x: 2, y: 1 },
+        { x: 1, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1083,7 +1406,16 @@ export const PLLs: algorithm[] = [
     subtype: 'T',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 2, y: 0 }, { x: 2, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
+    lines: [
+      [
+        { x: 2, y: 0 },
+        { x: 2, y: 2 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 2, y: 1 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1096,7 +1428,16 @@ export const PLLs: algorithm[] = [
     subtype: 'V',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 2, y: 2 }], [{ x: 0, y: 1 }, { x: 1, y: 2 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 2 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 1, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1109,7 +1450,16 @@ export const PLLs: algorithm[] = [
     subtype: 'R',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }], [{ x: 0, y: 1 }, { x: 1, y: 2 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 0 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 1, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1122,7 +1472,16 @@ export const PLLs: algorithm[] = [
     subtype: 'R',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 2, y: 0 }], [{ x: 2, y: 1 }, { x: 1, y: 2 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 0 }
+      ],
+      [
+        { x: 2, y: 1 },
+        { x: 1, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1136,8 +1495,16 @@ export const PLLs: algorithm[] = [
     squares: squresFull,
     strikes: srikesNone,
     lines: [
-      [{ x: 1, y: 0 }, { x: 2, y: 1 }, { x: 1, y: 2 }],
-      [{ x: 2, y: 0 }, { x: 0, y: 2 }, { x: 2, y: 2 }]
+      [
+        { x: 1, y: 0 },
+        { x: 2, y: 1 },
+        { x: 1, y: 2 }
+      ],
+      [
+        { x: 2, y: 0 },
+        { x: 0, y: 2 },
+        { x: 2, y: 2 }
+      ]
     ]
   },
   {
@@ -1152,8 +1519,16 @@ export const PLLs: algorithm[] = [
     squares: squresFull,
     strikes: srikesNone,
     lines: [
-      [{ x: 0, y: 0 }, { x: 2, y: 2 }, { x: 0, y: 2 }],
-      [{ x: 1, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 2 }]
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 2 },
+        { x: 0, y: 2 }
+      ],
+      [
+        { x: 1, y: 0 },
+        { x: 0, y: 1 },
+        { x: 1, y: 2 }
+      ]
     ]
   },
   {
@@ -1168,8 +1543,16 @@ export const PLLs: algorithm[] = [
     squares: squresFull,
     strikes: srikesNone,
     lines: [
-      [{ x: 0, y: 0 }, { x: 0, y: 2 }, { x: 2, y: 2 }],
-      [{ x: 1, y: 0 }, { x: 1, y: 2 }, { x: 0, y: 1 }]
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 2 },
+        { x: 2, y: 2 }
+      ],
+      [
+        { x: 1, y: 0 },
+        { x: 1, y: 2 },
+        { x: 0, y: 1 }
+      ]
     ]
   },
   {
@@ -1184,8 +1567,16 @@ export const PLLs: algorithm[] = [
     squares: squresFull,
     strikes: srikesNone,
     lines: [
-      [{ x: 2, y: 0 }, { x: 2, y: 2 }, { x: 0, y: 2 }],
-      [{ x: 1, y: 0 }, { x: 1, y: 2 }, { x: 2, y: 1 }]
+      [
+        { x: 2, y: 0 },
+        { x: 2, y: 2 },
+        { x: 0, y: 2 }
+      ],
+      [
+        { x: 1, y: 0 },
+        { x: 1, y: 2 },
+        { x: 2, y: 1 }
+      ]
     ]
   },
   {
@@ -1199,7 +1590,16 @@ export const PLLs: algorithm[] = [
     subtype: 'Z',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 1, y: 0 }, { x: 0, y: 1 }], [{ x: 2, y: 1 }, { x: 1, y: 2 }]]
+    lines: [
+      [
+        { x: 1, y: 0 },
+        { x: 0, y: 1 }
+      ],
+      [
+        { x: 2, y: 1 },
+        { x: 1, y: 2 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1212,7 +1612,16 @@ export const PLLs: algorithm[] = [
     subtype: 'N',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 2, y: 0 }, { x: 0, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
+    lines: [
+      [
+        { x: 2, y: 0 },
+        { x: 0, y: 2 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 2, y: 1 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1225,7 +1634,16 @@ export const PLLs: algorithm[] = [
     subtype: 'N',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 2, y: 2 }], [{ x: 0, y: 1 }, { x: 2, y: 1 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 2 }
+      ],
+      [
+        { x: 0, y: 1 },
+        { x: 2, y: 1 }
+      ]
+    ]
   },
   {
     active: true,
@@ -1238,6 +1656,15 @@ export const PLLs: algorithm[] = [
     subtype: 'Y',
     squares: squresFull,
     strikes: srikesNone,
-    lines: [[{ x: 0, y: 0 }, { x: 2, y: 2 }], [{ x: 1, y: 0 }, { x: 0, y: 1 }]]
+    lines: [
+      [
+        { x: 0, y: 0 },
+        { x: 2, y: 2 }
+      ],
+      [
+        { x: 1, y: 0 },
+        { x: 0, y: 1 }
+      ]
+    ]
   }
 ];

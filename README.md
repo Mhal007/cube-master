@@ -9,8 +9,6 @@ Rubik's cube training site.
 ## TODO
 #### Priority level 1
 - add account support
-- finish transition to TS
-- resolve TODOs
 - refactor generateSVGs (line and tip as single object)
 - save settings to local storage: grouping level, solution visiblity, algs selection
 - Refactor algs naming and order
@@ -25,6 +23,7 @@ Rubik's cube training site.
 - isAlgorithmActive refactoring
 - sets of algs kept in DB to load selection(?)
 - results result format (ms / s / m / h)
+- resolve TODOs
 
 
 #### Priority level 3

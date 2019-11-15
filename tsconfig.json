@@ -28,6 +28,7 @@
   "include": [
     "client/**/*",
     "collections/**/*",
+    "devops/**/*",
     "lib/**/*",
     "server/**/*"
   ],

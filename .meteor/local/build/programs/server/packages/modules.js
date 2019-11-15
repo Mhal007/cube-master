@@ -209,7 +209,18 @@ module.useNode();
     ".json"
   ]
 });
-meteorInstall({"node_modules":{"chai":{"package.json":function(require,exports,module){
+meteorInstall({"node_modules":{"lodash":{"random.js":function(require,exports,module){
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                               //
+// node_modules/lodash/random.js                                                                 //
+//                                                                                               //
+///////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                 //
+module.useNode();
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"chai":{"package.json":function(require,exports,module){
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                               //

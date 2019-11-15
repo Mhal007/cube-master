@@ -15,11 +15,11 @@ Meteor.startup(Template.body.renderToDocument);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"imports":{"lib":{"composer.js":function(require,exports,module){
+},"imports":{"lib":{"composer.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/lib/composer.js                                                                                      //
+// client/imports/lib/composer.tsx                                                                                     //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
@@ -73,7 +73,11 @@ var getTrackerLoader = function (reactiveMapper) {
       });
     });
     return function () {
-      if (typeof trackerCleanup === 'function') trackerCleanup();
+      if (typeof trackerCleanup === 'function') {
+        trackerCleanup();
+      } // @ts-ignore
+
+
       return handler.stop();
     };
   };
@@ -84,11 +88,41 @@ var composer = function (reactiveMapper, options) {
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"components":{"results":{"index.js":function(require,exports,module){
+},"toasts.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/components/results/index.js                                                                          //
+// client/imports/lib/toasts.ts                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({
+  toastNoActiveAlgorithms: function () {
+    return toastNoActiveAlgorithms;
+  }
+});
+var toast;
+module.link("react-semantic-toasts", {
+  toast: function (v) {
+    toast = v;
+  }
+}, 0);
+
+var toastNoActiveAlgorithms = function () {
+  return toast({
+    title: 'No active algorithms',
+    type: 'warning',
+    description: 'Randomizing algorithms pauzed until you select at least one algorithm',
+    time: 5000
+  });
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"components":{"results":{"index.ts":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/components/results/index.ts                                                                          //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
@@ -99,7 +133,7 @@ module.link("meteor/meteor", {
   }
 }, 0);
 var Results;
-module.link("/collections/results", {
+module.link("../../../../collections/results", {
   Results: function (v) {
     Results = v;
   }
@@ -123,6 +157,7 @@ var compose = function (props, onData) {
   if (subscriptions.every(function (subscription) {
     return subscription.ready();
   })) {
+    // @ts-ignore
     var results = Results.find({}).fetch();
     onData(null, {
       results: results
@@ -159,6 +194,12 @@ module.link("moment", {
     moment = v;
   }
 }, 2);
+var get;
+module.link("lodash/get", {
+  "default": function (v) {
+    get = v;
+  }
+}, 3);
 var columns = [{
   label: 'Date',
   value: 'createdAt',
@@ -191,8 +232,7 @@ var Header = function () {
   }));
 };
 
-var Row = function (row // TODO
-) {
+var Row = function (row) {
   return React.createElement(Table.Row, null, columns.map(function (_ref2, index) {
     var value = _ref2.value,
         _ref2$format = _ref2.format,
@@ -201,7 +241,7 @@ var Row = function (row // TODO
     } : _ref2$format;
     return React.createElement(Table.Cell, {
       key: index
-    }, format(row[value]));
+    }, format(get(row, value)));
   }));
 };
 
@@ -218,14 +258,21 @@ var ResultsTab = function (_ref3) {
 module.exportDefault(ResultsTab);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"training":{"index.js":function(require,exports,module){
+}},"training":{"index.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/components/training/index.js                                                                         //
+// client/imports/components/training/index.ts                                                                         //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
+var _objectSpread;
+
+module.link("@babel/runtime/helpers/objectSpread2", {
+  default: function (v) {
+    _objectSpread = v;
+  }
+}, 0);
 var Meteor;
 module.link("meteor/meteor", {
   Meteor: function (v) {
@@ -250,36 +297,18 @@ module.link("../../lib/composer", {
     composer = v;
   }
 }, 3);
+var categories;
+module.link("../../../../lib/const", {
+  categories: function (v) {
+    categories = v;
+  }
+}, 4);
 var Training;
 module.link("./training", {
   "default": function (v) {
     Training = v;
   }
-}, 4);
-// TODO to be moved
-var categories = [{
-  label: 'OLL',
-  value: 'OLL',
-  randomizableAlgorithm: true
-}, {
-  label: 'PLL',
-  value: 'PLL',
-  randomizableAlgorithm: true
-}, {
-  label: '3x3x3',
-  value: '3x3x3',
-  randomizableScramble: true
-}, {
-  label: 'OLL Attack',
-  value: 'OLL-attack',
-  algorithmsCategory: 'OLL',
-  settingsDisabled: true
-}, {
-  label: 'PLL Attack',
-  value: 'PLL-attack',
-  algorithmsCategory: 'PLL',
-  settingsDisabled: true
-}];
+}, 5);
 
 var compose = function (props, onData) {
   var subscriptions = [Meteor.subscribe('algorithms'), Meteor.subscribe('results')];
@@ -287,27 +316,31 @@ var compose = function (props, onData) {
   if (subscriptions.every(function (subscription) {
     return subscription.ready();
   })) {
-    var algorithms = Algorithms.find({}).fetch();
+    // @ts-ignore
+    var algorithms = Algorithms.find({}).fetch(); // @ts-ignore
+
     var results = Results.find({}).fetch();
-    results.forEach(function (result) {
-      var algorithm = algorithms.find(function (alg) {
-        return alg._id === result.algorithmId;
+    var algorithmsWithResults = algorithms.map(function (algorithm) {
+      return _objectSpread({}, algorithm, {
+        results: results.filter(function (result) {
+          return result.algorithmId === algorithm._id;
+        }).map(function (result) {
+          return result.time;
+        })
       });
-      var category = categories.find(function (cat) {
-        return cat.value === result.category;
+    });
+    var categoriesWithResults = categories.map(function (category) {
+      return _objectSpread({}, category, {
+        results: results.filter(function (result) {
+          return result.category === category.value;
+        }).map(function (result) {
+          return result.time;
+        })
       });
-
-      if (algorithm) {
-        algorithm.results = (algorithm.results || []).concat(result.time);
-      }
-
-      if (category) {
-        category.results = (category.results || []).concat(result.time);
-      }
     });
     onData(null, {
-      algorithms: algorithms,
-      categories: categories
+      algorithms: algorithmsWithResults,
+      categories: categoriesWithResults
     });
   }
 };
@@ -315,11 +348,11 @@ var compose = function (props, onData) {
 module.exportDefault(composer(compose)(Training));
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"training.js":function(require,exports,module){
+},"training.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/components/training/training.js                                                                      //
+// client/imports/components/training/training.tsx                                                                     //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
@@ -362,13 +395,10 @@ module.link("semantic-ui-react", {
     Menu = v;
   }
 }, 2);
-var SemanticToastContainer, toast;
+var SemanticToastContainer;
 module.link("react-semantic-toasts", {
   SemanticToastContainer: function (v) {
     SemanticToastContainer = v;
-  },
-  toast: function (v) {
-    toast = v;
   }
 }, 3);
 var AlgSettings;
@@ -395,34 +425,21 @@ module.link("../trainingMain", {
     TrainingMain = v;
   }
 }, 7);
-var getRandomScramble;
-module.link("/lib/global-helpers", {
+var getRandomEntry, getRandomScramble;
+module.link("../../../../lib/utils", {
+  getRandomEntry: function (v) {
+    getRandomEntry = v;
+  },
   getRandomScramble: function (v) {
     getRandomScramble = v;
   }
 }, 8);
-
-// TODO to be moved
-var getRandomEntry = function (array, excludeId) {
-  var index = Math.floor(Math.random() * array.length);
-  var entry = array[index];
-
-  if (array.length > 1 && excludeId && entry._id === excludeId) {
-    return getRandomEntry(array, excludeId);
+var toastNoActiveAlgorithms;
+module.link("../../lib/toasts", {
+  toastNoActiveAlgorithms: function (v) {
+    toastNoActiveAlgorithms = v;
   }
-
-  return entry;
-}; // TODO to be moved
-
-
-var toastNoActiveAlgorithms = function () {
-  return toast({
-    title: 'No active algorithms',
-    type: 'warning',
-    description: 'Randomizing algorithms pauzed until you select at least one algorithm',
-    time: 5000
-  });
-};
+}, 9);
 
 var Training =
 /*#__PURE__*/
@@ -437,7 +454,7 @@ function (_Component) {
     _this.onChangeAlgorithm = function () {
       var algorithms = _this.props.algorithms;
       var _this$state = _this.state,
-          currentAlgorithmId = _this$state.currentAlgorithmId,
+          currentAlgorithm = _this$state.currentAlgorithm,
           currentCategory = _this$state.currentCategory;
 
       _this.onReset();
@@ -446,14 +463,14 @@ function (_Component) {
 
       if (currentCategory.randomizableAlgorithm) {
         var activeAlgorithms = algorithms.filter(function (algorithm) {
-          return !!algorithm.active && algorithm.category === currentCategory.value;
+          return algorithm.active && algorithm.category === currentCategory.value;
         });
 
         if (!activeAlgorithms.length) {
           toastNoActiveAlgorithms();
         }
 
-        newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithmId);
+        newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithm && currentAlgorithm._id);
       } else if (currentCategory.randomizableScramble) {
         var scramble = getRandomScramble(25);
         newAlgorithm = {
@@ -463,9 +480,7 @@ function (_Component) {
       }
 
       _this.setState({
-        currentAlgorithm: newAlgorithm,
-        currentAlgorithmId: newAlgorithm && newAlgorithm._id // alg may be undefined, e.g. for {OLL,PLL}-Attack
-
+        currentAlgorithm: newAlgorithm
       });
     };
 
@@ -649,15 +664,7 @@ function (_Component) {
         shift: false,
         space: false
       },
-      currentAlgorithm: {
-        category: '',
-        image: '',
-        scramble: '',
-        solution: '',
-        subtype: '',
-        type: ''
-      },
-      currentAlgorithmId: 0,
+      currentAlgorithm: undefined,
       currentCategory: _this.props.categories[0],
       isVisibleSolution: false,
       settingsOpened: true,
@@ -830,7 +837,7 @@ module.link("rc-slider", {
   }
 }, 3);
 var getAverage;
-module.link("../../utils", {
+module.link("../../../lib/utils", {
   getAverage: function (v) {
     getAverage = v;
   }
@@ -893,7 +900,7 @@ var AlgSettings = function (_ref) {
         key: algorithm._id,
         className: "algorithm" + (settingsDisabled || algorithm.active ? ' active' : ''),
         onClick: function () {
-          return settingsDisabled ? null : onToggleActive(algorithm);
+          return settingsDisabled ? undefined : onToggleActive(algorithm);
         }
       }, React.createElement("img", {
         alt: algorithm.name,
@@ -938,7 +945,7 @@ module.link("moment", {
   }
 }, 2);
 var getAverage;
-module.link("../../utils", {
+module.link("../../../lib/utils", {
   getAverage: function (v) {
     getAverage = v;
   }
@@ -1347,32 +1354,7 @@ var TrainingMain = function (_ref) {
 module.exportDefault(TrainingMain);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}}},"utils.ts":function(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/utils.ts                                                                                                     //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-module.export({
-  getAverage: function () {
-    return getAverage;
-  }
-});
-
-var getAverage = function (results) {
-  if (!results || results.length === 0) {
-    return 0;
-  }
-
-  return Math.round(results.reduce(function (sum, result) {
-    return sum + result;
-  }, 0) / results.length);
-};
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-},"main.tsx":function(require,exports,module){
+}}},"main.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
@@ -1411,19 +1393,79 @@ Meteor.startup(function () {
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"lib":{"global-helpers.ts":function(require,exports,module){
+}},"lib":{"const.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// lib/global-helpers.ts                                                                                               //
+// lib/const.ts                                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({
+  categories: function () {
+    return categories;
+  }
+});
+var categories = [{
+  label: 'OLL',
+  value: 'OLL',
+  randomizableAlgorithm: true
+}, {
+  label: 'PLL',
+  value: 'PLL',
+  randomizableAlgorithm: true
+}, {
+  label: '3x3x3',
+  value: '3x3x3',
+  randomizableScramble: true
+}, {
+  label: 'OLL Attack',
+  value: 'OLL-attack',
+  algorithmsCategory: 'OLL',
+  settingsDisabled: true
+}, {
+  label: 'PLL Attack',
+  value: 'PLL-attack',
+  algorithmsCategory: 'PLL',
+  settingsDisabled: true
+}];
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"types.ts":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// lib/types.ts                                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"utils.ts":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// lib/utils.ts                                                                                                        //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 module.export({
   getRandomScramble: function () {
     return getRandomScramble;
+  },
+  getRandomEntry: function () {
+    return getRandomEntry;
+  },
+  getAverage: function () {
+    return getAverage;
   }
 });
+var random;
+module.link("lodash/random", {
+  "default": function (v) {
+    random = v;
+  }
+}, 0);
 var allowedMoves = ['F', "F'", 'F2', 'B', "B'", 'B2', 'R', "R'", 'R2', 'L', "L'", 'L2', 'U', "U'", 'U2', 'D', "D'", 'D2'];
 
 var getRandomMove = function () {
@@ -1453,6 +1495,27 @@ var getRandomScramble = function (movesNr) {
   }
 
   return moves.join(' ');
+};
+
+var getRandomEntry = function (array, excludeId) {
+  var index = random(0, array.length - 1);
+  var entry = array[index];
+
+  if (array.length > 1 && excludeId && entry._id === excludeId) {
+    return getRandomEntry(array, excludeId);
+  }
+
+  return entry;
+};
+
+var getAverage = function (results) {
+  if (!results || results.length === 0) {
+    return 0;
+  }
+
+  return Math.round(results.reduce(function (sum, result) {
+    return sum + result;
+  }, 0) / results.length);
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1680,17 +1743,18 @@ Meteor.methods({
     ".json",
     ".html",
     ".ts",
+    ".tsx",
     ".jsx",
     ".mjs",
-    ".tsx",
     ".css",
     ".less"
   ]
 });
 
 require("/client/template.main.js");
-require("/lib/global-helpers.ts");
-require("/client/utils.ts");
+require("/lib/const.ts");
+require("/lib/types.ts");
+require("/lib/utils.ts");
 require("/collections/algorithms.ts");
 require("/collections/results.ts");
 require("/client/main.tsx");

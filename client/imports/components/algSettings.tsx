@@ -2,20 +2,16 @@ import React, { FunctionComponent, useState } from 'react';
 import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
-import { getAverage } from '../../utils';
-import { algorithm } from '../../../server/imports/const';
+import { getAverage } from '../../../lib/utils';
+import { algorithmWithResults, categoryWithResults } from '../../../lib/types';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
 
-type algorithmWithResults = algorithm & {
-  results: any; // TODO
-};
-
 type Props = {
   algorithms: algorithmWithResults[];
-  currentCategory: any; // TODO
+  currentCategory: categoryWithResults;
   onActivateAll: () => void;
-  onToggleActive: (algorithm: algorithm) => void;
+  onToggleActive: (algorithm: algorithmWithResults) => void;
   onDeactivateAll: () => void;
 };
 
@@ -91,8 +87,8 @@ const AlgSettings: FunctionComponent<Props> = ({
               className={`algorithm${
                 settingsDisabled || algorithm.active ? ' active' : ''
               }`}
-              onClick={() =>
-                settingsDisabled ? null : onToggleActive(algorithm)
+              onClick={(): void =>
+                settingsDisabled ? undefined : onToggleActive(algorithm)
               }
             >
               <img alt={algorithm.name} src={`/images/${algorithm.image}`} />

@@ -2,17 +2,13 @@ import React, { FunctionComponent } from 'react';
 import { List, Segment } from 'semantic-ui-react';
 import moment from 'moment';
 
-import { getAverage } from '../../utils';
-import { algorithm } from '../../../server/imports/const';
-
-type algorithmWithResults = algorithm & {
-  results: any; // TODO
-};
+import { getAverage } from '../../../lib/utils';
+import { algorithmWithResults, categoryWithResults } from '../../../lib/types';
 
 type Props = {
   currentAlgorithmAvg: number;
   currentAlgorithm?: algorithmWithResults;
-  currentCategory: any; // TODO
+  currentCategory: categoryWithResults;
   currentCategoryAvg: number;
 };
 

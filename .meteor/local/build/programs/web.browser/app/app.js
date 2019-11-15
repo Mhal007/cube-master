@@ -15,11 +15,11 @@ Meteor.startup(Template.body.renderToDocument);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"imports":{"lib":{"composer.js":function(require,exports,module){
+},"imports":{"lib":{"composer.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/lib/composer.js                                                                                      //
+// client/imports/lib/composer.tsx                                                                                     //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
@@ -73,7 +73,11 @@ const getTrackerLoader = reactiveMapper => {
       });
     });
     return () => {
-      if (typeof trackerCleanup === 'function') trackerCleanup();
+      if (typeof trackerCleanup === 'function') {
+        trackerCleanup();
+      } // @ts-ignore
+
+
       return handler.stop();
     };
   };
@@ -84,11 +88,38 @@ const composer = (reactiveMapper, options) => {
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"components":{"results":{"index.js":function(require,exports,module){
+},"toasts.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/components/results/index.js                                                                          //
+// client/imports/lib/toasts.ts                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({
+  toastNoActiveAlgorithms: () => toastNoActiveAlgorithms
+});
+let toast;
+module.link("react-semantic-toasts", {
+  toast(v) {
+    toast = v;
+  }
+
+}, 0);
+
+const toastNoActiveAlgorithms = () => toast({
+  title: 'No active algorithms',
+  type: 'warning',
+  description: 'Randomizing algorithms pauzed until you select at least one algorithm',
+  time: 5000
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"components":{"results":{"index.ts":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/components/results/index.ts                                                                          //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
@@ -100,7 +131,7 @@ module.link("meteor/meteor", {
 
 }, 0);
 let Results;
-module.link("/collections/results", {
+module.link("../../../../collections/results", {
   Results(v) {
     Results = v;
   }
@@ -125,6 +156,7 @@ const compose = (props, onData) => {
   const subscriptions = [Meteor.subscribe('results')];
 
   if (subscriptions.every(subscription => subscription.ready())) {
+    // @ts-ignore
     const results = Results.find({}).fetch();
     onData(null, {
       results
@@ -164,6 +196,13 @@ module.link("moment", {
   }
 
 }, 2);
+let get;
+module.link("lodash/get", {
+  default(v) {
+    get = v;
+  }
+
+}, 3);
 const columns = [{
   label: 'Date',
   value: 'createdAt',
@@ -192,15 +231,14 @@ const Header = () => React.createElement(Table.Row, null, columns.map((_ref, ind
   }, label);
 }));
 
-const Row = (row // TODO
-) => React.createElement(Table.Row, null, columns.map((_ref2, index) => {
+const Row = row => React.createElement(Table.Row, null, columns.map((_ref2, index) => {
   let {
     value,
     format = value => value
   } = _ref2;
   return React.createElement(Table.Cell, {
     key: index
-  }, format(row[value]));
+  }, format(get(row, value)));
 }));
 
 const ResultsTab = (_ref3) => {
@@ -218,14 +256,22 @@ const ResultsTab = (_ref3) => {
 module.exportDefault(ResultsTab);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"training":{"index.js":function(require,exports,module){
+}},"training":{"index.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/components/training/index.js                                                                         //
+// client/imports/components/training/index.ts                                                                         //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
+let _objectSpread;
+
+module.link("@babel/runtime/helpers/objectSpread2", {
+  default(v) {
+    _objectSpread = v;
+  }
+
+}, 0);
 let Meteor;
 module.link("meteor/meteor", {
   Meteor(v) {
@@ -254,59 +300,38 @@ module.link("../../lib/composer", {
   }
 
 }, 3);
+let categories;
+module.link("../../../../lib/const", {
+  categories(v) {
+    categories = v;
+  }
+
+}, 4);
 let Training;
 module.link("./training", {
   default(v) {
     Training = v;
   }
 
-}, 4);
-// TODO to be moved
-const categories = [{
-  label: 'OLL',
-  value: 'OLL',
-  randomizableAlgorithm: true
-}, {
-  label: 'PLL',
-  value: 'PLL',
-  randomizableAlgorithm: true
-}, {
-  label: '3x3x3',
-  value: '3x3x3',
-  randomizableScramble: true
-}, {
-  label: 'OLL Attack',
-  value: 'OLL-attack',
-  algorithmsCategory: 'OLL',
-  settingsDisabled: true
-}, {
-  label: 'PLL Attack',
-  value: 'PLL-attack',
-  algorithmsCategory: 'PLL',
-  settingsDisabled: true
-}];
+}, 5);
 
 const compose = (props, onData) => {
   const subscriptions = [Meteor.subscribe('algorithms'), Meteor.subscribe('results')];
 
   if (subscriptions.every(subscription => subscription.ready())) {
-    const algorithms = Algorithms.find({}).fetch();
+    // @ts-ignore
+    const algorithms = Algorithms.find({}).fetch(); // @ts-ignore
+
     const results = Results.find({}).fetch();
-    results.forEach(result => {
-      const algorithm = algorithms.find(alg => alg._id === result.algorithmId);
-      const category = categories.find(cat => cat.value === result.category);
-
-      if (algorithm) {
-        algorithm.results = (algorithm.results || []).concat(result.time);
-      }
-
-      if (category) {
-        category.results = (category.results || []).concat(result.time);
-      }
-    });
+    const algorithmsWithResults = algorithms.map(algorithm => _objectSpread({}, algorithm, {
+      results: results.filter(result => result.algorithmId === algorithm._id).map(result => result.time)
+    }));
+    const categoriesWithResults = categories.map(category => _objectSpread({}, category, {
+      results: results.filter(result => result.category === category.value).map(result => result.time)
+    }));
     onData(null, {
-      algorithms,
-      categories
+      algorithms: algorithmsWithResults,
+      categories: categoriesWithResults
     });
   }
 };
@@ -314,11 +339,11 @@ const compose = (props, onData) => {
 module.exportDefault(composer(compose)(Training));
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"training.js":function(require,exports,module){
+},"training.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/imports/components/training/training.js                                                                      //
+// client/imports/components/training/training.tsx                                                                     //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
@@ -359,14 +384,10 @@ module.link("semantic-ui-react", {
   }
 
 }, 2);
-let SemanticToastContainer, toast;
+let SemanticToastContainer;
 module.link("react-semantic-toasts", {
   SemanticToastContainer(v) {
     SemanticToastContainer = v;
-  },
-
-  toast(v) {
-    toast = v;
   }
 
 }, 3);
@@ -398,33 +419,24 @@ module.link("../trainingMain", {
   }
 
 }, 7);
-let getRandomScramble;
-module.link("/lib/global-helpers", {
+let getRandomEntry, getRandomScramble;
+module.link("../../../../lib/utils", {
+  getRandomEntry(v) {
+    getRandomEntry = v;
+  },
+
   getRandomScramble(v) {
     getRandomScramble = v;
   }
 
 }, 8);
-
-// TODO to be moved
-const getRandomEntry = (array, excludeId) => {
-  const index = Math.floor(Math.random() * array.length);
-  const entry = array[index];
-
-  if (array.length > 1 && excludeId && entry._id === excludeId) {
-    return getRandomEntry(array, excludeId);
+let toastNoActiveAlgorithms;
+module.link("../../lib/toasts", {
+  toastNoActiveAlgorithms(v) {
+    toastNoActiveAlgorithms = v;
   }
 
-  return entry;
-}; // TODO to be moved
-
-
-const toastNoActiveAlgorithms = () => toast({
-  title: 'No active algorithms',
-  type: 'warning',
-  description: 'Randomizing algorithms pauzed until you select at least one algorithm',
-  time: 5000
-});
+}, 9);
 
 class Training extends Component {
   constructor(props) {
@@ -435,20 +447,20 @@ class Training extends Component {
         algorithms
       } = this.props;
       const {
-        currentAlgorithmId,
+        currentAlgorithm,
         currentCategory
       } = this.state;
       this.onReset();
       let newAlgorithm;
 
       if (currentCategory.randomizableAlgorithm) {
-        const activeAlgorithms = algorithms.filter(algorithm => !!algorithm.active && algorithm.category === currentCategory.value);
+        const activeAlgorithms = algorithms.filter(algorithm => algorithm.active && algorithm.category === currentCategory.value);
 
         if (!activeAlgorithms.length) {
           toastNoActiveAlgorithms();
         }
 
-        newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithmId);
+        newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithm && currentAlgorithm._id);
       } else if (currentCategory.randomizableScramble) {
         const scramble = getRandomScramble(25);
         newAlgorithm = {
@@ -458,9 +470,7 @@ class Training extends Component {
       }
 
       this.setState({
-        currentAlgorithm: newAlgorithm,
-        currentAlgorithmId: newAlgorithm && newAlgorithm._id // alg may be undefined, e.g. for {OLL,PLL}-Attack
-
+        currentAlgorithm: newAlgorithm
       });
     };
 
@@ -633,15 +643,7 @@ class Training extends Component {
         shift: false,
         space: false
       },
-      currentAlgorithm: {
-        category: '',
-        image: '',
-        scramble: '',
-        solution: '',
-        subtype: '',
-        type: ''
-      },
-      currentAlgorithmId: 0,
+      currentAlgorithm: undefined,
       currentCategory: this.props.categories[0],
       isVisibleSolution: false,
       settingsOpened: true,
@@ -796,7 +798,7 @@ module.link("rc-slider", {
 
 }, 3);
 let getAverage;
-module.link("../../utils", {
+module.link("../../../lib/utils", {
   getAverage(v) {
     getAverage = v;
   }
@@ -852,7 +854,7 @@ const AlgSettings = (_ref) => {
     }, React.createElement("h5", null, name), values.map(algorithm => React.createElement("div", {
       key: algorithm._id,
       className: "algorithm".concat(settingsDisabled || algorithm.active ? ' active' : ''),
-      onClick: () => settingsDisabled ? null : onToggleActive(algorithm)
+      onClick: () => settingsDisabled ? undefined : onToggleActive(algorithm)
     }, React.createElement("img", {
       alt: algorithm.name,
       src: "/images/".concat(algorithm.image)
@@ -899,7 +901,7 @@ module.link("moment", {
 
 }, 2);
 let getAverage;
-module.link("../../utils", {
+module.link("../../../lib/utils", {
   getAverage(v) {
     getAverage = v;
   }
@@ -1334,28 +1336,7 @@ const TrainingMain = (_ref) => {
 module.exportDefault(TrainingMain);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}}},"utils.ts":function(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/utils.ts                                                                                                     //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-module.export({
-  getAverage: () => getAverage
-});
-
-const getAverage = results => {
-  if (!results || results.length === 0) {
-    return 0;
-  }
-
-  return Math.round(results.reduce((sum, result) => sum + result, 0) / results.length);
-};
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-},"main.tsx":function(require,exports,module){
+}}},"main.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
@@ -1398,17 +1379,72 @@ Meteor.startup(() => {
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}},"lib":{"global-helpers.ts":function(require,exports,module){
+}},"lib":{"const.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// lib/global-helpers.ts                                                                                               //
+// lib/const.ts                                                                                                        //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 module.export({
-  getRandomScramble: () => getRandomScramble
+  categories: () => categories
 });
+const categories = [{
+  label: 'OLL',
+  value: 'OLL',
+  randomizableAlgorithm: true
+}, {
+  label: 'PLL',
+  value: 'PLL',
+  randomizableAlgorithm: true
+}, {
+  label: '3x3x3',
+  value: '3x3x3',
+  randomizableScramble: true
+}, {
+  label: 'OLL Attack',
+  value: 'OLL-attack',
+  algorithmsCategory: 'OLL',
+  settingsDisabled: true
+}, {
+  label: 'PLL Attack',
+  value: 'PLL-attack',
+  algorithmsCategory: 'PLL',
+  settingsDisabled: true
+}];
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"types.ts":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// lib/types.ts                                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"utils.ts":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// lib/utils.ts                                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({
+  getRandomScramble: () => getRandomScramble,
+  getRandomEntry: () => getRandomEntry,
+  getAverage: () => getAverage
+});
+let random;
+module.link("lodash/random", {
+  default(v) {
+    random = v;
+  }
+
+}, 0);
 const allowedMoves = ['F', "F'", 'F2', 'B', "B'", 'B2', 'R', "R'", 'R2', 'L', "L'", 'L2', 'U', "U'", 'U2', 'D', "D'", 'D2'];
 
 const getRandomMove = () => allowedMoves[Math.floor(Math.random() * allowedMoves.length)];
@@ -1432,6 +1468,25 @@ const getRandomScramble = movesNr => {
   }
 
   return moves.join(' ');
+};
+
+const getRandomEntry = (array, excludeId) => {
+  const index = random(0, array.length - 1);
+  const entry = array[index];
+
+  if (array.length > 1 && excludeId && entry._id === excludeId) {
+    return getRandomEntry(array, excludeId);
+  }
+
+  return entry;
+};
+
+const getAverage = results => {
+  if (!results || results.length === 0) {
+    return 0;
+  }
+
+  return Math.round(results.reduce((sum, result) => sum + result, 0) / results.length);
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1669,17 +1724,18 @@ Meteor.methods({
     ".json",
     ".html",
     ".ts",
+    ".tsx",
     ".jsx",
     ".mjs",
-    ".tsx",
     ".css",
     ".less"
   ]
 });
 
 require("/client/template.main.js");
-require("/lib/global-helpers.ts");
-require("/client/utils.ts");
+require("/lib/const.ts");
+require("/lib/types.ts");
+require("/lib/utils.ts");
 require("/collections/algorithms.ts");
 require("/collections/results.ts");
 require("/client/main.tsx");

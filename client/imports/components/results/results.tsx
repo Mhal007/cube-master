@@ -1,6 +1,9 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { Table } from 'semantic-ui-react';
 import moment from 'moment';
+import get from 'lodash/get';
+
+import { result } from '../../../../lib/types';
 
 const columns = [
   {
@@ -35,18 +38,16 @@ const Header = (): ReactNode => (
   </Table.Row>
 );
 
-const Row = (
-  row: any // TODO
-): ReactNode => (
+const Row = (row: result): ReactNode => (
   <Table.Row>
     {columns.map(({ value, format = value => value }, index) => (
-      <Table.Cell key={index}>{format(row[value])}</Table.Cell>
+      <Table.Cell key={index}>{format(get(row, value))}</Table.Cell>
     ))}
   </Table.Row>
 );
 
 type Props = {
-  results: any; // TODO
+  results: result[];
 };
 
 const ResultsTab: FunctionComponent<Props> = ({ results }) => (
