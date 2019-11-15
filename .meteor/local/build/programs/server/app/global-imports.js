@@ -6,6 +6,8 @@ ReactiveVar = Package['reactive-var'].ReactiveVar;
 Tracker = Package.tracker.Tracker;
 Deps = Package.tracker.Deps;
 ECMAScript = Package.ecmascript.ECMAScript;
+BlazeReactComponent = Package['gadicc:blaze-react-component'].BlazeReactComponent;
+blazeToReact = Package['gadicc:blaze-react-component'].blazeToReact;
 Meteor = Package.meteor.Meteor;
 global = Package.meteor.global;
 meteorEnv = Package.meteor.meteorEnv;
@@ -21,6 +23,8 @@ Handlebars = Package.ui.Handlebars;
 Spacebars = Package.spacebars.Spacebars;
 meteorInstall = Package.modules.meteorInstall;
 Promise = Package.promise.Promise;
+Accounts = Package['accounts-base'].Accounts;
+Google = Package['google-oauth'].Google;
 Autoupdate = Package.autoupdate.Autoupdate;
 HTML = Package.htmljs.HTML;
 

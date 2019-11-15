@@ -46,10 +46,10 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/modules.js?hash=3c69ef5186a1b517dcafc20031b83eba0ff58b6d",
-      "size": 4798792,
-      "hash": "3c69ef5186a1b517dcafc20031b83eba0ff58b6d",
-      "sri": "YEdzFi8mMDmw5oUrjYaJSyUoAJh2BTOLNLa0ciKgerr3NPBkX15rW8Ifl6pn86+YjTHPdtIf/QkNFJ6Uw0Cg+Q=="
+      "url": "/packages/modules.js?hash=c7407238872fb6b4b79ed064cf73ff207ff84475",
+      "size": 4428632,
+      "hash": "c7407238872fb6b4b79ed064cf73ff207ff84475",
+      "sri": "Z3g7zQKe1S7dn6Cu50xhvsFWA/VGkCfx7jdTJfv6hBLQKN2yRxexBmADOpBS9XkCBmDJLjrbQFV69rnyeIB/Wg=="
     },
     {
       "path": "packages/modern-browsers.js",
@@ -478,36 +478,24 @@
       "sri": "DMc7qnRHVDbf+jpPSKx9mnagbiGCQW0jaRFylsSOukoWcmAMlE/SrbfKVkFz8rDXCSM7Vqf3F8vYiyQariNcWQ=="
     },
     {
-      "path": "packages/webapp.js",
+      "path": "packages/ddp-rate-limiter.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/webapp.js?hash=bba4cf11a907eb9cce85d45656ca6fc1a9b7fec6",
-      "sourceMap": "packages/webapp.js.map",
-      "sourceMapUrl": "/packages/bba4cf11a907eb9cce85d45656ca6fc1a9b7fec6.map",
-      "size": 2564,
-      "hash": "bba4cf11a907eb9cce85d45656ca6fc1a9b7fec6",
-      "sri": "R15fgJfaNsgJfC7UcBEkW1W5yOn94HasjYrtz9SC3FKV0YPpTL+YuKMWQBaFRuSve5VMBMxWK64kOCUWfdU9Zw=="
+      "url": "/packages/ddp-rate-limiter.js?hash=f9956eaa3feb7f66d0826a0668a463780815f461",
+      "size": 678,
+      "hash": "f9956eaa3feb7f66d0826a0668a463780815f461",
+      "sri": "cJkM5Kbt0E4C7MAEcmGmhAmk5YQjQkrjbQgMoJrwgbQ7VR6q7HJnUcWmBMembQJDbCsGxzw+87FLFOhhphxacA=="
     },
     {
-      "path": "packages/livedata.js",
+      "path": "packages/localstorage.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/livedata.js?hash=811a830b121820dfa3b755a47c2b7ecf871458ba",
-      "size": 817,
-      "hash": "811a830b121820dfa3b755a47c2b7ecf871458ba",
-      "sri": "gn/1/M018+VSmq5GbD2TwNMps0Ixyqld1odE9rmIFglbPnEQFfcPPznfnYGF5ySiwgssMVY4cySTDrPTF11svg=="
-    },
-    {
-      "path": "packages/hot-code-push.js",
-      "where": "client",
-      "type": "js",
-      "cacheable": true,
-      "url": "/packages/hot-code-push.js?hash=406b6d93681fb93e7e4938f9ad58fd43716ba94e",
-      "size": 675,
-      "hash": "406b6d93681fb93e7e4938f9ad58fd43716ba94e",
-      "sri": "g1WQ/P7zarqNSi6ureq/wu4ozoYsNFDWI6Pd/0NuXRBWPmK13IPZ6aOQrwPrNvahtJhDIE1JIQloncZ5QDb94A=="
+      "url": "/packages/localstorage.js?hash=d871d6d03bff8eb2629ca80a2c46d012db51c518",
+      "size": 3270,
+      "hash": "d871d6d03bff8eb2629ca80a2c46d012db51c518",
+      "sri": "B41sOMFuUYPn9dLemi16vBnoC/26A+TIdaC6TqWtyDyZWtCugwo/l3tUPB7WFWPZizzM7FQfYi2og00/4jxddQ=="
     },
     {
       "path": "packages/jquery.js",
@@ -570,6 +558,28 @@
       "sri": "RBAHS6e8FELKJLWi4ZhfLtCaILvzShWbNN3VZxI28VmjXXm3JggOVGAyh1hvuRxibIL+vs7CPH1CfEZ6/0Ni1w=="
     },
     {
+      "path": "packages/accounts-base.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/accounts-base.js?hash=140fe6301a59db5b8ed31b4a06d3f2d942f8699c",
+      "sourceMap": "packages/accounts-base.js.map",
+      "sourceMapUrl": "/packages/140fe6301a59db5b8ed31b4a06d3f2d942f8699c.map",
+      "size": 57745,
+      "hash": "140fe6301a59db5b8ed31b4a06d3f2d942f8699c",
+      "sri": "oD45LspT+OdFsi32QOEEMD2XqKOlL0pfL5GUQmMu4IlYZso9rOgV/OOJabiUTfqtNc4bQJJA4pHxODuj6EVZzQ=="
+    },
+    {
+      "path": "packages/service-configuration.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/service-configuration.js?hash=189547f4eefbb1e20e38ab84cebcae5677a3d94e",
+      "size": 2895,
+      "hash": "189547f4eefbb1e20e38ab84cebcae5677a3d94e",
+      "sri": "bAlBKzbK22ezQegCjLZPF/U+sJsWE0w6njWP+sRCcpW5GRt7Cws/fqyjJp4GPJ5Lg9MNYGljH33Zt6XyIKGKGg=="
+    },
+    {
       "path": "packages/spacebars.js",
       "where": "client",
       "type": "js",
@@ -610,6 +620,176 @@
       "sri": "r2kNrQw5t55XIicdQC7l2MPq+O2SHb0vzXBQrZT9MhG/pbVvwETBETmNqvfqgHGgz7aB0ldTVyTFo16g5R9F6w=="
     },
     {
+      "path": "packages/reactive-dict.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/reactive-dict.js?hash=b84a3de05ac49cef43a311ee1f19bb874c9eba8d",
+      "sourceMap": "packages/reactive-dict.js.map",
+      "sourceMapUrl": "/packages/b84a3de05ac49cef43a311ee1f19bb874c9eba8d.map",
+      "size": 17369,
+      "hash": "b84a3de05ac49cef43a311ee1f19bb874c9eba8d",
+      "sri": "ORLmw4ffu4h42c8FTNKG4l8JEfERK5Tnr+OwSOW2lhMytvjFOAKYYhwXGTdxMP+trSaKxq4ol5eC0Hq7BbRwiA=="
+    },
+    {
+      "path": "packages/session.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/session.js?hash=8c6bb43774ab3bb8f73aea7d676bc8e352d73045",
+      "sourceMap": "packages/session.js.map",
+      "sourceMapUrl": "/packages/8c6bb43774ab3bb8f73aea7d676bc8e352d73045.map",
+      "size": 2253,
+      "hash": "8c6bb43774ab3bb8f73aea7d676bc8e352d73045",
+      "sri": "tiGTWmmIXeewEUXAOzb2LfFV7bbgIQI75N8r8p/GQYae8rQqN3NECOyJxAGQ4zhTfqgYGs3JLEAdM29HYAlhdA=="
+    },
+    {
+      "path": "packages/url.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/url.js?hash=63df4ac6bc9f419d217d41dcf2396a1d781e2893",
+      "size": 3979,
+      "hash": "63df4ac6bc9f419d217d41dcf2396a1d781e2893",
+      "sri": "CV9XY7q5kHFb+ifCwJM6VAs0fxamVDb1pm9YnZcP/dON3ci9rFNk7c+Q7nRQWT5jIcVYFFax3JyRLz10VWfuIA=="
+    },
+    {
+      "path": "packages/oauth.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/oauth.js?hash=6de64e8765835f815e3842408503406c509dcdcc",
+      "sourceMap": "packages/oauth.js.map",
+      "sourceMapUrl": "/packages/6de64e8765835f815e3842408503406c509dcdcc.map",
+      "size": 15673,
+      "hash": "6de64e8765835f815e3842408503406c509dcdcc",
+      "sri": "TllI2YnHcVMzRrZ80wIor0/+51TYndpjRYCwbg0JI7TnS4/lAa3yuvYgAN4juwV+hxrtauddj4imDMzxFox74w=="
+    },
+    {
+      "path": "packages/accounts-oauth.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/accounts-oauth.js?hash=c02c6d22b06d29a214983430f8913465fdfbf3ef",
+      "sourceMap": "packages/accounts-oauth.js.map",
+      "sourceMapUrl": "/packages/c02c6d22b06d29a214983430f8913465fdfbf3ef.map",
+      "size": 9334,
+      "hash": "c02c6d22b06d29a214983430f8913465fdfbf3ef",
+      "sri": "x6cpQLMpq5CYkmyRbmjgkLMMZuXiiJkvDQmTfBIu1OBhiwT9vQTmUE/79x5UOkXkLscC8G09W8OC7bXaHhZaGQ=="
+    },
+    {
+      "path": "packages/accounts-ui-unstyled.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/accounts-ui-unstyled.js?hash=debae3659b69c454b89081d75f6d38498684b485",
+      "sourceMap": "packages/accounts-ui-unstyled.js.map",
+      "sourceMapUrl": "/packages/debae3659b69c454b89081d75f6d38498684b485.map",
+      "size": 84923,
+      "hash": "debae3659b69c454b89081d75f6d38498684b485",
+      "sri": "8RcYmEjUUapYkf4RZcGzempyO0YhR+JNWJMdkBBT48k2/xNZWMQr2wR4Mc9EzdjtbPsUeYJ7lNcU4RxruvpgiQ=="
+    },
+    {
+      "path": "packages/accounts-ui.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/accounts-ui.js?hash=bd57d6600df9568f7ec9633136eda91517a70260",
+      "size": 673,
+      "hash": "bd57d6600df9568f7ec9633136eda91517a70260",
+      "sri": "LgDwRvvhZxLKcZfP6ieVuCjRLjIlrVqciNxxftVz8cguD2k2HGRX2Ed4agcRMv094Zr/hMWv45KhvUyze5+6fQ=="
+    },
+    {
+      "path": "packages/oauth2.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/oauth2.js?hash=493d71e525a1ddca1519981e7d2a5bb13430a1d0",
+      "size": 668,
+      "hash": "493d71e525a1ddca1519981e7d2a5bb13430a1d0",
+      "sri": "LBPcJu6l7S9HbuOKCZlI/O52tNQfQr8IPj5y/ytGUpQsJ8g+6e9uswNWLIT8jqIU+oZgRbOZXFjsHYXxTSHgOw=="
+    },
+    {
+      "path": "packages/google-oauth.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/google-oauth.js?hash=a408cad230be749803e0c2ad2d1d54276df3a642",
+      "sourceMap": "packages/google-oauth.js.map",
+      "sourceMapUrl": "/packages/a408cad230be749803e0c2ad2d1d54276df3a642.map",
+      "size": 6962,
+      "hash": "a408cad230be749803e0c2ad2d1d54276df3a642",
+      "sri": "DQaPLrHMlb6NR1KgVh5DIIRltcKBv7c4+iGI4GJ/p9DxSvzv07Rr7+9p/lCOeSPwyLQLreeAIQf/Jthlv0b3PQ=="
+    },
+    {
+      "path": "packages/google-config-ui.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/google-config-ui.js?hash=8c86372391ba925868f021ee37f068526b03fd05",
+      "sourceMap": "packages/google-config-ui.js.map",
+      "sourceMapUrl": "/packages/8c86372391ba925868f021ee37f068526b03fd05.map",
+      "size": 5092,
+      "hash": "8c86372391ba925868f021ee37f068526b03fd05",
+      "sri": "wn6TO5TS76uNikFZpRe0UXFcspCUSlKBZSl9AciuKNTOpQBPNeKw/NxGWhvRF32PkHsI1o01zyWHAz/ZTrdSog=="
+    },
+    {
+      "path": "packages/accounts-google.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/accounts-google.js?hash=7c91a79409664937916ec3c109af2bfa1f70350c",
+      "sourceMap": "packages/accounts-google.js.map",
+      "sourceMapUrl": "/packages/7c91a79409664937916ec3c109af2bfa1f70350c.map",
+      "size": 6061,
+      "hash": "7c91a79409664937916ec3c109af2bfa1f70350c",
+      "sri": "DwvNvhBgH/2whntjw5x7SCQr/dKinfdmszR49zohrSo8tnS2ouPkwLzfrMN2/Z4ByXBUtP+jhURhSiz1damxeg=="
+    },
+    {
+      "path": "packages/gadicc_blaze-react-component.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/gadicc_blaze-react-component.js?hash=96d70f89e4c038e52215bfc8c9cebc13dbf14854",
+      "sourceMap": "packages/gadicc_blaze-react-component.js.map",
+      "sourceMapUrl": "/packages/96d70f89e4c038e52215bfc8c9cebc13dbf14854.map",
+      "size": 6596,
+      "hash": "96d70f89e4c038e52215bfc8c9cebc13dbf14854",
+      "sri": "2WyIQAzSTcoTUwIOUgUosxGJ2ilZzv/OFpQbVCRF0EbJKE44iFLMsWbMX1tRhFq2dn1arDDcjrspRSxKeo3ScA=="
+    },
+    {
+      "path": "packages/webapp.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/webapp.js?hash=bba4cf11a907eb9cce85d45656ca6fc1a9b7fec6",
+      "sourceMap": "packages/webapp.js.map",
+      "sourceMapUrl": "/packages/bba4cf11a907eb9cce85d45656ca6fc1a9b7fec6.map",
+      "size": 2564,
+      "hash": "bba4cf11a907eb9cce85d45656ca6fc1a9b7fec6",
+      "sri": "R15fgJfaNsgJfC7UcBEkW1W5yOn94HasjYrtz9SC3FKV0YPpTL+YuKMWQBaFRuSve5VMBMxWK64kOCUWfdU9Zw=="
+    },
+    {
+      "path": "packages/livedata.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/livedata.js?hash=811a830b121820dfa3b755a47c2b7ecf871458ba",
+      "size": 817,
+      "hash": "811a830b121820dfa3b755a47c2b7ecf871458ba",
+      "sri": "gn/1/M018+VSmq5GbD2TwNMps0Ixyqld1odE9rmIFglbPnEQFfcPPznfnYGF5ySiwgssMVY4cySTDrPTF11svg=="
+    },
+    {
+      "path": "packages/hot-code-push.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/packages/hot-code-push.js?hash=406b6d93681fb93e7e4938f9ad58fd43716ba94e",
+      "size": 675,
+      "hash": "406b6d93681fb93e7e4938f9ad58fd43716ba94e",
+      "sri": "g1WQ/P7zarqNSi6ureq/wu4ozoYsNFDWI6Pd/0NuXRBWPmK13IPZ6aOQrwPrNvahtJhDIE1JIQloncZ5QDb94A=="
+    },
+    {
       "path": "packages/launch-screen.js",
       "where": "client",
       "type": "js",
@@ -646,34 +826,54 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/global-imports.js?hash=646c6f0747ea052794705323686f290a890b1b57",
-      "size": 965,
-      "hash": "646c6f0747ea052794705323686f290a890b1b57",
-      "sri": "UuAt/ERB7Y5Ag9SbFtnRu81m1Nb7rZb66krUZkag1WKNq1NmMrAu2AwY78hVS+ue8G/DUkQVEb8RWpyVD/3Yzg=="
+      "url": "/app/global-imports.js?hash=146a42e9a0782aeedf73e808f34f8c1a7e9aa3ba",
+      "size": 1204,
+      "hash": "146a42e9a0782aeedf73e808f34f8c1a7e9aa3ba",
+      "sri": "CIeWKa5Yps8PSkqUsHjhGIv7iYCdcvXODjJJRhyYuGuzoQZLfy3W5n6GxG9Ig56qORgptf1K8b8hgZE8c+twQw=="
     },
     {
       "path": "app/app.js",
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=d3cd80f6f82b33b001c6fcac806abd97a6227cb0",
+      "url": "/app/app.js?hash=a0cd27381f4daf6e55af6974cd56ae043fa8fe54",
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/d3cd80f6f82b33b001c6fcac806abd97a6227cb0.map",
-      "size": 58555,
-      "hash": "d3cd80f6f82b33b001c6fcac806abd97a6227cb0",
-      "sri": "wVIB5GCIP9V2BXkrfJ9hRkrlKXCaQLeEI3XtcgI6utwam67VAsE2qYhfxC1A2wrpBWJmtH1M2cPFWeSTBO679A=="
+      "sourceMapUrl": "/app/a0cd27381f4daf6e55af6974cd56ae043fa8fe54.map",
+      "size": 60956,
+      "hash": "a0cd27381f4daf6e55af6974cd56ae043fa8fe54",
+      "sri": "xT4lJTf2A8FGm39wYBTNKM8V+CRE7zI0majO+bqFq21pFmehXFBDIn7EjqpSPUKPFgFjsdWkJ1ItkoDlI4HeqQ=="
     },
     {
       "path": "merged-stylesheets.css",
       "where": "client",
       "type": "css",
       "cacheable": true,
-      "url": "/merged-stylesheets.css?hash=0fdb2ae4fedf2bff48977fdbcd966c2ac701bd67",
+      "url": "/merged-stylesheets.css?hash=0378633a33a878ceac31076f0a14145ab8350b60",
       "sourceMap": "merged-stylesheets.css.map",
-      "sourceMapUrl": "/0fdb2ae4fedf2bff48977fdbcd966c2ac701bd67.map",
-      "size": 1411,
-      "hash": "0fdb2ae4fedf2bff48977fdbcd966c2ac701bd67",
-      "sri": "P+nJIDF70B4bCZS3UxDP/ceN+6QfDTFQTm2NoszYCmtTsmF3lNW2s49GdHmUfkApZAaOxKu3DwhDaIEm9tZ/0w=="
+      "sourceMapUrl": "/0378633a33a878ceac31076f0a14145ab8350b60.map",
+      "size": 11271,
+      "hash": "0378633a33a878ceac31076f0a14145ab8350b60",
+      "sri": "luCLrEMS5b7YRzhuYeSNHj6dVbGpTL9pWSyNxI5N3SUID/T9VmmjrGM705ACU8g6XMO2Yble6BRP1ZtQrzbYVw=="
+    },
+    {
+      "path": "packages/oauth/end_of_popup_response.js",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/oauth/end_of_popup_response.js",
+      "size": 1236,
+      "hash": "cebe0774feb530a0f294bbb9e5e76babd47901f1",
+      "sri": "odXbW5eF6T4K2PPbIoSzUTa3oXVS5U2dcIErsulYVDpwRK7EPJ6WPpYPD+4FB4TW4TxwOMohga0GV8gKpAQYmw=="
+    },
+    {
+      "path": "packages/oauth/end_of_redirect_response.js",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/oauth/end_of_redirect_response.js",
+      "size": 455,
+      "hash": "558278c11f19a17afb952e154bab0254db689f74",
+      "sri": "gGAd4TcVJN9lf92ZkYe2Ae4XIuz77VJ/IyFllNoVUT1U3yaQ2pO89por0EutOmVY2Mg3XDux1GRBAnfc30A2MA=="
     },
     {
       "path": "app/images/delete.png",

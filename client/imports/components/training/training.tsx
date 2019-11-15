@@ -37,6 +37,8 @@ type State = {
 };
 
 class Training extends Component<Props, State> {
+  timer: any;
+
   constructor(props: Props) {
     super(props);
 

@@ -8,7 +8,7 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1
-- add account support
+- average for all in a category refreshing after each result
 - refactor generateSVGs (line and tip as single object)
 - save settings to local storage: grouping level, solution visiblity, algs selection
 - Refactor algs naming and order
@@ -23,13 +23,11 @@ Rubik's cube training site.
 - isAlgorithmActive refactoring
 - sets of algs kept in DB to load selection(?)
 - results result format (ms / s / m / h)
-- resolve TODOs
 
 
 #### Priority level 3
 - Blindfolded + 1/2 + scrambler
 - DNF option
-- 3x3x3 working + scrambler
 - mobile view
 - new averages
 - responsive view mobile

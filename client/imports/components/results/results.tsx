@@ -5,7 +5,13 @@ import get from 'lodash/get';
 
 import { result } from '../../../../lib/types';
 
-const columns = [
+type column = {
+  label: string;
+  value: string;
+  format?: Function;
+};
+
+const columns: column[] = [
   {
     label: 'Date',
     value: 'createdAt',
@@ -40,8 +46,10 @@ const Header = (): ReactNode => (
 
 const Row = (row: result): ReactNode => (
   <Table.Row>
-    {columns.map(({ value, format = value => value }, index) => (
-      <Table.Cell key={index}>{format(get(row, value))}</Table.Cell>
+    {columns.map(({ value, format }, index) => (
+      <Table.Cell key={index}>
+        {format ? format(get(row, value)) : get(row, value)}
+      </Table.Cell>
     ))}
   </Table.Row>
 );

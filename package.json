@@ -8,10 +8,11 @@
     "svgs": "ts-node devops/imports/generateSVGs"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.7.2",
     "@reach/router": "^1.2.1",
-    "chai": "4.2.0",
     "indexof": "0.0.1",
     "lodash": "^4.17.15",
+    "meteor-node-stubs": "^0.4.1",
     "moment": "2.24.0",
     "rc-slider": "8.7.1",
     "react": "16.10.2",
@@ -24,7 +25,6 @@
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
-    "@types/chai": "^4.2.5",
     "@types/jest": "^24.0.23",
     "@types/lodash": "^4.14.147",
     "@types/meteor": "^1.4.36",
@@ -47,6 +47,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-vazco": "^1.0.0",
+    "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "prop-types": "15.7.2",
     "ts-node": "^8.5.2",

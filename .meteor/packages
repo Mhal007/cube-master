@@ -19,3 +19,7 @@ shell-server@0.4.0            # Server-side component of the `meteor shell` comm
 less
 typescript@3.7.0-rc182.10
 ecmascript@0.13.0-rc182.10
+accounts-ui
+accounts-google
+google-config-ui
+gadicc:blaze-react-component

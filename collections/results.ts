@@ -5,7 +5,8 @@ import { check } from 'meteor/check';
 export const Results = new Mongo.Collection('results');
 
 Meteor.methods({
-  'results.insert': ({ algorithmId, category, scramble, time }) => {
+  'results.insert'({ algorithmId, category, scramble, time }) {
+    check(this.userId, String);
     check(category, String);
     check(time, Number);
 
@@ -17,35 +18,27 @@ Meteor.methods({
       check(algorithmId, String);
     }
 
-    // Make sure the user is logged in before inserting a result
-    /* if (! Meteor.userId()) {
-     throw new Meteor.Error('not-authorized');
-     }*/
-
     const doc = {
       algorithmId,
       category,
       createdAt: new Date(),
       scramble,
-      time
+      time,
+      userId: this.userId
     };
 
     Results.insert(doc);
   },
-  'results.search': text => {
+  'results.search'(text) {
+    check(this.userId, String);
     check(text, String);
 
-    return Results.find();
+    return Results.find({ userId: this.userId });
   },
-  'results.remove': resultId => {
+  'results.remove'(resultId) {
+    check(this.userId, String);
     check(resultId, String);
 
-    /*const result = Results.findOne(resultId);
-     if (result.private && result.owner !== Meteor.userId()) {
-     // If the result is private, make sure only the owner can delete it
-     throw new Meteor.Error('not-authorized');
-     }*/
-
-    Results.remove(resultId);
+    Results.remove({ userId: this.userId, resultId });
   }
 });

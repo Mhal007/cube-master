@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { List, Segment } from 'semantic-ui-react';
 
 type tip = {
@@ -28,9 +28,9 @@ const tipsList: tip[] = [
     header: 'Backspace / Delete / Escape',
     description: "Reset timer - don't save the solution"
   }
-].map(tip => ({ ...tip, icon: 'lightbulb outline' }));
+].map((tip, index) => ({ ...tip, key: index, icon: 'lightbulb outline' }));
 
-const TipsAndTricks = () => (
+const TipsAndTricks: FunctionComponent = () => (
   <Segment>
     Shortcuts list:
     <List celled inverted items={tipsList} />

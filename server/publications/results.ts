@@ -1,5 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Results } from '../../collections/results';
 
-// TODO Only publish algorithms that are public or belong to the current user
-Meteor.publish('results', () => Results.find());
+Meteor.publish('results', function getResults() {
+  const userId = this.userId;
+  if (!userId) {
+    return this.ready();
+  }
+
+  return Results.find({ userId });
+});

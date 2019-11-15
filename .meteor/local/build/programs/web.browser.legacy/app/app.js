@@ -1,124 +1,33 @@
-var require = meteorInstall({"client":{"template.main.js":function(){
+var require = meteorInstall({"client":{"imports":{"components":{"loginButtons.html":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
-// client/template.main.js                                                                                             //
+// client/imports/components/loginButtons.html                                                                         //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.link("./template.loginButtons.js", { "*": "*+" });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"template.loginButtons.js":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/components/template.loginButtons.js                                                                  //
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
 
-Template.body.addContent((function() {
+Template.__checkName("Accounts");
+Template["Accounts"] = new Template("Template.Accounts", (function() {
   var view = this;
-  return HTML.Raw('<div id="render-target"></div>');
+  return Spacebars.include(view.lookupTemplate("loginButtons"));
 }));
-Meteor.startup(Template.body.renderToDocument);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"imports":{"lib":{"composer.tsx":function(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/lib/composer.tsx                                                                                     //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-module.export({
-  composer: function () {
-    return composer;
-  }
-});
-var React;
-module.link("react", {
-  "default": function (v) {
-    React = v;
-  }
-}, 0);
-var setDefaults;
-module.link("react-komposer", {
-  setDefaults: function (v) {
-    setDefaults = v;
-  }
-}, 1);
-var Tracker;
-module.link("meteor/tracker", {
-  Tracker: function (v) {
-    Tracker = v;
-  }
-}, 2);
-var Loader;
-module.link("../components/loader", {
-  "default": function (v) {
-    Loader = v;
-  }
-}, 3);
-
-var errorHandler = function (error) {
-  return Meteor.isProduction ? React.createElement("span", null, "An error occurred.") : React.createElement("code", null, JSON.stringify(error, null, 2));
-};
-
-var compose = setDefaults({
-  errorHandler: errorHandler,
-  loadingHandler: Loader,
-  pure: true
-});
-
-var getTrackerLoader = function (reactiveMapper) {
-  return function (props, onData, env) {
-    var trackerCleanup = null;
-    var handler = Tracker.nonreactive(function () {
-      return Tracker.autorun(function () {
-        // assign the custom clean-up function.
-        trackerCleanup = reactiveMapper(props, onData, env);
-      });
-    });
-    return function () {
-      if (typeof trackerCleanup === 'function') {
-        trackerCleanup();
-      } // @ts-ignore
-
-
-      return handler.stop();
-    };
-  };
-};
-
-var composer = function (reactiveMapper, options) {
-  return compose(getTrackerLoader(reactiveMapper), options);
-};
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-},"toasts.ts":function(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/lib/toasts.ts                                                                                        //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-module.export({
-  toastNoActiveAlgorithms: function () {
-    return toastNoActiveAlgorithms;
-  }
-});
-var toast;
-module.link("react-semantic-toasts", {
-  toast: function (v) {
-    toast = v;
-  }
-}, 0);
-
-var toastNoActiveAlgorithms = function () {
-  return toast({
-    title: 'No active algorithms',
-    type: 'warning',
-    description: 'Randomizing algorithms pauzed until you select at least one algorithm',
-    time: 5000
-  });
-};
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-}},"components":{"results":{"index.ts":function(require,exports,module){
+},"results":{"index.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
@@ -235,13 +144,10 @@ var Header = function () {
 var Row = function (row) {
   return React.createElement(Table.Row, null, columns.map(function (_ref2, index) {
     var value = _ref2.value,
-        _ref2$format = _ref2.format,
-        format = _ref2$format === void 0 ? function (value) {
-      return value;
-    } : _ref2$format;
+        format = _ref2.format;
     return React.createElement(Table.Cell, {
       key: index
-    }, format(get(row, value)));
+    }, format ? format(get(row, value)) : get(row, value));
   }));
 };
 
@@ -256,6 +162,120 @@ var ResultsTab = function (_ref3) {
 };
 
 module.exportDefault(ResultsTab);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}},"router":{"index.ts":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/components/router/index.ts                                                                           //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var Meteor;
+module.link("meteor/meteor", {
+  Meteor: function (v) {
+    Meteor = v;
+  }
+}, 0);
+var composer;
+module.link("../../lib/composer", {
+  composer: function (v) {
+    composer = v;
+  }
+}, 1);
+var RouterComponent;
+module.link("./router", {
+  "default": function (v) {
+    RouterComponent = v;
+  }
+}, 2);
+
+var compose = function (props, onData) {
+  onData(null, {
+    userId: Meteor.userId()
+  });
+};
+
+module.exportDefault(composer(compose)(RouterComponent));
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"router.tsx":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/components/router/router.tsx                                                                         //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var React;
+module.link("react", {
+  "default": function (v) {
+    React = v;
+  }
+}, 0);
+var Segment;
+module.link("semantic-ui-react", {
+  Segment: function (v) {
+    Segment = v;
+  }
+}, 1);
+var Router;
+module.link("@reach/router", {
+  Router: function (v) {
+    Router = v;
+  }
+}, 2);
+var About;
+module.link("../about", {
+  "default": function (v) {
+    About = v;
+  }
+}, 3);
+var Home;
+module.link("../home", {
+  "default": function (v) {
+    Home = v;
+  }
+}, 4);
+var MenuTop;
+module.link("../menuTop", {
+  "default": function (v) {
+    MenuTop = v;
+  }
+}, 5);
+var Results;
+module.link("../results", {
+  "default": function (v) {
+    Results = v;
+  }
+}, 6);
+var Training;
+module.link("../training", {
+  "default": function (v) {
+    Training = v;
+  }
+}, 7);
+
+var RouterComponent = function (_ref) {
+  var userId = _ref.userId;
+  return React.createElement("div", null, React.createElement("header", null, React.createElement(Router, null, React.createElement(MenuTop, {
+    "default": true
+  }))), React.createElement("nav", null, React.createElement(Segment, null, React.createElement(Router, null, React.createElement(Home, {
+    path: "/home",
+    "default": true
+  }), userId && [React.createElement(Training, {
+    key: "training",
+    path: "/training"
+  }), React.createElement(Results, {
+    key: "results",
+    path: "/results"
+  })], React.createElement(About, {
+    path: "/about"
+  })))));
+};
+
+module.exportDefault(RouterComponent);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"training":{"index.ts":function(require,exports,module){
@@ -958,12 +978,15 @@ var Averages = function (_ref) {
   var currentCategoryAvg = getAverage(currentCategory && currentCategory.results);
   var averages = ['OLL', 'PLL'].includes(currentCategory.value) ? [{
     header: 'Average for this algorithm',
+    key: '0',
     description: currentAlgorithmAvg ? moment(currentAlgorithmAvg).format('ss:SSS') : 'No records'
   }, {
     header: "Average for all " + currentCategory.value + " algorithms",
+    key: '1',
     description: currentCategoryAvg ? moment(currentCategoryAvg).format('ss:SSS') : 'No records'
   }] : [{
     header: "Average for all in " + currentCategory.value,
+    key: '0',
     description: currentCategoryAvg ? moment(currentCategoryAvg).format('mm:ss:SSS') : 'No records'
   }];
   return React.createElement(Segment, {
@@ -991,9 +1014,18 @@ module.link("react", {
     React = v;
   }
 }, 0);
+var Blaze;
+module.link("meteor/gadicc:blaze-react-component", {
+  "default": function (v) {
+    Blaze = v;
+  }
+}, 1);
+module.link("./loginButtons.html");
 
 var Home = function () {
-  return React.createElement("div", null, "Home");
+  return React.createElement("div", null, Meteor.userId() ? React.createElement(React.Fragment, null, "Welcome ") : React.createElement("p", null, "Please log in to continue."), React.createElement(Blaze, {
+    template: "Accounts"
+  }));
 };
 
 module.exportDefault(Home);
@@ -1116,81 +1148,6 @@ var MenuTop = function (_ref) {
 module.exportDefault(MenuTop);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-},"router.tsx":function(require,exports,module){
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/router.tsx                                                                                //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-var React;
-module.link("react", {
-  "default": function (v) {
-    React = v;
-  }
-}, 0);
-var Segment;
-module.link("semantic-ui-react", {
-  Segment: function (v) {
-    Segment = v;
-  }
-}, 1);
-var Router;
-module.link("@reach/router", {
-  Router: function (v) {
-    Router = v;
-  }
-}, 2);
-var About;
-module.link("./about", {
-  "default": function (v) {
-    About = v;
-  }
-}, 3);
-var Home;
-module.link("./home", {
-  "default": function (v) {
-    Home = v;
-  }
-}, 4);
-var MenuTop;
-module.link("./menuTop", {
-  "default": function (v) {
-    MenuTop = v;
-  }
-}, 5);
-var Results;
-module.link("./results", {
-  "default": function (v) {
-    Results = v;
-  }
-}, 6);
-var Training;
-module.link("./training", {
-  "default": function (v) {
-    Training = v;
-  }
-}, 7);
-
-var RouterComponent = function () {
-  return React.createElement("div", null, React.createElement("header", null, React.createElement(Router, null, React.createElement(MenuTop, {
-    "default": true
-  }))), React.createElement("nav", null, React.createElement(Segment, null, React.createElement(Router, null, React.createElement(Home, {
-    path: "/home"
-  }), React.createElement(Training, {
-    path: "/training",
-    "default": true
-  }), React.createElement(Results, {
-    path: "/results"
-  }), React.createElement(About, {
-    path: "/about"
-  })))));
-};
-
-module.exportDefault(RouterComponent);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 },"timer.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1269,8 +1226,9 @@ var tipsList = [{
 }, {
   header: 'Backspace / Delete / Escape',
   description: "Reset timer - don't save the solution"
-}].map(function (tip) {
+}].map(function (tip, index) {
   return _objectSpread({}, tip, {
+    key: index,
     icon: 'lightbulb outline'
   });
 });
@@ -1354,7 +1312,127 @@ var TrainingMain = function (_ref) {
 module.exportDefault(TrainingMain);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-}}},"main.tsx":function(require,exports,module){
+}},"lib":{"composer.tsx":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/lib/composer.tsx                                                                                     //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({
+  composer: function () {
+    return composer;
+  }
+});
+var React;
+module.link("react", {
+  "default": function (v) {
+    React = v;
+  }
+}, 0);
+var setDefaults;
+module.link("react-komposer", {
+  setDefaults: function (v) {
+    setDefaults = v;
+  }
+}, 1);
+var Tracker;
+module.link("meteor/tracker", {
+  Tracker: function (v) {
+    Tracker = v;
+  }
+}, 2);
+var Loader;
+module.link("../components/loader", {
+  "default": function (v) {
+    Loader = v;
+  }
+}, 3);
+
+var errorHandler = function (error) {
+  return Meteor.isProduction ? React.createElement("span", null, "An error occurred.") : React.createElement("code", null, JSON.stringify(error, null, 2));
+};
+
+var compose = setDefaults({
+  errorHandler: errorHandler,
+  loadingHandler: Loader,
+  pure: true
+});
+
+var getTrackerLoader = function (reactiveMapper) {
+  return function (props, onData, env) {
+    var trackerCleanup = null;
+    var handler = Tracker.nonreactive(function () {
+      return Tracker.autorun(function () {
+        // assign the custom clean-up function.
+        trackerCleanup = reactiveMapper(props, onData, env);
+      });
+    });
+    return function () {
+      if (typeof trackerCleanup === 'function') {
+        trackerCleanup();
+      } // @ts-ignore
+
+
+      return handler.stop();
+    };
+  };
+};
+
+var composer = function (reactiveMapper, options) {
+  return compose(getTrackerLoader(reactiveMapper), options);
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"toasts.ts":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/lib/toasts.ts                                                                                        //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({
+  toastNoActiveAlgorithms: function () {
+    return toastNoActiveAlgorithms;
+  }
+});
+var toast;
+module.link("react-semantic-toasts", {
+  toast: function (v) {
+    toast = v;
+  }
+}, 0);
+
+var toastNoActiveAlgorithms = function () {
+  return toast({
+    title: 'No active algorithms',
+    type: 'warning',
+    description: 'Randomizing algorithms pauzed until you select at least one algorithm',
+    time: 5000
+  });
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}}},"template.main.js":function(){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/template.main.js                                                                                             //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+
+Template.body.addContent((function() {
+  var view = this;
+  return HTML.Raw('<div id="render-target"></div>');
+}));
+Meteor.startup(Template.body.renderToDocument);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+},"main.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                                                     //
@@ -1550,15 +1628,10 @@ module.link("meteor/check", {
     check = v;
   }
 }, 2);
-var expect;
-module.link("chai", {
-  expect: function (v) {
-    expect = v;
-  }
-}, 3);
 var Algorithms = new Mongo.Collection('algorithms');
 Meteor.methods({
   'algorithms.toggleActive': function (algId, active) {
+    check(this.userId, String);
     check(active, Boolean);
     check(algId, String);
     Algorithms.update(algId, {
@@ -1568,6 +1641,8 @@ Meteor.methods({
     });
   },
   'algorithms.activateAll': function (category) {
+    check(this.userId, String);
+    check(category, String);
     Algorithms.update({
       category: category
     }, {
@@ -1579,6 +1654,8 @@ Meteor.methods({
     });
   },
   'algorithms.deactivateAll': function (category) {
+    check(this.userId, String);
+    check(category, String);
     Algorithms.update({
       category: category
     }, {
@@ -1596,17 +1673,13 @@ Meteor.methods({
         solution = _ref.solution,
         subtype = _ref.subtype,
         type = _ref.type;
-    expect(category).to.be.a('string');
-    expect(image).to.be.a('string');
-    expect(scramble).to.be.a('string');
-    expect(solution).to.be.a('string');
-    expect(subtype).to.be.a('string');
-    expect(type).to.be.a('string'); // Make sure the user is logged in before inserting a algorithm
-
-    /* if (! Meteor.userId()) {
-         throw new Meteor.Error('not-authorized');
-     }*/
-
+    check(this.userId, String);
+    check(category, String);
+    check(image, String);
+    check(scramble, String);
+    check(solution, String);
+    check(subtype, String);
+    check(type, String);
     var doc = {
       createdAt: new Date(),
       category: category,
@@ -1619,41 +1692,15 @@ Meteor.methods({
     Algorithms.insert(doc);
   },
   'algorithms.search': function (text) {
+    check(this.userId, String);
     check(text, String);
     return Algorithms.find();
   },
   'algorithms.remove': function (algorithmId) {
+    check(this.userId, String);
     check(algorithmId, String);
-    /*const algorithm = Algorithms.findOne(algorithmId);
-    if (algorithm.private && algorithm.owner !== Meteor.userId()) {
-      // If the algorithm is private, make sure only the owner can delete it
-          throw new Meteor.Error('not-authorized');
-    }*/
-
     Algorithms.remove(algorithmId);
   }
-  /*,
-  'algorithms.setChecked'(algorithmId, setChecked) {
-      check(algorithmId, String);
-      check(setChecked, Boolean);
-         const algorithm = Algorithms.findOne(algorithmId);
-      if (algorithm.private && algorithm.owner !== Meteor.userId()) {
-            // If the algorithm is private, make sure only the owner can check it off
-                throw new Meteor.Error('not-authorized');
-          }
-         Algorithms.update(algorithmId, { $set: { checked: setChecked } });
-  },
-  'algorithms.setPrivate'(algorithmId, setToPrivate) {
-      check(algorithmId, String);
-      check(setToPrivate, Boolean);
-         const algorithm = Algorithms.findOne(algorithmId);
-         // Make sure only the algorithm owner can make a algorithm private
-      if (algorithm.owner !== Meteor.userId()) {
-          throw new Meteor.Error('not-authorized');
-      }
-         Algorithms.update(algorithmId, { $set: { private: setToPrivate } });
-  },*/
-
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1695,6 +1742,7 @@ Meteor.methods({
         category = _ref.category,
         scramble = _ref.scramble,
         time = _ref.time;
+    check(this.userId, String);
     check(category, String);
     check(time, Number);
 
@@ -1704,35 +1752,32 @@ Meteor.methods({
 
     if (category === 'OLL' || category === 'PLL') {
       check(algorithmId, String);
-    } // Make sure the user is logged in before inserting a result
-
-    /* if (! Meteor.userId()) {
-     throw new Meteor.Error('not-authorized');
-     }*/
-
+    }
 
     var doc = {
       algorithmId: algorithmId,
       category: category,
       createdAt: new Date(),
       scramble: scramble,
-      time: time
+      time: time,
+      userId: this.userId
     };
     Results.insert(doc);
   },
   'results.search': function (text) {
+    check(this.userId, String);
     check(text, String);
-    return Results.find();
+    return Results.find({
+      userId: this.userId
+    });
   },
   'results.remove': function (resultId) {
+    check(this.userId, String);
     check(resultId, String);
-    /*const result = Results.findOne(resultId);
-     if (result.private && result.owner !== Meteor.userId()) {
-     // If the result is private, make sure only the owner can delete it
-     throw new Meteor.Error('not-authorized');
-     }*/
-
-    Results.remove(resultId);
+    Results.remove({
+      userId: this.userId,
+      resultId: resultId
+    });
   }
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1743,10 +1788,10 @@ Meteor.methods({
     ".json",
     ".html",
     ".ts",
+    ".css",
     ".tsx",
     ".jsx",
     ".mjs",
-    ".css",
     ".less"
   ]
 });

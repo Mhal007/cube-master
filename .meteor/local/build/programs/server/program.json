@@ -140,6 +140,13 @@
       "path": "packages/underscore.js"
     },
     {
+      "sourceMap": "packages/rate-limit.js.map",
+      "path": "packages/rate-limit.js"
+    },
+    {
+      "path": "packages/ddp-rate-limiter.js"
+    },
+    {
       "node_modules": "npm/node_modules/meteor/logging/node_modules",
       "sourceMap": "packages/logging.js.map",
       "path": "packages/logging.js"
@@ -214,13 +221,51 @@
       "path": "packages/typescript.js"
     },
     {
-      "path": "packages/livedata.js"
+      "path": "packages/accounts-ui.js"
     },
     {
-      "path": "packages/hot-code-push.js"
+      "sourceMap": "packages/accounts-base.js.map",
+      "path": "packages/accounts-base.js"
     },
     {
-      "path": "packages/launch-screen.js"
+      "path": "packages/service-configuration.js"
+    },
+    {
+      "path": "packages/localstorage.js"
+    },
+    {
+      "path": "packages/url.js"
+    },
+    {
+      "sourceMap": "packages/oauth.js.map",
+      "path": "packages/oauth.js",
+      "assets": {
+        "end_of_popup_response.html": "assets/packages/oauth/end_of_popup_response.html",
+        "end_of_redirect_response.html": "assets/packages/oauth/end_of_redirect_response.html"
+      }
+    },
+    {
+      "sourceMap": "packages/accounts-oauth.js.map",
+      "path": "packages/accounts-oauth.js"
+    },
+    {
+      "sourceMap": "packages/oauth2.js.map",
+      "path": "packages/oauth2.js"
+    },
+    {
+      "node_modules": "npm/node_modules/meteor/http/node_modules",
+      "path": "packages/http.js"
+    },
+    {
+      "sourceMap": "packages/google-oauth.js.map",
+      "path": "packages/google-oauth.js"
+    },
+    {
+      "path": "packages/google-config-ui.js"
+    },
+    {
+      "sourceMap": "packages/accounts-google.js.map",
+      "path": "packages/accounts-google.js"
     },
     {
       "path": "packages/jquery.js"
@@ -238,9 +283,6 @@
       "path": "packages/blaze.js"
     },
     {
-      "path": "packages/ui.js"
-    },
-    {
       "path": "packages/spacebars.js"
     },
     {
@@ -251,6 +293,22 @@
     },
     {
       "path": "packages/templating.js"
+    },
+    {
+      "sourceMap": "packages/gadicc_blaze-react-component.js.map",
+      "path": "packages/gadicc_blaze-react-component.js"
+    },
+    {
+      "path": "packages/livedata.js"
+    },
+    {
+      "path": "packages/hot-code-push.js"
+    },
+    {
+      "path": "packages/launch-screen.js"
+    },
+    {
+      "path": "packages/ui.js"
     },
     {
       "sourceMap": "packages/autoupdate.js.map",

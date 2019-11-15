@@ -37,6 +37,6 @@ const getTrackerLoader = (reactiveMapper: any) => {
   };
 };
 
-export const composer = (reactiveMapper: any, options: any) => {
+export const composer = (reactiveMapper: any, options?: any) => {
   return compose(getTrackerLoader(reactiveMapper), options);
 };
