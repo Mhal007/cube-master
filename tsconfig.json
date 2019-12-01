@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "alwaysStrict": true,
     "allowJs": true,
     "baseUrl": ".",
     "esModuleInterop": true,

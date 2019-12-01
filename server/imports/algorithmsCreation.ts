@@ -1,7 +1,7 @@
 import { Algorithms } from '../../collections/algorithms';
 import { OLLs, PLLs } from './const';
 
-export const createAlgorithms = () => {
+export const createAlgorithms = (): void => {
   const isOLL = !!Algorithms.findOne({ category: 'OLL' });
   const isPLL = !!Algorithms.findOne({ category: 'PLL' });
 
