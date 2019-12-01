@@ -1,19 +1,26 @@
 import { Meteor } from 'meteor/meteor';
+import { RouteComponentProps } from '@reach/router';
 
 import { Algorithms } from '../../../../collections/algorithms';
 import { Results } from '../../../../collections/results';
 import { composer } from '../../lib/composer';
-import {
-  algorithm,
-  algorithmWithResults,
-  categoryWithResults,
-  result
-} from '../../../../lib/types';
+import { algorithm, category, result } from '../../../../lib/types';
 import { categories } from '../../../../lib/const';
-
 import Training from './training';
 
-const compose = (props: any, onData: any): void => {
+type Props = RouteComponentProps & {
+  demo?: boolean;
+};
+
+export type algorithmWithResults = algorithm & {
+  results: number[];
+};
+
+export type categoryWithResults = category & {
+  results: number[];
+};
+
+const compose = (props: Props, onData: Function): void => {
   const subscriptions = [
     Meteor.subscribe('algorithms'),
     Meteor.subscribe('results')

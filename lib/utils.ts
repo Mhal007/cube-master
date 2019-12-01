@@ -1,5 +1,3 @@
-import random from 'lodash/random';
-
 type allowedMove =
   | 'F'
   | "F'"
@@ -65,17 +63,6 @@ export const getRandomScramble = (movesNr: number): string => {
   }
 
   return moves.join(' ');
-};
-
-export const getRandomEntry = (array: any[], excludeId?: string): any => {
-  const index = random(0, array.length - 1);
-  const entry = array[index];
-
-  if (array.length > 1 && excludeId && entry._id === excludeId) {
-    return getRandomEntry(array, excludeId);
-  }
-
-  return entry;
 };
 
 export const getAverage = (results?: number[]): number => {

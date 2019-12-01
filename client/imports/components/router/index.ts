@@ -3,7 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { composer } from '../../lib/composer';
 import RouterComponent from './router';
 
-const compose = (props: any, onData: any): void => {
+type Props = {
+  userId: string;
+};
+
+const compose = (props: Props, onData: Function): void => {
   onData(null, { userId: Meteor.userId() });
 };
 

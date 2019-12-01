@@ -8,14 +8,16 @@ import { algorithmWithResults, categoryWithResults } from '../../../lib/types';
 const SliderTooltip = createSliderWithTooltip(Slider);
 
 type Props = {
+  activeAlgorithmIds: string[];
   algorithms: algorithmWithResults[];
   currentCategory: categoryWithResults;
   onActivateAll: () => void;
-  onToggleActive: (algorithm: algorithmWithResults) => void;
+  onToggleActive: (algorithmId: string) => void;
   onDeactivateAll: () => void;
 };
 
 const AlgSettings: FunctionComponent<Props> = ({
+  activeAlgorithmIds,
   algorithms,
   currentCategory: { settingsDisabled },
   onActivateAll,
@@ -85,10 +87,12 @@ const AlgSettings: FunctionComponent<Props> = ({
             <div
               key={algorithm._id}
               className={`algorithm${
-                settingsDisabled || algorithm.active ? ' active' : ''
+                settingsDisabled || activeAlgorithmIds.includes(algorithm._id)
+                  ? ' active'
+                  : ''
               }`}
               onClick={(): void =>
-                settingsDisabled ? undefined : onToggleActive(algorithm)
+                settingsDisabled ? undefined : onToggleActive(algorithm._id)
               }
             >
               <img alt={algorithm.name} src={`/images/${algorithm.image}`} />

@@ -6,7 +6,6 @@ export const Results = new Mongo.Collection('results');
 
 Meteor.methods({
   'results.insert'({ algorithmId, category, scramble, time }) {
-    check(this.userId, String);
     check(category, String);
     check(time, Number);
 
@@ -24,16 +23,10 @@ Meteor.methods({
       createdAt: new Date(),
       scramble,
       time,
-      userId: this.userId
+      userId: this.userId || 'demo'
     };
 
     Results.insert(doc);
-  },
-  'results.search'(text) {
-    check(this.userId, String);
-    check(text, String);
-
-    return Results.find({ userId: this.userId });
   },
   'results.remove'(resultId) {
     check(this.userId, String);

@@ -66,8 +66,11 @@ var compose = function (props, onData) {
   if (subscriptions.every(function (subscription) {
     return subscription.ready();
   })) {
-    // @ts-ignore
-    var results = Results.find({}).fetch();
+    var demo = props.demo; // @ts-ignore
+
+    var results = Results.find({
+      userId: demo ? 'demo' : Meteor.userId()
+    }).fetch();
     onData(null, {
       results: results
     });
@@ -261,16 +264,20 @@ var RouterComponent = function (_ref) {
   var userId = _ref.userId;
   return React.createElement("div", null, React.createElement("header", null, React.createElement(Router, null, React.createElement(MenuTop, {
     "default": true
-  }))), React.createElement("nav", null, React.createElement(Segment, null, React.createElement(Router, null, React.createElement(Home, {
+  }))), !userId && React.createElement("div", {
+    className: "demo-mode-bar"
+  }, "You are currently in a demo mode. Please sign in to enable personalised results and features."), React.createElement("main", null, React.createElement(Segment, null, React.createElement(Router, null, React.createElement(Home, {
     path: "/home",
     "default": true
-  }), userId && [React.createElement(Training, {
+  }), React.createElement(Training, {
     key: "training",
+    demo: !userId,
     path: "/training"
   }), React.createElement(Results, {
     key: "results",
+    demo: !userId,
     path: "/results"
-  })], React.createElement(About, {
+  }), React.createElement(About, {
     path: "/about"
   })))));
 };
@@ -421,45 +428,60 @@ module.link("react-semantic-toasts", {
     SemanticToastContainer = v;
   }
 }, 3);
+var random;
+module.link("lodash/random", {
+  "default": function (v) {
+    random = v;
+  }
+}, 4);
+var uniq;
+module.link("lodash/uniq", {
+  "default": function (v) {
+    uniq = v;
+  }
+}, 5);
 var AlgSettings;
 module.link("../algSettings", {
   "default": function (v) {
     AlgSettings = v;
   }
-}, 4);
+}, 6);
 var Averages;
 module.link("../averages", {
   "default": function (v) {
     Averages = v;
   }
-}, 5);
+}, 7);
 var TipsAndTricks;
 module.link("../tipsAndTricks", {
   "default": function (v) {
     TipsAndTricks = v;
   }
-}, 6);
+}, 8);
 var TrainingMain;
 module.link("../trainingMain", {
   "default": function (v) {
     TrainingMain = v;
   }
-}, 7);
-var getRandomEntry, getRandomScramble;
+}, 9);
+var getRandomScramble;
 module.link("../../../../lib/utils", {
-  getRandomEntry: function (v) {
-    getRandomEntry = v;
-  },
   getRandomScramble: function (v) {
     getRandomScramble = v;
   }
-}, 8);
+}, 10);
 var toastNoActiveAlgorithms;
 module.link("../../lib/toasts", {
   toastNoActiveAlgorithms: function (v) {
     toastNoActiveAlgorithms = v;
   }
-}, 9);
+}, 11);
+var store;
+module.link("../../lib/store", {
+  store: function (v) {
+    store = v;
+  }
+}, 12);
 
 var Training =
 /*#__PURE__*/
@@ -474,6 +496,7 @@ function (_Component) {
     _this.onChangeAlgorithm = function () {
       var algorithms = _this.props.algorithms;
       var _this$state = _this.state,
+          activeAlgorithmIds = _this$state.activeAlgorithmIds,
           currentAlgorithm = _this$state.currentAlgorithm,
           currentCategory = _this$state.currentCategory;
 
@@ -482,15 +505,26 @@ function (_Component) {
       var newAlgorithm;
 
       if (currentCategory.randomizableAlgorithm) {
-        var activeAlgorithms = algorithms.filter(function (algorithm) {
-          return algorithm.active && algorithm.category === currentCategory.value;
+        var searchSpace = algorithms.filter(function (algorithm) {
+          return algorithm.category === currentCategory.value && activeAlgorithmIds.includes(algorithm._id);
         });
 
-        if (!activeAlgorithms.length) {
+        if (!searchSpace.length) {
           toastNoActiveAlgorithms();
         }
 
-        newAlgorithm = getRandomEntry(activeAlgorithms, currentAlgorithm && currentAlgorithm._id);
+        var currentIndex = searchSpace.findIndex(function (algorithm) {
+          return (// @ts-ignore
+            algorithm._id === (currentAlgorithm && currentAlgorithm._id)
+          );
+        });
+        var newIndex = currentIndex;
+
+        while (newIndex === currentIndex) {
+          newIndex = random(0, searchSpace.length - 1);
+        }
+
+        newAlgorithm = searchSpace[newIndex];
       } else if (currentCategory.randomizableScramble) {
         var scramble = getRandomScramble(25);
         newAlgorithm = {
@@ -512,18 +546,57 @@ function (_Component) {
       });
     };
 
-    _this.onToggleActive = function (algorithm) {
-      Meteor.call('algorithms.toggleActive', algorithm._id, !algorithm.active);
+    _this.onToggleActive = function (toggleAlgorithmId) {
+      var _this$state2 = _this.state,
+          activeAlgorithmIds = _this$state2.activeAlgorithmIds,
+          currentCategory = _this$state2.currentCategory;
+
+      if (currentCategory && currentCategory.value) {
+        _this.setState({
+          activeAlgorithmIds: activeAlgorithmIds.includes(toggleAlgorithmId) ? activeAlgorithmIds.filter(function (algorithmId) {
+            return algorithmId !== toggleAlgorithmId;
+          }) : activeAlgorithmIds.concat(toggleAlgorithmId)
+        });
+      }
     };
 
     _this.onActivateAll = function () {
-      var currentCategory = _this.state.currentCategory;
-      Meteor.call('algorithms.activateAll', currentCategory.value);
+      var algorithms = _this.props.algorithms;
+      var _this$state3 = _this.state,
+          activeAlgorithmIds = _this$state3.activeAlgorithmIds,
+          currentCategory = _this$state3.currentCategory;
+      var currentAlgorithmIds = algorithms.filter(function (algorithm) {
+        return algorithm.category === currentCategory.value;
+      }).map(function (algorithm) {
+        return algorithm._id;
+      });
+
+      _this.setState({
+        activeAlgorithmIds: uniq(activeAlgorithmIds.concat(currentAlgorithmIds))
+      });
     };
 
     _this.onDeactivateAll = function () {
-      Meteor.call('algorithms.deactivateAll');
-      toastNoActiveAlgorithms();
+      var algorithms = _this.props.algorithms;
+      var _this$state4 = _this.state,
+          activeAlgorithmIds = _this$state4.activeAlgorithmIds,
+          currentCategory = _this$state4.currentCategory;
+      var currentAlgorithmIds = algorithms.filter(function (algorithm) {
+        return algorithm.category === currentCategory.value;
+      }).map(function (algorithm) {
+        return algorithm._id;
+      });
+
+      _this.setState({
+        activeAlgorithmIds: activeAlgorithmIds.filter(function (algorithmId) {
+          return !currentAlgorithmIds.includes(algorithmId);
+        })
+      }, toastNoActiveAlgorithms);
+    };
+
+    _this.onExit = function () {
+      var activeAlgorithmIds = _this.state.activeAlgorithmIds;
+      store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
     };
 
     _this.onKeyDown = function (event) {
@@ -578,9 +651,9 @@ function (_Component) {
     };
 
     _this.onKeyUp = function (event) {
-      var _this$state2 = _this.state,
-          blocked = _this$state2.blocked,
-          isVisibleSolution = _this$state2.isVisibleSolution;
+      var _this$state5 = _this.state,
+          blocked = _this$state5.blocked,
+          isVisibleSolution = _this$state5.isVisibleSolution;
 
       if (event.key === 'Enter' || event.key === ' ') {
         _this.onGoToNextStatus('up');
@@ -616,12 +689,12 @@ function (_Component) {
     };
 
     _this.onGoToNextStatus = function (upOrDown) {
-      var _this$state3 = _this.state,
-          blocked = _this$state3.blocked,
-          currentAlgorithm = _this$state3.currentAlgorithm,
-          currentCategory = _this$state3.currentCategory,
-          timerCurrentValue = _this$state3.timerCurrentValue,
-          timerStatus = _this$state3.timerStatus;
+      var _this$state6 = _this.state,
+          blocked = _this$state6.blocked,
+          currentAlgorithm = _this$state6.currentAlgorithm,
+          currentCategory = _this$state6.currentCategory,
+          timerCurrentValue = _this$state6.timerCurrentValue,
+          timerStatus = _this$state6.timerStatus;
 
       if (!currentAlgorithm) {
         return;
@@ -646,10 +719,11 @@ function (_Component) {
         });
       } else if (timerStatus === 'timer-off' && upOrDown === 'down' && !blocked.space) {
         /* Save the time */
-        var result = _objectSpread({}, currentAlgorithm && {
-          algorithmId: currentAlgorithm._id,
-          scramble: currentAlgorithm.scramble
+        var result = _objectSpread({}, currentAlgorithm && _objectSpread({}, currentAlgorithm._id && {
+          algorithmId: currentAlgorithm._id
         }, {
+          scramble: currentAlgorithm.scramble
+        }), {
           category: currentCategory.value,
           time: timerCurrentValue
         });
@@ -684,6 +758,7 @@ function (_Component) {
         shift: false,
         space: false
       },
+      activeAlgorithmIds: store.get(store.vars.activeAlgorithmIds) || [],
       currentAlgorithm: undefined,
       currentCategory: _this.props.categories[0],
       isVisibleSolution: false,
@@ -700,6 +775,7 @@ function (_Component) {
   _proto.componentDidMount = function () {
     function componentDidMount() {
       this.onChangeAlgorithm();
+      window.addEventListener('beforeunload', this.onExit);
       document.body.addEventListener('keydown', this.onKeyDown);
       document.body.addEventListener('keypress', this.onKeyPress);
       document.body.addEventListener('keyup', this.onKeyUp);
@@ -710,6 +786,7 @@ function (_Component) {
 
   _proto.componentWillUnmount = function () {
     function componentWillUnmount() {
+      window.removeEventListener('beforeunload', this.onExit);
       document.body.removeEventListener('keydown', this.onKeyDown);
       document.body.removeEventListener('keypress', this.onKeyPress);
       document.body.removeEventListener('keyup', this.onKeyUp);
@@ -720,11 +797,12 @@ function (_Component) {
 
   _proto.render = function () {
     function render() {
-      var _this$state4 = this.state,
-          currentAlgorithm = _this$state4.currentAlgorithm,
-          currentCategory = _this$state4.currentCategory,
-          isVisibleSolution = _this$state4.isVisibleSolution,
-          timerCurrentValue = _this$state4.timerCurrentValue,
+      var _this$state7 = this.state,
+          activeAlgorithmIds = _this$state7.activeAlgorithmIds,
+          currentAlgorithm = _this$state7.currentAlgorithm,
+          currentCategory = _this$state7.currentCategory,
+          isVisibleSolution = _this$state7.isVisibleSolution,
+          timerCurrentValue = _this$state7.timerCurrentValue,
           _this$props = this.props,
           algorithms = _this$props.algorithms,
           categories = _this$props.categories,
@@ -734,7 +812,7 @@ function (_Component) {
           onChangeCategory = this.onChangeCategory,
           onDeactivateAll = this.onDeactivateAll;
       var currentAlgorithms = algorithms.filter(function (algorithm) {
-        return algorithm.category === currentCategory.value;
+        return algorithm.category === currentCategory.type;
       });
       return React.createElement(React.Fragment, null, React.createElement(SemanticToastContainer, null), React.createElement(Grid, null, React.createElement(Grid.Column, {
         width: 4
@@ -766,6 +844,7 @@ function (_Component) {
         currentAlgorithm: currentAlgorithm,
         currentCategory: currentCategory
       }), React.createElement(TipsAndTricks, null))), this.state.settingsOpened && React.createElement(AlgSettings, {
+        activeAlgorithmIds: activeAlgorithmIds,
         algorithms: currentAlgorithms,
         currentCategory: currentCategory,
         onActivateAll: onActivateAll,
@@ -865,7 +944,8 @@ module.link("../../../lib/utils", {
 var SliderTooltip = createSliderWithTooltip(Slider);
 
 var AlgSettings = function (_ref) {
-  var algorithms = _ref.algorithms,
+  var activeAlgorithmIds = _ref.activeAlgorithmIds,
+      algorithms = _ref.algorithms,
       settingsDisabled = _ref.currentCategory.settingsDisabled,
       onActivateAll = _ref.onActivateAll,
       onToggleActive = _ref.onToggleActive,
@@ -918,9 +998,9 @@ var AlgSettings = function (_ref) {
     }, React.createElement("h5", null, name), values.map(function (algorithm) {
       return React.createElement("div", {
         key: algorithm._id,
-        className: "algorithm" + (settingsDisabled || algorithm.active ? ' active' : ''),
+        className: "algorithm" + (settingsDisabled || activeAlgorithmIds.includes(algorithm._id) ? ' active' : ''),
         onClick: function () {
-          return settingsDisabled ? undefined : onToggleActive(algorithm);
+          return settingsDisabled ? undefined : onToggleActive(algorithm._id);
         }
       }, React.createElement("img", {
         alt: algorithm.name,
@@ -974,7 +1054,8 @@ module.link("../../../lib/utils", {
 var Averages = function (_ref) {
   var currentAlgorithm = _ref.currentAlgorithm,
       currentCategory = _ref.currentCategory;
-  var currentAlgorithmAvg = getAverage(currentAlgorithm && currentAlgorithm.results);
+  var currentAlgorithmAvg = getAverage( // @ts-ignore
+  currentAlgorithm && currentAlgorithm.results);
   var currentCategoryAvg = getAverage(currentCategory && currentCategory.results);
   var averages = ['OLL', 'PLL'].includes(currentCategory.value) ? [{
     header: 'Average for this algorithm',
@@ -1112,11 +1193,11 @@ var tabs = [{
 }, {
   name: 'training',
   color: 'blue',
-  icon: 'book'
+  icon: 'stopwatch'
 }, {
   name: 'results',
   color: 'orange',
-  icon: 'lightning'
+  icon: 'list ol'
 }, {
   name: 'about',
   color: 'teal',
@@ -1385,6 +1466,36 @@ var composer = function (reactiveMapper, options) {
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+},"store.ts":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/lib/store.ts                                                                                         //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+module.export({
+  store: function () {
+    return store;
+  }
+});
+var store = {
+  get: function (property) {
+    try {
+      return JSON.parse(localStorage.getItem(property) || '');
+    } catch (_a) {
+      return undefined;
+    }
+  },
+  set: function (property, value) {
+    localStorage.setItem(property, JSON.stringify(value));
+  },
+  vars: {
+    activeAlgorithmIds: 'activeAlgorithmIds'
+  }
+};
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 },"toasts.ts":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1487,10 +1598,12 @@ module.export({
 var categories = [{
   label: 'OLL',
   value: 'OLL',
+  type: 'OLL',
   randomizableAlgorithm: true
 }, {
   label: 'PLL',
   value: 'PLL',
+  type: 'PLL',
   randomizableAlgorithm: true
 }, {
   label: '3x3x3',
@@ -1499,12 +1612,12 @@ var categories = [{
 }, {
   label: 'OLL Attack',
   value: 'OLL-attack',
-  algorithmsCategory: 'OLL',
+  type: 'OLL',
   settingsDisabled: true
 }, {
   label: 'PLL Attack',
   value: 'PLL-attack',
-  algorithmsCategory: 'PLL',
+  type: 'PLL',
   settingsDisabled: true
 }];
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1531,19 +1644,10 @@ module.export({
   getRandomScramble: function () {
     return getRandomScramble;
   },
-  getRandomEntry: function () {
-    return getRandomEntry;
-  },
   getAverage: function () {
     return getAverage;
   }
 });
-var random;
-module.link("lodash/random", {
-  "default": function (v) {
-    random = v;
-  }
-}, 0);
 var allowedMoves = ['F', "F'", 'F2', 'B', "B'", 'B2', 'R', "R'", 'R2', 'L', "L'", 'L2', 'U', "U'", 'U2', 'D', "D'", 'D2'];
 
 var getRandomMove = function () {
@@ -1573,17 +1677,6 @@ var getRandomScramble = function (movesNr) {
   }
 
   return moves.join(' ');
-};
-
-var getRandomEntry = function (array, excludeId) {
-  var index = random(0, array.length - 1);
-  var entry = array[index];
-
-  if (array.length > 1 && excludeId && entry._id === excludeId) {
-    return getRandomEntry(array, excludeId);
-  }
-
-  return entry;
 };
 
 var getAverage = function (results) {
@@ -1630,77 +1723,37 @@ module.link("meteor/check", {
 }, 2);
 var Algorithms = new Mongo.Collection('algorithms');
 Meteor.methods({
-  'algorithms.toggleActive': function (algId, active) {
-    check(this.userId, String);
-    check(active, Boolean);
-    check(algId, String);
-    Algorithms.update(algId, {
-      $set: {
-        active: active
-      }
-    });
-  },
-  'algorithms.activateAll': function (category) {
-    check(this.userId, String);
-    check(category, String);
-    Algorithms.update({
-      category: category
-    }, {
-      $set: {
-        active: true
-      }
-    }, {
-      multi: true
-    });
-  },
-  'algorithms.deactivateAll': function (category) {
-    check(this.userId, String);
-    check(category, String);
-    Algorithms.update({
-      category: category
-    }, {
-      $set: {
-        active: false
-      }
-    }, {
-      multi: true
-    });
-  },
-  'algorithms.insert': function (_ref) {
-    var category = _ref.category,
-        image = _ref.image,
-        scramble = _ref.scramble,
-        solution = _ref.solution,
-        subtype = _ref.subtype,
-        type = _ref.type;
-    check(this.userId, String);
-    check(category, String);
-    check(image, String);
-    check(scramble, String);
-    check(solution, String);
-    check(subtype, String);
-    check(type, String);
-    var doc = {
-      createdAt: new Date(),
-      category: category,
-      image: image,
-      scramble: scramble,
-      solution: solution,
-      subtype: subtype,
-      type: type
-    };
-    Algorithms.insert(doc);
-  },
+  // 'algorithms.insert'({ category, image, scramble, solution, subtype, type }) {
+  //   check(this.userId, String);
+  //   check(category, String);
+  //   check(image, String);
+  //   check(scramble, String);
+  //   check(solution, String);
+  //   check(subtype, String);
+  //   check(type, String);
+  //
+  //   const doc = {
+  //     createdAt: new Date(),
+  //     category,
+  //     image,
+  //     scramble,
+  //     solution,
+  //     subtype,
+  //     type
+  //   };
+  //
+  //   Algorithms.insert(doc);
+  // },
   'algorithms.search': function (text) {
-    check(this.userId, String);
     check(text, String);
     return Algorithms.find();
-  },
-  'algorithms.remove': function (algorithmId) {
-    check(this.userId, String);
-    check(algorithmId, String);
-    Algorithms.remove(algorithmId);
-  }
+  } // 'algorithms.remove'(algorithmId) {
+  //   check(this.userId, String);
+  //   check(algorithmId, String);
+  //
+  //   Algorithms.remove(algorithmId);
+  // }
+
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1742,7 +1795,6 @@ Meteor.methods({
         category = _ref.category,
         scramble = _ref.scramble,
         time = _ref.time;
-    check(this.userId, String);
     check(category, String);
     check(time, Number);
 
@@ -1760,16 +1812,9 @@ Meteor.methods({
       createdAt: new Date(),
       scramble: scramble,
       time: time,
-      userId: this.userId
+      userId: this.userId || 'demo'
     };
     Results.insert(doc);
-  },
-  'results.search': function (text) {
-    check(this.userId, String);
-    check(text, String);
-    return Results.find({
-      userId: this.userId
-    });
   },
   'results.remove': function (resultId) {
     check(this.userId, String);

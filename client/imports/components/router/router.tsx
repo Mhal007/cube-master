@@ -20,18 +20,23 @@ const RouterComponent: FunctionComponent<Props> = ({ userId }) => (
       </Router>
     </header>
 
-    <nav>
+    {!userId && (
+      <div className="demo-mode-bar">
+        You are currently in a demo mode. Please sign in to enable personalised
+        results and features.
+      </div>
+    )}
+
+    <main>
       <Segment>
         <Router>
           <Home path="/home" default />
-          {userId && [
-            <Training key="training" path="/training" />,
-            <Results key="results" path="/results" />
-          ]}
+          <Training key="training" demo={!userId} path="/training" />
+          <Results key="results" demo={!userId} path="/results" />
           <About path="/about" />
         </Router>
       </Segment>
-    </nav>
+    </main>
   </div>
 );
 

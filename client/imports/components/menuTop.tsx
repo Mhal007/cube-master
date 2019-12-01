@@ -18,12 +18,12 @@ const tabs: tab[] = [
   {
     name: 'training',
     color: 'blue',
-    icon: 'book'
+    icon: 'stopwatch'
   },
   {
     name: 'results',
     color: 'orange',
-    icon: 'lightning'
+    icon: 'list ol'
   },
   {
     name: 'about',

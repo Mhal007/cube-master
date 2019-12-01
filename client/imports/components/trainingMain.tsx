@@ -2,17 +2,19 @@ import React, { FunctionComponent } from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 
 import Timer from './timer';
-import { algorithm } from '../../../lib/types';
+import { algorithmWithResults } from '../../../lib/types';
+import { randomizedAlgorithm } from './training/training';
 
 type Props = {
   onChangeAlgorithm: () => void;
-  currentAlgorithm?: algorithm;
+  currentAlgorithm?: algorithmWithResults | randomizedAlgorithm;
   isVisibleSolution: boolean;
   timerCurrentValue: number;
 };
 
 const TrainingMain: FunctionComponent<Props> = ({
   onChangeAlgorithm,
+  // @ts-ignore
   currentAlgorithm: { image, scramble, solution } = {
     image: undefined,
     scramble: undefined,

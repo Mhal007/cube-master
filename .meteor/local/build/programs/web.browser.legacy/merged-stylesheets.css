@@ -383,6 +383,11 @@
   font-size: inherit !important;
   border: none;
   box-shadow: none;
+}.demo-mode-bar {
+  text-align: center;
+  color: black;
+  background-color: #e4e400;
+  padding: 0.5em 0;
 }.training-main {
   font-family: monospace;
   font-size: 1.5em;

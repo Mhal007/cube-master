@@ -4,9 +4,10 @@ import moment from 'moment';
 
 import { getAverage } from '../../../lib/utils';
 import { algorithmWithResults, categoryWithResults } from '../../../lib/types';
+import { randomizedAlgorithm } from './training/training';
 
 type Props = {
-  currentAlgorithm?: algorithmWithResults;
+  currentAlgorithm?: algorithmWithResults | randomizedAlgorithm;
   currentCategory: categoryWithResults;
 };
 
@@ -15,6 +16,7 @@ const Averages: FunctionComponent<Props> = ({
   currentCategory
 }) => {
   const currentAlgorithmAvg = getAverage(
+    // @ts-ignore
     currentAlgorithm && currentAlgorithm.results
   );
   const currentCategoryAvg = getAverage(

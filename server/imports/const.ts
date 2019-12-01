@@ -10,7 +10,6 @@ const srikesNone: strikesType = [];
 
 export const OLLs: algorithm[] = [
   {
-    active: true,
     category: 'OLL',
     image: 'oll_1.svg',
     name: 'oll_1',
@@ -31,7 +30,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_2.svg',
     name: 'oll_2',
@@ -52,7 +50,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_3.svg',
     name: 'oll_3',
@@ -73,7 +70,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_4.svg',
     name: 'oll_4',
@@ -94,7 +90,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_5.svg',
     name: 'oll_5',
@@ -115,7 +110,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_6.svg',
     name: 'oll_6',
@@ -136,7 +130,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_7.svg',
     name: 'oll_7',
@@ -157,7 +150,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_8.svg',
     name: 'oll_8',
@@ -178,7 +170,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_9.svg',
     name: 'oll_9',
@@ -199,7 +190,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_10.svg',
     name: 'oll_10',
@@ -220,7 +210,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_11.svg',
     name: 'oll_11',
@@ -241,7 +230,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_12.svg',
     name: 'oll_12',
@@ -262,7 +250,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_13.svg',
     name: 'oll_13',
@@ -283,7 +270,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_14.svg',
     name: 'oll_14',
@@ -304,7 +290,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_15.svg',
     name: 'oll_15',
@@ -325,7 +310,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_16.svg',
     name: 'oll_16',
@@ -346,7 +330,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_17.svg',
     name: 'oll_17',
@@ -367,7 +350,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_18.svg',
     name: 'oll_18',
@@ -388,7 +370,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_19.svg',
     name: 'oll_19',
@@ -409,7 +390,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_20.svg',
     name: 'oll_20',
@@ -430,7 +410,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_21.svg',
     name: 'oll_21',
@@ -451,7 +430,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_22.svg',
     name: 'oll_22',
@@ -472,7 +450,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_23.svg',
     name: 'oll_23',
@@ -493,7 +470,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_24.svg',
     name: 'oll_24',
@@ -514,7 +490,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_25.svg',
     name: 'oll_25',
@@ -535,7 +510,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_26.svg',
     name: 'oll_26',
@@ -556,7 +530,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_27.svg',
     name: 'oll_27',
@@ -577,7 +550,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_28.svg',
     name: 'oll_28',
@@ -598,7 +570,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_29.svg',
     name: 'oll_29',
@@ -619,7 +590,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_30.svg',
     name: 'oll_30',
@@ -640,7 +610,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_31.svg',
     name: 'oll_31',
@@ -661,7 +630,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_32.svg',
     name: 'oll_32',
@@ -682,7 +650,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_33.svg',
     name: 'oll_33',
@@ -703,7 +670,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_34.svg',
     name: 'oll_34',
@@ -724,7 +690,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_35.svg',
     name: 'oll_35',
@@ -745,7 +710,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_36.svg',
     name: 'oll_36',
@@ -766,7 +730,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_37.svg',
     name: 'oll_37',
@@ -787,7 +750,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_38.svg',
     name: 'oll_38',
@@ -808,7 +770,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_39.svg',
     name: 'oll_39',
@@ -829,7 +790,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_40.svg',
     name: 'oll_40',
@@ -850,7 +810,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_41.svg',
     name: 'oll_41',
@@ -871,7 +830,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_42.svg',
     name: 'oll_42',
@@ -892,7 +850,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_43.svg',
     name: 'oll_43',
@@ -913,7 +870,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_44.svg',
     name: 'oll_44',
@@ -934,7 +890,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_45.svg',
     name: 'oll_45',
@@ -955,7 +910,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_46.svg',
     name: 'oll_46',
@@ -976,7 +930,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_47.svg',
     name: 'oll_47',
@@ -997,7 +950,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_48.svg',
     name: 'oll_48',
@@ -1018,7 +970,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_49.svg',
     name: 'oll_49',
@@ -1039,7 +990,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_50.svg',
     name: 'oll_50',
@@ -1060,7 +1010,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_51.svg',
     name: 'oll_51',
@@ -1081,7 +1030,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_52.svg',
     name: 'oll_52',
@@ -1102,7 +1050,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_53.svg',
     name: 'oll_53',
@@ -1123,7 +1070,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_54.svg',
     name: 'oll_54',
@@ -1144,7 +1090,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_55.svg',
     name: 'oll_55',
@@ -1165,7 +1110,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_56.svg',
     name: 'oll_56',
@@ -1186,7 +1130,6 @@ export const OLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'OLL',
     image: 'oll_57.svg',
     name: 'oll_57',
@@ -1210,7 +1153,6 @@ export const OLLs: algorithm[] = [
 
 export const PLLs: algorithm[] = [
   {
-    active: true,
     category: 'PLL',
     image: 'pll_1.svg',
     name: 'pll_1',
@@ -1229,7 +1171,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_2.svg',
     name: 'pll_2',
@@ -1248,7 +1189,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_3.svg',
     name: 'pll_3',
@@ -1270,7 +1210,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_4.svg',
     name: 'pll_4',
@@ -1292,7 +1231,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_5.svg',
     name: 'pll_5',
@@ -1314,7 +1252,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_6.svg',
     name: 'pll_6',
@@ -1333,7 +1270,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_7.svg',
     name: 'pll_7',
@@ -1352,7 +1288,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_8.svg',
     name: 'pll_8',
@@ -1374,7 +1309,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_9.svg',
     name: 'pll_9',
@@ -1396,7 +1330,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_10.svg',
     name: 'pll_10',
@@ -1418,7 +1351,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_11.svg',
     name: 'pll_11',
@@ -1440,7 +1372,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_12.svg',
     name: 'pll_12',
@@ -1462,7 +1393,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_13.svg',
     name: 'pll_13',
@@ -1484,7 +1414,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_14.svg',
     name: 'pll_14',
@@ -1508,7 +1437,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_15.svg',
     name: 'pll_15',
@@ -1532,7 +1460,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_16.svg',
     name: 'pll_16',
@@ -1556,7 +1483,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_17.svg',
     name: 'pll_17',
@@ -1580,7 +1506,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_18.svg',
     name: 'pll_18',
@@ -1602,7 +1527,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_19.svg',
     name: 'pll_19',
@@ -1624,7 +1548,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_20.svg',
     name: 'pll_20',
@@ -1646,7 +1569,6 @@ export const PLLs: algorithm[] = [
     ]
   },
   {
-    active: true,
     category: 'PLL',
     image: 'pll_21.svg',
     name: 'pll_21',

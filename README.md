@@ -8,9 +8,10 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1
+- move login button to the top bar
 - average for all in a category refreshing after each result
-- refactor generateSVGs (line and tip as single object)
-- save settings to local storage: grouping level, solution visiblity, algs selection
+- refactor generateSVGs (line and tip as a single object)
+- save settings to local storage: grouping level, solution visiblity
 - Refactor algs naming and order
 - +x/-x to average (green/red)
 - menu with buttons for: accept, +2, random new, delete
@@ -18,11 +19,10 @@ Rubik's cube training site.
 
 #### Priority level 2
 - visual scramble!
-- filtering algs by group
+- (de)activating groups of algs
 - timer refactoring & nr of renders
-- isAlgorithmActive refactoring
-- sets of algs kept in DB to load selection(?)
-- results result format (ms / s / m / h)
+- custom sets of algs
+- results format (ms / s / m / h)
 
 
 #### Priority level 3

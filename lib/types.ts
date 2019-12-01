@@ -13,15 +13,20 @@ export type strikesType =
     ]
   | [];
 
-type categoryName = 'OLL' | 'PLL';
+export type categoryName =
+  | 'OLL'
+  | 'PLL'
+  | '3x3x3'
+  | 'OLL-attack'
+  | 'PLL-attack';
+export type categoryType = 'OLL' | 'PLL';
 
 export type line = point[];
 export type point = { x: number; y: number };
 
 export type algorithm = {
-  _id?: string;
-  active: boolean;
-  category: categoryName;
+  _id: string;
+  category: categoryType;
   name: string;
   image: string;
   scramble: string;
@@ -34,6 +39,7 @@ export type algorithm = {
 };
 
 export type algorithmWithResults = algorithm & {
+  active: boolean;
   results: number[];
 };
 
@@ -43,8 +49,8 @@ export type categoryWithResults = category & {
 
 export type category = {
   label: string;
-  value: string;
-  algorithmsCategory?: categoryName;
+  value: categoryName;
+  type?: categoryType;
   randomizableAlgorithm?: boolean;
   randomizableScramble?: boolean;
   settingsDisabled?: boolean;

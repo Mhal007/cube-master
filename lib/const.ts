@@ -4,11 +4,13 @@ export const categories: category[] = [
   {
     label: 'OLL',
     value: 'OLL',
+    type: 'OLL',
     randomizableAlgorithm: true
   },
   {
     label: 'PLL',
     value: 'PLL',
+    type: 'PLL',
     randomizableAlgorithm: true
   },
   {
@@ -19,13 +21,13 @@ export const categories: category[] = [
   {
     label: 'OLL Attack',
     value: 'OLL-attack',
-    algorithmsCategory: 'OLL',
+    type: 'OLL',
     settingsDisabled: true
   },
   {
     label: 'PLL Attack',
     value: 'PLL-attack',
-    algorithmsCategory: 'PLL',
+    type: 'PLL',
     settingsDisabled: true
   }
 ];

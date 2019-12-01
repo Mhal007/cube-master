@@ -2,32 +2,43 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { Grid, Menu } from 'semantic-ui-react';
 import { SemanticToastContainer } from 'react-semantic-toasts';
+import random from 'lodash/random';
+import uniq from 'lodash/uniq';
 
 import AlgSettings from '../algSettings';
 import Averages from '../averages';
 import TipsAndTricks from '../tipsAndTricks';
 import TrainingMain from '../trainingMain';
 
-import { getRandomEntry, getRandomScramble } from '../../../../lib/utils';
+import { getRandomScramble } from '../../../../lib/utils';
 import { toastNoActiveAlgorithms } from '../../lib/toasts';
+import { store } from '../../lib/store';
 import {
   algorithmWithResults,
+  categoryName,
   categoryWithResults
 } from '../../../../lib/types';
+
+export type randomizedAlgorithm = {
+  category: categoryName;
+  scramble: string;
+};
 
 type Props = {
   algorithms: algorithmWithResults[];
   categories: categoryWithResults[];
+  demo?: boolean;
 };
 
 type State = {
+  activeAlgorithmIds: string[];
   blocked: {
     control: boolean;
     delete: boolean;
     shift: boolean;
     space: boolean;
   };
-  currentAlgorithm?: algorithmWithResults;
+  currentAlgorithm?: algorithmWithResults | randomizedAlgorithm;
   currentCategory: categoryWithResults;
   isVisibleSolution: boolean;
   settingsOpened: boolean;
@@ -47,6 +58,7 @@ class Training extends Component<Props, State> {
         shift: false,
         space: false
       },
+      activeAlgorithmIds: store.get(store.vars.activeAlgorithmIds) || [],
       currentAlgorithm: undefined,
       currentCategory: this.props.categories[0],
       isVisibleSolution: false,
@@ -60,12 +72,14 @@ class Training extends Component<Props, State> {
   componentDidMount(): void {
     this.onChangeAlgorithm();
 
+    window.addEventListener('beforeunload', this.onExit);
     document.body.addEventListener('keydown', this.onKeyDown);
     document.body.addEventListener('keypress', this.onKeyPress);
     document.body.addEventListener('keyup', this.onKeyUp);
   }
 
   componentWillUnmount(): void {
+    window.removeEventListener('beforeunload', this.onExit);
     document.body.removeEventListener('keydown', this.onKeyDown);
     document.body.removeEventListener('keypress', this.onKeyPress);
     document.body.removeEventListener('keyup', this.onKeyUp);
@@ -75,25 +89,37 @@ class Training extends Component<Props, State> {
 
   onChangeAlgorithm = (): void => {
     const { algorithms } = this.props;
-    const { currentAlgorithm, currentCategory } = this.state;
+    const {
+      activeAlgorithmIds,
+      currentAlgorithm,
+      currentCategory
+    } = this.state;
 
     this.onReset();
 
     let newAlgorithm;
     if (currentCategory.randomizableAlgorithm) {
-      const activeAlgorithms = algorithms.filter(
+      const searchSpace = algorithms.filter(
         algorithm =>
-          algorithm.active && algorithm.category === currentCategory.value
+          algorithm.category === currentCategory.value &&
+          activeAlgorithmIds.includes(algorithm._id)
       );
 
-      if (!activeAlgorithms.length) {
+      if (!searchSpace.length) {
         toastNoActiveAlgorithms();
       }
 
-      newAlgorithm = getRandomEntry(
-        activeAlgorithms,
-        currentAlgorithm && currentAlgorithm._id
+      const currentIndex = searchSpace.findIndex(
+        algorithm =>
+          // @ts-ignore
+          algorithm._id === (currentAlgorithm && currentAlgorithm._id)
       );
+      let newIndex = currentIndex;
+      while (newIndex === currentIndex) {
+        newIndex = random(0, searchSpace.length - 1);
+      }
+
+      newAlgorithm = searchSpace[newIndex];
     } else if (currentCategory.randomizableScramble) {
       const scramble = getRandomScramble(25);
       newAlgorithm = { category: currentCategory.value, scramble };
@@ -108,18 +134,54 @@ class Training extends Component<Props, State> {
     });
   };
 
-  onToggleActive = (algorithm: algorithmWithResults): void => {
-    Meteor.call('algorithms.toggleActive', algorithm._id, !algorithm.active);
+  onToggleActive = (toggleAlgorithmId: string): void => {
+    const { activeAlgorithmIds, currentCategory } = this.state;
+
+    if (currentCategory && currentCategory.value) {
+      this.setState({
+        activeAlgorithmIds: activeAlgorithmIds.includes(toggleAlgorithmId)
+          ? activeAlgorithmIds.filter(
+              algorithmId => algorithmId !== toggleAlgorithmId
+            )
+          : activeAlgorithmIds.concat(toggleAlgorithmId)
+      });
+    }
   };
 
   onActivateAll = (): void => {
-    const { currentCategory } = this.state;
-    Meteor.call('algorithms.activateAll', currentCategory.value);
+    const { algorithms } = this.props;
+    const { activeAlgorithmIds, currentCategory } = this.state;
+
+    const currentAlgorithmIds = algorithms
+      .filter(algorithm => algorithm.category === currentCategory.value)
+      .map(algorithm => algorithm._id);
+
+    this.setState({
+      activeAlgorithmIds: uniq(activeAlgorithmIds.concat(currentAlgorithmIds))
+    });
   };
 
   onDeactivateAll = (): void => {
-    Meteor.call('algorithms.deactivateAll');
-    toastNoActiveAlgorithms();
+    const { algorithms } = this.props;
+    const { activeAlgorithmIds, currentCategory } = this.state;
+
+    const currentAlgorithmIds = algorithms
+      .filter(algorithm => algorithm.category === currentCategory.value)
+      .map(algorithm => algorithm._id);
+
+    this.setState(
+      {
+        activeAlgorithmIds: activeAlgorithmIds.filter(
+          algorithmId => !currentAlgorithmIds.includes(algorithmId)
+        )
+      },
+      toastNoActiveAlgorithms
+    );
+  };
+
+  onExit = (): void => {
+    const { activeAlgorithmIds } = this.state;
+    store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
   };
 
   onKeyDown = (event: KeyboardEvent) => {
@@ -220,7 +282,8 @@ class Training extends Component<Props, State> {
       /* Save the time */
       const result = {
         ...(currentAlgorithm && {
-          algorithmId: currentAlgorithm._id,
+          // @ts-ignore
+          ...(currentAlgorithm._id && { algorithmId: currentAlgorithm._id }),
           scramble: currentAlgorithm.scramble
         }),
         category: currentCategory.value,
@@ -245,6 +308,7 @@ class Training extends Component<Props, State> {
   render() {
     const {
       state: {
+        activeAlgorithmIds,
         currentAlgorithm,
         currentCategory,
         isVisibleSolution,
@@ -259,7 +323,7 @@ class Training extends Component<Props, State> {
     } = this;
 
     const currentAlgorithms = algorithms.filter(
-      algorithm => algorithm.category === currentCategory.value
+      algorithm => algorithm.category === currentCategory.type
     );
 
     return (
@@ -296,6 +360,7 @@ class Training extends Component<Props, State> {
         </Grid>
         {this.state.settingsOpened && (
           <AlgSettings
+            activeAlgorithmIds={activeAlgorithmIds}
             algorithms={currentAlgorithms}
             currentCategory={currentCategory}
             onActivateAll={onActivateAll}
