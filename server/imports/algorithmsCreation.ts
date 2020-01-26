@@ -2,9 +2,13 @@ import { Algorithms } from '../../collections/algorithms';
 import { OLLs, PLLs } from './const';
 
 export const createAlgorithms = (): void => {
-  const isOLL = !!Algorithms.findOne({ category: 'OLL' });
-  const isPLL = !!Algorithms.findOne({ category: 'PLL' });
+  const existingOLLs = Algorithms.find({ category: 'OLL' }).count();
+  const existingPLLs = Algorithms.find({ category: 'PLL' }).count();
 
-  !isOLL && OLLs.forEach(algorithm => Algorithms.insert(algorithm));
-  !isPLL && PLLs.forEach(algorithm => Algorithms.insert(algorithm));
+  if (!existingOLLs) {
+    OLLs.forEach(algorithm => Algorithms.insert(algorithm));
+  }
+  if (!existingPLLs) {
+    PLLs.forEach(algorithm => Algorithms.insert(algorithm));
+  }
 };
