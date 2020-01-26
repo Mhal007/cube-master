@@ -4,7 +4,7 @@ import { RouteComponentProps } from '@reach/router';
 import { Algorithms } from '../../../../collections/algorithms';
 import { Results } from '../../../../collections/results';
 import { composer } from '../../lib/composer';
-import { algorithm, category, result } from '../../../../lib/types';
+import { Algorithm, Category, Result } from '../../../../lib/types';
 import { categories } from '../../../../lib/const';
 import Training from './training';
 
@@ -12,11 +12,11 @@ type Props = RouteComponentProps & {
   demo?: boolean;
 };
 
-export type algorithmWithResults = algorithm & {
+export type AlgorithmWithResults = Algorithm & {
   results: number[];
 };
 
-export type categoryWithResults = category & {
+export type CategoryWithResults = Category & {
   results: number[];
 };
 
@@ -28,11 +28,11 @@ const compose = (props: Props, onData: Function): void => {
 
   if (subscriptions.every(subscription => subscription.ready())) {
     // @ts-ignore
-    const algorithms: algorithm[] = Algorithms.find({}).fetch();
+    const algorithms: Algorithm[] = Algorithms.find({}).fetch();
     // @ts-ignore
-    const results: result[] = Results.find({}).fetch();
+    const results: Result[] = Results.find({}).fetch();
 
-    const algorithmsWithResults: algorithmWithResults[] = algorithms.map(
+    const algorithmsWithResults: AlgorithmWithResults[] = algorithms.map(
       algorithm => ({
         ...algorithm,
         results: results
@@ -41,7 +41,7 @@ const compose = (props: Props, onData: Function): void => {
       })
     );
 
-    const categoriesWithResults: categoryWithResults[] = categories.map(
+    const categoriesWithResults: CategoryWithResults[] = categories.map(
       category => ({
         ...category,
         results: results

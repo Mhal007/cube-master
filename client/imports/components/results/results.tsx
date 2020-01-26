@@ -3,7 +3,7 @@ import { Table } from 'semantic-ui-react';
 import moment from 'moment';
 import get from 'lodash/get';
 
-import { result } from '../../../../lib/types';
+import { Result } from '../../../../lib/types';
 
 type column = {
   label: string;
@@ -44,7 +44,7 @@ const Header = (): ReactNode => (
   </Table.Row>
 );
 
-const Row = (row: result): ReactNode => (
+const Row = (row: Result): ReactNode => (
   <Table.Row>
     {columns.map(({ value, format }, index) => (
       <Table.Cell key={index}>
@@ -55,7 +55,7 @@ const Row = (row: result): ReactNode => (
 );
 
 type Props = {
-  results: result[];
+  results: Result[];
 };
 
 const ResultsTab: FunctionComponent<Props> = ({ results }) => (

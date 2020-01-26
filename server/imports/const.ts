@@ -1,14 +1,14 @@
-import { algorithm, squaresType, strikesType } from '../../lib/types';
+import { AlgorithmSketch, SquaresType, StrikesType } from '../../lib/types';
 
-const squresFull: squaresType = [/* eslint-disable-line */
+const squresFull: SquaresType = [/* eslint-disable-line */
   [1, 1, 1],
   [1, 1, 1],
   [1, 1, 1]
 ];
 
-const srikesNone: strikesType = [];
+const srikesNone: StrikesType = [];
 
-export const OLLs: algorithm[] = [
+export const OLLs: AlgorithmSketch[] = [
   {
     category: 'OLL',
     image: 'oll_1.svg',
@@ -1151,7 +1151,7 @@ export const OLLs: algorithm[] = [
   }
 ];
 
-export const PLLs: algorithm[] = [
+export const PLLs: AlgorithmSketch[] = [
   {
     category: 'PLL',
     image: 'pll_1.svg',

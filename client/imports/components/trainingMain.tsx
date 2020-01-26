@@ -2,12 +2,12 @@ import React, { FunctionComponent } from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 
 import Timer from './timer';
-import { algorithmWithResults } from '../../../lib/types';
+import { AlgorithmWithResults } from '../../../lib/types';
 import { randomizedAlgorithm } from './training/training';
 
 type Props = {
   onChangeAlgorithm: () => void;
-  currentAlgorithm?: algorithmWithResults | randomizedAlgorithm;
+  currentAlgorithm?: AlgorithmWithResults | randomizedAlgorithm;
   isVisibleSolution: boolean;
   timerCurrentValue: number;
 };

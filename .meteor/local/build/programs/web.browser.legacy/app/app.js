@@ -520,7 +520,7 @@ function (_Component) {
         });
         var newIndex = currentIndex;
 
-        while (newIndex === currentIndex) {
+        while (newIndex === currentIndex && searchSpace.length > 1) {
           newIndex = random(0, searchSpace.length - 1);
         }
 

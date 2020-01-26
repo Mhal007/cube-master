@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import { OLLs, PLLs } from '../../server/imports/const';
-import { algorithm, line, point } from '../../lib/types';
+import { AlgorithmSketch, Line, Point } from '../../lib/types';
 
 type strikeFormatted = {
   x: number;
@@ -26,7 +26,7 @@ type marker = {
 const filesPath = 'public/images/';
 
 const getSVGcontent = (
-  { squares, strikes, lines = [] }: algorithm,
+  { squares, strikes, lines = [] }: AlgorithmSketch,
   squareLength: number,
   spacingLength: number = squareLength / 10
 ): string => {
@@ -110,7 +110,7 @@ const getSVGcontent = (
     strikesLeft
   ];
 
-  const getSquareCenter = ({ x: squareX, y: squareY }: point) => {
+  const getSquareCenter = ({ x: squareX, y: squareY }: Point) => {
     const x =
       2 * spacingLength +
       0.5 * squareLength +
@@ -123,11 +123,11 @@ const getSVGcontent = (
     return { x, y };
   };
 
-  const getSVGPoints = (line: line): string =>
+  const getSVGPoints = (line: Line): string =>
     line.reduce((points, point) => `${points} ${point.x},${point.y}`, '') +
     ` ${line[0].x},${line[0].y}`;
 
-  const lineToMarker = (pointA: point, pointB: point): marker => {
+  const lineToMarker = (pointA: Point, pointB: Point): marker => {
     const pointC = {
       x: pointA.x + Math.abs(pointB.x - pointA.x),
       y: pointA.y
@@ -159,7 +159,7 @@ const getSVGcontent = (
     };
   };
 
-  const getMarkers = (line: line): marker[] => {
+  const getMarkers = (line: Line): marker[] => {
     const markers = [];
 
     for (let i = 0; i < line.length; i++) {
@@ -173,7 +173,7 @@ const getSVGcontent = (
     return markers;
   };
 
-  const linesFormatted: line[] = lines.map(line =>
+  const linesFormatted: Line[] = lines.map(line =>
     line.map(point => getSquareCenter(point))
   );
 
@@ -247,7 +247,7 @@ const getSVGcontent = (
       
       <!-- MARKERS -->
       ${linesFormatted
-        .map((line: line) =>
+        .map((line: Line) =>
           getMarkers(line)
             .map(
               ({ angle, margin, svgPoints, x, y }: marker) => `
@@ -283,12 +283,12 @@ const writeFile = (
 };
 
 /* write files */
-OLLs.forEach((scramble: algorithm) => {
-  const content = getSVGcontent(scramble, 25, 3);
-  writeFile(filesPath, scramble.name, '.svg', content);
+OLLs.forEach((algorithm: AlgorithmSketch) => {
+  const content = getSVGcontent(algorithm, 25, 3);
+  writeFile(filesPath, algorithm.name, '.svg', content);
 });
 
-PLLs.forEach((scramble: algorithm) => {
-  const content = getSVGcontent(scramble, 25, 3);
-  writeFile(filesPath, scramble.name, '.svg', content);
+PLLs.forEach((algorithm: AlgorithmSketch) => {
+  const content = getSVGcontent(algorithm, 25, 3);
+  writeFile(filesPath, algorithm.name, '.svg', content);
 });

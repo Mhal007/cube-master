@@ -836,12 +836,12 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=c27f9921adb014f114a192ef89a0171dead20912",
+      "url": "/app/app.js?hash=ddbb305567120b32f9b5c0116779b214f9cf021f",
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/c27f9921adb014f114a192ef89a0171dead20912.map",
-      "size": 58507,
-      "hash": "c27f9921adb014f114a192ef89a0171dead20912",
-      "sri": "vcdxW0b2LAwqXYvGUH0ANsWxZ6EH78H3Og5xv3hzzjefdePLtsKXGJoT1S29y5FFaWgUOKiLVkKQhtpGoKv0NA=="
+      "sourceMapUrl": "/app/ddbb305567120b32f9b5c0116779b214f9cf021f.map",
+      "size": 58533,
+      "hash": "ddbb305567120b32f9b5c0116779b214f9cf021f",
+      "sri": "QsVdj4aCx79ncAHooCEnomFoLp6V+ugTAKOI0A/7v6VXC9cJYOdPLi6PcAOpRcxSnLYBkF2CiVmt4nca09xlEQ=="
     },
     {
       "path": "merged-stylesheets.css",

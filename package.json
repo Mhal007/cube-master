@@ -2,10 +2,14 @@
   "name": "cube-master",
   "private": true,
   "main": "server/main.ts",
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
     "eslint": "eslint --fix --ext js,jsx,ts,tsx .",
     "start": "meteor run",
-    "svgs": "ts-node devops/imports/generateSVGs"
+    "svgs": "ts-node devops/imports/generateSVGs",
+    "test-mocha": "mocha -r ts-node/register tests/mocha/test.ts"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.7.2",
@@ -24,9 +28,11 @@
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
-    "@types/jest": "^24.0.23",
+    "@types/chai": "^4.2.7",
+    "@types/jest": "^24.9.1",
     "@types/lodash": "^4.14.147",
     "@types/meteor": "^1.4.36",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.7",
     "@types/rc-slider": "^8.6.5",
     "@types/rc-tooltip": "^3.7.1",
@@ -36,6 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-config-vazco": "^5.1.0",
@@ -47,9 +54,10 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-vazco": "^1.0.0",
     "jest": "^24.9.0",
+    "mocha": "^7.0.1",
     "prettier": "^1.19.1",
     "prop-types": "15.7.2",
-    "ts-node": "^8.5.2",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.2"
   }
 }

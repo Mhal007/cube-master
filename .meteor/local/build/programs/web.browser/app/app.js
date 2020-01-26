@@ -530,7 +530,7 @@ class Training extends Component {
         algorithm._id === (currentAlgorithm && currentAlgorithm._id));
         let newIndex = currentIndex;
 
-        while (newIndex === currentIndex) {
+        while (newIndex === currentIndex && searchSpace.length > 1) {
           newIndex = random(0, searchSpace.length - 1);
         }
 

@@ -14,19 +14,19 @@ import { getRandomScramble } from '../../../../lib/utils';
 import { toastNoActiveAlgorithms } from '../../lib/toasts';
 import { store } from '../../lib/store';
 import {
-  algorithmWithResults,
-  categoryName,
-  categoryWithResults
+  AlgorithmWithResults,
+  CategoryName,
+  CategoryWithResults
 } from '../../../../lib/types';
 
 export type randomizedAlgorithm = {
-  category: categoryName;
+  category: CategoryName;
   scramble: string;
 };
 
 type Props = {
-  algorithms: algorithmWithResults[];
-  categories: categoryWithResults[];
+  algorithms: AlgorithmWithResults[];
+  categories: CategoryWithResults[];
   demo?: boolean;
 };
 
@@ -38,8 +38,8 @@ type State = {
     shift: boolean;
     space: boolean;
   };
-  currentAlgorithm?: algorithmWithResults | randomizedAlgorithm;
-  currentCategory: categoryWithResults;
+  currentAlgorithm?: AlgorithmWithResults | randomizedAlgorithm;
+  currentCategory: CategoryWithResults;
   isVisibleSolution: boolean;
   settingsOpened: boolean;
   timerCurrentValue: number;
@@ -128,7 +128,7 @@ class Training extends Component<Props, State> {
     this.setState({ currentAlgorithm: newAlgorithm });
   };
 
-  onChangeCategory = (category: categoryWithResults): void => {
+  onChangeCategory = (category: CategoryWithResults): void => {
     this.setState({ currentCategory: category }, (): void => {
       this.onChangeAlgorithm();
     });

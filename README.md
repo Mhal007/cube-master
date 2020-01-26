@@ -1,4 +1,4 @@
-# CubeMaster
+# cube-master
 
 Rubik's cube training site.
 

@@ -3,14 +3,14 @@ import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import { getAverage } from '../../../lib/utils';
-import { algorithmWithResults, categoryWithResults } from '../../../lib/types';
+import { AlgorithmWithResults, CategoryWithResults } from '../../../lib/types';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
 
 type Props = {
   activeAlgorithmIds: string[];
-  algorithms: algorithmWithResults[];
-  currentCategory: categoryWithResults;
+  algorithms: AlgorithmWithResults[];
+  currentCategory: CategoryWithResults;
   onActivateAll: () => void;
   onToggleActive: (algorithmId: string) => void;
   onDeactivateAll: () => void;

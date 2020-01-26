@@ -1,6 +1,6 @@
-import { category } from './types';
+import { Category } from './types';
 
-export const categories: category[] = [
+export const categories: Category[] = [
   {
     label: 'OLL',
     value: 'OLL',

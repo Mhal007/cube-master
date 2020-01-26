@@ -3,12 +3,12 @@ import { List, Segment } from 'semantic-ui-react';
 import moment from 'moment';
 
 import { getAverage } from '../../../lib/utils';
-import { algorithmWithResults, categoryWithResults } from '../../../lib/types';
+import { AlgorithmWithResults, CategoryWithResults } from '../../../lib/types';
 import { randomizedAlgorithm } from './training/training';
 
 type Props = {
-  currentAlgorithm?: algorithmWithResults | randomizedAlgorithm;
-  currentCategory: categoryWithResults;
+  currentAlgorithm?: AlgorithmWithResults | randomizedAlgorithm;
+  currentCategory: CategoryWithResults;
 };
 
 const Averages: FunctionComponent<Props> = ({
