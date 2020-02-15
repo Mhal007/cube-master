@@ -61,7 +61,7 @@ class Training extends Component<Readonly<Props>, State> {
       activeAlgorithmIds: store.get(store.vars.activeAlgorithmIds) || [],
       currentAlgorithm: undefined,
       currentCategory: this.props.categories[0],
-      isVisibleSolution: false,
+      isVisibleSolution: store.get(store.vars.isVisibleSolution),
       settingsOpened: true,
       timerCurrentValue: 0,
       timerStartValue: 0,
@@ -78,17 +78,23 @@ class Training extends Component<Readonly<Props>, State> {
     document.body.addEventListener('keyup', this.onKeyUp);
   }
 
-  componentDidUpdate(prevProps: Readonly<Props>): void {
+  componentDidUpdate(prevProps: Readonly<Props>, prevState: State): void {
     if (prevProps.algorithms !== this.props.algorithms) {
       this.onChangeAlgorithm();
     }
+
     if (prevProps.categories !== this.props.categories) {
       const refreshedCategory = this.props.categories.find(
         category => category.value === this.state.currentCategory.value
       );
+
       if (refreshedCategory) {
         this.onChangeCategory(refreshedCategory);
       }
+    }
+
+    if (prevState.isVisibleSolution !== this.state.isVisibleSolution) {
+      store.set(store.vars.isVisibleSolution, this.state.isVisibleSolution);
     }
   }
 

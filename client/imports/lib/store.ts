@@ -10,6 +10,8 @@ export const store = {
     localStorage.setItem(property, JSON.stringify(value));
   },
   vars: {
-    activeAlgorithmIds: 'activeAlgorithmIds'
+    activeAlgorithmIds: 'activeAlgorithmIds',
+    isVisibleSolution: 'isVisibleSolution',
+    groupingLevel: 'groupingLevel'
   }
 };

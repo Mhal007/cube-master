@@ -8,7 +8,7 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1po
-- save settings to local storage: grouping level, solution visiblity
+- redo training.tsx with hooks
 - Refactor algs naming and order
 - +x/-x to average (green/red)
 - menu with buttons for: accept, +2, random new, delete

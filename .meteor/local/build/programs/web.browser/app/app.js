@@ -753,7 +753,7 @@ class Training extends Component {
       activeAlgorithmIds: store.get(store.vars.activeAlgorithmIds) || [],
       currentAlgorithm: undefined,
       currentCategory: this.props.categories[0],
-      isVisibleSolution: false,
+      isVisibleSolution: store.get(store.vars.isVisibleSolution),
       settingsOpened: true,
       timerCurrentValue: 0,
       timerStartValue: 0,
@@ -769,7 +769,7 @@ class Training extends Component {
     document.body.addEventListener('keyup', this.onKeyUp);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.algorithms !== this.props.algorithms) {
       this.onChangeAlgorithm();
     }
@@ -780,6 +780,10 @@ class Training extends Component {
       if (refreshedCategory) {
         this.onChangeCategory(refreshedCategory);
       }
+    }
+
+    if (prevState.isVisibleSolution !== this.state.isVisibleSolution) {
+      store.set(store.vars.isVisibleSolution, this.state.isVisibleSolution);
     }
   }
 
@@ -879,10 +883,14 @@ module.exportDefault(About);
 //                                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                        //
-let React, useState;
+let React, useEffect, useState;
 module.link("react", {
   default(v) {
     React = v;
+  },
+
+  useEffect(v) {
+    useEffect = v;
   },
 
   useState(v) {
@@ -930,6 +938,13 @@ module.link("../../../lib/utils", {
   }
 
 }, 4);
+let store;
+module.link("../lib/store", {
+  store(v) {
+    store = v;
+  }
+
+}, 5);
 const SliderTooltip = createSliderWithTooltip(Slider);
 const details = [{
   value: 'category',
@@ -953,7 +968,10 @@ const AlgSettings = (_ref) => {
     onToggleActive,
     onDeactivateAll
   } = _ref;
-  const [detailsLevel, setDetailsLevel] = useState(1);
+  const [detailsLevel, setDetailsLevel] = useState(store.get(store.vars.groupingLevel) || 1);
+  useEffect(() => {
+    store.set(store.vars.groupingLevel, detailsLevel);
+  }, [detailsLevel]);
   const algorithmsGrouped = groupBy(algorithms, details[detailsLevel].value);
   return React.createElement("section", {
     className: "algorithm-settings".concat(settingsDisabled ? ' disabled' : '')
@@ -1537,7 +1555,9 @@ const store = {
     localStorage.setItem(property, JSON.stringify(value));
   },
   vars: {
-    activeAlgorithmIds: 'activeAlgorithmIds'
+    activeAlgorithmIds: 'activeAlgorithmIds',
+    isVisibleSolution: 'isVisibleSolution',
+    groupingLevel: 'groupingLevel'
   }
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

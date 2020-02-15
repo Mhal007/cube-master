@@ -761,7 +761,7 @@ function (_Component) {
       activeAlgorithmIds: store.get(store.vars.activeAlgorithmIds) || [],
       currentAlgorithm: undefined,
       currentCategory: _this.props.categories[0],
-      isVisibleSolution: false,
+      isVisibleSolution: store.get(store.vars.isVisibleSolution),
       settingsOpened: true,
       timerCurrentValue: 0,
       timerStartValue: 0,
@@ -785,7 +785,7 @@ function (_Component) {
   }();
 
   _proto.componentDidUpdate = function () {
-    function componentDidUpdate(prevProps) {
+    function componentDidUpdate(prevProps, prevState) {
       var _this2 = this;
 
       if (prevProps.algorithms !== this.props.algorithms) {
@@ -800,6 +800,10 @@ function (_Component) {
         if (refreshedCategory) {
           this.onChangeCategory(refreshedCategory);
         }
+      }
+
+      if (prevState.isVisibleSolution !== this.state.isVisibleSolution) {
+        store.set(store.vars.isVisibleSolution, this.state.isVisibleSolution);
       }
     }
 
@@ -921,10 +925,13 @@ module.link("@babel/runtime/helpers/slicedToArray", {
     _slicedToArray = v;
   }
 }, 0);
-var React, useState;
+var React, useEffect, useState;
 module.link("react", {
   "default": function (v) {
     React = v;
+  },
+  useEffect: function (v) {
+    useEffect = v;
   },
   useState: function (v) {
     useState = v;
@@ -963,6 +970,12 @@ module.link("../../../lib/utils", {
     getAverage = v;
   }
 }, 4);
+var store;
+module.link("../lib/store", {
+  store: function (v) {
+    store = v;
+  }
+}, 5);
 var SliderTooltip = createSliderWithTooltip(Slider);
 var details = [{
   value: 'category',
@@ -983,11 +996,14 @@ var AlgSettings = function (_ref) {
       onToggleActive = _ref.onToggleActive,
       onDeactivateAll = _ref.onDeactivateAll;
 
-  var _useState = useState(1),
+  var _useState = useState(store.get(store.vars.groupingLevel) || 1),
       _useState2 = _slicedToArray(_useState, 2),
       detailsLevel = _useState2[0],
       setDetailsLevel = _useState2[1];
 
+  useEffect(function () {
+    store.set(store.vars.groupingLevel, detailsLevel);
+  }, [detailsLevel]);
   var algorithmsGrouped = groupBy(algorithms, details[detailsLevel].value);
   return React.createElement("section", {
     className: "algorithm-settings" + (settingsDisabled ? ' disabled' : '')
@@ -1554,7 +1570,9 @@ var store = {
     localStorage.setItem(property, JSON.stringify(value));
   },
   vars: {
-    activeAlgorithmIds: 'activeAlgorithmIds'
+    activeAlgorithmIds: 'activeAlgorithmIds',
+    isVisibleSolution: 'isVisibleSolution',
+    groupingLevel: 'groupingLevel'
   }
 };
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

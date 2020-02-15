@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import { getAverage } from '../../../lib/utils';
 import { AlgorithmWithResults, CategoryWithResults } from '../../../lib/types';
+import { store } from '../lib/store';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
 
@@ -39,7 +40,14 @@ const AlgSettings: FunctionComponent<Props> = ({
   onToggleActive,
   onDeactivateAll
 }) => {
-  const [detailsLevel, setDetailsLevel] = useState(1);
+  const [detailsLevel, setDetailsLevel] = useState(
+    store.get(store.vars.groupingLevel) || 1
+  );
+
+  useEffect(() => {
+    store.set(store.vars.groupingLevel, detailsLevel);
+  }, [detailsLevel]);
+
   const algorithmsGrouped = groupBy(algorithms, details[detailsLevel].value);
 
   return (
