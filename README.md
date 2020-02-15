@@ -7,10 +7,7 @@ Rubik's cube training site.
 - 3x3x3 Timer
 
 ## TODO
-#### Priority level 1
-- move login button to the top bar
-- average for all in a category refreshing after each result
-- refactor generateSVGs (line and tip as a single object)
+#### Priority level 1po
 - save settings to local storage: grouping level, solution visiblity
 - Refactor algs naming and order
 - +x/-x to average (green/red)
@@ -18,6 +15,7 @@ Rubik's cube training site.
 
 
 #### Priority level 2
+- refactor generateSVGs (line and tip as a single object)
 - visual scramble!
 - (de)activating groups of algs
 - timer refactoring & nr of renders

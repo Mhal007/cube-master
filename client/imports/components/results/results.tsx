@@ -58,8 +58,8 @@ type Props = {
   results: Result[];
 };
 
-const ResultsTab: FunctionComponent<Props> = ({ results }) => (
+const Results: FunctionComponent<Props> = ({ results }) => (
   <Table inverted headerRow={Header} tableData={results} renderBodyRow={Row} />
 );
 
-export default ResultsTab;
+export default Results;

@@ -1,6 +1,14 @@
 .demo-mode-bar {
-  text-align: center;
-  color: black;
+  -moz-transition : opacity .3s linear;
+  -webkit-transition : opacity .3s linear;
   background-color: #e4e400;
+  color: black;
+  opacity: 1;
   padding: 0.5em 0;
+  text-align: center;
+  transition : opacity .3s linear;
+
+  &.hidden {
+    opacity: 0;
+  }
 }

@@ -20,12 +20,10 @@ const RouterComponent: FunctionComponent<Props> = ({ userId }) => (
       </Router>
     </header>
 
-    {!userId && (
-      <div className="demo-mode-bar">
-        You are currently in a demo mode. Please sign in to enable personalised
-        results and features.
-      </div>
-    )}
+    <div className={`demo-mode-bar${userId ? ' hidden' : ''}`}>
+      You are currently in a demo mode. Please sign in to enable personalised
+      results and features.
+    </div>
 
     <main>
       <Segment>

@@ -154,7 +154,7 @@ var Row = function (row) {
   }));
 };
 
-var ResultsTab = function (_ref3) {
+var Results = function (_ref3) {
   var results = _ref3.results;
   return React.createElement(Table, {
     inverted: true,
@@ -164,7 +164,7 @@ var ResultsTab = function (_ref3) {
   });
 };
 
-module.exportDefault(ResultsTab);
+module.exportDefault(Results);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"router":{"index.ts":function(require,exports,module){
@@ -264,8 +264,8 @@ var RouterComponent = function (_ref) {
   var userId = _ref.userId;
   return React.createElement("div", null, React.createElement("header", null, React.createElement(Router, null, React.createElement(MenuTop, {
     "default": true
-  }))), !userId && React.createElement("div", {
-    className: "demo-mode-bar"
+  }))), React.createElement("div", {
+    className: "demo-mode-bar" + (userId ? ' hidden' : '')
   }, "You are currently in a demo mode. Please sign in to enable personalised results and features."), React.createElement("main", null, React.createElement(Segment, null, React.createElement(Router, null, React.createElement(Home, {
     path: "/home",
     "default": true
@@ -520,7 +520,7 @@ function (_Component) {
         });
         var newIndex = currentIndex;
 
-        while (newIndex === currentIndex && searchSpace.length > 1) {
+        while (newIndex === -1 || newIndex === currentIndex && searchSpace.length > 1) {
           newIndex = random(0, searchSpace.length - 1);
         }
 
@@ -784,6 +784,28 @@ function (_Component) {
     return componentDidMount;
   }();
 
+  _proto.componentDidUpdate = function () {
+    function componentDidUpdate(prevProps) {
+      var _this2 = this;
+
+      if (prevProps.algorithms !== this.props.algorithms) {
+        this.onChangeAlgorithm();
+      }
+
+      if (prevProps.categories !== this.props.categories) {
+        var refreshedCategory = this.props.categories.find(function (category) {
+          return category.value === _this2.state.currentCategory.value;
+        });
+
+        if (refreshedCategory) {
+          this.onChangeCategory(refreshedCategory);
+        }
+      }
+    }
+
+    return componentDidUpdate;
+  }();
+
   _proto.componentWillUnmount = function () {
     function componentWillUnmount() {
       window.removeEventListener('beforeunload', this.onExit);
@@ -942,6 +964,16 @@ module.link("../../../lib/utils", {
   }
 }, 4);
 var SliderTooltip = createSliderWithTooltip(Slider);
+var details = [{
+  value: 'category',
+  label: 'None'
+}, {
+  value: 'type',
+  label: 'General'
+}, {
+  value: 'subtype',
+  label: 'Precise'
+}];
 
 var AlgSettings = function (_ref) {
   var activeAlgorithmIds = _ref.activeAlgorithmIds,
@@ -956,7 +988,7 @@ var AlgSettings = function (_ref) {
       detailsLevel = _useState2[0],
       setDetailsLevel = _useState2[1];
 
-  var algorithmsGrouped = detailsLevel === 0 ? groupBy(algorithms, 'category') : detailsLevel === 1 ? groupBy(algorithms, 'type') : detailsLevel === 2 ? groupBy(algorithms, 'subtype') : [];
+  var algorithmsGrouped = groupBy(algorithms, details[detailsLevel].value);
   return React.createElement("section", {
     className: "algorithm-settings" + (settingsDisabled ? ' disabled' : '')
   }, React.createElement(List, {
@@ -973,7 +1005,7 @@ var AlgSettings = function (_ref) {
     max: 2,
     onChange: setDetailsLevel,
     tipFormatter: function (value) {
-      return ['None', 'General', 'Precise'][value];
+      return details[value].label;
     },
     tipProps: {
       placement: 'bottom',
@@ -1095,18 +1127,9 @@ module.link("react", {
     React = v;
   }
 }, 0);
-var Blaze;
-module.link("meteor/gadicc:blaze-react-component", {
-  "default": function (v) {
-    Blaze = v;
-  }
-}, 1);
-module.link("./loginButtons.html");
 
 var Home = function () {
-  return React.createElement("div", null, Meteor.userId() ? React.createElement(React.Fragment, null, "Welcome ") : React.createElement("p", null, "Please log in to continue."), React.createElement(Blaze, {
-    template: "Accounts"
-  }));
+  return React.createElement("div", null, Meteor.userId() ? React.createElement(React.Fragment, null, "Welcome ") : React.createElement("p", null, "Please log in to continue."));
 };
 
 module.exportDefault(Home);
@@ -1151,6 +1174,39 @@ var Loader = function () {
 module.exportDefault(Loader);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+},"loginArea.tsx":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/components/loginArea.tsx                                                                             //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+var Blaze;
+module.link("meteor/gadicc:blaze-react-component", {
+  "default": function (v) {
+    Blaze = v;
+  }
+}, 0);
+module.link("./loginButtons.html");
+var React;
+module.link("react", {
+  "default": function (v) {
+    React = v;
+  }
+}, 1);
+
+var LoginArea = function () {
+  return React.createElement("div", {
+    className: "login-area"
+  }, React.createElement(Blaze, {
+    template: "Accounts"
+  }));
+};
+
+module.exportDefault(LoginArea);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 },"menuTop.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1186,6 +1242,13 @@ module.link("lodash/capitalize", {
     capitalize = v;
   }
 }, 3);
+module.link("./loginButtons.html");
+var LoginArea;
+module.link("./loginArea", {
+  "default": function (v) {
+    LoginArea = v;
+  }
+}, 4);
 var tabs = [{
   name: 'home',
   color: 'green',
@@ -1223,7 +1286,7 @@ var MenuTop = function (_ref) {
     }, React.createElement(Icon, {
       name: icon
     }), capitalize(name)));
-  }));
+  }), React.createElement(LoginArea, null));
 };
 
 module.exportDefault(MenuTop);

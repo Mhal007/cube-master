@@ -16,6 +16,21 @@ type Props = {
   onDeactivateAll: () => void;
 };
 
+const details = [
+  {
+    value: 'category',
+    label: 'None'
+  },
+  {
+    value: 'type',
+    label: 'General'
+  },
+  {
+    value: 'subtype',
+    label: 'Precise'
+  }
+];
+
 const AlgSettings: FunctionComponent<Props> = ({
   activeAlgorithmIds,
   algorithms,
@@ -25,15 +40,7 @@ const AlgSettings: FunctionComponent<Props> = ({
   onDeactivateAll
 }) => {
   const [detailsLevel, setDetailsLevel] = useState(1);
-
-  const algorithmsGrouped =
-    detailsLevel === 0
-      ? groupBy(algorithms, 'category')
-      : detailsLevel === 1
-      ? groupBy(algorithms, 'type')
-      : detailsLevel === 2
-      ? groupBy(algorithms, 'subtype')
-      : [];
+  const algorithmsGrouped = groupBy(algorithms, details[detailsLevel].value);
 
   return (
     <section
@@ -48,9 +55,7 @@ const AlgSettings: FunctionComponent<Props> = ({
                 min={0}
                 max={2}
                 onChange={setDetailsLevel}
-                tipFormatter={(value: number): string =>
-                  ['None', 'General', 'Precise'][value]
-                }
+                tipFormatter={(value: number): string => details[value].label}
                 tipProps={{
                   placement: 'bottom',
                   visible: true

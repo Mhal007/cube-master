@@ -2,6 +2,11 @@ import React, { FunctionComponent } from 'react';
 import { Icon, Menu, SemanticCOLORS, SemanticICONS } from 'semantic-ui-react';
 import { Link, RouteComponentProps } from '@reach/router';
 import capitalize from 'lodash/capitalize';
+// @ts-ignore
+import Blaze from 'meteor/gadicc:blaze-react-component';
+
+import './loginButtons.html';
+import LoginArea from './loginArea';
 
 type tab = {
   name: string;
@@ -42,6 +47,7 @@ const MenuTop: FunctionComponent<RouteComponentProps> = ({ uri }) => (
         </Menu.Item>
       </Link>
     ))}
+    <LoginArea />
   </Menu>
 );
 

@@ -158,7 +158,7 @@ const Row = row => React.createElement(Table.Row, null, columns.map((_ref2, inde
   }, format ? format(get(row, value)) : get(row, value));
 }));
 
-const ResultsTab = (_ref3) => {
+const Results = (_ref3) => {
   let {
     results
   } = _ref3;
@@ -170,7 +170,7 @@ const ResultsTab = (_ref3) => {
   });
 };
 
-module.exportDefault(ResultsTab);
+module.exportDefault(Results);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"router":{"index.ts":function(require,exports,module){
@@ -283,8 +283,8 @@ const RouterComponent = (_ref) => {
   } = _ref;
   return React.createElement("div", null, React.createElement("header", null, React.createElement(Router, null, React.createElement(MenuTop, {
     default: true
-  }))), !userId && React.createElement("div", {
-    className: "demo-mode-bar"
+  }))), React.createElement("div", {
+    className: "demo-mode-bar".concat(userId ? ' hidden' : '')
   }, "You are currently in a demo mode. Please sign in to enable personalised results and features."), React.createElement("main", null, React.createElement(Segment, null, React.createElement(Router, null, React.createElement(Home, {
     path: "/home",
     default: true
@@ -530,7 +530,7 @@ class Training extends Component {
         algorithm._id === (currentAlgorithm && currentAlgorithm._id));
         let newIndex = currentIndex;
 
-        while (newIndex === currentIndex && searchSpace.length > 1) {
+        while (newIndex === -1 || newIndex === currentIndex && searchSpace.length > 1) {
           newIndex = random(0, searchSpace.length - 1);
         }
 
@@ -769,6 +769,20 @@ class Training extends Component {
     document.body.addEventListener('keyup', this.onKeyUp);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.algorithms !== this.props.algorithms) {
+      this.onChangeAlgorithm();
+    }
+
+    if (prevProps.categories !== this.props.categories) {
+      const refreshedCategory = this.props.categories.find(category => category.value === this.state.currentCategory.value);
+
+      if (refreshedCategory) {
+        this.onChangeCategory(refreshedCategory);
+      }
+    }
+  }
+
   componentWillUnmount() {
     window.removeEventListener('beforeunload', this.onExit);
     document.body.removeEventListener('keydown', this.onKeyDown);
@@ -917,6 +931,16 @@ module.link("../../../lib/utils", {
 
 }, 4);
 const SliderTooltip = createSliderWithTooltip(Slider);
+const details = [{
+  value: 'category',
+  label: 'None'
+}, {
+  value: 'type',
+  label: 'General'
+}, {
+  value: 'subtype',
+  label: 'Precise'
+}];
 
 const AlgSettings = (_ref) => {
   let {
@@ -930,7 +954,7 @@ const AlgSettings = (_ref) => {
     onDeactivateAll
   } = _ref;
   const [detailsLevel, setDetailsLevel] = useState(1);
-  const algorithmsGrouped = detailsLevel === 0 ? groupBy(algorithms, 'category') : detailsLevel === 1 ? groupBy(algorithms, 'type') : detailsLevel === 2 ? groupBy(algorithms, 'subtype') : [];
+  const algorithmsGrouped = groupBy(algorithms, details[detailsLevel].value);
   return React.createElement("section", {
     className: "algorithm-settings".concat(settingsDisabled ? ' disabled' : '')
   }, React.createElement(List, {
@@ -946,7 +970,7 @@ const AlgSettings = (_ref) => {
     min: 0,
     max: 2,
     onChange: setDetailsLevel,
-    tipFormatter: value => ['None', 'General', 'Precise'][value],
+    tipFormatter: value => details[value].label,
     tipProps: {
       placement: 'bottom',
       visible: true
@@ -1068,18 +1092,8 @@ module.link("react", {
   }
 
 }, 0);
-let Blaze;
-module.link("meteor/gadicc:blaze-react-component", {
-  default(v) {
-    Blaze = v;
-  }
 
-}, 1);
-module.link("./loginButtons.html");
-
-const Home = () => React.createElement("div", null, Meteor.userId() ? React.createElement(React.Fragment, null, "Welcome ") : React.createElement("p", null, "Please log in to continue."), React.createElement(Blaze, {
-  template: "Accounts"
-}));
+const Home = () => React.createElement("div", null, Meteor.userId() ? React.createElement(React.Fragment, null, "Welcome ") : React.createElement("p", null, "Please log in to continue."));
 
 module.exportDefault(Home);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1124,6 +1138,41 @@ const Loader = () => React.createElement(Dimmer, {
 module.exportDefault(Loader);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+},"loginArea.tsx":function(require,exports,module){
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                     //
+// client/imports/components/loginArea.tsx                                                                             //
+//                                                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                       //
+let Blaze;
+module.link("meteor/gadicc:blaze-react-component", {
+  default(v) {
+    Blaze = v;
+  }
+
+}, 0);
+module.link("./loginButtons.html");
+let React;
+module.link("react", {
+  default(v) {
+    React = v;
+  }
+
+}, 1);
+
+const LoginArea = () => {
+  return React.createElement("div", {
+    className: "login-area"
+  }, React.createElement(Blaze, {
+    template: "Accounts"
+  }));
+};
+
+module.exportDefault(LoginArea);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 },"menuTop.tsx":function(require,exports,module){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1164,6 +1213,14 @@ module.link("lodash/capitalize", {
   }
 
 }, 3);
+module.link("./loginButtons.html");
+let LoginArea;
+module.link("./loginArea", {
+  default(v) {
+    LoginArea = v;
+  }
+
+}, 4);
 const tabs = [{
   name: 'home',
   color: 'green',
@@ -1205,7 +1262,7 @@ const MenuTop = (_ref) => {
     }, React.createElement(Icon, {
       name: icon
     }), capitalize(name)));
-  }));
+  }), React.createElement(LoginArea, null));
 };
 
 module.exportDefault(MenuTop);

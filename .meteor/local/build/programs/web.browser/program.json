@@ -46,10 +46,10 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/packages/modules.js?hash=0ae76ea3df7995c3acebfc702dcb06118d639df1",
-      "size": 4029600,
-      "hash": "0ae76ea3df7995c3acebfc702dcb06118d639df1",
-      "sri": "9/WA9x8mLICYc3f9ie5dgx2NuboZ8xIcJdoofWpD/Btr0tcBonvVijNrhzbQ7lJSKT4DOtVKDetx52SS/AgO3g=="
+      "url": "/packages/modules.js?hash=beef7a4ab481aed542fa535ae7d4f28966598b93",
+      "size": 4063757,
+      "hash": "beef7a4ab481aed542fa535ae7d4f28966598b93",
+      "sri": "1IIQjvFr+wiVwn/jdEfWusjX8i75OcELZ5QZJ7He4folLTY1whGYFRW5MvqVOmXbAi1goVHPIFtKIxoEiWFgQA=="
     },
     {
       "path": "packages/modern-browsers.js",
@@ -836,24 +836,24 @@
       "where": "client",
       "type": "js",
       "cacheable": true,
-      "url": "/app/app.js?hash=3ddd4ae324e8d4e5f17baaf8568f3ab7ca1ad569",
+      "url": "/app/app.js?hash=61632106bed1d99da634927be696e5c02429beeb",
       "sourceMap": "app/app.js.map",
-      "sourceMapUrl": "/app/3ddd4ae324e8d4e5f17baaf8568f3ab7ca1ad569.map",
-      "size": 58533,
-      "hash": "3ddd4ae324e8d4e5f17baaf8568f3ab7ca1ad569",
-      "sri": "QsVdj4aCx79ncAHooCEnomFoLp6V+ugTAKOI0A/7v6VXC9cJYOdPLi6PcAOpRcxSnLYBkF2CiVmt4nca09xlEQ=="
+      "sourceMapUrl": "/app/61632106bed1d99da634927be696e5c02429beeb.map",
+      "size": 60284,
+      "hash": "61632106bed1d99da634927be696e5c02429beeb",
+      "sri": "cWigA4x0NWeK1SjyKYuDkOLfvhDx31gEN23FIZejW/s/OQLu3xKgVQmmNHZbiybnu1DXVuXyz3kypjravil6bA=="
     },
     {
       "path": "merged-stylesheets.css",
       "where": "client",
       "type": "css",
       "cacheable": true,
-      "url": "/merged-stylesheets.css?hash=a600291bfafc0f66d775c9ec89f9aba0b28f7c38",
+      "url": "/merged-stylesheets.css?hash=512495f1e4400dbc58de72c4f8670960da59e742",
       "sourceMap": "merged-stylesheets.css.map",
-      "sourceMapUrl": "/a600291bfafc0f66d775c9ec89f9aba0b28f7c38.map",
-      "size": 11376,
-      "hash": "a600291bfafc0f66d775c9ec89f9aba0b28f7c38",
-      "sri": "F+wGnhjBN9s/J3w8WccvmkxMFPWEeaauzU1sNAF3g112VcCBbSDIuPSrk4w77erG+vYxJZtKctPuCzGDXCF5ew=="
+      "sourceMapUrl": "/512495f1e4400dbc58de72c4f8670960da59e742.map",
+      "size": 11830,
+      "hash": "512495f1e4400dbc58de72c4f8670960da59e742",
+      "sri": "HTfGDZKVnFXyz9z2EEuTmdny7SING/oogdGfkbOVgzCuVg5OvznQoHb5riW7CqnnRs6Ir0cFlsQ9Coi5BcNvGQ=="
     },
     {
       "path": "packages/oauth/end_of_popup_response.js",

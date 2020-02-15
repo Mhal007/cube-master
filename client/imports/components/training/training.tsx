@@ -47,7 +47,7 @@ type State = {
   timerStatus: 'timer-off' | 'timer-on' | 'resetted' | 'pre-inspection';
 };
 
-class Training extends Component<Props, State> {
+class Training extends Component<Readonly<Props>, State> {
   constructor(props: Props) {
     super(props);
 
@@ -76,6 +76,20 @@ class Training extends Component<Props, State> {
     document.body.addEventListener('keydown', this.onKeyDown);
     document.body.addEventListener('keypress', this.onKeyPress);
     document.body.addEventListener('keyup', this.onKeyUp);
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (prevProps.algorithms !== this.props.algorithms) {
+      this.onChangeAlgorithm();
+    }
+    if (prevProps.categories !== this.props.categories) {
+      const refreshedCategory = this.props.categories.find(
+        category => category.value === this.state.currentCategory.value
+      );
+      if (refreshedCategory) {
+        this.onChangeCategory(refreshedCategory);
+      }
+    }
   }
 
   componentWillUnmount(): void {
@@ -115,7 +129,10 @@ class Training extends Component<Props, State> {
           algorithm._id === (currentAlgorithm && currentAlgorithm._id)
       );
       let newIndex = currentIndex;
-      while (newIndex === currentIndex && searchSpace.length > 1) {
+      while (
+        newIndex === -1 ||
+        (newIndex === currentIndex && searchSpace.length > 1)
+      ) {
         newIndex = random(0, searchSpace.length - 1);
       }
 
@@ -184,7 +201,7 @@ class Training extends Component<Props, State> {
     store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
   };
 
-  onKeyDown = (event: KeyboardEvent) => {
+  onKeyDown = (event: KeyboardEvent): void => {
     const blocked = this.state.blocked;
 
     if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {

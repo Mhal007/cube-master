@@ -15,10 +15,12 @@ const compose = (props: Props, onData: Function): void => {
 
   if (subscriptions.every(subscription => subscription.ready())) {
     const { demo } = props;
+
     // @ts-ignore
     const results: Result[] = Results.find({
       userId: demo ? 'demo' : Meteor.userId()
     }).fetch();
+
     onData(null, { results });
   }
 };
