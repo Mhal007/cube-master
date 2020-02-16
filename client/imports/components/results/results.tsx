@@ -85,7 +85,7 @@ const Results: FunctionComponent<Props> = ({ results }) => {
               <Button
                 basic
                 color="green"
-                onClick={() => onResultFoulToggle(row._id, row.foul)}
+                onClick={() => onResultFoulToggle(row._id, !row.foul)}
               >
                 +2
               </Button>
