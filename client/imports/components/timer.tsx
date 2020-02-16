@@ -2,19 +2,19 @@ import moment from 'moment';
 import React, { FunctionComponent } from 'react';
 
 type Props = {
-  isVisibleSolution: boolean;
+  isSolutionVisible: boolean;
   solution?: string;
   timerCurrentValue: number;
 };
 
 const Timer: FunctionComponent<Props> = ({
-  isVisibleSolution,
+  isSolutionVisible,
   solution,
   timerCurrentValue
 }) => (
   <div className="timer">
     <p>{moment(timerCurrentValue).format('mm:ss:SSS')}</p>
-    {isVisibleSolution && solution && <p>{solution}</p>}
+    {isSolutionVisible && solution && <p>{solution}</p>}
   </div>
 );
 

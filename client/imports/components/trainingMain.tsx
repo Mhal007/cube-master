@@ -8,7 +8,7 @@ import { randomizedAlgorithm } from './training/training';
 type Props = {
   onChangeAlgorithm: () => void;
   currentAlgorithm?: AlgorithmWithResults | randomizedAlgorithm;
-  isVisibleSolution: boolean;
+  isSolutionVisible: boolean;
   timerCurrentValue: number;
 };
 
@@ -20,7 +20,7 @@ const TrainingMain: FunctionComponent<Props> = ({
     scramble: undefined,
     solution: undefined
   },
-  isVisibleSolution,
+  isSolutionVisible,
   timerCurrentValue
 }) => (
   <section className="training-main">
@@ -32,7 +32,7 @@ const TrainingMain: FunctionComponent<Props> = ({
     )}
     <Segment className="timer-segment">
       <Timer
-        isVisibleSolution={isVisibleSolution}
+        isSolutionVisible={isSolutionVisible}
         solution={solution}
         timerCurrentValue={timerCurrentValue}
       />

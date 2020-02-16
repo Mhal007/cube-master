@@ -1,23 +1,23 @@
 var require = meteorInstall({"client":{"imports":{"components":{"loginButtons.html":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/loginButtons.html                                                                         //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/loginButtons.html                                                                        //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.link("./template.loginButtons.js", { "*": "*+" });
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"template.loginButtons.js":function(){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/template.loginButtons.js                                                                  //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/template.loginButtons.js                                                                 //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 
 Template.__checkName("Accounts");
 Template["Accounts"] = new Template("Template.Accounts", (function() {
@@ -25,16 +25,16 @@ Template["Accounts"] = new Template("Template.Accounts", (function() {
   return Spacebars.include(view.lookupTemplate("loginButtons"));
 }));
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"results":{"index.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/results/index.ts                                                                          //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/results/index.ts                                                                         //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let Meteor;
 module.link("meteor/meteor", {
   Meteor(v) {
@@ -82,16 +82,16 @@ const compose = (props, onData) => {
 };
 
 module.exportDefault(composer(compose)(ResultsComponent));
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"results.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/results/results.tsx                                                                       //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/results/results.tsx                                                                      //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -171,16 +171,16 @@ const Results = (_ref3) => {
 };
 
 module.exportDefault(Results);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"router":{"index.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/router/index.ts                                                                           //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/router/index.ts                                                                          //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let Meteor;
 module.link("meteor/meteor", {
   Meteor(v) {
@@ -210,16 +210,16 @@ const compose = (props, onData) => {
 };
 
 module.exportDefault(composer(compose)(RouterComponent));
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"router.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/router/router.tsx                                                                         //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/router/router.tsx                                                                        //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -302,16 +302,16 @@ const RouterComponent = (_ref) => {
 };
 
 module.exportDefault(RouterComponent);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"training":{"index.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/training/index.ts                                                                         //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/training/index.ts                                                                        //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let _objectSpread;
 
 module.link("@babel/runtime/helpers/objectSpread2", {
@@ -385,16 +385,16 @@ const compose = (props, onData) => {
 };
 
 module.exportDefault(composer(compose)(Training));
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"training.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/training/training.tsx                                                                     //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/training/training.tsx                                                                    //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let _objectSpread;
 
 module.link("@babel/runtime/helpers/objectSpread2", {
@@ -403,24 +403,29 @@ module.link("@babel/runtime/helpers/objectSpread2", {
   }
 
 }, 0);
-let React, Component;
+let React, useCallback, useEffect, useRef, useState;
 module.link("react", {
   default(v) {
     React = v;
   },
 
-  Component(v) {
-    Component = v;
+  useCallback(v) {
+    useCallback = v;
+  },
+
+  useEffect(v) {
+    useEffect = v;
+  },
+
+  useRef(v) {
+    useRef = v;
+  },
+
+  useState(v) {
+    useState = v;
   }
 
 }, 0);
-let moment;
-module.link("moment", {
-  default(v) {
-    moment = v;
-  }
-
-}, 1);
 let Grid, Menu;
 module.link("semantic-ui-react", {
   Grid(v) {
@@ -431,101 +436,126 @@ module.link("semantic-ui-react", {
     Menu = v;
   }
 
-}, 2);
+}, 1);
 let SemanticToastContainer;
 module.link("react-semantic-toasts", {
   SemanticToastContainer(v) {
     SemanticToastContainer = v;
   }
 
-}, 3);
+}, 2);
 let random;
 module.link("lodash/random", {
   default(v) {
     random = v;
   }
 
-}, 4);
+}, 3);
 let uniq;
 module.link("lodash/uniq", {
   default(v) {
     uniq = v;
   }
 
-}, 5);
+}, 4);
 let AlgSettings;
 module.link("../algSettings", {
   default(v) {
     AlgSettings = v;
   }
 
-}, 6);
+}, 5);
 let Averages;
 module.link("../averages", {
   default(v) {
     Averages = v;
   }
 
-}, 7);
+}, 6);
 let TipsAndTricks;
 module.link("../tipsAndTricks", {
   default(v) {
     TipsAndTricks = v;
   }
 
-}, 8);
+}, 7);
 let TrainingMain;
 module.link("../trainingMain", {
   default(v) {
     TrainingMain = v;
   }
 
-}, 9);
+}, 8);
 let getRandomScramble;
 module.link("../../../../lib/utils", {
   getRandomScramble(v) {
     getRandomScramble = v;
   }
 
-}, 10);
+}, 9);
 let toastNoActiveAlgorithms;
 module.link("../../lib/toasts", {
   toastNoActiveAlgorithms(v) {
     toastNoActiveAlgorithms = v;
   }
 
-}, 11);
+}, 10);
 let store;
 module.link("../../lib/store", {
   store(v) {
     store = v;
   }
 
-}, 12);
+}, 11);
+const TIMER_STATUSES = {
+  RESETTED: 'resetted',
+  PRE_INSPECTION: 'pre-inspection',
+  TIMER_OFF: 'timer-off',
+  TIMER_ON: 'timer-on'
+};
 
-class Training extends Component {
-  constructor(props) {
-    super(props);
+const Training = (_ref) => {
+  let {
+    algorithms,
+    categories
+  } = _ref;
+  const timer = useRef();
+  const [activeAlgorithmIds, setActiveAlgorithmIds] = useState(store.get(store.vars.activeAlgorithmIds) || []);
+  const [blockedKeys, setBlockedKeys] = useState({
+    control: false,
+    delete: false,
+    shift: false,
+    space: false
+  });
+  const [currentAlgorithm, setCurrentAlgorithm] = useState();
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  const [isSolutionVisible, setSolutionVisibility] = useState(!!store.get(store.vars.isSolutionVisible));
+  const [areSettingsOpened, setSettingsOpenness] = useState(true);
+  const [timerCurrentValue, setTimerCurrentValue] = useState(0);
+  const [timerStatus, setTimerStatus] = useState(TIMER_STATUSES.RESETTED); // const onReset = () => {};
 
-    this.onChangeAlgorithm = () => {
-      const {
-        algorithms
-      } = this.props;
-      const {
-        activeAlgorithmIds,
-        currentAlgorithm,
-        currentCategory
-      } = this.state;
-      this.onReset();
+  const onActivateAll = () => {
+    const currentAlgorithmIds = algorithms.filter(algorithm => algorithm.category === currentCategory.value).map(algorithm => algorithm._id);
+    setActiveAlgorithmIds(uniq(activeAlgorithmIds.concat(currentAlgorithmIds)));
+  };
+
+  const onDeactivateAll = () => {
+    const currentAlgorithmIds = algorithms.filter(algorithm => algorithm.category === currentCategory.value).map(algorithm => algorithm._id);
+    setActiveAlgorithmIds(activeAlgorithmIds.filter(algorithmId => !currentAlgorithmIds.includes(algorithmId)));
+  };
+
+  const onChangeAlgorithm = useCallback(() => {
+    if (timer.current) {
+      clearInterval(timer.current);
+    }
+
+    setTimerStatus(TIMER_STATUSES.RESETTED);
+    setTimerCurrentValue(0);
+    setCurrentAlgorithm(currentAlgorithm => {
       let newAlgorithm;
 
       if (currentCategory.randomizableAlgorithm) {
         const searchSpace = algorithms.filter(algorithm => algorithm.category === currentCategory.value && activeAlgorithmIds.includes(algorithm._id));
-
-        if (!searchSpace.length) {
-          toastNoActiveAlgorithms();
-        }
-
         const currentIndex = searchSpace.findIndex(algorithm => // @ts-ignore
         algorithm._id === (currentAlgorithm && currentAlgorithm._id));
         let newIndex = currentIndex;
@@ -543,325 +573,189 @@ class Training extends Component {
         };
       }
 
-      this.setState({
-        currentAlgorithm: newAlgorithm
-      });
+      return newAlgorithm;
+    });
+  }, [activeAlgorithmIds, algorithms, currentCategory.randomizableAlgorithm, currentCategory.randomizableScramble, currentCategory.value]);
+
+  const onToggleActive = toggleAlgorithmId => {
+    if (currentCategory && currentCategory.value) {
+      const newAlgorithmIds = activeAlgorithmIds.includes(toggleAlgorithmId) ? activeAlgorithmIds.filter(algorithmId => algorithmId !== toggleAlgorithmId) : activeAlgorithmIds.concat(toggleAlgorithmId);
+      setActiveAlgorithmIds(newAlgorithmIds);
+    }
+  };
+
+  const onGoToNextStatus = useCallback(upOrDown => {
+    const onUpdateTimerTime = startTime => {
+      setTimerCurrentValue(Date.now() - startTime);
     };
 
-    this.onChangeCategory = category => {
-      this.setState({
-        currentCategory: category
-      }, () => {
-        this.onChangeAlgorithm();
-      });
-    };
+    if (!currentAlgorithm) {
+      return;
+    }
 
-    this.onToggleActive = toggleAlgorithmId => {
-      const {
-        activeAlgorithmIds,
-        currentCategory
-      } = this.state;
-
-      if (currentCategory && currentCategory.value) {
-        this.setState({
-          activeAlgorithmIds: activeAlgorithmIds.includes(toggleAlgorithmId) ? activeAlgorithmIds.filter(algorithmId => algorithmId !== toggleAlgorithmId) : activeAlgorithmIds.concat(toggleAlgorithmId)
-        });
+    if (timerStatus === TIMER_STATUSES.RESETTED && upOrDown === 'down' && !blockedKeys.space) {
+      setTimerStatus(TIMER_STATUSES.PRE_INSPECTION);
+    } else if (timerStatus === TIMER_STATUSES.PRE_INSPECTION && upOrDown === 'up') {
+      setTimerStatus(TIMER_STATUSES.TIMER_ON);
+      const startTime = Date.now();
+      timer.current = setInterval(() => onUpdateTimerTime(startTime), 1);
+    } else if (timerStatus === TIMER_STATUSES.TIMER_ON && upOrDown === 'down' && !blockedKeys.space) {
+      if (timer.current) {
+        clearInterval(timer.current);
       }
-    };
 
-    this.onActivateAll = () => {
-      const {
-        algorithms
-      } = this.props;
-      const {
-        activeAlgorithmIds,
-        currentCategory
-      } = this.state;
-      const currentAlgorithmIds = algorithms.filter(algorithm => algorithm.category === currentCategory.value).map(algorithm => algorithm._id);
-      this.setState({
-        activeAlgorithmIds: uniq(activeAlgorithmIds.concat(currentAlgorithmIds))
+      setTimerStatus(TIMER_STATUSES.TIMER_OFF);
+    } else if (timerStatus === TIMER_STATUSES.TIMER_OFF && upOrDown === 'down' && !blockedKeys.space) {
+      /* Save the time */
+      const result = _objectSpread({}, currentAlgorithm && _objectSpread({}, currentAlgorithm._id && {
+        algorithmId: currentAlgorithm._id
+      }, {
+        // @ts-ignore
+        scramble: currentAlgorithm.scramble
+      }) || {}, {
+        category: currentCategory.value,
+        time: timerCurrentValue
       });
-    };
 
-    this.onDeactivateAll = () => {
-      const {
-        algorithms
-      } = this.props;
-      const {
-        activeAlgorithmIds,
-        currentCategory
-      } = this.state;
-      const currentAlgorithmIds = algorithms.filter(algorithm => algorithm.category === currentCategory.value).map(algorithm => algorithm._id);
-      this.setState({
-        activeAlgorithmIds: activeAlgorithmIds.filter(algorithmId => !currentAlgorithmIds.includes(algorithmId))
-      }, toastNoActiveAlgorithms);
-    };
-
-    this.onExit = () => {
-      const {
-        activeAlgorithmIds
-      } = this.state;
-      store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
-    };
-
-    this.onKeyDown = event => {
-      const blocked = this.state.blocked;
-
-      if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {
+      Meteor.call('results.insert', result, () => onChangeAlgorithm());
+    }
+  }, [blockedKeys, currentAlgorithm, currentCategory.value, onChangeAlgorithm, timer, timerCurrentValue, timerStatus]);
+  useEffect(() => {
+    const onKeyDown = event => {
+      if ((event.key === 'Enter' || event.key === ' ') && !blockedKeys.space) {
         event.preventDefault();
-        this.onGoToNextStatus('down');
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            space: true
-          })
-        });
+        onGoToNextStatus('down');
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          space: true
+        }));
       } else if (event.key === 'r') {
         event.preventDefault();
-        this.onChangeAlgorithm();
-      } else if (event.key === 'Shift' && !blocked.shift) {
+        onChangeAlgorithm();
+      } else if (event.key === 'Shift' && !blockedKeys.shift) {
         event.preventDefault();
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            shift: true
-          }),
-          isVisibleSolution: true
-        });
-      } else if (event.key === 'Control' && !blocked.control) {
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          shift: true
+        }));
+        setSolutionVisibility(true);
+      } else if (event.key === 'Control' && !blockedKeys.control) {
         event.preventDefault();
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            control: true
-          })
-        });
-      } else if ((event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Escape') && !blocked.delete) {
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          control: true
+        }));
+      } else if ((event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Escape') && !blockedKeys.delete) {
         event.preventDefault();
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            delete: true
-          })
-        });
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          delete: true
+        }));
       }
     };
 
-    this.onKeyPress = event => {
+    const onKeyPress = event => {
       if (event.key === ' ') {
         event.preventDefault();
       }
     };
 
-    this.onKeyUp = event => {
-      const {
-        blocked,
-        isVisibleSolution
-      } = this.state;
-
+    const onKeyUp = event => {
       if (event.key === 'Enter' || event.key === ' ') {
-        this.onGoToNextStatus('up');
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            space: false
-          })
-        });
+        onGoToNextStatus('up');
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          space: false
+        }));
       } else if (event.key === 'Shift') {
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            shift: false
-          }),
-          isVisibleSolution: false
-        });
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          shift: false
+        }));
+        setSolutionVisibility(false);
       } else if (event.key === 'Control') {
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            control: false
-          }),
-          isVisibleSolution: !isVisibleSolution
-        });
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          control: false
+        }));
+        setSolutionVisibility(!isSolutionVisible);
       } else if (event.key === 'Backspace' || event.key === 'Delete' || event.key === 'Escape') {
-        this.onChangeAlgorithm();
-        this.setState({
-          blocked: _objectSpread({}, blocked, {
-            delete: false
-          })
-        });
+        onChangeAlgorithm();
+        setBlockedKeys(_objectSpread({}, blockedKeys, {
+          delete: false
+        }));
       }
     };
 
-    this.onGoToNextStatus = upOrDown => {
-      const {
-        blocked,
-        currentAlgorithm,
-        currentCategory,
-        timerCurrentValue,
-        timerStatus
-      } = this.state;
-
-      if (!currentAlgorithm) {
-        return;
-      }
-
-      if (timerStatus === 'resetted' && upOrDown === 'down' && !blocked.space) {
-        this.setState({
-          timerStatus: 'pre-inspection'
-        });
-      } else if (timerStatus === 'pre-inspection' && upOrDown === 'up') {
-        this.setState({
-          timerStatus: 'timer-on',
-          timerStartValue: moment().valueOf()
-        });
-        this.timer = setInterval(this.updateTimerTime, 1);
-      } else if (timerStatus === 'timer-on' && upOrDown === 'down' && !blocked.space) {
-        clearInterval(this.timer);
-        this.setState({
-          timerStatus: 'timer-off'
-        });
-      } else if (timerStatus === 'timer-off' && upOrDown === 'down' && !blocked.space) {
-        /* Save the time */
-        const result = _objectSpread({}, currentAlgorithm && _objectSpread({}, currentAlgorithm._id && {
-          algorithmId: currentAlgorithm._id
-        }, {
-          scramble: currentAlgorithm.scramble
-        }), {
-          category: currentCategory.value,
-          time: timerCurrentValue
-        });
-
-        Meteor.call('results.insert', result, () => this.onChangeAlgorithm());
-      }
+    document.body.addEventListener('keydown', onKeyDown);
+    document.body.addEventListener('keypress', onKeyPress);
+    document.body.addEventListener('keyup', onKeyUp);
+    return () => {
+      document.body.removeEventListener('keydown', onKeyDown);
+      document.body.removeEventListener('keypress', onKeyPress);
+      document.body.removeEventListener('keyup', onKeyUp);
     };
+  }, [blockedKeys, isSolutionVisible, onChangeAlgorithm, onGoToNextStatus]);
+  useEffect(() => {
+    onChangeAlgorithm();
+  }, [algorithms, onChangeAlgorithm]);
+  useEffect(() => {
+    setCurrentCategory(currentCategory => categories.find(category => category.value === currentCategory.value) || currentCategory);
+  }, [categories]);
+  useEffect(() => {
+    store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
+    const anyAlgorithmActive = algorithms.some(algorithm => activeAlgorithmIds.includes(algorithm._id) && algorithm.category === currentCategory.value);
 
-    this.onReset = () => {
-      clearInterval(this.timer);
-      this.setState({
-        timerStatus: 'resetted',
-        timerCurrentValue: 0
-      });
-    };
-
-    this.updateTimerTime = () => {
-      this.setState(state => ({
-        timerCurrentValue: moment().valueOf() - state.timerStartValue
-      }));
-    };
-
-    this.state = {
-      blocked: {
-        control: false,
-        delete: false,
-        shift: false,
-        space: false
-      },
-      activeAlgorithmIds: store.get(store.vars.activeAlgorithmIds) || [],
-      currentAlgorithm: undefined,
-      currentCategory: this.props.categories[0],
-      isVisibleSolution: store.get(store.vars.isVisibleSolution),
-      settingsOpened: true,
-      timerCurrentValue: 0,
-      timerStartValue: 0,
-      timerStatus: 'resetted'
-    };
-  }
-
-  componentDidMount() {
-    this.onChangeAlgorithm();
-    window.addEventListener('beforeunload', this.onExit);
-    document.body.addEventListener('keydown', this.onKeyDown);
-    document.body.addEventListener('keypress', this.onKeyPress);
-    document.body.addEventListener('keyup', this.onKeyUp);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.algorithms !== this.props.algorithms) {
-      this.onChangeAlgorithm();
+    if (!anyAlgorithmActive) {
+      toastNoActiveAlgorithms();
     }
-
-    if (prevProps.categories !== this.props.categories) {
-      const refreshedCategory = this.props.categories.find(category => category.value === this.state.currentCategory.value);
-
-      if (refreshedCategory) {
-        this.onChangeCategory(refreshedCategory);
-      }
-    }
-
-    if (prevState.isVisibleSolution !== this.state.isVisibleSolution) {
-      store.set(store.vars.isVisibleSolution, this.state.isVisibleSolution);
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('beforeunload', this.onExit);
-    document.body.removeEventListener('keydown', this.onKeyDown);
-    document.body.removeEventListener('keypress', this.onKeyPress);
-    document.body.removeEventListener('keyup', this.onKeyUp);
-  }
-
-  render() {
-    const {
-      state: {
-        activeAlgorithmIds,
-        currentAlgorithm,
-        currentCategory,
-        isVisibleSolution,
-        timerCurrentValue
-      },
-      props: {
-        algorithms,
-        categories
-      },
-      onActivateAll,
-      onToggleActive,
-      onChangeAlgorithm,
-      onChangeCategory,
-      onDeactivateAll
-    } = this;
-    const currentAlgorithms = algorithms.filter(algorithm => algorithm.category === currentCategory.type);
-    return React.createElement(React.Fragment, null, React.createElement(SemanticToastContainer, null), React.createElement(Grid, null, React.createElement(Grid.Column, {
-      width: 4
-    }, React.createElement(Menu, {
-      className: "left-menu",
-      inverted: true,
-      tabular: true,
-      vertical: true
-    }, categories.map(category => React.createElement(Menu.Item, {
-      key: category.value,
-      name: category.label,
-      active: currentCategory.value === category.value,
-      onClick: () => onChangeCategory(category)
-    })))), React.createElement(Grid.Column, {
-      width: 8,
-      textAlign: "center"
-    }, React.createElement(TrainingMain, {
-      currentAlgorithm: currentAlgorithm,
-      isVisibleSolution: isVisibleSolution,
-      onChangeAlgorithm: onChangeAlgorithm,
-      timerCurrentValue: timerCurrentValue
-    })), React.createElement(Grid.Column, {
-      width: 4
-    }, React.createElement(Averages, {
-      currentAlgorithm: currentAlgorithm,
-      currentCategory: currentCategory
-    }), React.createElement(TipsAndTricks, null))), this.state.settingsOpened && React.createElement(AlgSettings, {
-      activeAlgorithmIds: activeAlgorithmIds,
-      algorithms: currentAlgorithms,
-      currentCategory: currentCategory,
-      onActivateAll: onActivateAll,
-      onToggleActive: onToggleActive,
-      onDeactivateAll: onDeactivateAll
-    }));
-  }
-
-}
+  }, [activeAlgorithmIds, algorithms, currentCategory.value]);
+  useEffect(() => {
+    onChangeAlgorithm();
+  }, [currentCategory, onChangeAlgorithm]);
+  useEffect(() => {
+    store.set(store.vars.isSolutionVisible, isSolutionVisible);
+  }, [isSolutionVisible]);
+  const currentAlgorithms = algorithms.filter(algorithm => algorithm.category === currentCategory.type);
+  return React.createElement(React.Fragment, null, React.createElement(SemanticToastContainer, null), React.createElement(Grid, null, React.createElement(Grid.Column, {
+    width: 4
+  }, React.createElement(Menu, {
+    className: "left-menu",
+    inverted: true,
+    tabular: true,
+    vertical: true
+  }, categories.map(category => React.createElement(Menu.Item, {
+    key: category.value,
+    name: category.label,
+    active: currentCategory.value === category.value,
+    onClick: () => setCurrentCategory(category)
+  })))), React.createElement(Grid.Column, {
+    width: 8,
+    textAlign: "center"
+  }, React.createElement(TrainingMain, {
+    currentAlgorithm: currentAlgorithm,
+    isSolutionVisible: isSolutionVisible,
+    onChangeAlgorithm: onChangeAlgorithm,
+    timerCurrentValue: timerCurrentValue
+  })), React.createElement(Grid.Column, {
+    width: 4
+  }, React.createElement(Averages, {
+    currentAlgorithm: currentAlgorithm,
+    currentCategory: currentCategory
+  }), React.createElement(TipsAndTricks, null))), areSettingsOpened && React.createElement(AlgSettings, {
+    activeAlgorithmIds: activeAlgorithmIds,
+    algorithms: currentAlgorithms,
+    currentCategory: currentCategory,
+    onActivateAll: onActivateAll,
+    onToggleActive: onToggleActive,
+    onDeactivateAll: onDeactivateAll
+  }));
+};
 
 module.exportDefault(Training);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"about.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/about.tsx                                                                                 //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/about.tsx                                                                                //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -873,16 +767,16 @@ module.link("react", {
 const About = () => React.createElement("div", null, "About");
 
 module.exportDefault(About);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"algSettings.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/algSettings.tsx                                                                           //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/algSettings.tsx                                                                          //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React, useEffect, useState;
 module.link("react", {
   default(v) {
@@ -968,7 +862,10 @@ const AlgSettings = (_ref) => {
     onToggleActive,
     onDeactivateAll
   } = _ref;
-  const [detailsLevel, setDetailsLevel] = useState(store.get(store.vars.groupingLevel) || 1);
+
+  var _a;
+
+  const [detailsLevel, setDetailsLevel] = useState((_a = store.get(store.vars.groupingLevel), _a !== null && _a !== void 0 ? _a : 1));
   useEffect(() => {
     store.set(store.vars.groupingLevel, detailsLevel);
   }, [detailsLevel]);
@@ -1020,16 +917,16 @@ const AlgSettings = (_ref) => {
 };
 
 module.exportDefault(AlgSettings);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"averages.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/averages.tsx                                                                              //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/averages.tsx                                                                             //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -1093,16 +990,16 @@ const Averages = (_ref) => {
 };
 
 module.exportDefault(Averages);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"home.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/home.tsx                                                                                  //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/home.tsx                                                                                 //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -1114,16 +1011,16 @@ module.link("react", {
 const Home = () => React.createElement("div", null, Meteor.userId() ? React.createElement(React.Fragment, null, "Welcome ") : React.createElement("p", null, "Please log in to continue."));
 
 module.exportDefault(Home);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"loader.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/loader.tsx                                                                                //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/loader.tsx                                                                               //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -1154,16 +1051,16 @@ const Loader = () => React.createElement(Dimmer, {
 }, "Loading"));
 
 module.exportDefault(Loader);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"loginArea.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/loginArea.tsx                                                                             //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/loginArea.tsx                                                                            //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let Blaze;
 module.link("meteor/gadicc:blaze-react-component", {
   default(v) {
@@ -1189,16 +1086,16 @@ const LoginArea = () => {
 };
 
 module.exportDefault(LoginArea);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"menuTop.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/menuTop.tsx                                                                               //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/menuTop.tsx                                                                              //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -1284,16 +1181,16 @@ const MenuTop = (_ref) => {
 };
 
 module.exportDefault(MenuTop);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"timer.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/timer.tsx                                                                                 //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/timer.tsx                                                                                //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let moment;
 module.link("moment", {
   default(v) {
@@ -1311,26 +1208,26 @@ module.link("react", {
 
 const Timer = (_ref) => {
   let {
-    isVisibleSolution,
+    isSolutionVisible,
     solution,
     timerCurrentValue
   } = _ref;
   return React.createElement("div", {
     className: "timer"
-  }, React.createElement("p", null, moment(timerCurrentValue).format('mm:ss:SSS')), isVisibleSolution && solution && React.createElement("p", null, solution));
+  }, React.createElement("p", null, moment(timerCurrentValue).format('mm:ss:SSS')), isSolutionVisible && solution && React.createElement("p", null, solution));
 };
 
 module.exportDefault(Timer);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"tipsAndTricks.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/tipsAndTricks.tsx                                                                         //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/tipsAndTricks.tsx                                                                        //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let _objectSpread;
 
 module.link("@babel/runtime/helpers/objectSpread2", {
@@ -1384,16 +1281,16 @@ const TipsAndTricks = () => React.createElement(Segment, null, "Shortcuts list:"
 }));
 
 module.exportDefault(TipsAndTricks);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"trainingMain.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/components/trainingMain.tsx                                                                          //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/components/trainingMain.tsx                                                                         //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -1433,7 +1330,7 @@ const TrainingMain = (_ref) => {
       scramble: undefined,
       solution: undefined
     },
-    isVisibleSolution,
+    isSolutionVisible,
     timerCurrentValue
   } = _ref;
   return React.createElement("section", {
@@ -1447,7 +1344,7 @@ const TrainingMain = (_ref) => {
   })), React.createElement(Segment, {
     className: "timer-segment"
   }, React.createElement(Timer, {
-    isVisibleSolution: isVisibleSolution,
+    isSolutionVisible: isSolutionVisible,
     solution: solution,
     timerCurrentValue: timerCurrentValue
   })), (image || solution) && React.createElement(Segment, null, React.createElement(Button, {
@@ -1457,16 +1354,16 @@ const TrainingMain = (_ref) => {
 };
 
 module.exportDefault(TrainingMain);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"lib":{"composer.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/lib/composer.tsx                                                                                     //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/lib/composer.tsx                                                                                    //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.export({
   composer: () => composer
 });
@@ -1530,16 +1427,16 @@ const getTrackerLoader = reactiveMapper => {
 const composer = (reactiveMapper, options) => {
   return compose(getTrackerLoader(reactiveMapper), options);
 };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"store.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/lib/store.ts                                                                                         //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/lib/store.ts                                                                                        //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.export({
   store: () => store
 });
@@ -1556,20 +1453,20 @@ const store = {
   },
   vars: {
     activeAlgorithmIds: 'activeAlgorithmIds',
-    isVisibleSolution: 'isVisibleSolution',
+    isSolutionVisible: 'isSolutionVisible',
     groupingLevel: 'groupingLevel'
   }
 };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"toasts.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/imports/lib/toasts.ts                                                                                        //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/imports/lib/toasts.ts                                                                                       //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.export({
   toastNoActiveAlgorithms: () => toastNoActiveAlgorithms
 });
@@ -1587,16 +1484,16 @@ const toastNoActiveAlgorithms = () => toast({
   description: 'Randomizing algorithms pauzed until you select at least one algorithm',
   time: 5000
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }}},"template.main.js":function(){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/template.main.js                                                                                             //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/template.main.js                                                                                            //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 
 Template.body.addContent((function() {
   var view = this;
@@ -1604,16 +1501,16 @@ Template.body.addContent((function() {
 }));
 Meteor.startup(Template.body.renderToDocument);
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"main.tsx":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// client/main.tsx                                                                                                     //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// client/main.tsx                                                                                                    //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 let React;
 module.link("react", {
   default(v) {
@@ -1647,16 +1544,16 @@ module.link("react-semantic-toasts/styles/react-semantic-alert.css");
 Meteor.startup(() => {
   render(React.createElement(Router, null), document.getElementById('render-target'));
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"lib":{"const.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// lib/const.ts                                                                                                        //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// lib/const.ts                                                                                                       //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.export({
   categories: () => categories
 });
@@ -1685,26 +1582,26 @@ const categories = [{
   type: 'PLL',
   settingsDisabled: true
 }];
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"types.ts":function(){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// lib/types.ts                                                                                                        //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// lib/types.ts                                                                                                       //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"utils.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// lib/utils.ts                                                                                                        //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// lib/utils.ts                                                                                                       //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.export({
   getRandomScramble: () => getRandomScramble,
   getAverage: () => getAverage
@@ -1741,16 +1638,16 @@ const getAverage = results => {
 
   return Math.round(results.reduce((sum, result) => sum + result, 0) / results.length);
 };
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }},"collections":{"algorithms.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// collections/algorithms.ts                                                                                           //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// collections/algorithms.ts                                                                                          //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.export({
   Algorithms: () => Algorithms
 });
@@ -1810,16 +1707,16 @@ Meteor.methods({
 
 
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 },"results.ts":function(require,exports,module){
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                                     //
-// collections/results.ts                                                                                              //
-//                                                                                                                     //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                                                                                       //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                    //
+// collections/results.ts                                                                                             //
+//                                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                      //
 module.export({
   Results: () => Results
 });
@@ -1885,7 +1782,7 @@ Meteor.methods({
   }
 
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }}},{
   "extensions": [

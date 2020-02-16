@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import moment from 'moment';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { Grid, Menu } from 'semantic-ui-react';
 import { SemanticToastContainer } from 'react-semantic-toasts';
 import random from 'lodash/random';
@@ -18,6 +17,15 @@ import {
   CategoryName,
   CategoryWithResults
 } from '../../../../lib/types';
+import Timeout = NodeJS.Timeout;
+
+type timerStatus = 'resetted' | 'pre-inspection' | 'timer-off' | 'timer-on';
+const TIMER_STATUSES: Record<string, timerStatus> = {
+  RESETTED: 'resetted',
+  PRE_INSPECTION: 'pre-inspection',
+  TIMER_OFF: 'timer-off',
+  TIMER_ON: 'timer-on'
+};
 
 export type randomizedAlgorithm = {
   category: CategoryName;
@@ -30,370 +38,318 @@ type Props = {
   demo?: boolean;
 };
 
-type State = {
-  activeAlgorithmIds: string[];
-  blocked: {
-    control: boolean;
-    delete: boolean;
-    shift: boolean;
-    space: boolean;
-  };
-  currentAlgorithm?: AlgorithmWithResults | randomizedAlgorithm;
-  currentCategory: CategoryWithResults;
-  isVisibleSolution: boolean;
-  settingsOpened: boolean;
-  timerCurrentValue: number;
-  timerStartValue: number;
-  timerStatus: 'timer-off' | 'timer-on' | 'resetted' | 'pre-inspection';
-};
+const Training: FC<Readonly<Props>> = ({ algorithms, categories }) => {
+  const timer = useRef<Timeout>();
 
-class Training extends Component<Readonly<Props>, State> {
-  constructor(props: Props) {
-    super(props);
+  const [activeAlgorithmIds, setActiveAlgorithmIds] = useState(
+    store.get(store.vars.activeAlgorithmIds) || []
+  );
+  const [blockedKeys, setBlockedKeys] = useState({
+    control: false,
+    delete: false,
+    shift: false,
+    space: false
+  });
+  const [currentAlgorithm, setCurrentAlgorithm] = useState();
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  const [isSolutionVisible, setSolutionVisibility] = useState(
+    !!store.get(store.vars.isSolutionVisible)
+  );
+  const [areSettingsOpened, setSettingsOpenness] = useState(true);
+  const [timerCurrentValue, setTimerCurrentValue] = useState(0);
+  const [timerStatus, setTimerStatus] = useState(TIMER_STATUSES.RESETTED);
 
-    this.state = {
-      blocked: {
-        control: false,
-        delete: false,
-        shift: false,
-        space: false
-      },
-      activeAlgorithmIds: store.get(store.vars.activeAlgorithmIds) || [],
-      currentAlgorithm: undefined,
-      currentCategory: this.props.categories[0],
-      isVisibleSolution: store.get(store.vars.isVisibleSolution),
-      settingsOpened: true,
-      timerCurrentValue: 0,
-      timerStartValue: 0,
-      timerStatus: 'resetted'
-    };
-  }
+  // const onReset = () => {};
 
-  componentDidMount(): void {
-    this.onChangeAlgorithm();
-
-    window.addEventListener('beforeunload', this.onExit);
-    document.body.addEventListener('keydown', this.onKeyDown);
-    document.body.addEventListener('keypress', this.onKeyPress);
-    document.body.addEventListener('keyup', this.onKeyUp);
-  }
-
-  componentDidUpdate(prevProps: Readonly<Props>, prevState: State): void {
-    if (prevProps.algorithms !== this.props.algorithms) {
-      this.onChangeAlgorithm();
-    }
-
-    if (prevProps.categories !== this.props.categories) {
-      const refreshedCategory = this.props.categories.find(
-        category => category.value === this.state.currentCategory.value
-      );
-
-      if (refreshedCategory) {
-        this.onChangeCategory(refreshedCategory);
-      }
-    }
-
-    if (prevState.isVisibleSolution !== this.state.isVisibleSolution) {
-      store.set(store.vars.isVisibleSolution, this.state.isVisibleSolution);
-    }
-  }
-
-  componentWillUnmount(): void {
-    window.removeEventListener('beforeunload', this.onExit);
-    document.body.removeEventListener('keydown', this.onKeyDown);
-    document.body.removeEventListener('keypress', this.onKeyPress);
-    document.body.removeEventListener('keyup', this.onKeyUp);
-  }
-
-  timer: any;
-
-  onChangeAlgorithm = (): void => {
-    const { algorithms } = this.props;
-    const {
-      activeAlgorithmIds,
-      currentAlgorithm,
-      currentCategory
-    } = this.state;
-
-    this.onReset();
-
-    let newAlgorithm;
-    if (currentCategory.randomizableAlgorithm) {
-      const searchSpace = algorithms.filter(
-        algorithm =>
-          algorithm.category === currentCategory.value &&
-          activeAlgorithmIds.includes(algorithm._id)
-      );
-
-      if (!searchSpace.length) {
-        toastNoActiveAlgorithms();
-      }
-
-      const currentIndex = searchSpace.findIndex(
-        algorithm =>
-          // @ts-ignore
-          algorithm._id === (currentAlgorithm && currentAlgorithm._id)
-      );
-      let newIndex = currentIndex;
-      while (
-        newIndex === -1 ||
-        (newIndex === currentIndex && searchSpace.length > 1)
-      ) {
-        newIndex = random(0, searchSpace.length - 1);
-      }
-
-      newAlgorithm = searchSpace[newIndex];
-    } else if (currentCategory.randomizableScramble) {
-      const scramble = getRandomScramble(25);
-      newAlgorithm = { category: currentCategory.value, scramble };
-    }
-
-    this.setState({ currentAlgorithm: newAlgorithm });
-  };
-
-  onChangeCategory = (category: CategoryWithResults): void => {
-    this.setState({ currentCategory: category }, (): void => {
-      this.onChangeAlgorithm();
-    });
-  };
-
-  onToggleActive = (toggleAlgorithmId: string): void => {
-    const { activeAlgorithmIds, currentCategory } = this.state;
-
-    if (currentCategory && currentCategory.value) {
-      this.setState({
-        activeAlgorithmIds: activeAlgorithmIds.includes(toggleAlgorithmId)
-          ? activeAlgorithmIds.filter(
-              algorithmId => algorithmId !== toggleAlgorithmId
-            )
-          : activeAlgorithmIds.concat(toggleAlgorithmId)
-      });
-    }
-  };
-
-  onActivateAll = (): void => {
-    const { algorithms } = this.props;
-    const { activeAlgorithmIds, currentCategory } = this.state;
-
+  const onActivateAll = (): void => {
     const currentAlgorithmIds = algorithms
       .filter(algorithm => algorithm.category === currentCategory.value)
       .map(algorithm => algorithm._id);
 
-    this.setState({
-      activeAlgorithmIds: uniq(activeAlgorithmIds.concat(currentAlgorithmIds))
-    });
+    setActiveAlgorithmIds(uniq(activeAlgorithmIds.concat(currentAlgorithmIds)));
   };
 
-  onDeactivateAll = (): void => {
-    const { algorithms } = this.props;
-    const { activeAlgorithmIds, currentCategory } = this.state;
-
+  const onDeactivateAll = (): void => {
     const currentAlgorithmIds = algorithms
       .filter(algorithm => algorithm.category === currentCategory.value)
       .map(algorithm => algorithm._id);
 
-    this.setState(
-      {
-        activeAlgorithmIds: activeAlgorithmIds.filter(
-          algorithmId => !currentAlgorithmIds.includes(algorithmId)
-        )
-      },
-      toastNoActiveAlgorithms
+    setActiveAlgorithmIds(
+      activeAlgorithmIds.filter(
+        (algorithmId: string) => !currentAlgorithmIds.includes(algorithmId)
+      )
     );
   };
 
-  onExit = (): void => {
-    const { activeAlgorithmIds } = this.state;
-    store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
-  };
+  const onChangeAlgorithm = useCallback(() => {
+    if (timer.current) {
+      clearInterval(timer.current);
+    }
+    setTimerStatus(TIMER_STATUSES.RESETTED);
+    setTimerCurrentValue(0);
 
-  onKeyDown = (event: KeyboardEvent): void => {
-    const blocked = this.state.blocked;
+    setCurrentAlgorithm(
+      (currentAlgorithm: AlgorithmWithResults | randomizedAlgorithm) => {
+        let newAlgorithm;
+        if (currentCategory.randomizableAlgorithm) {
+          const searchSpace = algorithms.filter(
+            algorithm =>
+              algorithm.category === currentCategory.value &&
+              activeAlgorithmIds.includes(algorithm._id)
+          );
 
-    if ((event.key === 'Enter' || event.key === ' ') && !blocked.space) {
-      event.preventDefault();
-      this.onGoToNextStatus('down');
-      this.setState({ blocked: { ...blocked, space: true } });
-    } else if (event.key === 'r') {
-      event.preventDefault();
-      this.onChangeAlgorithm();
-    } else if (event.key === 'Shift' && !blocked.shift) {
-      event.preventDefault();
-      this.setState({
-        blocked: { ...blocked, shift: true },
-        isVisibleSolution: true
-      });
-    } else if (event.key === 'Control' && !blocked.control) {
-      event.preventDefault();
-      this.setState({ blocked: { ...blocked, control: true } });
-    } else if (
-      (event.key === 'Backspace' ||
-        event.key === 'Delete' ||
-        event.key === 'Escape') &&
-      !blocked.delete
-    ) {
-      event.preventDefault();
-      this.setState({ blocked: { ...blocked, delete: true } });
+          const currentIndex = searchSpace.findIndex(
+            algorithm =>
+              // @ts-ignore
+              algorithm._id === (currentAlgorithm && currentAlgorithm._id)
+          );
+          let newIndex = currentIndex;
+          while (
+            newIndex === -1 ||
+            (newIndex === currentIndex && searchSpace.length > 1)
+          ) {
+            newIndex = random(0, searchSpace.length - 1);
+          }
+
+          newAlgorithm = searchSpace[newIndex];
+        } else if (currentCategory.randomizableScramble) {
+          const scramble = getRandomScramble(25);
+          newAlgorithm = { category: currentCategory.value, scramble };
+        }
+
+        return newAlgorithm;
+      }
+    );
+  }, [
+    activeAlgorithmIds,
+    algorithms,
+    currentCategory.randomizableAlgorithm,
+    currentCategory.randomizableScramble,
+    currentCategory.value
+  ]);
+
+  const onToggleActive = (toggleAlgorithmId: string): void => {
+    if (currentCategory && currentCategory.value) {
+      const newAlgorithmIds = activeAlgorithmIds.includes(toggleAlgorithmId)
+        ? activeAlgorithmIds.filter(
+            (algorithmId: string) => algorithmId !== toggleAlgorithmId
+          )
+        : activeAlgorithmIds.concat(toggleAlgorithmId);
+
+      setActiveAlgorithmIds(newAlgorithmIds);
     }
   };
 
-  onKeyPress = (event: KeyboardEvent) => {
-    if (event.key === ' ') {
-      event.preventDefault();
-    }
-  };
-
-  onKeyUp = (event: KeyboardEvent) => {
-    const { blocked, isVisibleSolution } = this.state;
-
-    if (event.key === 'Enter' || event.key === ' ') {
-      this.onGoToNextStatus('up');
-      this.setState({ blocked: { ...blocked, space: false } });
-    } else if (event.key === 'Shift') {
-      this.setState({
-        blocked: { ...blocked, shift: false },
-        isVisibleSolution: false
-      });
-    } else if (event.key === 'Control') {
-      this.setState({
-        blocked: { ...blocked, control: false },
-        isVisibleSolution: !isVisibleSolution
-      });
-    } else if (
-      event.key === 'Backspace' ||
-      event.key === 'Delete' ||
-      event.key === 'Escape'
-    ) {
-      this.onChangeAlgorithm();
-      this.setState({ blocked: { ...blocked, delete: false } });
-    }
-  };
-
-  onGoToNextStatus = (upOrDown: 'down' | 'up') => {
-    const {
-      blocked,
-      currentAlgorithm,
-      currentCategory,
-      timerCurrentValue,
-      timerStatus
-    } = this.state;
-
-    if (!currentAlgorithm) {
-      return;
-    }
-
-    if (timerStatus === 'resetted' && upOrDown === 'down' && !blocked.space) {
-      this.setState({ timerStatus: 'pre-inspection' });
-    } else if (timerStatus === 'pre-inspection' && upOrDown === 'up') {
-      this.setState({
-        timerStatus: 'timer-on',
-        timerStartValue: moment().valueOf()
-      });
-      this.timer = setInterval(this.updateTimerTime, 1);
-    } else if (
-      timerStatus === 'timer-on' &&
-      upOrDown === 'down' &&
-      !blocked.space
-    ) {
-      clearInterval(this.timer);
-      this.setState({ timerStatus: 'timer-off' });
-    } else if (
-      timerStatus === 'timer-off' &&
-      upOrDown === 'down' &&
-      !blocked.space
-    ) {
-      /* Save the time */
-      const result = {
-        ...(currentAlgorithm && {
-          // @ts-ignore
-          ...(currentAlgorithm._id && { algorithmId: currentAlgorithm._id }),
-          scramble: currentAlgorithm.scramble
-        }),
-        category: currentCategory.value,
-        time: timerCurrentValue
+  const onGoToNextStatus = useCallback(
+    (upOrDown: 'down' | 'up') => {
+      const onUpdateTimerTime = (startTime: number): void => {
+        setTimerCurrentValue(Date.now() - startTime);
       };
 
-      Meteor.call('results.insert', result, () => this.onChangeAlgorithm());
-    }
-  };
+      if (!currentAlgorithm) {
+        return;
+      }
 
-  onReset = (): void => {
-    clearInterval(this.timer);
-    this.setState({ timerStatus: 'resetted', timerCurrentValue: 0 });
-  };
+      if (
+        timerStatus === TIMER_STATUSES.RESETTED &&
+        upOrDown === 'down' &&
+        !blockedKeys.space
+      ) {
+        setTimerStatus(TIMER_STATUSES.PRE_INSPECTION);
+      } else if (
+        timerStatus === TIMER_STATUSES.PRE_INSPECTION &&
+        upOrDown === 'up'
+      ) {
+        setTimerStatus(TIMER_STATUSES.TIMER_ON);
+        const startTime = Date.now();
+        timer.current = setInterval(() => onUpdateTimerTime(startTime), 1);
+      } else if (
+        timerStatus === TIMER_STATUSES.TIMER_ON &&
+        upOrDown === 'down' &&
+        !blockedKeys.space
+      ) {
+        if (timer.current) {
+          clearInterval(timer.current);
+        }
 
-  updateTimerTime = (): void => {
-    this.setState(state => ({
-      timerCurrentValue: moment().valueOf() - state.timerStartValue
-    }));
-  };
+        setTimerStatus(TIMER_STATUSES.TIMER_OFF);
+      } else if (
+        timerStatus === TIMER_STATUSES.TIMER_OFF &&
+        upOrDown === 'down' &&
+        !blockedKeys.space
+      ) {
+        /* Save the time */
+        const result = {
+          ...((currentAlgorithm && {
+            // @ts-ignore
+            ...(currentAlgorithm._id && { algorithmId: currentAlgorithm._id }),
+            // @ts-ignore
+            scramble: currentAlgorithm.scramble
+          }) ||
+            {}),
+          category: currentCategory.value,
+          time: timerCurrentValue
+        };
 
-  render() {
-    const {
-      state: {
-        activeAlgorithmIds,
-        currentAlgorithm,
-        currentCategory,
-        isVisibleSolution,
-        timerCurrentValue
-      },
-      props: { algorithms, categories },
-      onActivateAll,
-      onToggleActive,
+        Meteor.call('results.insert', result, () => onChangeAlgorithm());
+      }
+    },
+    [
+      blockedKeys,
+      currentAlgorithm,
+      currentCategory.value,
       onChangeAlgorithm,
-      onChangeCategory,
-      onDeactivateAll
-    } = this;
+      timer,
+      timerCurrentValue,
+      timerStatus
+    ]
+  );
 
-    const currentAlgorithms = algorithms.filter(
-      algorithm => algorithm.category === currentCategory.type
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.key === 'Enter' || event.key === ' ') && !blockedKeys.space) {
+        event.preventDefault();
+        onGoToNextStatus('down');
+        setBlockedKeys({ ...blockedKeys, space: true });
+      } else if (event.key === 'r') {
+        event.preventDefault();
+        onChangeAlgorithm();
+      } else if (event.key === 'Shift' && !blockedKeys.shift) {
+        event.preventDefault();
+        setBlockedKeys({ ...blockedKeys, shift: true });
+        setSolutionVisibility(true);
+      } else if (event.key === 'Control' && !blockedKeys.control) {
+        event.preventDefault();
+        setBlockedKeys({ ...blockedKeys, control: true });
+      } else if (
+        (event.key === 'Backspace' ||
+          event.key === 'Delete' ||
+          event.key === 'Escape') &&
+        !blockedKeys.delete
+      ) {
+        event.preventDefault();
+        setBlockedKeys({ ...blockedKeys, delete: true });
+      }
+    };
+
+    const onKeyPress = (event: KeyboardEvent) => {
+      if (event.key === ' ') {
+        event.preventDefault();
+      }
+    };
+
+    const onKeyUp = (event: KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        onGoToNextStatus('up');
+        setBlockedKeys({ ...blockedKeys, space: false });
+      } else if (event.key === 'Shift') {
+        setBlockedKeys({ ...blockedKeys, shift: false });
+        setSolutionVisibility(false);
+      } else if (event.key === 'Control') {
+        setBlockedKeys({ ...blockedKeys, control: false });
+        setSolutionVisibility(!isSolutionVisible);
+      } else if (
+        event.key === 'Backspace' ||
+        event.key === 'Delete' ||
+        event.key === 'Escape'
+      ) {
+        onChangeAlgorithm();
+        setBlockedKeys({ ...blockedKeys, delete: false });
+      }
+    };
+
+    document.body.addEventListener('keydown', onKeyDown);
+    document.body.addEventListener('keypress', onKeyPress);
+    document.body.addEventListener('keyup', onKeyUp);
+
+    return () => {
+      document.body.removeEventListener('keydown', onKeyDown);
+      document.body.removeEventListener('keypress', onKeyPress);
+      document.body.removeEventListener('keyup', onKeyUp);
+    };
+  }, [blockedKeys, isSolutionVisible, onChangeAlgorithm, onGoToNextStatus]);
+
+  useEffect(() => {
+    onChangeAlgorithm();
+  }, [algorithms, onChangeAlgorithm]);
+
+  useEffect(() => {
+    setCurrentCategory(
+      currentCategory =>
+        categories.find(category => category.value === currentCategory.value) ||
+        currentCategory
+    );
+  }, [categories]);
+
+  useEffect(() => {
+    store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
+    const anyAlgorithmActive = algorithms.some(
+      algorithm =>
+        activeAlgorithmIds.includes(algorithm._id) &&
+        algorithm.category === currentCategory.value
     );
 
-    return (
-      <>
-        <SemanticToastContainer />
-        <Grid>
-          <Grid.Column width={4}>
-            <Menu className="left-menu" inverted tabular vertical>
-              {categories.map(category => (
-                <Menu.Item
-                  key={category.value}
-                  name={category.label}
-                  active={currentCategory.value === category.value}
-                  onClick={() => onChangeCategory(category)}
-                />
-              ))}
-            </Menu>
-          </Grid.Column>
-          <Grid.Column width={8} textAlign="center">
-            <TrainingMain
-              currentAlgorithm={currentAlgorithm}
-              isVisibleSolution={isVisibleSolution}
-              onChangeAlgorithm={onChangeAlgorithm}
-              timerCurrentValue={timerCurrentValue}
-            />
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Averages
-              currentAlgorithm={currentAlgorithm}
-              currentCategory={currentCategory}
-            />
-            <TipsAndTricks />
-          </Grid.Column>
-        </Grid>
-        {this.state.settingsOpened && (
-          <AlgSettings
-            activeAlgorithmIds={activeAlgorithmIds}
-            algorithms={currentAlgorithms}
-            currentCategory={currentCategory}
-            onActivateAll={onActivateAll}
-            onToggleActive={onToggleActive}
-            onDeactivateAll={onDeactivateAll}
+    if (!anyAlgorithmActive) {
+      toastNoActiveAlgorithms();
+    }
+  }, [activeAlgorithmIds, algorithms, currentCategory.value]);
+
+  useEffect(() => {
+    onChangeAlgorithm();
+  }, [currentCategory, onChangeAlgorithm]);
+
+  useEffect(() => {
+    store.set(store.vars.isSolutionVisible, isSolutionVisible);
+  }, [isSolutionVisible]);
+
+  const currentAlgorithms = algorithms.filter(
+    algorithm => algorithm.category === currentCategory.type
+  );
+
+  return (
+    <>
+      <SemanticToastContainer />
+      <Grid>
+        <Grid.Column width={4}>
+          <Menu className="left-menu" inverted tabular vertical>
+            {categories.map(category => (
+              <Menu.Item
+                key={category.value}
+                name={category.label}
+                active={currentCategory.value === category.value}
+                onClick={() => setCurrentCategory(category)}
+              />
+            ))}
+          </Menu>
+        </Grid.Column>
+        <Grid.Column width={8} textAlign="center">
+          <TrainingMain
+            currentAlgorithm={currentAlgorithm}
+            isSolutionVisible={isSolutionVisible}
+            onChangeAlgorithm={onChangeAlgorithm}
+            timerCurrentValue={timerCurrentValue}
           />
-        )}
-      </>
-    );
-  }
-}
+        </Grid.Column>
+        <Grid.Column width={4}>
+          <Averages
+            currentAlgorithm={currentAlgorithm}
+            currentCategory={currentCategory}
+          />
+          <TipsAndTricks />
+        </Grid.Column>
+      </Grid>
+      {areSettingsOpened && (
+        <AlgSettings
+          activeAlgorithmIds={activeAlgorithmIds}
+          algorithms={currentAlgorithms}
+          currentCategory={currentCategory}
+          onActivateAll={onActivateAll}
+          onToggleActive={onToggleActive}
+          onDeactivateAll={onDeactivateAll}
+        />
+      )}
+    </>
+  );
+};
 
 export default Training;

@@ -13,7 +13,8 @@
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
-    "Meteor": "readonly"
+    "Meteor": "readonly",
+    "NodeJS": "readonly"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -25,13 +26,17 @@
     "sourceType": "module"
   },
   "plugins": [
+    "@typescript-eslint",
     "import",
     "react",
-    "@typescript-eslint"
+    "react-hooks"
   ],
   "rules": {
     "@typescript-eslint/ban-ts-ignore": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react-hooks/exhaustive-deps": "error", // Checks effect dependencies
+    "react-hooks/rules-of-hooks": "error" // Checks rules of Hooks
   },
   "settings": {
     "import/resolver": "meteor",

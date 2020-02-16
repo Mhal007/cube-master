@@ -41,7 +41,7 @@ const AlgSettings: FunctionComponent<Props> = ({
   onDeactivateAll
 }) => {
   const [detailsLevel, setDetailsLevel] = useState(
-    store.get(store.vars.groupingLevel) || 1
+    store.get(store.vars.groupingLevel) ?? 1
   );
 
   useEffect(() => {

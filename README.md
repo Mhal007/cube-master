@@ -8,7 +8,7 @@ Rubik's cube training site.
 
 ## TODO
 #### Priority level 1po
-- redo training.tsx with hooks
+- Results table - remove, +2 buttons
 - Refactor algs naming and order
 - +x/-x to average (green/red)
 - menu with buttons for: accept, +2, random new, delete
