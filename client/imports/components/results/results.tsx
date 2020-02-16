@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { Button, ButtonGroup, Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import get from 'lodash/get';
 
@@ -56,7 +56,7 @@ const Results: FunctionComponent<Props> = ({ results }) => {
     }
   };
 
-  const onResultFaulToggle = (resultId?: string, newFoul?: boolean) => {
+  const onResultFoulToggle = (resultId?: string, newFoul?: boolean) => {
     if (resultId) {
       Meteor.call('results.setFoul', resultId, newFoul);
     }
@@ -71,7 +71,7 @@ const Results: FunctionComponent<Props> = ({ results }) => {
   );
 
   const Row = (row: Result): ReactNode => (
-    <Table.Row>
+    <Table.Row key={row._id}>
       {columns.map(({ actionsCell, format, value }, index) => (
         <Table.Cell key={index}>
           {actionsCell ? (
@@ -80,14 +80,12 @@ const Results: FunctionComponent<Props> = ({ results }) => {
                 basic
                 color="red"
                 icon="remove"
-                onClick={() => onResultRemove(get(row, '_id'))}
+                onClick={() => onResultRemove(row._id)}
               />
               <Button
                 basic
                 color="green"
-                onClick={() =>
-                  onResultFaulToggle(get(row, '_id'), !get(row, 'foul'))
-                }
+                onClick={() => onResultFoulToggle(row._id, row.foul)}
               >
                 +2
               </Button>
