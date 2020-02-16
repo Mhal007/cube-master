@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import { check } from 'meteor/check';
+// import { check } from 'meteor/check';
 
 export const Algorithms = new Mongo.Collection('algorithms');
 
@@ -26,11 +26,11 @@ Meteor.methods({
   //
   //   Algorithms.insert(doc);
   // },
-  'algorithms.search'(text) {
-    check(text, String);
-
-    return Algorithms.find();
-  }
+  // 'algorithms.search'(text) {
+  //   check(text, String);
+  //
+  //   return Algorithms.find();
+  // }
   // 'algorithms.remove'(algorithmId) {
   //   check(this.userId, String);
   //   check(algorithmId, String);

@@ -49,8 +49,10 @@ export type Result = {
   algorithmId: string;
   category: CategoryName;
   createdAt: Date;
+  foul?: boolean;
   scramble: string;
   time: number;
+  userId: string;
 };
 
 export type SquaresType = [

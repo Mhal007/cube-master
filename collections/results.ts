@@ -4,6 +4,13 @@ import { check } from 'meteor/check';
 
 export const Results = new Mongo.Collection('results');
 
+// Allow not logged-in users to manage results in the 'demo' mode
+Results.allow({
+  insert: (userId: string, doc: any) => !!userId || doc.userId === 'demo',
+  update: (userId: string, doc: any) => !!userId || doc.userId === 'demo',
+  remove: (userId: string, doc: any) => !!userId || doc.userId === 'demo'
+});
+
 Meteor.methods({
   'results.insert'({ algorithmId, category, scramble, time }) {
     check(category, String);
@@ -29,9 +36,34 @@ Meteor.methods({
     Results.insert(doc);
   },
   'results.remove'(resultId) {
-    check(this.userId, String);
     check(resultId, String);
 
-    Results.remove({ userId: this.userId, resultId });
+    Results.remove({ _id: resultId, userId: this.userId || 'demo' });
+  },
+  async 'results.setFoul'(resultId, newFoul) {
+    check(resultId, String);
+
+    const selector = { _id: resultId, userId: this.userId || 'demo' };
+    // @ts-ignore
+    const currentResult: Result = await Results.findOne(selector);
+
+    if (!currentResult) {
+      throw new Meteor.Error(
+        'results.setFoul.currentResult',
+        'Result not found'
+      );
+    }
+
+    const timeToBeAdded = newFoul
+      ? !currentResult.foul
+        ? 2000
+        : 0
+      : currentResult.foul
+      ? -2000
+      : 0;
+
+    Results.update(resultId, {
+      $set: { foul: newFoul, time: currentResult.time + timeToBeAdded }
+    });
   }
 });

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Button, ButtonGroup, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import get from 'lodash/get';
 
@@ -9,6 +9,7 @@ type column = {
   label: string;
   value: string;
   format?: Function;
+  actionsCell?: boolean;
 };
 
 const columns: column[] = [
@@ -28,38 +29,87 @@ const columns: column[] = [
   {
     label: 'Time',
     value: 'time',
-    format: (value: number): string =>
-      (value / 1000).toLocaleString('en-US', {
+    format: (value: number, row: Result): string => {
+      const valueFormatted = (value / 1000).toLocaleString('en-US', {
         minimumFractionDigits: 3,
         maximumFractionDigits: 3
-      }) + 's'
+      });
+
+      return `${valueFormatted}s${row.foul ? ' (+2)' : ''}`;
+    }
+  },
+  {
+    label: 'Actions',
+    value: 'actions',
+    actionsCell: true
   }
 ];
-
-const Header = (): ReactNode => (
-  <Table.Row>
-    {columns.map(({ label }, index) => (
-      <Table.HeaderCell key={index}>{label}</Table.HeaderCell>
-    ))}
-  </Table.Row>
-);
-
-const Row = (row: Result): ReactNode => (
-  <Table.Row>
-    {columns.map(({ value, format }, index) => (
-      <Table.Cell key={index}>
-        {format ? format(get(row, value)) : get(row, value)}
-      </Table.Cell>
-    ))}
-  </Table.Row>
-);
 
 type Props = {
   results: Result[];
 };
 
-const Results: FunctionComponent<Props> = ({ results }) => (
-  <Table inverted headerRow={Header} tableData={results} renderBodyRow={Row} />
-);
+const Results: FunctionComponent<Props> = ({ results }) => {
+  const onResultRemove = (resultId?: string) => {
+    if (resultId) {
+      Meteor.call('results.remove', resultId);
+    }
+  };
+
+  const onResultFaulToggle = (resultId?: string, newFoul?: boolean) => {
+    if (resultId) {
+      Meteor.call('results.setFoul', resultId, newFoul);
+    }
+  };
+
+  const Header = (): ReactNode => (
+    <Table.Row>
+      {columns.map(({ label }, index) => (
+        <Table.HeaderCell key={index}>{label}</Table.HeaderCell>
+      ))}
+    </Table.Row>
+  );
+
+  const Row = (row: Result): ReactNode => (
+    <Table.Row>
+      {columns.map(({ actionsCell, format, value }, index) => (
+        <Table.Cell key={index}>
+          {actionsCell ? (
+            <>
+              <Button
+                basic
+                color="red"
+                icon="remove"
+                onClick={() => onResultRemove(get(row, '_id'))}
+              />
+              <Button
+                basic
+                color="green"
+                onClick={() =>
+                  onResultFaulToggle(get(row, '_id'), !get(row, 'foul'))
+                }
+              >
+                +2
+              </Button>
+            </>
+          ) : format ? (
+            format(get(row, value), row)
+          ) : (
+            get(row, value)
+          )}
+        </Table.Cell>
+      ))}
+    </Table.Row>
+  );
+
+  return (
+    <Table
+      inverted
+      headerRow={Header}
+      tableData={results}
+      renderBodyRow={Row}
+    />
+  );
+};
 
 export default Results;
