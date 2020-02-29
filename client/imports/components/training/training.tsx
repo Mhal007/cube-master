@@ -15,9 +15,17 @@ import { store } from '../../lib/store';
 import {
   AlgorithmWithResults,
   CategoryName,
-  CategoryWithResults
+  CategoryWithResults,
+  isPredefinedAlgorithm
 } from '../../../../lib/types';
 import Timeout = NodeJS.Timeout;
+
+type blockedKeys = {
+  control: boolean;
+  delete: boolean;
+  shift: boolean;
+  space: boolean;
+};
 
 type timerStatus = 'resetted' | 'pre-inspection' | 'timer-off' | 'timer-on';
 const TIMER_STATUSES: Record<string, timerStatus> = {
@@ -41,23 +49,29 @@ type Props = {
 const Training: FC<Readonly<Props>> = ({ algorithms, categories }) => {
   const timer = useRef<Timeout>();
 
-  const [activeAlgorithmIds, setActiveAlgorithmIds] = useState(
+  const [activeAlgorithmIds, setActiveAlgorithmIds] = useState<string[]>(
     store.get(store.vars.activeAlgorithmIds) || []
   );
-  const [blockedKeys, setBlockedKeys] = useState({
+  const [blockedKeys, setBlockedKeys] = useState<blockedKeys>({
     control: false,
     delete: false,
     shift: false,
     space: false
   });
-  const [currentAlgorithm, setCurrentAlgorithm] = useState();
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
-  const [isSolutionVisible, setSolutionVisibility] = useState(
+  const [currentAlgorithm, setCurrentAlgorithm] = useState<
+    AlgorithmWithResults | randomizedAlgorithm
+  >();
+  const [currentCategory, setCurrentCategory] = useState<CategoryWithResults>(
+    categories[0]
+  );
+  const [isSolutionVisible, setSolutionVisibility] = useState<boolean>(
     !!store.get(store.vars.isSolutionVisible)
   );
-  const [areSettingsOpened, setSettingsOpenness] = useState(true);
-  const [timerCurrentValue, setTimerCurrentValue] = useState(0);
-  const [timerStatus, setTimerStatus] = useState(TIMER_STATUSES.RESETTED);
+  const [areSettingsOpened, setSettingsOpenness] = useState<boolean>(true);
+  const [timerCurrentValue, setTimerCurrentValue] = useState<number>(0);
+  const [timerStatus, setTimerStatus] = useState<timerStatus>(
+    TIMER_STATUSES.RESETTED
+  );
 
   // const onReset = () => {};
 
@@ -88,38 +102,38 @@ const Training: FC<Readonly<Props>> = ({ algorithms, categories }) => {
     setTimerStatus(TIMER_STATUSES.RESETTED);
     setTimerCurrentValue(0);
 
-    setCurrentAlgorithm(
-      (currentAlgorithm: AlgorithmWithResults | randomizedAlgorithm) => {
-        let newAlgorithm;
-        if (currentCategory.randomizableAlgorithm) {
-          const searchSpace = algorithms.filter(
-            algorithm =>
-              algorithm.category === currentCategory.value &&
-              activeAlgorithmIds.includes(algorithm._id)
-          );
+    setCurrentAlgorithm(currentAlgorithm => {
+      let newAlgorithm: AlgorithmWithResults | randomizedAlgorithm | undefined;
 
-          const currentIndex = searchSpace.findIndex(
-            algorithm =>
-              // @ts-ignore
-              algorithm._id === (currentAlgorithm && currentAlgorithm._id)
-          );
-          let newIndex = currentIndex;
-          while (
-            newIndex === -1 ||
-            (newIndex === currentIndex && searchSpace.length > 1)
-          ) {
-            newIndex = random(0, searchSpace.length - 1);
-          }
+      if (currentCategory.randomizableAlgorithm) {
+        const searchSpace = algorithms.filter(
+          algorithm =>
+            algorithm.category === currentCategory.value &&
+            activeAlgorithmIds.includes(algorithm._id)
+        );
 
-          newAlgorithm = searchSpace[newIndex];
-        } else if (currentCategory.randomizableScramble) {
-          const scramble = getRandomScramble(25);
-          newAlgorithm = { category: currentCategory.value, scramble };
+        const currentIndex = isPredefinedAlgorithm(currentAlgorithm)
+          ? searchSpace.findIndex(
+              algorithm => algorithm._id === currentAlgorithm._id
+            )
+          : -1;
+
+        let newIndex = currentIndex;
+        while (
+          newIndex === -1 ||
+          (newIndex === currentIndex && searchSpace.length > 1)
+        ) {
+          newIndex = random(0, searchSpace.length - 1);
         }
 
-        return newAlgorithm;
+        newAlgorithm = searchSpace[newIndex];
+      } else if (currentCategory.randomizableScramble) {
+        const scramble = getRandomScramble(25);
+        newAlgorithm = { category: currentCategory.value, scramble };
       }
-    );
+
+      return newAlgorithm;
+    });
   }, [
     activeAlgorithmIds,
     algorithms,

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 
 type Props = {
   isSolutionVisible: boolean;
@@ -7,7 +7,7 @@ type Props = {
   timerCurrentValue: number;
 };
 
-const Timer: FunctionComponent<Props> = ({
+const Timer: FC<Readonly<Props>> = ({
   isSolutionVisible,
   solution,
   timerCurrentValue

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { Segment } from 'semantic-ui-react';
 import { Router } from '@reach/router';
 
@@ -12,7 +12,7 @@ type Props = {
   userId: string;
 };
 
-const RouterComponent: FunctionComponent<Props> = ({ userId }) => (
+const RouterComponent: FC<Readonly<Props>> = ({ userId }) => (
   <div>
     <header>
       <Router>

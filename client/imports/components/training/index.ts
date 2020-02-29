@@ -27,10 +27,8 @@ const compose = (props: Props, onData: Function): void => {
   ];
 
   if (subscriptions.every(subscription => subscription.ready())) {
-    // @ts-ignore
-    const algorithms: Algorithm[] = Algorithms.find({}).fetch();
-    // @ts-ignore
-    const results: Result[] = Results.find({}).fetch();
+    const algorithms = Algorithms.find({}).fetch() as Algorithm[];
+    const results = Results.find({}).fetch() as Result[];
 
     const algorithmsWithResults: AlgorithmWithResults[] = algorithms.map(
       algorithm => ({

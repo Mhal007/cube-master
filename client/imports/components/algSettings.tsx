@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
@@ -32,7 +32,7 @@ const details = [
   }
 ];
 
-const AlgSettings: FunctionComponent<Props> = ({
+const AlgSettings: FC<Readonly<Props>> = ({
   activeAlgorithmIds,
   algorithms,
   currentCategory: { settingsDisabled },

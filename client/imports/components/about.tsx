@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
 
-const About: FunctionComponent<RouteComponentProps> = () => <div>About</div>;
+const About: FC<RouteComponentProps> = () => <div>About</div>;
 
 export default About;

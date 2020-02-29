@@ -1,9 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { Icon, Menu, SemanticCOLORS, SemanticICONS } from 'semantic-ui-react';
 import { Link, RouteComponentProps } from '@reach/router';
 import capitalize from 'lodash/capitalize';
 
-import './loginButtons.html';
 import LoginArea from './loginArea';
 
 type tab = {
@@ -35,7 +34,7 @@ const tabs: tab[] = [
   }
 ];
 
-const MenuTop: FunctionComponent<RouteComponentProps> = ({ uri }) => (
+const MenuTop: FC<RouteComponentProps> = ({ uri }) => (
   <Menu inverted icon="labeled">
     {tabs.map(({ color, icon, name }) => (
       <Link key={name} to={`/${name}`}>

@@ -1,22 +1,31 @@
 .login-area {
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   margin: 0 0 0 auto;
   padding: 0 1em;
 
-  & > * {
-    margin: auto;
+  .user-info {
+    text-align: center;
   }
 
-  // Blaze accounts login components
-  #login-buttons {
-    .login-display-name {
-      margin: 0;
-    }
+  // Accounts login components
+  .accounts-box {
+    .ui.segment {
+      border: none;
+      padding: 0;
 
-    .login-button {
-      display: block;
-      background-color: black;
-      border-color: white;
+      h2 {
+        display: none;
+      }
+
+      button.button {
+        margin-bottom: 0 !important;
+
+        &.large {
+          font-size: 0.92857143rem;
+        }
+      }
     }
   }
 }

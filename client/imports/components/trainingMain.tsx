@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 
 import Timer from './timer';
@@ -12,7 +12,7 @@ type Props = {
   timerCurrentValue: number;
 };
 
-const TrainingMain: FunctionComponent<Props> = ({
+const TrainingMain: FC<Readonly<Props>> = ({
   onChangeAlgorithm,
   // @ts-ignore
   currentAlgorithm: { image, scramble, solution } = {

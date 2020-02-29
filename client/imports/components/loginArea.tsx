@@ -1,14 +1,21 @@
+import React, { FC } from 'react';
 // @ts-ignore
-import Blaze from 'meteor/gadicc:blaze-react-component';
-import './loginButtons.html';
-import React, { FunctionComponent } from 'react';
+import { LoginBox } from 'meteor/universe:accounts-ui';
 
 type Props = {};
 
-const LoginArea: FunctionComponent<Props> = () => {
+const LoginArea: FC<Readonly<Props>> = () => {
+  const renderUserInfo = () => {
+    const user = Meteor.user();
+    return user ? <div className="user-info">{user?.profile?.name}</div> : null;
+  };
+
   return (
     <div className="login-area">
-      <Blaze template="Accounts" />
+      {renderUserInfo()}
+      <div className="accounts-box">
+        <LoginBox className="login-box" />
+      </div>
     </div>
   );
 };

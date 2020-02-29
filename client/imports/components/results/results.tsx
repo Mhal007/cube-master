@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Button, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import get from 'lodash/get';
@@ -49,7 +49,7 @@ type Props = {
   results: Result[];
 };
 
-const Results: FunctionComponent<Props> = ({ results }) => {
+const Results: FC<Readonly<Props>> = ({ results }) => {
   const onResultRemove = (resultId?: string) => {
     if (resultId) {
       Meteor.call('results.remove', resultId);

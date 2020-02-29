@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { List, Segment } from 'semantic-ui-react';
 import moment from 'moment';
 
@@ -11,7 +11,7 @@ type Props = {
   currentCategory: CategoryWithResults;
 };
 
-const Averages: FunctionComponent<Props> = ({
+const Averages: FC<Readonly<Props>> = ({
   currentAlgorithm,
   currentCategory
 }) => {

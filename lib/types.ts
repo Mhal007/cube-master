@@ -1,3 +1,7 @@
+export const isPredefinedAlgorithm = (
+  algorithm: any
+): algorithm is AlgorithmWithResults => !!algorithm._id;
+
 export type Algorithm = AlgorithmSketch & {
   _id: string;
 };
