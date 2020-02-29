@@ -6,7 +6,7 @@ const squresFull: SquaresType = [/* eslint-disable-line */
   [1, 1, 1]
 ];
 
-const srikesNone: StrikesType = [];
+const strikesNone: StrikesType = [];
 
 export const OLLs: AlgorithmSketch[] = [
   {
@@ -1161,7 +1161,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'A',
     subtype: 'A',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1179,7 +1179,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'A',
     subtype: 'A',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1197,7 +1197,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'E',
     subtype: 'E',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1218,7 +1218,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'E',
     subtype: 'E',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1239,7 +1239,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'H',
     subtype: 'H',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 1, y: 0 },
@@ -1260,7 +1260,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'U',
     subtype: 'U',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 1 },
@@ -1278,7 +1278,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'U',
     subtype: 'U',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 1 },
@@ -1296,7 +1296,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'J',
     subtype: 'J',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1317,7 +1317,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'J',
     subtype: 'J',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 2, y: 0 },
@@ -1338,7 +1338,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'T',
     subtype: 'T',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 2, y: 0 },
@@ -1359,7 +1359,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'V',
     subtype: 'V',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1380,7 +1380,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'R',
     subtype: 'R',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1401,7 +1401,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'R',
     subtype: 'R',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1422,7 +1422,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'G',
     subtype: 'G',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 1, y: 0 },
@@ -1445,7 +1445,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'G',
     subtype: 'G',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1468,7 +1468,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'G',
     subtype: 'G',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1491,7 +1491,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'G',
     subtype: 'G',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 2, y: 0 },
@@ -1514,7 +1514,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'Z',
     subtype: 'Z',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 1, y: 0 },
@@ -1535,7 +1535,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'N',
     subtype: 'N',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 2, y: 0 },
@@ -1556,7 +1556,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'N',
     subtype: 'N',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
@@ -1577,7 +1577,7 @@ export const PLLs: AlgorithmSketch[] = [
     type: 'Y',
     subtype: 'Y',
     squares: squresFull,
-    strikes: srikesNone,
+    strikes: strikesNone,
     lines: [
       [
         { x: 0, y: 0 },
