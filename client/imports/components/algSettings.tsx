@@ -1,7 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
+import isEmpty from 'lodash/isEmpty';
 import { getAverage } from '../../../lib/utils';
 import { AlgorithmWithResults, CategoryWithResults } from '../../../lib/types';
 import { store } from '../lib/store';
@@ -32,14 +33,14 @@ const details = [
   }
 ];
 
-const AlgSettings: FC<Readonly<Props>> = ({
+const AlgSettings = ({
   activeAlgorithmIds,
   algorithms,
   currentCategory: { settingsDisabled },
   onActivateAll,
   onToggleActive,
   onDeactivateAll
-}) => {
+}: Props) => {
   const [detailsLevel, setDetailsLevel] = useState(
     store.get(store.vars.groupingLevel) ?? 1
   );
@@ -57,20 +58,22 @@ const AlgSettings: FC<Readonly<Props>> = ({
       <List divided verticalAlign="middle">
         <List.Item>
           <List.Content floated="right">
-            <div className="grouping-level">
-              <div className="title">Grouping level</div>
-              <SliderTooltip
-                min={0}
-                max={2}
-                onChange={setDetailsLevel}
-                tipFormatter={(value: number): string => details[value].label}
-                tipProps={{
-                  placement: 'bottom',
-                  visible: true
-                }}
-                value={detailsLevel}
-              />
-            </div>
+            {!isEmpty(algorithmsGrouped) && (
+              <div className="grouping-level">
+                <div className="title">Grouping level</div>
+                <SliderTooltip
+                  min={0}
+                  max={2}
+                  onChange={setDetailsLevel}
+                  tipFormatter={(value: number): string => details[value].label}
+                  tipProps={{
+                    placement: 'bottom',
+                    visible: true
+                  }}
+                  value={detailsLevel}
+                />
+              </div>
+            )}
           </List.Content>
           <List.Content>
             {!settingsDisabled && (

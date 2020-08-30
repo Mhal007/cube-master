@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Grid, Menu } from 'semantic-ui-react';
 import { SemanticToastContainer } from 'react-semantic-toasts';
 import random from 'lodash/random';
@@ -46,7 +46,7 @@ type Props = {
   demo?: boolean;
 };
 
-const Training: FC<Readonly<Props>> = ({ algorithms, categories }) => {
+const Training = ({ algorithms, categories }: Props) => {
   const timer = useRef<Timeout>();
 
   const [activeAlgorithmIds, setActiveAlgorithmIds] = useState<string[]>(
@@ -297,6 +297,11 @@ const Training: FC<Readonly<Props>> = ({ algorithms, categories }) => {
 
   useEffect(() => {
     store.set(store.vars.activeAlgorithmIds, activeAlgorithmIds);
+
+    if (!currentCategory.randomizableAlgorithm) {
+      return;
+    }
+
     const anyAlgorithmActive = algorithms.some(
       algorithm =>
         activeAlgorithmIds.includes(algorithm._id) &&
@@ -306,7 +311,7 @@ const Training: FC<Readonly<Props>> = ({ algorithms, categories }) => {
     if (!anyAlgorithmActive) {
       toastNoActiveAlgorithms();
     }
-  }, [activeAlgorithmIds, algorithms, currentCategory.value]);
+  }, [activeAlgorithmIds, algorithms, currentCategory]);
 
   useEffect(() => {
     onChangeAlgorithm();
