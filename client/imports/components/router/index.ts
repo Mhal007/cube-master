@@ -7,7 +7,7 @@ type Props = {
   userId: string;
 };
 
-const compose = (props: Props, onData: Function): void => {
+const compose = (props: Props, onData: Function) => {
   onData(null, { userId: Meteor.userId() });
 };
 

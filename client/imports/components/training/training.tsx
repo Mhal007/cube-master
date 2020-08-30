@@ -4,10 +4,10 @@ import { SemanticToastContainer } from 'react-semantic-toasts';
 import random from 'lodash/random';
 import uniq from 'lodash/uniq';
 
-import AlgSettings from '../algSettings';
-import Averages from '../averages';
-import TipsAndTricks from '../tipsAndTricks';
-import TrainingMain from '../trainingMain';
+import AlgSettings from './algSettings';
+import Averages from './averages';
+import TipsAndTricks from './tipsAndTricks';
+import TrainingMain from './trainingMain';
 
 import { getRandomScramble } from '../../../../lib/utils';
 import { toastNoActiveAlgorithms } from '../../lib/toasts';
@@ -75,7 +75,7 @@ const Training = ({ algorithms, categories }: Props) => {
 
   // const onReset = () => {};
 
-  const onActivateAll = (): void => {
+  const onActivateAll = () => {
     const currentAlgorithmIds = algorithms
       .filter(algorithm => algorithm.category === currentCategory.value)
       .map(algorithm => algorithm._id);
@@ -83,7 +83,7 @@ const Training = ({ algorithms, categories }: Props) => {
     setActiveAlgorithmIds(uniq(activeAlgorithmIds.concat(currentAlgorithmIds)));
   };
 
-  const onDeactivateAll = (): void => {
+  const onDeactivateAll = () => {
     const currentAlgorithmIds = algorithms
       .filter(algorithm => algorithm.category === currentCategory.value)
       .map(algorithm => algorithm._id);
@@ -99,6 +99,7 @@ const Training = ({ algorithms, categories }: Props) => {
     if (timer.current) {
       clearInterval(timer.current);
     }
+
     setTimerStatus(TIMER_STATUSES.RESETTED);
     setTimerCurrentValue(0);
 
@@ -128,21 +129,15 @@ const Training = ({ algorithms, categories }: Props) => {
 
         newAlgorithm = searchSpace[newIndex];
       } else if (currentCategory.randomizableScramble) {
-        const scramble = getRandomScramble(25);
+        const scramble = getRandomScramble(20);
         newAlgorithm = { category: currentCategory.value, scramble };
       }
 
       return newAlgorithm;
     });
-  }, [
-    activeAlgorithmIds,
-    algorithms,
-    currentCategory.randomizableAlgorithm,
-    currentCategory.randomizableScramble,
-    currentCategory.value
-  ]);
+  }, [activeAlgorithmIds, algorithms, currentCategory]);
 
-  const onToggleActive = (toggleAlgorithmId: string): void => {
+  const onToggleActive = (toggleAlgorithmId: string) => {
     if (currentCategory && currentCategory.value) {
       const newAlgorithmIds = activeAlgorithmIds.includes(toggleAlgorithmId)
         ? activeAlgorithmIds.filter(
@@ -285,7 +280,7 @@ const Training = ({ algorithms, categories }: Props) => {
 
   useEffect(() => {
     onChangeAlgorithm();
-  }, [algorithms, onChangeAlgorithm]);
+  }, [onChangeAlgorithm]);
 
   useEffect(() => {
     setCurrentCategory(
@@ -312,10 +307,6 @@ const Training = ({ algorithms, categories }: Props) => {
       toastNoActiveAlgorithms();
     }
   }, [activeAlgorithmIds, algorithms, currentCategory]);
-
-  useEffect(() => {
-    onChangeAlgorithm();
-  }, [currentCategory, onChangeAlgorithm]);
 
   useEffect(() => {
     store.set(store.vars.isSolutionVisible, isSolutionVisible);

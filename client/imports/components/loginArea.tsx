@@ -1,10 +1,8 @@
-import React, { FC } from 'react';
+import React from 'react';
 // @ts-ignore
 import { LoginBox } from 'meteor/universe:accounts-ui';
 
-type Props = {};
-
-const LoginArea: FC<Readonly<Props>> = () => {
+const LoginArea = () => {
   const renderUserInfo = () => {
     const user = Meteor.user();
     return user ? <div className="user-info">{user?.profile?.name}</div> : null;

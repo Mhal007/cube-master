@@ -2,7 +2,7 @@ import React from 'react';
 import { setDefaults } from 'react-komposer';
 import { Tracker } from 'meteor/tracker';
 
-import Loader from '../components/loader';
+import { Loader } from '../components/loader';
 
 const errorHandler = (error: any) =>
   Meteor.isProduction ? (

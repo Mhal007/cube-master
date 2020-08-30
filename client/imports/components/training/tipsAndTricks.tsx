@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { List, Segment } from 'semantic-ui-react';
 
 type tip = {
@@ -30,7 +30,7 @@ const tipsList: tip[] = [
   }
 ].map((tip, index) => ({ ...tip, key: index, icon: 'lightbulb outline' }));
 
-const TipsAndTricks: FC = () => (
+const TipsAndTricks = () => (
   <Segment>
     Shortcuts list:
     <List celled inverted items={tipsList} />

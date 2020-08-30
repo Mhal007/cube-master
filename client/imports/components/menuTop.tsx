@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Icon, Menu, SemanticCOLORS, SemanticICONS } from 'semantic-ui-react';
 import { Link, RouteComponentProps } from '@reach/router';
 import capitalize from 'lodash/capitalize';
@@ -34,7 +34,7 @@ const tabs: tab[] = [
   }
 ];
 
-const MenuTop: FC<RouteComponentProps> = ({ uri }) => (
+export const MenuTop = ({ uri }: RouteComponentProps) => (
   <Menu inverted icon="labeled">
     {tabs.map(({ color, icon, name }) => (
       <Link key={name} to={`/${name}`}>
@@ -47,5 +47,3 @@ const MenuTop: FC<RouteComponentProps> = ({ uri }) => (
     <LoginArea />
   </Menu>
 );
-
-export default MenuTop;

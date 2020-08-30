@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { RouteComponentProps } from '@reach/router';
 
-const Home: FC<RouteComponentProps> = () => (
+type Props = RouteComponentProps & {};
+
+export const Home = (props: Props) => (
   <div>
     {Meteor.userId() ? <>Welcome </> : <p>Please log in to continue.</p>}
   </div>
 );
-
-export default Home;

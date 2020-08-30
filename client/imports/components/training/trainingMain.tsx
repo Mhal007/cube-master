@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 
 import Timer from './timer';
-import { AlgorithmWithResults } from '../../../lib/types';
-import { randomizedAlgorithm } from './training/training';
+import { AlgorithmWithResults } from '../../../../lib/types';
+import { randomizedAlgorithm } from './training';
 
 type Props = {
   onChangeAlgorithm: () => void;
@@ -12,17 +12,20 @@ type Props = {
   timerCurrentValue: number;
 };
 
-const TrainingMain: FC<Readonly<Props>> = ({
+const TrainingMain = ({
   onChangeAlgorithm,
   // @ts-ignore
   currentAlgorithm: { image, scramble, solution } = {
+    // @ts-ignore
     image: undefined,
+    // @ts-ignore
     scramble: undefined,
+    // @ts-ignore
     solution: undefined
   },
   isSolutionVisible,
   timerCurrentValue
-}) => (
+}: Props) => (
   <section className="training-main">
     {scramble && <Segment className="scramble-segment">{scramble}</Segment>}
     {image && (

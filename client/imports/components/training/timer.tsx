@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { FC } from 'react';
+import React from 'react';
 
 type Props = {
   isSolutionVisible: boolean;
@@ -7,11 +7,7 @@ type Props = {
   timerCurrentValue: number;
 };
 
-const Timer: FC<Readonly<Props>> = ({
-  isSolutionVisible,
-  solution,
-  timerCurrentValue
-}) => (
+const Timer = ({ isSolutionVisible, solution, timerCurrentValue }: Props) => (
   <div className="timer">
     <p>{moment(timerCurrentValue).format('mm:ss:SSS')}</p>
     {isSolutionVisible && solution && <p>{solution}</p>}

@@ -3,9 +3,9 @@ import { Button, List, Segment } from 'semantic-ui-react';
 import groupBy from 'lodash/groupBy';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
 import isEmpty from 'lodash/isEmpty';
-import { getAverage } from '../../../lib/utils';
-import { AlgorithmWithResults, CategoryWithResults } from '../../../lib/types';
-import { store } from '../lib/store';
+import { getAverage } from '../../../../lib/utils';
+import { AlgorithmWithResults, CategoryWithResults } from '../../../../lib/types';
+import { store } from '../../lib/store';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
 

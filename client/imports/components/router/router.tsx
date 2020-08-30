@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Segment } from 'semantic-ui-react';
 import { Router } from '@reach/router';
 
-import About from '../about';
-import Home from '../home';
-import MenuTop from '../menuTop';
+import { About } from '../about';
+import { Home } from '../home';
+import { MenuTop } from '../menuTop';
 import Results from '../results';
 import Training from '../training';
 
@@ -12,7 +12,7 @@ type Props = {
   userId: string;
 };
 
-const RouterComponent: FC<Readonly<Props>> = ({ userId }) => (
+const RouterComponent = ({ userId }: Props) => (
   <div>
     <header>
       <Router>

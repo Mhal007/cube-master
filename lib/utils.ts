@@ -1,24 +1,4 @@
-type allowedMove =
-  | 'F'
-  | "F'"
-  | 'F2'
-  | 'B'
-  | "B'"
-  | 'B2'
-  | 'R'
-  | "R'"
-  | 'R2'
-  | 'L'
-  | "L'"
-  | 'L2'
-  | 'U'
-  | "U'"
-  | 'U2'
-  | 'D'
-  | "D'"
-  | 'D2';
-
-const allowedMoves: allowedMove[] = [
+const allowedMoves = [
   'F',
   "F'",
   'F2',
@@ -37,9 +17,9 @@ const allowedMoves: allowedMove[] = [
   'D',
   "D'",
   'D2'
-];
+] as const;
 
-const getRandomMove = (): allowedMove =>
+const getRandomMove = (): typeof allowedMoves[number] =>
   allowedMoves[Math.floor(Math.random() * allowedMoves.length)];
 
 const movesConflict = (moveA?: string, moveB?: string): boolean =>

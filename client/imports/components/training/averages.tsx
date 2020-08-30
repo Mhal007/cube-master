@@ -1,20 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { List, Segment } from 'semantic-ui-react';
 import moment from 'moment';
 
-import { getAverage } from '../../../lib/utils';
-import { AlgorithmWithResults, CategoryWithResults } from '../../../lib/types';
-import { randomizedAlgorithm } from './training/training';
+import { getAverage } from '../../../../lib/utils';
+import { AlgorithmWithResults, CategoryWithResults } from '../../../../lib/types';
+import { randomizedAlgorithm } from './training';
 
 type Props = {
   currentAlgorithm?: AlgorithmWithResults | randomizedAlgorithm;
   currentCategory: CategoryWithResults;
 };
 
-const Averages: FC<Readonly<Props>> = ({
-  currentAlgorithm,
-  currentCategory
-}) => {
+const Averages = ({ currentAlgorithm, currentCategory }: Props) => {
   const currentAlgorithmAvg = getAverage(
     // @ts-ignore
     currentAlgorithm && currentAlgorithm.results

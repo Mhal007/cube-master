@@ -49,7 +49,7 @@ type Props = {
   results: Result[];
 };
 
-const Results: FC<Readonly<Props>> = ({ results }) => {
+const Results = ({ results }: Props) => {
   const onResultRemove = (resultId?: string) => {
     if (resultId) {
       Meteor.call('results.remove', resultId);
