@@ -12,6 +12,6 @@ export const store = {
   vars: {
     activeAlgorithmIds: 'activeAlgorithmIds',
     isSolutionVisible: 'isSolutionVisible',
-    groupingLevel: 'groupingLevel'
-  }
+    groupingLevel: 'groupingLevel',
+  },
 };

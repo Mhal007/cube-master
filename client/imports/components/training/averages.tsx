@@ -1,9 +1,12 @@
+import moment from 'moment';
 import React from 'react';
 import { List, Segment } from 'semantic-ui-react';
-import moment from 'moment';
 
+import {
+  AlgorithmWithResults,
+  CategoryWithResults,
+} from '../../../../lib/types';
 import { getAverage } from '../../../../lib/utils';
-import { AlgorithmWithResults, CategoryWithResults } from '../../../../lib/types';
 import { randomizedAlgorithm } from './training';
 
 type Props = {
@@ -11,13 +14,17 @@ type Props = {
   currentCategory: CategoryWithResults;
 };
 
-const Averages = ({ currentAlgorithm, currentCategory }: Props) => {
+const Averages = ({
+  currentAlgorithm,
+  currentCategory,
+}: Props): JSX.Element => {
   const currentAlgorithmAvg = getAverage(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    currentAlgorithm && currentAlgorithm.results
+    currentAlgorithm && currentAlgorithm.results,
   );
   const currentCategoryAvg = getAverage(
-    currentCategory && currentCategory.results
+    currentCategory && currentCategory.results,
   );
 
   const averages = ['OLL', 'PLL'].includes(currentCategory.value)
@@ -27,15 +34,15 @@ const Averages = ({ currentAlgorithm, currentCategory }: Props) => {
           key: '0',
           description: currentAlgorithmAvg
             ? moment(currentAlgorithmAvg).format('ss:SSS')
-            : 'No records'
+            : 'No records',
         },
         {
           header: `Average for all ${currentCategory.value} algorithms`,
           key: '1',
           description: currentCategoryAvg
             ? moment(currentCategoryAvg).format('ss:SSS')
-            : 'No records'
-        }
+            : 'No records',
+        },
       ]
     : [
         {
@@ -43,8 +50,8 @@ const Averages = ({ currentAlgorithm, currentCategory }: Props) => {
           key: '0',
           description: currentCategoryAvg
             ? moment(currentCategoryAvg).format('mm:ss:SSS')
-            : 'No records'
-        }
+            : 'No records',
+        },
       ];
 
   return (

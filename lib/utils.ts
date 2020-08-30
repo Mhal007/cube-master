@@ -16,7 +16,7 @@ const allowedMoves = [
   'U2',
   'D',
   "D'",
-  'D2'
+  'D2',
 ] as const;
 
 const getRandomMove = (): typeof allowedMoves[number] =>
@@ -51,6 +51,6 @@ export const getAverage = (results?: number[]): number => {
   }
 
   return Math.round(
-    results.reduce((sum, result) => sum + result, 0) / results.length
+    results.reduce((sum, result) => sum + result, 0) / results.length,
   );
 };

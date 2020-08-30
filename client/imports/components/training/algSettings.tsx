@@ -1,10 +1,14 @@
+import groupBy from 'lodash/groupBy';
+import isEmpty from 'lodash/isEmpty';
+import Slider, { createSliderWithTooltip } from 'rc-slider';
 import React, { useEffect, useState } from 'react';
 import { Button, List, Segment } from 'semantic-ui-react';
-import groupBy from 'lodash/groupBy';
-import Slider, { createSliderWithTooltip } from 'rc-slider';
-import isEmpty from 'lodash/isEmpty';
+
+import {
+  AlgorithmWithResults,
+  CategoryWithResults,
+} from '../../../../lib/types';
 import { getAverage } from '../../../../lib/utils';
-import { AlgorithmWithResults, CategoryWithResults } from '../../../../lib/types';
 import { store } from '../../lib/store';
 
 const SliderTooltip = createSliderWithTooltip(Slider);
@@ -21,16 +25,16 @@ type Props = {
 const details = [
   {
     value: 'category',
-    label: 'None'
+    label: 'None',
   },
   {
     value: 'type',
-    label: 'General'
+    label: 'General',
   },
   {
     value: 'subtype',
-    label: 'Precise'
-  }
+    label: 'Precise',
+  },
 ];
 
 const AlgSettings = ({
@@ -39,10 +43,10 @@ const AlgSettings = ({
   currentCategory: { settingsDisabled },
   onActivateAll,
   onToggleActive,
-  onDeactivateAll
-}: Props) => {
+  onDeactivateAll,
+}: Props): JSX.Element => {
   const [detailsLevel, setDetailsLevel] = useState(
-    store.get(store.vars.groupingLevel) ?? 1
+    store.get(store.vars.groupingLevel) ?? 1,
   );
 
   useEffect(() => {
@@ -68,7 +72,7 @@ const AlgSettings = ({
                   tipFormatter={(value: number): string => details[value].label}
                   tipProps={{
                     placement: 'bottom',
-                    visible: true
+                    visible: true,
                   }}
                   value={detailsLevel}
                 />

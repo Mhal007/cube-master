@@ -1,7 +1,7 @@
-import React from 'react';
-import { Icon, Menu, SemanticCOLORS, SemanticICONS } from 'semantic-ui-react';
 import { Link, RouteComponentProps } from '@reach/router';
 import capitalize from 'lodash/capitalize';
+import React from 'react';
+import { Icon, Menu, SemanticCOLORS, SemanticICONS } from 'semantic-ui-react';
 
 import LoginArea from './loginArea';
 
@@ -15,26 +15,28 @@ const tabs: tab[] = [
   {
     name: 'home',
     color: 'green',
-    icon: 'home'
+    icon: 'home',
   },
   {
     name: 'training',
     color: 'blue',
-    icon: 'stopwatch'
+    icon: 'stopwatch',
   },
   {
     name: 'results',
     color: 'orange',
-    icon: 'list ol'
+    icon: 'list ol',
   },
   {
     name: 'about',
     color: 'teal',
-    icon: 'idea'
-  }
+    icon: 'idea',
+  },
 ];
 
-export const MenuTop = ({ uri }: RouteComponentProps) => (
+type Props = RouteComponentProps;
+
+export const MenuTop = ({ uri }: Props): JSX.Element => (
   <Menu inverted icon="labeled">
     {tabs.map(({ color, icon, name }) => (
       <Link key={name} to={`/${name}`}>

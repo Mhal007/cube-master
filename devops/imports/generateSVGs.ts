@@ -1,6 +1,7 @@
 import * as fs from 'fs';
-import { OLLs, PLLs } from '../../server/imports/const';
+
 import { AlgorithmSketch, Line, Point } from '../../lib/types';
+import { OLLs, PLLs } from '../../server/imports/const';
 
 type strikeFormatted = {
   x: number;
@@ -28,7 +29,7 @@ const filesPath = 'public/images/';
 const getSVGcontent = (
   { squares, strikes, lines = [] }: AlgorithmSketch,
   squareLength: number,
-  spacingLength: number = squareLength / 10
+  spacingLength: number = squareLength / 10,
 ): string => {
   const cubeSize = squares[0].length;
 
@@ -47,8 +48,8 @@ const getSVGcontent = (
         height: squareLength,
         fill: face ? colorPrimary : colorSecondary,
         stroke: colorBackground,
-        strokeWidth: spacingLength
-      }))
+        strokeWidth: spacingLength,
+      })),
   );
 
   const getStrikePosition = (index: number): number => {
@@ -69,7 +70,7 @@ const getSVGcontent = (
         y: getStrikePosition(0),
         width: squareLength,
         height: spacingLength,
-        fill: strike ? colorPrimary : ''
+        fill: strike ? colorPrimary : '',
       }))
     : [];
 
@@ -79,7 +80,7 @@ const getSVGcontent = (
         y: getStrikePosition(strikeIndex + 1),
         width: spacingLength,
         height: squareLength,
-        fill: strike ? colorPrimary : ''
+        fill: strike ? colorPrimary : '',
       }))
     : [];
 
@@ -89,7 +90,7 @@ const getSVGcontent = (
         y: getStrikePosition(cubeSize + 1),
         width: squareLength,
         height: spacingLength,
-        fill: strike ? colorPrimary : ''
+        fill: strike ? colorPrimary : '',
       }))
     : [];
 
@@ -99,7 +100,7 @@ const getSVGcontent = (
         y: getStrikePosition(strikeIndex + 1),
         width: spacingLength,
         height: squareLength,
-        fill: strike ? colorPrimary : ''
+        fill: strike ? colorPrimary : '',
       }))
     : [];
 
@@ -107,7 +108,7 @@ const getSVGcontent = (
     strikesTop,
     strikesRight,
     strikesBottom,
-    strikesLeft
+    strikesLeft,
   ];
 
   const getSquareCenter = ({ x: squareX, y: squareY }: Point) => {
@@ -130,7 +131,7 @@ const getSVGcontent = (
   const lineToMarker = (pointA: Point, pointB: Point): marker => {
     const pointC = {
       x: pointA.x + Math.abs(pointB.x - pointA.x),
-      y: pointA.y
+      y: pointA.y,
     };
 
     const rotationAngle =
@@ -139,12 +140,12 @@ const getSVGcontent = (
 
     const leftBackPoint = {
       x: pointB.x - 0.3 * squareLength,
-      y: pointB.y - 0.3 * squareLength
+      y: pointB.y - 0.3 * squareLength,
     };
 
     const rightBackPoint = {
       x: pointB.x - 0.3 * squareLength,
-      y: pointB.y + 0.3 * squareLength
+      y: pointB.y + 0.3 * squareLength,
     };
 
     const margin = 0.2 * squareLength;
@@ -155,7 +156,7 @@ const getSVGcontent = (
       angle: rotationAngle,
       x: pointB.x,
       y: pointB.y,
-      margin
+      margin,
     };
   };
 
@@ -174,7 +175,7 @@ const getSVGcontent = (
   };
 
   const linesFormatted: Line[] = lines.map(line =>
-    line.map(point => getSquareCenter(point))
+    line.map(point => getSquareCenter(point)),
   );
 
   const boardSize: number =
@@ -206,9 +207,9 @@ const getSVGcontent = (
                   height="${square.height}"
                   fill="${square.fill}"
                 />
-              `
+              `,
             )
-            .join('')
+            .join(''),
         )
         .join('')}
       
@@ -227,9 +228,9 @@ const getSVGcontent = (
                   height="${strike.height}"
                   fill="${strike.fill}"
                 />
-              `
+              `,
             )
-            .join('')
+            .join(''),
         )
         .join('')}
       
@@ -242,7 +243,7 @@ const getSVGcontent = (
           stroke="${colorLine}"
           stroke-width="3"
           />
-        `
+        `,
       )}
       
       <!-- MARKERS -->
@@ -256,9 +257,9 @@ const getSVGcontent = (
                   fill="${colorLineTip}" 
                   transform="rotate(${angle} ${x} ${y}) translate(${margin})"
                 />
-              `
+              `,
             )
-            .join('')
+            .join(''),
         )
         .join('')}
     </svg>
@@ -271,7 +272,7 @@ const writeFile = (
   path: string,
   name: string,
   extension: string,
-  content: string
+  content: string,
 ) => {
   fs.writeFile(`${path}${name}${extension}`, content, err => {
     if (err) {

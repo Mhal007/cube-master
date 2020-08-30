@@ -1,18 +1,19 @@
+import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import { check } from 'meteor/check';
 
-export const Results = new Mongo.Collection('results');
+import { Result } from '../lib/types';
+export const Results = new Mongo.Collection<Result>('results');
 
 // Allow not logged-in users to manage results in the 'demo' mode
 Results.allow({
   insert: (userId: string, doc: any) => !!userId || doc.userId === 'demo',
   update: (userId: string, doc: any) => !!userId || doc.userId === 'demo',
-  remove: (userId: string, doc: any) => !!userId || doc.userId === 'demo'
+  remove: (userId: string, doc: any) => !!userId || doc.userId === 'demo',
 });
 
 Meteor.methods({
-  'results.insert'({ algorithmId, category, scramble, time }) {
+  'results.insert'({ algorithmId, category, scramble, time }: Result) {
     check(category, String);
     check(time, Number);
 
@@ -30,7 +31,7 @@ Meteor.methods({
       createdAt: new Date(),
       scramble,
       time,
-      userId: this.userId || 'demo'
+      userId: this.userId || 'demo',
     };
 
     Results.insert(doc);
@@ -44,13 +45,14 @@ Meteor.methods({
     check(resultId, String);
 
     const selector = { _id: resultId, userId: this.userId || 'demo' };
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const currentResult: Result = await Results.findOne(selector);
 
     if (!currentResult) {
       throw new Meteor.Error(
         'results.setFoul.currentResult',
-        'Result not found'
+        'Result not found',
       );
     }
 
@@ -63,7 +65,7 @@ Meteor.methods({
       : 0;
 
     Results.update(resultId, {
-      $set: { foul: newFoul, time: currentResult.time + timeToBeAdded }
+      $set: { foul: newFoul, time: currentResult.time + timeToBeAdded },
     });
-  }
+  },
 });

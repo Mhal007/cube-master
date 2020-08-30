@@ -1,6 +1,7 @@
-import React from 'react';
 import { RouteComponentProps } from '@reach/router';
+import React from 'react';
 
-type Props = RouteComponentProps & {};
+type Props = RouteComponentProps;
 
-export const About = (props: Props) => <div>About</div>;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const About = (props: Props): JSX.Element => <div>About</div>;

@@ -1,10 +1,10 @@
 import { toast } from 'react-semantic-toasts';
 
-export const toastNoActiveAlgorithms = () =>
+export const toastNoActiveAlgorithms = (): void =>
   toast({
     title: 'No active algorithms',
     type: 'warning',
     description:
       'Randomizing algorithms pauzed until you select at least one algorithm',
-    time: 5000
+    time: 5000,
   });

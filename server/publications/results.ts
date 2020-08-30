@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+
 import { Results } from '../../collections/results';
 
 Meteor.publish('results', function getResults() {

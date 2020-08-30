@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+
 import { Algorithms } from '../../collections/algorithms';
 
 Meteor.publish('algorithms', function getAlgorithms() {

@@ -7,7 +7,11 @@ type Props = {
   timerCurrentValue: number;
 };
 
-const Timer = ({ isSolutionVisible, solution, timerCurrentValue }: Props) => (
+const Timer = ({
+  isSolutionVisible,
+  solution,
+  timerCurrentValue,
+}: Props): JSX.Element => (
   <div className="timer">
     <p>{moment(timerCurrentValue).format('mm:ss:SSS')}</p>
     {isSolutionVisible && solution && <p>{solution}</p>}

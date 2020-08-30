@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Segment } from 'semantic-ui-react';
 
-import Timer from './timer';
 import { AlgorithmWithResults } from '../../../../lib/types';
+import Timer from './timer';
 import { randomizedAlgorithm } from './training';
 
 type Props = {
@@ -14,18 +14,22 @@ type Props = {
 
 const TrainingMain = ({
   onChangeAlgorithm,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   currentAlgorithm: { image, scramble, solution } = {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     image: undefined,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     scramble: undefined,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    solution: undefined
+    solution: undefined,
   },
   isSolutionVisible,
-  timerCurrentValue
-}: Props) => (
+  timerCurrentValue,
+}: Props): JSX.Element => (
   <section className="training-main">
     {scramble && <Segment className="scramble-segment">{scramble}</Segment>}
     {image && (

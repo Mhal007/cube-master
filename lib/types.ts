@@ -1,6 +1,9 @@
+import { randomizedAlgorithm } from '../client/imports/components/training/training';
+
 export const isPredefinedAlgorithm = (
-  algorithm: any
-): algorithm is AlgorithmWithResults => !!algorithm?._id;
+  algorithm?: AlgorithmWithResults | randomizedAlgorithm,
+): algorithm is AlgorithmWithResults =>
+  !!(algorithm as AlgorithmWithResults | undefined)?._id;
 
 export type Algorithm = AlgorithmSketch & {
   _id: string;
@@ -20,7 +23,6 @@ export type AlgorithmSketch = {
 };
 
 export type AlgorithmWithResults = Algorithm & {
-  active: boolean;
   results: number[];
 };
 
@@ -62,7 +64,7 @@ export type Result = {
 export type SquaresType = [
   [0 | 1, 0 | 1, 0 | 1], // top row, left to right
   [0 | 1, 0 | 1, 0 | 1], // middle row, left to right
-  [0 | 1, 0 | 1, 0 | 1] // bottom row, left to right
+  [0 | 1, 0 | 1, 0 | 1], // bottom row, left to right
 ];
 
 export type StrikesType =
@@ -70,6 +72,6 @@ export type StrikesType =
       [0 | 1, 0 | 1, 0 | 1], // top group, left to right
       [0 | 1, 0 | 1, 0 | 1], // right group, top to bottom
       [0 | 1, 0 | 1, 0 | 1], // bottom group, left to right
-      [0 | 1, 0 | 1, 0 | 1] // left group, top to bottom
+      [0 | 1, 0 | 1, 0 | 1], // left group, top to bottom
     ]
   | [];

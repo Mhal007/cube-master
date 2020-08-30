@@ -1,6 +1,6 @@
+import { Router as ReachRouter } from '@reach/router';
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
-import { Router } from '@reach/router';
 
 import { About } from '../about';
 import { Home } from '../home';
@@ -9,15 +9,15 @@ import Results from '../results';
 import Training from '../training';
 
 type Props = {
-  userId: string;
+  userId: string | null;
 };
 
-const RouterComponent = ({ userId }: Props) => (
+export const Router = ({ userId }: Props): JSX.Element => (
   <div>
     <header>
-      <Router>
+      <ReachRouter>
         <MenuTop default />
-      </Router>
+      </ReachRouter>
     </header>
 
     <div className={`demo-mode-bar${userId ? ' hidden' : ''}`}>
@@ -27,15 +27,13 @@ const RouterComponent = ({ userId }: Props) => (
 
     <main>
       <Segment>
-        <Router>
+        <ReachRouter>
           <Home path="/home" default />
-          <Training key="training" demo={!userId} path="/training" />
+          <Training key="training" path="/training" />
           <Results key="results" demo={!userId} path="/results" />
           <About path="/about" />
-        </Router>
+        </ReachRouter>
       </Segment>
     </main>
   </div>
 );
-
-export default RouterComponent;

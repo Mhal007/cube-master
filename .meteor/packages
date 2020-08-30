@@ -21,7 +21,7 @@ ecmascript@0.14.2
 accounts-ui@1.3.1
 accounts-google
 google-config-ui@1.0.1
-universe:accounts-ui
 semantic:ui
 jquery
 blaze-html-templates
+mhal007:universe-accounts-ui

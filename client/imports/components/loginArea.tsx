@@ -1,8 +1,9 @@
-import React from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { LoginBox } from 'meteor/universe:accounts-ui';
+import { LoginBox } from 'meteor/mhal007:universe-accounts-ui';
+import React from 'react';
 
-const LoginArea = () => {
+const LoginArea = (): JSX.Element => {
   const renderUserInfo = () => {
     const user = Meteor.user();
     return user ? <div className="user-info">{user?.profile?.name}</div> : null;

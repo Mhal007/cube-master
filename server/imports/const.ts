@@ -3,7 +3,7 @@ import { AlgorithmSketch, SquaresType, StrikesType } from '../../lib/types';
 const squresFull: SquaresType = [/* eslint-disable-line */
   [1, 1, 1],
   [1, 1, 1],
-  [1, 1, 1]
+  [1, 1, 1],
 ];
 
 const strikesNone: StrikesType = [];
@@ -20,14 +20,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 1],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [1, 0, 1],
       [0, 0, 0],
       [1, 0, 1],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -40,14 +40,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 1],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 0, 1],
       [0, 0, 0],
       [0, 0, 1],
-      [1, 0, 1]
-    ]
+      [1, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -60,14 +60,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 1],
       [1, 1, 1],
-      [1, 1, 0]
+      [1, 1, 0],
     ],
     strikes: [
       [1, 0, 0],
       [0, 0, 1],
       [0, 0, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -80,14 +80,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 1],
-      [1, 1, 1]
+      [1, 1, 1],
     ],
     strikes: [
       [1, 0, 1],
       [0, 0, 0],
       [0, 0, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -100,14 +100,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 1, 1],
       [1, 1, 1],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 0, 0],
       [0, 0, 1],
       [0, 0, 0],
-      [0, 0, 1]
-    ]
+      [0, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -120,14 +120,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 1],
-      [0, 1, 1]
+      [0, 1, 1],
     ],
     strikes: [
       [0, 0, 1],
       [0, 0, 0],
       [1, 0, 0],
-      [1, 0, 0]
-    ]
+      [1, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -140,14 +140,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 1],
-      [1, 1, 0]
+      [1, 1, 0],
     ],
     strikes: [
       [1, 0, 0],
       [1, 0, 0],
       [0, 0, 1],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -160,14 +160,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [0, 1, 0],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 1, 0],
       [1, 1, 1],
       [0, 1, 0],
-      [1, 1, 1]
-    ]
+      [1, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -180,14 +180,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 0],
       [0, 1, 0],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 1, 0],
       [1, 1, 0],
       [1, 1, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -200,14 +200,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 1],
       [0, 1, 0],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 1, 0],
       [0, 1, 0],
       [0, 1, 0],
-      [1, 1, 1]
-    ]
+      [1, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -220,14 +220,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [0, 1, 0],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 1, 1],
       [0, 1, 0],
       [0, 1, 1],
-      [1, 1, 1]
-    ]
+      [1, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -240,14 +240,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 1],
       [0, 1, 0],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 1, 0],
       [0, 1, 1],
       [0, 1, 0],
-      [0, 1, 1]
-    ]
+      [0, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -260,14 +260,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [0, 1, 0],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [1, 1, 0],
       [1, 1, 0],
       [0, 1, 1],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -280,14 +280,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [0, 1, 0],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 1, 1],
       [0, 1, 0],
       [1, 1, 0],
-      [1, 1, 0]
-    ]
+      [1, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -300,14 +300,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 1],
       [0, 1, 0],
-      [1, 0, 1]
+      [1, 0, 1],
     ],
     strikes: [
       [0, 1, 0],
       [0, 1, 0],
       [0, 1, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -320,14 +320,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 1],
       [0, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [1, 0, 0],
       [0, 0, 0],
       [1, 1, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -340,14 +340,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 1, 0],
       [1, 1, 0],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [0, 0, 1],
       [0, 1, 0],
       [0, 1, 1],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -360,14 +360,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 1, 0],
       [1, 1, 0],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [0, 0, 0],
       [1, 1, 1],
       [0, 1, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -380,14 +380,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 1],
       [0, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 0, 0],
       [0, 0, 0],
       [0, 1, 0],
-      [1, 1, 1]
-    ]
+      [1, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -400,14 +400,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 1, 0],
       [0, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 0, 1],
       [0, 0, 0],
       [0, 1, 0],
-      [0, 1, 1]
-    ]
+      [0, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -420,14 +420,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 1],
       [1, 1, 0],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [1, 0, 0],
       [0, 1, 1],
       [0, 1, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -440,14 +440,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 0],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 0, 0],
       [1, 1, 1],
       [0, 1, 0],
-      [1, 0, 1]
-    ]
+      [1, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -460,14 +460,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [0, 1, 1],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 0, 0],
       [1, 0, 1],
       [0, 1, 0],
-      [1, 1, 1]
-    ]
+      [1, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -480,14 +480,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [0, 1, 1],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [1, 0, 0],
       [1, 0, 1],
       [1, 1, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -500,14 +500,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 0],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 0, 1],
       [0, 1, 0],
       [0, 1, 1],
-      [1, 0, 1]
-    ]
+      [1, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -520,14 +520,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [0, 1, 1],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 1, 1],
       [0, 0, 0],
       [0, 0, 1],
-      [1, 1, 1]
-    ]
+      [1, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -540,14 +540,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 0],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [1, 1, 0],
       [1, 1, 1],
       [1, 0, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -560,14 +560,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 0],
       [0, 1, 1],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 1, 1],
       [0, 0, 1],
       [1, 0, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -580,14 +580,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 1],
       [1, 1, 0],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [1, 1, 0],
       [0, 1, 0],
       [0, 0, 1],
-      [0, 0, 1]
-    ]
+      [0, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -600,14 +600,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 1],
       [1, 1, 1],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 1, 0],
       [0, 0, 1],
       [0, 1, 0],
-      [0, 0, 1]
-    ]
+      [0, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -620,14 +620,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 1, 0],
       [0, 1, 0],
-      [1, 1, 0]
+      [1, 1, 0],
     ],
     strikes: [
       [0, 0, 0],
       [1, 1, 1],
       [0, 0, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -640,14 +640,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 1],
       [1, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [1, 1, 0],
       [0, 0, 0],
       [1, 1, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -660,14 +660,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 1],
       [1, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 1, 0],
       [0, 0, 0],
       [0, 1, 0],
-      [1, 0, 1]
-    ]
+      [1, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -680,14 +680,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [0, 1, 0],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 0, 0],
       [1, 1, 1],
       [0, 0, 0],
-      [1, 1, 1]
-    ]
+      [1, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -700,14 +700,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 1],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [1, 1, 0],
       [1, 0, 1],
       [1, 1, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -720,14 +720,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 1],
-      [0, 0, 0]
+      [0, 0, 0],
     ],
     strikes: [
       [0, 1, 0],
       [1, 0, 1],
       [0, 1, 0],
-      [1, 0, 1]
-    ]
+      [1, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -740,14 +740,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [0, 1, 0],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [1, 0, 0],
       [1, 1, 1],
       [1, 0, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -760,14 +760,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [0, 1, 1],
-      [0, 1, 1]
+      [0, 1, 1],
     ],
     strikes: [
       [1, 1, 0],
       [1, 0, 0],
       [0, 0, 0],
-      [0, 1, 1]
-    ]
+      [0, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -780,14 +780,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 0],
-      [1, 1, 0]
+      [1, 1, 0],
     ],
     strikes: [
       [0, 1, 1],
       [0, 1, 1],
       [0, 0, 0],
-      [1, 0, 0]
-    ]
+      [1, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -800,14 +800,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 1],
       [0, 1, 1],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [1, 0, 0],
       [0, 0, 1],
       [0, 1, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -820,14 +820,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 1, 0],
       [1, 1, 0],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 0, 0],
       [1, 1, 0],
       [1, 1, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -840,14 +840,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 1],
       [0, 1, 1],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [1, 1, 0],
       [0, 0, 0],
       [0, 0, 1],
-      [0, 1, 1]
-    ]
+      [0, 1, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -860,14 +860,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 0],
       [1, 1, 0],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 1, 1],
       [0, 1, 1],
       [1, 0, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -880,14 +880,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 0],
       [1, 1, 0],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 1, 0],
       [1, 1, 0],
       [0, 0, 1],
-      [0, 0, 1]
-    ]
+      [0, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -900,14 +900,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 1],
       [0, 1, 1],
-      [0, 1, 0]
+      [0, 1, 0],
     ],
     strikes: [
       [0, 1, 0],
       [0, 0, 1],
       [1, 0, 0],
-      [1, 1, 0]
-    ]
+      [1, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -920,14 +920,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [0, 1, 1],
-      [1, 0, 1]
+      [1, 0, 1],
     ],
     strikes: [
       [0, 0, 0],
       [1, 0, 0],
       [0, 1, 0],
-      [1, 0, 0]
-    ]
+      [1, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -940,14 +940,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 0],
       [1, 1, 0],
-      [1, 0, 1]
+      [1, 0, 1],
     ],
     strikes: [
       [0, 0, 0],
       [1, 1, 0],
       [0, 1, 0],
-      [1, 0, 0]
-    ]
+      [1, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -960,14 +960,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 1, 1],
       [1, 1, 0],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 0, 0],
       [0, 1, 0],
       [0, 1, 0],
-      [1, 0, 1]
-    ]
+      [1, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -980,14 +980,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 1, 0],
       [0, 1, 1],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [0, 0, 0],
       [1, 0, 1],
       [0, 1, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -1000,14 +1000,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 1],
       [1, 1, 1],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [1, 1, 0],
       [0, 0, 1],
       [0, 1, 0],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -1020,14 +1020,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 0],
       [1, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 1, 1],
       [0, 0, 0],
       [0, 1, 0],
-      [0, 0, 1]
-    ]
+      [0, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -1040,14 +1040,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 1],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [1, 1, 0],
       [1, 0, 0],
       [0, 1, 1],
-      [0, 0, 0]
-    ]
+      [0, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -1060,14 +1060,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [0, 1, 1],
       [0, 0, 0],
       [1, 1, 0],
-      [1, 0, 0]
-    ]
+      [1, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -1080,14 +1080,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 1],
-      [0, 0, 1]
+      [0, 0, 1],
     ],
     strikes: [
       [1, 1, 0],
       [1, 0, 0],
       [0, 1, 0],
-      [0, 0, 1]
-    ]
+      [0, 0, 1],
+    ],
   },
   {
     category: 'OLL',
@@ -1100,14 +1100,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [0, 0, 0],
       [1, 1, 1],
-      [1, 0, 0]
+      [1, 0, 0],
     ],
     strikes: [
       [0, 1, 1],
       [0, 0, 1],
       [0, 1, 0],
-      [1, 0, 0]
-    ]
+      [1, 0, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -1120,14 +1120,14 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 1],
       [0, 1, 1],
-      [1, 1, 1]
+      [1, 1, 1],
     ],
     strikes: [
       [0, 1, 0],
       [0, 0, 0],
       [0, 0, 0],
-      [0, 1, 0]
-    ]
+      [0, 1, 0],
+    ],
   },
   {
     category: 'OLL',
@@ -1140,15 +1140,15 @@ export const OLLs: AlgorithmSketch[] = [
     squares: [/* eslint-disable-line */
       [1, 0, 1],
       [1, 1, 1],
-      [1, 0, 1]
+      [1, 0, 1],
     ],
     strikes: [
       [0, 1, 0],
       [0, 0, 0],
       [0, 1, 0],
-      [0, 0, 0]
-    ]
-  }
+      [0, 0, 0],
+    ],
+  },
 ];
 
 export const PLLs: AlgorithmSketch[] = [
@@ -1166,9 +1166,9 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 0, y: 0 },
         { x: 2, y: 0 },
-        { x: 2, y: 2 }
-      ]
-    ]
+        { x: 2, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1184,9 +1184,9 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 0, y: 0 },
         { x: 0, y: 2 },
-        { x: 2, y: 0 }
-      ]
-    ]
+        { x: 2, y: 0 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1201,13 +1201,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 0, y: 2 }
+        { x: 0, y: 2 },
       ],
       [
         { x: 2, y: 0 },
-        { x: 2, y: 2 }
-      ]
-    ]
+        { x: 2, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1222,13 +1222,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 2, y: 0 }
+        { x: 2, y: 0 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 2, y: 1 }
-      ]
-    ]
+        { x: 2, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1243,13 +1243,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 1, y: 0 },
-        { x: 1, y: 2 }
+        { x: 1, y: 2 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 2, y: 1 }
-      ]
-    ]
+        { x: 2, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1265,9 +1265,9 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 0, y: 1 },
         { x: 2, y: 1 },
-        { x: 1, y: 0 }
-      ]
-    ]
+        { x: 1, y: 0 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1283,9 +1283,9 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 0, y: 1 },
         { x: 1, y: 0 },
-        { x: 2, y: 1 }
-      ]
-    ]
+        { x: 2, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1300,13 +1300,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 0, y: 2 }
+        { x: 0, y: 2 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 1, y: 2 }
-      ]
-    ]
+        { x: 1, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1321,13 +1321,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 2, y: 0 },
-        { x: 2, y: 2 }
+        { x: 2, y: 2 },
       ],
       [
         { x: 2, y: 1 },
-        { x: 1, y: 2 }
-      ]
-    ]
+        { x: 1, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1342,13 +1342,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 2, y: 0 },
-        { x: 2, y: 2 }
+        { x: 2, y: 2 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 2, y: 1 }
-      ]
-    ]
+        { x: 2, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1363,13 +1363,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 2, y: 2 }
+        { x: 2, y: 2 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 1, y: 2 }
-      ]
-    ]
+        { x: 1, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1384,13 +1384,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 2, y: 0 }
+        { x: 2, y: 0 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 1, y: 2 }
-      ]
-    ]
+        { x: 1, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1405,13 +1405,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 2, y: 0 }
+        { x: 2, y: 0 },
       ],
       [
         { x: 2, y: 1 },
-        { x: 1, y: 2 }
-      ]
-    ]
+        { x: 1, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1427,14 +1427,14 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 1, y: 0 },
         { x: 2, y: 1 },
-        { x: 1, y: 2 }
+        { x: 1, y: 2 },
       ],
       [
         { x: 2, y: 0 },
         { x: 0, y: 2 },
-        { x: 2, y: 2 }
-      ]
-    ]
+        { x: 2, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1450,14 +1450,14 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 0, y: 0 },
         { x: 2, y: 2 },
-        { x: 0, y: 2 }
+        { x: 0, y: 2 },
       ],
       [
         { x: 1, y: 0 },
         { x: 0, y: 1 },
-        { x: 1, y: 2 }
-      ]
-    ]
+        { x: 1, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1473,14 +1473,14 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 0, y: 0 },
         { x: 0, y: 2 },
-        { x: 2, y: 2 }
+        { x: 2, y: 2 },
       ],
       [
         { x: 1, y: 0 },
         { x: 1, y: 2 },
-        { x: 0, y: 1 }
-      ]
-    ]
+        { x: 0, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1496,14 +1496,14 @@ export const PLLs: AlgorithmSketch[] = [
       [
         { x: 2, y: 0 },
         { x: 2, y: 2 },
-        { x: 0, y: 2 }
+        { x: 0, y: 2 },
       ],
       [
         { x: 1, y: 0 },
         { x: 1, y: 2 },
-        { x: 2, y: 1 }
-      ]
-    ]
+        { x: 2, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1518,13 +1518,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 1, y: 0 },
-        { x: 0, y: 1 }
+        { x: 0, y: 1 },
       ],
       [
         { x: 2, y: 1 },
-        { x: 1, y: 2 }
-      ]
-    ]
+        { x: 1, y: 2 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1539,13 +1539,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 2, y: 0 },
-        { x: 0, y: 2 }
+        { x: 0, y: 2 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 2, y: 1 }
-      ]
-    ]
+        { x: 2, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1560,13 +1560,13 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 2, y: 2 }
+        { x: 2, y: 2 },
       ],
       [
         { x: 0, y: 1 },
-        { x: 2, y: 1 }
-      ]
-    ]
+        { x: 2, y: 1 },
+      ],
+    ],
   },
   {
     category: 'PLL',
@@ -1581,12 +1581,12 @@ export const PLLs: AlgorithmSketch[] = [
     lines: [
       [
         { x: 0, y: 0 },
-        { x: 2, y: 2 }
+        { x: 2, y: 2 },
       ],
       [
         { x: 1, y: 0 },
-        { x: 0, y: 1 }
-      ]
-    ]
-  }
+        { x: 0, y: 1 },
+      ],
+    ],
+  },
 ];

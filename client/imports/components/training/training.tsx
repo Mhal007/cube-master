@@ -1,23 +1,24 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Grid, Menu } from 'semantic-ui-react';
-import { SemanticToastContainer } from 'react-semantic-toasts';
 import random from 'lodash/random';
 import uniq from 'lodash/uniq';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { SemanticToastContainer } from 'react-semantic-toasts';
+import { Grid, Menu } from 'semantic-ui-react';
 
+import {
+  AlgorithmWithResults,
+  CategoryName,
+  CategoryWithResults,
+  isPredefinedAlgorithm,
+} from '../../../../lib/types';
+import { getRandomScramble } from '../../../../lib/utils';
+import { store } from '../../lib/store';
+import { toastNoActiveAlgorithms } from '../../lib/toasts';
+import { Loader } from '../loader';
 import AlgSettings from './algSettings';
 import Averages from './averages';
 import TipsAndTricks from './tipsAndTricks';
 import TrainingMain from './trainingMain';
 
-import { getRandomScramble } from '../../../../lib/utils';
-import { toastNoActiveAlgorithms } from '../../lib/toasts';
-import { store } from '../../lib/store';
-import {
-  AlgorithmWithResults,
-  CategoryName,
-  CategoryWithResults,
-  isPredefinedAlgorithm
-} from '../../../../lib/types';
 import Timeout = NodeJS.Timeout;
 
 type blockedKeys = {
@@ -32,7 +33,7 @@ const TIMER_STATUSES: Record<string, timerStatus> = {
   RESETTED: 'resetted',
   PRE_INSPECTION: 'pre-inspection',
   TIMER_OFF: 'timer-off',
-  TIMER_ON: 'timer-on'
+  TIMER_ON: 'timer-on',
 };
 
 export type randomizedAlgorithm = {
@@ -43,34 +44,38 @@ export type randomizedAlgorithm = {
 type Props = {
   algorithms: AlgorithmWithResults[];
   categories: CategoryWithResults[];
-  demo?: boolean;
+  loading: boolean;
 };
 
-const Training = ({ algorithms, categories }: Props) => {
+export const Training = ({
+  algorithms,
+  categories,
+  loading,
+}: Props): JSX.Element => {
   const timer = useRef<Timeout>();
 
   const [activeAlgorithmIds, setActiveAlgorithmIds] = useState<string[]>(
-    store.get(store.vars.activeAlgorithmIds) || []
+    store.get(store.vars.activeAlgorithmIds) || [],
   );
   const [blockedKeys, setBlockedKeys] = useState<blockedKeys>({
     control: false,
     delete: false,
     shift: false,
-    space: false
+    space: false,
   });
   const [currentAlgorithm, setCurrentAlgorithm] = useState<
     AlgorithmWithResults | randomizedAlgorithm
   >();
   const [currentCategory, setCurrentCategory] = useState<CategoryWithResults>(
-    categories[0]
+    categories[0],
   );
   const [isSolutionVisible, setSolutionVisibility] = useState<boolean>(
-    !!store.get(store.vars.isSolutionVisible)
+    !!store.get(store.vars.isSolutionVisible),
   );
   const [areSettingsOpened, setSettingsOpenness] = useState<boolean>(true);
   const [timerCurrentValue, setTimerCurrentValue] = useState<number>(0);
   const [timerStatus, setTimerStatus] = useState<timerStatus>(
-    TIMER_STATUSES.RESETTED
+    TIMER_STATUSES.RESETTED,
   );
 
   // const onReset = () => {};
@@ -90,8 +95,8 @@ const Training = ({ algorithms, categories }: Props) => {
 
     setActiveAlgorithmIds(
       activeAlgorithmIds.filter(
-        (algorithmId: string) => !currentAlgorithmIds.includes(algorithmId)
-      )
+        (algorithmId: string) => !currentAlgorithmIds.includes(algorithmId),
+      ),
     );
   };
 
@@ -110,12 +115,12 @@ const Training = ({ algorithms, categories }: Props) => {
         const searchSpace = algorithms.filter(
           algorithm =>
             algorithm.category === currentCategory.value &&
-            activeAlgorithmIds.includes(algorithm._id)
+            activeAlgorithmIds.includes(algorithm._id),
         );
 
         const currentIndex = isPredefinedAlgorithm(currentAlgorithm)
           ? searchSpace.findIndex(
-              algorithm => algorithm._id === currentAlgorithm._id
+              algorithm => algorithm._id === currentAlgorithm._id,
             )
           : -1;
 
@@ -141,7 +146,7 @@ const Training = ({ algorithms, categories }: Props) => {
     if (currentCategory && currentCategory.value) {
       const newAlgorithmIds = activeAlgorithmIds.includes(toggleAlgorithmId)
         ? activeAlgorithmIds.filter(
-            (algorithmId: string) => algorithmId !== toggleAlgorithmId
+            (algorithmId: string) => algorithmId !== toggleAlgorithmId,
           )
         : activeAlgorithmIds.concat(toggleAlgorithmId);
 
@@ -190,14 +195,16 @@ const Training = ({ algorithms, categories }: Props) => {
         /* Save the time */
         const result = {
           ...((currentAlgorithm && {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             ...(currentAlgorithm._id && { algorithmId: currentAlgorithm._id }),
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            scramble: currentAlgorithm.scramble
+            scramble: currentAlgorithm.scramble,
           }) ||
             {}),
           category: currentCategory.value,
-          time: timerCurrentValue
+          time: timerCurrentValue,
         };
 
         Meteor.call('results.insert', result, () => onChangeAlgorithm());
@@ -210,8 +217,8 @@ const Training = ({ algorithms, categories }: Props) => {
       onChangeAlgorithm,
       timer,
       timerCurrentValue,
-      timerStatus
-    ]
+      timerStatus,
+    ],
   );
 
   useEffect(() => {
@@ -286,7 +293,7 @@ const Training = ({ algorithms, categories }: Props) => {
     setCurrentCategory(
       currentCategory =>
         categories.find(category => category.value === currentCategory.value) ||
-        currentCategory
+        currentCategory,
     );
   }, [categories]);
 
@@ -300,7 +307,7 @@ const Training = ({ algorithms, categories }: Props) => {
     const anyAlgorithmActive = algorithms.some(
       algorithm =>
         activeAlgorithmIds.includes(algorithm._id) &&
-        algorithm.category === currentCategory.value
+        algorithm.category === currentCategory.value,
     );
 
     if (!anyAlgorithmActive) {
@@ -313,53 +320,57 @@ const Training = ({ algorithms, categories }: Props) => {
   }, [isSolutionVisible]);
 
   const currentAlgorithms = algorithms.filter(
-    algorithm => algorithm.category === currentCategory.type
+    algorithm => algorithm.category === currentCategory.type,
   );
 
   return (
     <>
-      <SemanticToastContainer />
-      <Grid>
-        <Grid.Column width={4}>
-          <Menu className="left-menu" inverted tabular vertical>
-            {categories.map(category => (
-              <Menu.Item
-                key={category.value}
-                name={category.label}
-                active={currentCategory.value === category.value}
-                onClick={() => setCurrentCategory(category)}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <SemanticToastContainer />
+          <Grid>
+            <Grid.Column width={4}>
+              <Menu className="left-menu" inverted tabular vertical>
+                {categories.map(category => (
+                  <Menu.Item
+                    key={category.value}
+                    name={category.label}
+                    active={currentCategory.value === category.value}
+                    onClick={() => setCurrentCategory(category)}
+                  />
+                ))}
+              </Menu>
+            </Grid.Column>
+            <Grid.Column width={8} textAlign="center">
+              <TrainingMain
+                currentAlgorithm={currentAlgorithm}
+                isSolutionVisible={isSolutionVisible}
+                onChangeAlgorithm={onChangeAlgorithm}
+                timerCurrentValue={timerCurrentValue}
               />
-            ))}
-          </Menu>
-        </Grid.Column>
-        <Grid.Column width={8} textAlign="center">
-          <TrainingMain
-            currentAlgorithm={currentAlgorithm}
-            isSolutionVisible={isSolutionVisible}
-            onChangeAlgorithm={onChangeAlgorithm}
-            timerCurrentValue={timerCurrentValue}
-          />
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <Averages
-            currentAlgorithm={currentAlgorithm}
-            currentCategory={currentCategory}
-          />
-          <TipsAndTricks />
-        </Grid.Column>
-      </Grid>
-      {areSettingsOpened && (
-        <AlgSettings
-          activeAlgorithmIds={activeAlgorithmIds}
-          algorithms={currentAlgorithms}
-          currentCategory={currentCategory}
-          onActivateAll={onActivateAll}
-          onToggleActive={onToggleActive}
-          onDeactivateAll={onDeactivateAll}
-        />
+            </Grid.Column>
+            <Grid.Column width={4}>
+              <Averages
+                currentAlgorithm={currentAlgorithm}
+                currentCategory={currentCategory}
+              />
+              <TipsAndTricks />
+            </Grid.Column>
+          </Grid>
+          {areSettingsOpened && (
+            <AlgSettings
+              activeAlgorithmIds={activeAlgorithmIds}
+              algorithms={currentAlgorithms}
+              currentCategory={currentCategory}
+              onActivateAll={onActivateAll}
+              onToggleActive={onToggleActive}
+              onDeactivateAll={onDeactivateAll}
+            />
+          )}
+        </>
       )}
     </>
   );
 };
-
-export default Training;
