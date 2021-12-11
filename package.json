@@ -6,10 +6,12 @@
     "verbose": true
   },
   "scripts": {
-    "eslint": "eslint --fix --ext js,jsx,ts,tsx .",
+    "lint": "eslint --fix --ext js,jsx,ts,tsx .",
+    "fix": "npm run lint -- --fix",
     "start": "meteor run",
     "svgs": "ts-node devops/imports/generateSVGs",
-    "test-mocha": "mocha -r ts-node/register tests/mocha/test.ts"
+    "test-mocha": "mocha -r ts-node/register tests/mocha/test.ts",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/preset-typescript": "7.8.3",
@@ -56,6 +58,7 @@
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.0",
     "eslint-plugin-vazco": "1.0.0",
+    "husky": "7.0.4",
     "jest": "25.1.0",
     "mocha": "7.1.0",
     "prettier": "2.1.1",
